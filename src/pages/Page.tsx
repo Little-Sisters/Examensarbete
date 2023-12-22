@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
 import { motion } from 'framer-motion';
 import { MOTION_VARIANTS } from '../constants';
 
