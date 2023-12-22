@@ -1,6 +1,6 @@
 function HomePage() {
   return (
-    <div style={{background:'red'}} className="homepage-div">
+    <div>
       <h1>HomePage</h1>
     </div>
   );

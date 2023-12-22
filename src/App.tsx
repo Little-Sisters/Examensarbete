@@ -20,7 +20,7 @@ export function App() {
     <>
       <Header />
       <main style={{position:'relative'}}>
-        <AnimatePresence initial={false}>
+        <AnimatePresence initial={false} mode='wait'>
           <Routes location={location} key={locationArr[1]}>
             <Route
               path="/"
@@ -105,7 +105,6 @@ export function App() {
           </Routes>
         </AnimatePresence>
       </main>
-
       <Footer />
     </>
   );
