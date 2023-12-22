@@ -1,6 +1,9 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
+#root {
+    margin: 0;
+}
 
 body {
     border: 0;
@@ -13,8 +16,7 @@ body {
 main {
     position: relative;
     width: 100%;
-    margin-top: 77px;
-    height: 600px;
+    height: 20rem;
     background-color: rgb(201, 196, 196);
     overflow: hidden;
 }
