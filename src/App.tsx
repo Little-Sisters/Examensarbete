@@ -9,8 +9,8 @@ import FlavorsPage from './pages/FlavorsPage';
 import GalleryPage from './pages/GalleryPage';
 import HomePage from './pages/HomePage';
 import { NestedPage } from './pages/NestedPage';
-import ProductPage from './pages/ProductPage';
 import { Page } from './pages/Page';
+import ProductPage from './pages/ProductPage';
 
 export function App() {
   const location = useLocation();
@@ -19,7 +19,7 @@ export function App() {
   return (
     <>
       <Header />
-      <main>
+      <main style={{position:'relative'}}>
         <AnimatePresence initial={false}>
           <Routes location={location} key={locationArr[1]}>
             <Route
@@ -35,31 +35,38 @@ export function App() {
               element={
                 <Page>
                   <FlavorsPage />
-                  <AnimatePresence initial={false}>
-                    <Routes location={location} key={locationArr[2]}>
-                      <Route
-                        path="/*"
-                        element={
-                          <NestedPage title="chocolate" nextPath="../vanilla" />
-                        }
-                      />
-                      <Route
-                        path="/vanilla"
-                        element={
-                          <NestedPage
-                            title="Vanilla"
-                            nextPath="../red-velvet"
-                          />
-                        }
-                      />
-                      <Route
-                        path="/red-velvet"
-                        element={
-                          <NestedPage title="Red Velvet" nextPath="../" />
-                        }
-                      />
-                    </Routes>
-                  </AnimatePresence>
+                  {/** Vi behöver använda absolute positionering om vi vill att content ska fadea in samtidigt som den andra fadear ut, div
+                   * här är höjden på "outlet"*/}
+                  <div style={{ position: 'relative', height: 200 }}>
+                    <AnimatePresence initial={false}>
+                      <Routes location={location} key={locationArr[2]}>
+                        <Route
+                          path="/*"
+                          element={
+                            <NestedPage
+                              title="chocolate"
+                              nextPath="../vanilla"
+                            />
+                          }
+                        />
+                        <Route
+                          path="/vanilla"
+                          element={
+                            <NestedPage
+                              title="Vanilla"
+                              nextPath="../red-velvet"
+                            />
+                          }
+                        />
+                        <Route
+                          path="/red-velvet"
+                          element={
+                            <NestedPage title="Red Velvet" nextPath="../" />
+                          }
+                        />
+                      </Routes>
+                    </AnimatePresence>
+                  </div>
                 </Page>
               }
             />
@@ -98,6 +105,7 @@ export function App() {
           </Routes>
         </AnimatePresence>
       </main>
+
       <Footer />
     </>
   );
