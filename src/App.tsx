@@ -1,17 +1,104 @@
-import { Outlet } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import './index.css';
+import AboutUsPage from './pages/AboutUsPage';
+import CartPage from './pages/CartPage';
+import FlavorsPage from './pages/FlavorsPage';
+import GalleryPage from './pages/GalleryPage';
+import HomePage from './pages/HomePage';
+import { NestedPage } from './pages/NestedPage';
+import ProductPage from './pages/ProductPage';
+import { Page } from './pages/Page';
 
-function App() {
+export function App() {
+  const location = useLocation();
+  const locationArr = location.pathname?.split('/') ?? [];
+
   return (
     <>
       <Header />
       <main>
-        <Outlet />
+        <AnimatePresence initial={false}>
+          <Routes location={location} key={locationArr[1]}>
+            <Route
+              path="/"
+              element={
+                <Page>
+                  <HomePage />
+                </Page>
+              }
+            />
+            <Route
+              path="/flavors/*"
+              element={
+                <Page>
+                  <FlavorsPage />
+                  <AnimatePresence initial={false}>
+                    <Routes location={location} key={locationArr[2]}>
+                      <Route
+                        path="/*"
+                        element={
+                          <NestedPage title="chocolate" nextPath="../vanilla" />
+                        }
+                      />
+                      <Route
+                        path="/vanilla"
+                        element={
+                          <NestedPage
+                            title="Vanilla"
+                            nextPath="../red-velvet"
+                          />
+                        }
+                      />
+                      <Route
+                        path="/red-velvet"
+                        element={
+                          <NestedPage title="Red Velvet" nextPath="../" />
+                        }
+                      />
+                    </Routes>
+                  </AnimatePresence>
+                </Page>
+              }
+            />
+            <Route
+              path="/gallery/*"
+              element={
+                <Page>
+                  <GalleryPage />
+                </Page>
+              }
+            />
+            <Route
+              path="/about/*"
+              element={
+                <Page>
+                  <AboutUsPage />
+                </Page>
+              }
+            />
+            <Route
+              path="/products/*"
+              element={
+                <Page>
+                  <ProductPage />
+                </Page>
+              }
+            />
+            <Route
+              path="/cart/*"
+              element={
+                <Page>
+                  <CartPage />
+                </Page>
+              }
+            />
+          </Routes>
+        </AnimatePresence>
       </main>
       <Footer />
     </>
   );
 }
-
-export default App;
