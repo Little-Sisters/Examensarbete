@@ -1,9 +1,5 @@
 function GalleryPage() {
-  return (
-    <div>
-      <h1>GalleryPage</h1>;
-    </div>
-  );
+  return <h1>GalleryPage</h1>;
 }
 
 export default GalleryPage;
