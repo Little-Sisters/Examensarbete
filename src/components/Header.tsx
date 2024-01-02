@@ -84,6 +84,7 @@ const AbsoluteBox = styled.div`
   top: 0;
 `;
 
+
 const MyHeader = styled.header`
   display: flex;
   align-items: center;
