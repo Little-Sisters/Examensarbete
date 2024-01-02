@@ -7,30 +7,47 @@ const StyledFooter = styled.footer`
   padding: 20px;
 `;
 
+const Logo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+`;
+
+const FlexWrapper = styled.div`
+  display: flex;
+`;
+
+const Column = styled.div``;
+
 function Footer() {
   return (
     <>
       <footer>
         <StyledFooter>
-          <h1>BEAUTIFUL CAKES LOGO</h1>
-
-          <div>
-            <h1>CONTACT US</h1>
-            <FaTwitter />
-            <FaYoutube />
-            <FaInstagram />
-            <FaFacebook />
-          </div>
-          <div>
-            <h1>NEWSLETTER</h1>
-            <input type="text" />
-            <input type="button" value="" />
-          </div>
-          <div>
-            <h1>GET IN TOUCH</h1>
-            <p>Number</p>
-            <p>Email</p>
-          </div>
+          <Logo>
+            <h1>BEAUTIFUL CAKES LOGO</h1>
+          </Logo>
+          <FlexWrapper>
+            <Column>
+              <FaTwitter />
+              <FaYoutube />
+              <FaInstagram />
+              <FaFacebook />
+            </Column>
+            <Column>
+              <h1>CONTACT US</h1>
+            </Column>
+            <Column>
+              <h1>NEWSLETTER</h1>
+              <input type="text" />
+              <input type="button" value="" />
+            </Column>
+            <Column>
+              <h1>GET IN TOUCH</h1>
+              <p>Number</p>
+              <p>Email</p>
+            </Column>
+          </FlexWrapper>
         </StyledFooter>
       </footer>
     </>
