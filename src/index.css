@@ -4,9 +4,6 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
-#root {
-    margin: 0;
-}
 
 body {
     border: 0;
@@ -18,14 +15,21 @@ body {
 
 #root {
     min-height: 100vh;
+    margin: 0;
     display: flex;
     flex-direction: column;
 }
 
 main {
-    position: relative;
-    width: 100%;
-    height: 20rem;
-    background-color: rgb(201, 196, 196);
-    overflow: hidden;
+    flex-grow: 1;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Lora', sans-serif;
+}
+
