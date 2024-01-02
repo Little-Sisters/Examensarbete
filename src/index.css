@@ -1,40 +1,60 @@
-/* Google fonts */
+/* Import your Google Fonts in your CSS file */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;400;500;600&family=Lora:wght@400;500;600;700&display=swap');
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-}
-#root {
-    margin: 0;
 }
 
 :root {
---color-light-card: #E7E2DF;
---color-dark-card: #494847;
---color-light-text: #222020;
---color-dark-text: #FBFCFE;
---color-light-background: #F9F5F3;
---color-dark-background: #262524;
---color-button: #D8C39A;
---color-light-input: #706F6F;
---color-dark-input: #C7C7C7;
---color-light-paper: #F9F5F3;
---color-dark-paper: #4E4A48;
-
+    --color-light-card: #E7E2DF;
+    --color-dark-card: #494847;
+    --color-light-text: #222020;
+    --color-dark-text: #FBFCFE;
+    --color-light-background: #F9F5F3;
+    --color-dark-background: #262524;
+    --color-button: #D8C39A;
+    --color-light-input: #706F6F;
+    --color-dark-input: #C7C7C7;
+    --color-light-paper: #F9F5F3;
+    --color-dark-paper: #4E4A48;
 }
 
 body {
     border: 0;
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     text-align: center;
+    background: var(--color-light-background);
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    border: 1px solid var(--color-light-background);
 }
 
 main {
-    position: relative;
-    width: 100%;
-    height: 20rem;
-    background-color: rgb(201, 196, 196);
-    overflow: hidden;
+    flex-grow: 1;
+}
+
+footer {
+    padding: 2rem;
+    border-top: 1px solid var(--color-light-card);
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Lora', sans-serif;
 }

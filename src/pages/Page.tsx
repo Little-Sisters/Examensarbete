@@ -1,6 +1,4 @@
 import { motion } from 'framer-motion';
-import { MOTION_VARIANTS } from '../constants';
-
 
 // Page content wrapper, with animation .
 export const Page = ({
@@ -10,13 +8,10 @@ export const Page = ({
 }) => {
   return (
     <motion.div
-      custom={{ direction: 'forward' }}
-      initial="initial"
-      color="red"
-      animate="in"
-      exit="out"
-      variants={MOTION_VARIANTS}
-      style={{ width: '100%', position: 'absolute', top: 0, left: 0 }}
+      initial={{ opacity: 0, y: 0,}}
+      animate={{ opacity: 1, width: '100%', height: '100%' }}
+      exit={{ opacity: 0,  }}
+      transition={{ duration: .7 }}
     >
       <>{children}</>
     </motion.div>
