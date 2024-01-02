@@ -23,7 +23,6 @@ function Header({ themeToggler }: HeaderProps) {
   );
 }
 
-
 const MyHeader = styled.header`
   background: grey;
 `;
