@@ -26,7 +26,6 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Josefin Sans', sans-serif;
-    text-align: center;
     background: var(--color-light-background);
 }
 
@@ -34,10 +33,6 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-}
-
-header {
-    border: 1px solid var(--color-light-background);
 }
 
 main {
