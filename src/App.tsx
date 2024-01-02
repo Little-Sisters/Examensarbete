@@ -11,14 +11,25 @@ import HomePage from './pages/HomePage';
 import { NestedPage } from './pages/NestedPage';
 import { Page } from './pages/Page';
 import ProductPage from './pages/ProductPage';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './components/globalStyles';
+import { lightMode, darkMode } from './components/Themes';
+import { useState } from 'react';
 
 export function App() {
   const location = useLocation();
   const locationArr = location.pathname?.split('/') ?? [];
+  const [theme, setTheme] = useState('light');
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  }
 
   return (
-    <>
+    <ThemeProvider theme={theme === 'light' ? lightMode : darkMode}>
+      <>
+      <GlobalStyles />
       <Header />
+      <button onClick={themeToggler}>Switch Theme</button>
       <main style={{position:'relative'}}>
         <AnimatePresence initial={false} mode='wait'>
           <Routes location={location} key={locationArr[1]}>
@@ -106,6 +117,7 @@ export function App() {
         </AnimatePresence>
       </main>
       <Footer />
-    </>
+      </>
+    </ThemeProvider>
   );
 }
