@@ -8,10 +8,10 @@ export const Page = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 0 }}
-      animate={{ opacity: 1, width: '100%', height: '100%' }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.7 }}
+      initial={{ opacity: 0, y: -7 }}
+      animate={{ opacity: 1, width: '100%', height: '100%', y: 0 }}
+      exit={{ opacity: 0, y:-7 }}
+      transition={{ duration: 0.6 }}
     >
       <>{children}</>
     </motion.div>
