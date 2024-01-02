@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import PageContentWrapper from './PageContentWrapper';
 import useMobile from './hooks/UseMobile';
@@ -47,11 +47,18 @@ function Header({ themeToggler, theme }: HeaderProps) {
               <Toggle onClick={themeToggler}>Switch</Toggle>
             </AbsoluteBox>
             <DesktopMenuWrapper>
-              <DesktopNav>
+              <DesktopNav id='desktop-nav'>
                 <DesktopLinkWrapper>
-                  <NavLink to="../">Home</NavLink>
-                  <NavLink to="../flavors">Flavors</NavLink>
-                  <NavLink to="/gallery">Gallery</NavLink>
+                  <DesktopNavLink
+                    className={({ isActive, isPending }) =>
+                      isPending ? 'pending' : isActive ? 'active' : ''
+                    }
+                    to="../"
+                  >
+                    Home
+                  </DesktopNavLink>
+                  <DesktopNavLink to="../flavors">Flavors</DesktopNavLink>
+                  <DesktopNavLink to="/gallery">Gallery</DesktopNavLink>
                 </DesktopLinkWrapper>
                 <HeaderLogo
                   src={
@@ -61,9 +68,9 @@ function Header({ themeToggler, theme }: HeaderProps) {
                   }
                 />
                 <RightDesktopLinkWrapper>
-                  <NavLink to="/about">About</NavLink>
-                  <NavLink to="/products">Products</NavLink>
-                  <NavLink to="/cart">Cart</NavLink>
+                  <DesktopNavLink to="/about">About</DesktopNavLink>
+                  <DesktopNavLink to="/products">Products</DesktopNavLink>
+                  <DesktopNavLink to="/cart">Cart</DesktopNavLink>
                 </RightDesktopLinkWrapper>
               </DesktopNav>
             </DesktopMenuWrapper>
@@ -110,20 +117,20 @@ const DesktopMenuWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const NavLink = styled(Link)`
+const DesktopNavLink = styled(NavLink)`
   text-decoration: none;
   text-transform: uppercase;
   font-size: 0.9rem;
-  font-weight: bold;
   padding: 0.5rem 1rem;
-  border-radius: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  transition: all 0.3s ease-in; /* Apply the transition specifically to the transform property */
 
   @media (max-width: 800px) {
     font-size: 0.8rem;
   }
 
   &:hover {
-    transition: all 0.3s ease-in; /* Apply the transition specifically to the transform property */
     background: rgba(0, 0, 0, 0.1);
   }
 `;

@@ -28,4 +28,9 @@ a {
       color: ${({ theme }) => theme.textHover};
     }
     }
+#desktop-nav a.active {
+
+    background: ${({ theme }) => theme.card}
+}
 `;
+
