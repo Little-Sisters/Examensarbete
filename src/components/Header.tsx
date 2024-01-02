@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PageContentWrapper from './PageContentWrapper';
+import Toggle from './Toggle';
 
 interface HeaderProps {
   themeToggler: () => void;
+  isOn: boolean;
 }
 
-function Header({ themeToggler }: HeaderProps) {
+function Header({ themeToggler, isOn }: HeaderProps) {
   return (
     <MyHeader>
       <PageContentWrapper>
@@ -18,6 +20,7 @@ function Header({ themeToggler }: HeaderProps) {
         <Link to="/cart">Cart</Link>
         <Link to="/products">Products</Link>
         <button onClick={themeToggler}>Switch Theme</button>
+        <Toggle isOn={isOn} toggleTheme={themeToggler} />
       </PageContentWrapper>
     </MyHeader>
   );
