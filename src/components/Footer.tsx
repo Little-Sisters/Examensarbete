@@ -3,54 +3,58 @@ import styled from 'styled-components';
 
 const StyledFooter = styled.footer`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   padding: 20px;
 `;
 
 const Logo = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
+  h4 {
+    margin-bottom: 10px;
+  }
 `;
 
 const FlexWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
 
-const Column = styled.div``;
+const Column = styled.div`
+  flex: 1;
+  margin: 10px;
+`;
 
 function Footer() {
   return (
-    <>
-      <footer>
-        <StyledFooter>
-          <Logo>
-            <h1>BEAUTIFUL CAKES LOGO</h1>
-          </Logo>
-          <FlexWrapper>
-            <Column>
-              <FaTwitter />
-              <FaYoutube />
-              <FaInstagram />
-              <FaFacebook />
-            </Column>
-            <Column>
-              <h1>CONTACT US</h1>
-            </Column>
-            <Column>
-              <h1>NEWSLETTER</h1>
-              <input type="text" />
-              <input type="button" value="" />
-            </Column>
-            <Column>
-              <h1>GET IN TOUCH</h1>
-              <p>Number</p>
-              <p>Email</p>
-            </Column>
-          </FlexWrapper>
-        </StyledFooter>
-      </footer>
-    </>
+    <StyledFooter>
+      <Logo>
+        <h4>BEAUTIFUL CAKES LOGO</h4>
+      </Logo>
+      <FlexWrapper>
+        <Column>
+          <FaTwitter />
+          <FaYoutube />
+          <FaInstagram />
+          <FaFacebook />
+        </Column>
+        <Column>
+          <p>News & events</p>
+          <p>Privacy policy</p>
+          <p>Customer care</p>
+        </Column>
+        <Column>
+          <h4>NEWSLETTER</h4>
+          <input type="text" placeholder="Enter your email" />
+          <input type="button" value="Subscribe" />
+        </Column>
+        <Column>
+          <h4>GET IN TOUCH</h4>
+          <p>Number</p>
+          <p>Email</p>
+          <p>Address</p>
+        </Column>
+      </FlexWrapper>
+    </StyledFooter>
   );
 }
 
