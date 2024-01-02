@@ -6,5 +6,9 @@ declare module 'styled-components' {
     body: string;
     text: string;
     input: string;
+    card: string;
+    background: string;
+    button: string;
+    paper: string;
   }
 }
