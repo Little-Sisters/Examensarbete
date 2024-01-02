@@ -16,6 +16,9 @@ import { GlobalStyles } from './components/globalStyles';
 import { lightMode, darkMode } from './components/Themes';
 import { useState } from 'react';
 
+  // The app is wrapped in a ThemeProvider component that takes a theme prop
+  // The useState hook toggles the theme between light and dark
+
 export function App() {
   const location = useLocation();
   const locationArr = location.pathname?.split('/') ?? [];

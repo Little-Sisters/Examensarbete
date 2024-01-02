@@ -1,3 +1,8 @@
+// These are the two modes that can be used in the app
+// lightMode is the default mode
+// darkMode is the mode that is used when the user switches to dark mode
+// If you want to add a different color or mode you can add it here
+
 export const lightMode = {
   body: '#F9F5F3',
   text: '#222020',
