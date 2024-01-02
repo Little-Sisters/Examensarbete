@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-// import { FaRegMoon, FaRegSun } from "react-icons/fa";
+import { FaRegMoon, FaRegSun } from "react-icons/fa";
 
 interface ToggleProps {
   isOn: boolean;
@@ -20,7 +20,7 @@ const Toggle: React.FC<ToggleProps> = ({ isOn, toggleTheme }) => {
           exit={{ y: 30, opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
-            {/* {isOn ? <FaRegMoon size="0.8rem" /> : <FaRegSun size="0.8rem" />} */}
+            {isOn ? <FaRegMoon size="0.6rem" color="black" /> : <FaRegSun size="0.6rem" color="white" />}
         </Handle>
       </AnimatePresence>
     </Container>
