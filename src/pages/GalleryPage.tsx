@@ -1,5 +1,11 @@
+import MarginTopContainer from '../components/MarginTopContainer';
+
 function GalleryPage() {
-  return <h1>GalleryPage</h1>;
+  return (
+    <MarginTopContainer>
+      <h1>GalleryPage</h1>;
+    </MarginTopContainer>
+  );
 }
 
 export default GalleryPage;

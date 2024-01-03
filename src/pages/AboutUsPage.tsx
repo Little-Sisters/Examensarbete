@@ -1,5 +1,11 @@
+import MarginTopContainer from "../components/MarginTopContainer";
+
 function AboutUsPage() {
-  return <h1>About Us Page</h1>;
+  return (
+    <MarginTopContainer>
+      <h1>About Page</h1>
+    </MarginTopContainer>
+  );
 }
 
 export default AboutUsPage;

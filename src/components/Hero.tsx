@@ -6,6 +6,7 @@ function Hero() {
     <>
       <HeroContainer>
         <StyledImage src={herocake} alt="cake" />
+        <Overlay />
         <HeroText>Beautiful Cakes</HeroText>
         <BottomRightContainer>
           <SubText>Customize your cake</SubText>
@@ -26,6 +27,19 @@ const HeroContainer = styled.div`
   position: relative;
   width: 100%;
   height: 80vh;
+`;
+
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    ${({ theme }) => `${theme.black}10`},
+    ${({ theme }) => theme.black}
+  );
 `;
 
 const HeroText = styled.h1`

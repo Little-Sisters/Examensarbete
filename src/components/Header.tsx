@@ -1,8 +1,11 @@
 import { Link, NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import PageContentWrapper from './PageContentWrapper';
 import useMobile from './hooks/UseMobile';
 import Toggle from './Toggle';
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { useEffect, useState } from 'react';
+
 
 interface HeaderProps {
   themeToggler: () => void;
@@ -12,10 +15,46 @@ interface HeaderProps {
 
 function Header({ themeToggler, theme, isOn }: HeaderProps) {
   const isMobile = useMobile(680);
-  console.log(theme);
+  const { scrollY } = useScroll();
+  const [backgroundColor, setBackgroundColor] = useState('transparent');
+  const [isScrolling, setIsBig] = useState(false);
+
+  const myTheme = useTheme();
+
+  useEffect(() => {
+    if (scrollY.get() > 0) {
+      setBackgroundColor(myTheme.bodyOpacity);
+    }
+  }, [theme, myTheme.bodyOpacity, scrollY]);
+
+ 
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const newBackgroundColor = latest > 0 ? myTheme.bodyOpacity : 'transparent';
+     setBackgroundColor(newBackgroundColor);
+    if(!isMobile) {
+          setIsBig(latest > 0);
+    }
+  });
+
+  useEffect(() => {
+    if (scrollY.get() > 0) {
+      setBackgroundColor(myTheme.bodyOpacity);
+    }
+  }, [theme, myTheme.bodyOpacity, scrollY]);
+
+   const headerAnimation = isMobile
+     ? { height: 'auto' }
+     : { height: isScrolling ? '4rem' : '6rem' };
+
+ 
 
   return (
-    <MyHeader>
+    <MyHeader
+      style={{
+        background: backgroundColor,
+      }}
+      animate={headerAnimation}
+    >
       <PageContentWrapper>
         {isMobile ? (
           <>
@@ -91,15 +130,16 @@ const AbsoluteBox = styled.div`
   top: 0;
 `;
 
-const MyHeader = styled.header`
+const MyHeader = styled(motion.header)`
   z-index: 100000;
+  position: fixed;
+  width: 100%;
   display: flex;
   align-items: center;
-  height: 6rem;
   @media (max-width: 680px) {
-    height: auto;
     padding: 1rem 0;
   }
+  transition: all 0.3s ease;
 `;
 
 const HeaderLogo = styled.img`
