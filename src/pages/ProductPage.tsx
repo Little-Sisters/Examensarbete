@@ -9,7 +9,6 @@ import styled from 'styled-components';
 function ProductPage() {
   const { productList } = useProduct();
   return (
-    <>
      <MarginTopContainer>
       <PageContentWrapper>
         <h1>ProductPage</h1>
@@ -20,7 +19,6 @@ function ProductPage() {
         </FlexContainer>
       </PageContentWrapper>
       </MarginTopContainer>
-    </>
   );
 }
 

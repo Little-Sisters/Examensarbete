@@ -110,7 +110,7 @@ export function App() {
                     }
                   />
                   <Route
-                    path="/products/"
+                    path="/products/*"
                     element={
                       <Page>
                         <ProductPage />

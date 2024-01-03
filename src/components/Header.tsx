@@ -100,6 +100,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                   </DesktopNavLink>
                   <DesktopNavLink to="../flavors">Flavors</DesktopNavLink>
                   <DesktopNavLink to="/gallery">Gallery</DesktopNavLink>
+                  <Link to="/products/1">uyutu</Link>
                 </DesktopLinkWrapper>
                 <HeaderLogo
                   src={
