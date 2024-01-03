@@ -4,12 +4,19 @@ import styled from 'styled-components';
 const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 1rem;
 `;
 
 const Logo = styled.div`
   h4 {
-    margin-bottom: 10px;
+  }
+`;
+const IconWrapper = styled.div`
+  display: flex;
+  gap: 15px;
+
+  svg {
+    font-size: 24px;
   }
 `;
 
@@ -20,8 +27,15 @@ const FlexWrapper = styled.div`
 `;
 
 const Column = styled.div`
-  flex: 1;
-  margin: 10px;
+  div {
+    display: flex;
+  }
+
+  input {
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    border: 1px solid black;
+  }
 `;
 
 function Footer() {
@@ -32,26 +46,28 @@ function Footer() {
       </Logo>
       <FlexWrapper>
         <Column>
-          <FaTwitter />
-          <FaYoutube />
-          <FaInstagram />
-          <FaFacebook />
-        </Column>
-        <Column>
           <p>News & events</p>
           <p>Privacy policy</p>
           <p>Customer care</p>
-        </Column>
-        <Column>
-          <h4>NEWSLETTER</h4>
-          <input type="text" placeholder="Enter your email" />
-          <input type="button" value="Subscribe" />
+          <IconWrapper>
+            <FaTwitter />
+            <FaYoutube />
+            <FaInstagram />
+            <FaFacebook />
+          </IconWrapper>
         </Column>
         <Column>
           <h4>GET IN TOUCH</h4>
-          <p>Number</p>
-          <p>Email</p>
-          <p>Address</p>
+          <p>+46 123 12 12</p>
+          <p>beautifulcakes@cakeab.com</p>
+          <p>adress 23 st</p>
+        </Column>
+        <Column>
+          <h4>NEWSLETTER</h4>
+          <div>
+            <input type="text" placeholder="Enter your email" />
+            <input type="button" value="Subscribe" />
+          </div>
         </Column>
       </FlexWrapper>
     </StyledFooter>
