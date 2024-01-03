@@ -26,7 +26,7 @@ export const darkMode = {
   input: '#C7C7C7',
   card: '#494847',
   background: '#262524',
-  button: '#D8C39A',
+  button: '#857452',
   paper: '#4E4A48',
   black: '#000000',
 };

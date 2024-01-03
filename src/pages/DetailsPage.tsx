@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import FakeProduct from '../components/FakeProduct';
+import MarginTopContainer from '../components/MarginTopContainer';
+import PageContentWrapper from '../components/PageContentWrapper';
 import { useProduct } from '../contexts/ProductContext';
 
 function DetailsPage() {
@@ -10,18 +12,26 @@ function DetailsPage() {
 
   if (!product) {
     return (
-      <div>
-        <h1>Details Page</h1>
-        <p>Product not found</p>
-      </div>
+      <MarginTopContainer>
+        <PageContentWrapper>
+          <div>
+            <h1>Details Page</h1>
+            <p>Product not found</p>
+          </div>
+        </PageContentWrapper>
+      </MarginTopContainer>
     );
   }
 
   return (
-    <div>
-      <h1>Details Page</h1>
-      <FakeProduct product={product} />
-    </div>
+    <MarginTopContainer>
+      <PageContentWrapper>
+        <div>
+          <h1>Details Page</h1>
+          <FakeProduct product={product} />
+        </div>
+      </PageContentWrapper>
+    </MarginTopContainer>
   );
 }
 

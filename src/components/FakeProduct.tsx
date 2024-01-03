@@ -12,7 +12,7 @@ function FakeProduct({ product }: FakeProductProps) {
 
   return (
     <Card>
-      <Link to={`/products/${product.id}`}>
+      <Link to={`/product/${product.id}`}>
         <h4>{product.title}</h4>
         <StyledImg src={product.image} alt={product.imageAlt} />
         <h5>{product.description}</h5>

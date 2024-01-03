@@ -47,7 +47,6 @@ const HeroText = styled.h1`
   top: 10%;
   left: 50%;
   transform: translate(-50%, -10%);
-  color: white;
   font-size: 3rem;
   text-align: center;
 `;
@@ -57,7 +56,6 @@ const BottomRightContainer = styled.div`
   bottom: 10%;
   right: 10%;
   text-align: right;
-  color: white;
 `;
 
 const SubText = styled.h2`
@@ -67,7 +65,6 @@ const SubText = styled.h2`
 
 const Button = styled.a`
   display: inline-block;
-  color: white;
   padding: 0.5rem 1rem;
   text-decoration: none;
   border-radius: 5px;
