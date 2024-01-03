@@ -32,4 +32,8 @@ a {
 
     background: ${({ theme }) => theme.card}
 }
+footer {
+    background: ${({ theme }) => theme.footer};
+    transition: all 0.30s linear;
+}
 `;

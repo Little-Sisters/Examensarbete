@@ -13,6 +13,7 @@ export const lightMode = {
   background: '#F9F5F3',
   button: '#D8C39A',
   paper: '#F9F5F3',
+  footer: '#E7E2DF',
 };
 
 export const darkMode = {
@@ -25,4 +26,5 @@ export const darkMode = {
   background: '#262524',
   button: '#D8C39A',
   paper: '#4E4A48',
+  footer: '#211E1E',
 };
