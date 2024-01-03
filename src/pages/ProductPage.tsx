@@ -1,3 +1,4 @@
+import { Cart } from '../components/Cart';
 import FakeProduct from '../components/FakeProduct';
 import PageContentWrapper from '../components/PageContentWrapper';
 import { useProduct } from '../contexts/ProductContext';
@@ -14,6 +15,7 @@ function ProductPage() {
             <FakeProduct key={product.id} product={product} />
           ))}
         </FlexContainer>
+        <Cart />
       </PageContentWrapper>
     </>
   );
