@@ -31,8 +31,8 @@ export function App() {
       <>
         <GlobalStyles />
         <StyleSheetManager shouldForwardProp={shouldForwardProp}>
-          <Header themeToggler={themeToggler} />
-          <main style={{ position: 'relative' }}>
+          <Header themeToggler={themeToggler} theme={theme} />
+          <main>
             <AnimatePresence initial={false} mode="wait">
               <Routes location={location} key={locationArr[1]}>
                 <Route
