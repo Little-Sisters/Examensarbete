@@ -2,13 +2,15 @@ import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import PageContentWrapper from './PageContentWrapper';
 import useMobile from './hooks/UseMobile';
+import Toggle from './Toggle';
 
 interface HeaderProps {
   themeToggler: () => void;
   theme: string;
+  isOn: boolean;
 }
 
-function Header({ themeToggler, theme }: HeaderProps) {
+function Header({ themeToggler, theme, isOn }: HeaderProps) {
   const isMobile = useMobile(680);
   console.log(theme);
 
@@ -24,12 +26,12 @@ function Header({ themeToggler, theme }: HeaderProps) {
                 <HeaderLogo
                   src={
                     theme === 'dark'
-                      ? './public/assets/logo-dark.png'
-                      : './public/assets/logo.png'
+                      ? './assets/logo-dark.png'
+                      : './assets/logo.png'
                   }
                 />
               </Link>
-              <Toggle onClick={themeToggler}>Switch</Toggle>
+              <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </MobileMenuWrapper>
             <LinkBox>
               <Link to="../">Home</Link>
@@ -44,10 +46,10 @@ function Header({ themeToggler, theme }: HeaderProps) {
           <>
             {/* Content for desktop */}
             <AbsoluteBox>
-              <Toggle onClick={themeToggler}>Switch</Toggle>
+              <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </AbsoluteBox>
             <DesktopMenuWrapper>
-              <DesktopNav id='desktop-nav'>
+              <DesktopNav id="desktop-nav">
                 <DesktopLinkWrapper>
                   <DesktopNavLink
                     className={({ isActive, isPending }) =>
@@ -63,8 +65,8 @@ function Header({ themeToggler, theme }: HeaderProps) {
                 <HeaderLogo
                   src={
                     theme === 'dark'
-                      ? './public/assets/logo-dark.png'
-                      : './public/assets/logo.png'
+                      ? './assets/logo-dark.png'
+                      : './assets/logo.png'
                   }
                 />
                 <RightDesktopLinkWrapper>
@@ -81,8 +83,6 @@ function Header({ themeToggler, theme }: HeaderProps) {
   );
 }
 
-const Toggle = styled.button``;
-
 const AbsoluteBox = styled.div`
   position: absolute;
   z-index: 5000;
@@ -91,9 +91,8 @@ const AbsoluteBox = styled.div`
   top: 0;
 `;
 
-
 const MyHeader = styled.header`
-z-index: 100000;
+  z-index: 100000;
   display: flex;
   align-items: center;
   height: 6rem;
@@ -166,7 +165,7 @@ const LinkBox = styled.div`
   display: flex;
   justify-content: center;
   font-size: small;
-  gap: .5rem;
+  gap: 0.5rem;
 `;
 
 export default Header;
