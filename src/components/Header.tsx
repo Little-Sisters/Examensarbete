@@ -18,40 +18,41 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
   const { scrollY } = useScroll();
   const [backgroundColor, setBackgroundColor] = useState('transparent');
   const [isScrolling, setIsBig] = useState(false);
+  const [backdropFilter, setBackdropFilter] = useState('none');
 
   const myTheme = useTheme();
 
   useEffect(() => {
     if (scrollY.get() > 0) {
       setBackgroundColor(myTheme.bodyOpacity);
+      setBackdropFilter('blur(6px)');
+    } else {
+      setBackgroundColor('transparent');
+      setBackdropFilter('none');
     }
   }, [theme, myTheme.bodyOpacity, scrollY]);
 
- 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const newBackgroundColor = latest > 0 ? myTheme.bodyOpacity : 'transparent';
-     setBackgroundColor(newBackgroundColor);
-    if(!isMobile) {
-          setIsBig(latest > 0);
+    setBackgroundColor(newBackgroundColor);
+
+    if (!isMobile) {
+      setIsBig(latest > 0);
     }
+
+    const newBackdropFilter = latest > 0 ? 'blur(6px)' : 'none';
+    setBackdropFilter(newBackdropFilter);
   });
 
-  useEffect(() => {
-    if (scrollY.get() > 0) {
-      setBackgroundColor(myTheme.bodyOpacity);
-    }
-  }, [theme, myTheme.bodyOpacity, scrollY]);
-
-   const headerAnimation = isMobile
-     ? { height: 'auto' }
-     : { height: isScrolling ? '4rem' : '6rem' };
-
- 
+  const headerAnimation = isMobile
+    ? { height: 'auto' }
+    : { height: isScrolling ? '4rem' : '6rem' };
 
   return (
     <MyHeader
       style={{
         background: backgroundColor,
+        backdropFilter: backdropFilter,
       }}
       animate={headerAnimation}
     >
