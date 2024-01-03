@@ -26,8 +26,8 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                 <HeaderLogo
                   src={
                     theme === 'dark'
-                      ? './public/assets/logo-dark.png'
-                      : './public/assets/logo.png'
+                      ? './assets/logo-dark.png'
+                      : './assets/logo.png'
                   }
                 />
               </Link>
@@ -65,8 +65,8 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                 <HeaderLogo
                   src={
                     theme === 'dark'
-                      ? './public/assets/logo-dark.png'
-                      : './public/assets/logo.png'
+                      ? './assets/logo-dark.png'
+                      : './assets/logo.png'
                   }
                 />
                 <RightDesktopLinkWrapper>
