@@ -1,10 +1,11 @@
+import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import styled from 'styled-components';
 
 const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 3.5rem;
+  padding: 1.5rem 6.5rem;
   background: ${({ theme }) => theme.footer};
   p {
     font-size: 15px;
@@ -61,35 +62,79 @@ function Footer() {
   return (
     <footer>
       <StyledFooter>
-        <Logo>
-          <h2>BEAUTIFUL CAKES</h2>
-        </Logo>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            ease: [0.17, 0.67, 0.83, 0.67],
+            duration: 0.5,
+            delay: 0.5,
+          }}
+        >
+          <Logo>
+            <h2>BEAUTIFUL CAKES</h2>
+          </Logo>
+        </motion.div>
         <FlexWrapper>
-          <Column>
-            <h4>MORE INFO</h4>
-            <p>News & events</p>
-            <p>Privacy policy</p>
-            <p>Customer care</p>
-            <IconWrapper>
-              <FaTwitter />
-              <FaYoutube />
-              <FaInstagram />
-              <FaFacebook />
-            </IconWrapper>
-          </Column>
-          <Column>
-            <h4>GET IN TOUCH</h4>
-            <p>+46 123 12 12</p>
-            <p>beautifulcakes@cakeab.com</p>
-            <p>adress 23 st</p>
-          </Column>
-          <Column>
-            <h4>NEWSLETTER</h4>
-            <div>
-              <input type="text" placeholder="Enter your email" />
-              <input type="btn" value="Subscribe" />
-            </div>
-          </Column>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              ease: [0.17, 0.67, 0.83, 0.67],
+              duration: 0.5,
+              delay: 0.5,
+            }}
+          >
+            <Column>
+              <h4>MORE INFO</h4>
+              <p>News & events</p>
+              <p>Privacy policy</p>
+              <p>Customer care</p>
+              <IconWrapper>
+                <FaTwitter />
+                <FaYoutube />
+                <FaInstagram />
+                <FaFacebook />
+              </IconWrapper>
+            </Column>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              ease: [0.17, 0.67, 0.83, 0.67],
+              duration: 0.5,
+              delay: 1,
+            }}
+          >
+            <Column>
+              <h4>GET IN TOUCH</h4>
+              <p>+46 123 12 12</p>
+              <p>beautifulcakes@cakeab.com</p>
+              <p>adress 23 st</p>
+            </Column>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              ease: [0.17, 0.67, 0.83, 0.67],
+              duration: 0.5,
+              delay: 1.5,
+            }}
+          >
+            <Column>
+              <h4>NEWSLETTER</h4>
+              <div>
+                <input type="text" placeholder="Enter your email" />
+                <input type="btn" value="Subscribe" />
+              </div>
+            </Column>
+          </motion.div>
         </FlexWrapper>
       </StyledFooter>
     </footer>
