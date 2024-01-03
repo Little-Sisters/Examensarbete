@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import styled, { useTheme } from 'styled-components';
 import PageContentWrapper from './PageContentWrapper';
-import useMobile from './hooks/UseMobile';
+import useMobile from '../hooks/UseMobile';
 import Toggle from './Toggle';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { useEffect, useState } from 'react';
