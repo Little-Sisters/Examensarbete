@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import PageContentWrapper from './PageContentWrapper';
-import useMobile from './hooks/UseMobile';
+import useMobile from '../hooks/UseMobile';
 import Toggle from './Toggle';
 
 interface HeaderProps {
