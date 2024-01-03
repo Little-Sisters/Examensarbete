@@ -33,4 +33,3 @@ a {
     background: ${({ theme }) => theme.card}
 }
 `;
-
