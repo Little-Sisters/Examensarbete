@@ -1,10 +1,11 @@
-import MarginTopContainer from '../components/MarginTopContainer';
+import { Cart } from '../components/Cart';
 
 function CartPage() {
   return (
-    <MarginTopContainer>
-      <h1>Cart Page</h1>
-    </MarginTopContainer>
+    <>
+      <h1>Cart</h1>
+      <Cart checkOutPage={true} />
+    </>
   );
 }
 

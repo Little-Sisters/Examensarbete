@@ -9,9 +9,9 @@ type ProductContextType = {
 };
 
 const ProductContext = createContext<ProductContextType>({
-    productList: [],
-    addProduct: () => {},
-    removeProduct: () => {},
+  productList: [],
+  addProduct: () => {},
+  removeProduct: () => {},
 });
 
 // eslint-disable-next-line react-refresh/only-export-components
