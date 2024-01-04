@@ -18,10 +18,15 @@ button {
     background: ${({ theme }) => theme.button};
     color: ${({ theme }) => theme.text};
     transition: all 0.30s linear;
+    
+    &:hover {
+       cursor: pointer;
+    }
 }
 a {
     color: ${({ theme }) => theme.text};
     transition: all 0.30s linear;
+    text-decoration: none;
 
     &:hover {
       /* Hover styling */

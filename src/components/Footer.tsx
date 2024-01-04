@@ -5,33 +5,8 @@ import styled from 'styled-components';
 const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 6.5rem;
+  padding: 3rem 6.5rem;
   background: ${({ theme }) => theme.footer};
-  p {
-    font-size: 15px;
-  }
-`;
-
-const Logo = styled.div`
-  h4 {
-  }
-`;
-
-const IconWrapper = styled.div`
-  display: flex;
-  gap: 15px;
-  margin-top: 2rem;
-
-  svg {
-    font-size: 30px;
-    display: inline-block;
-    transition: transform 0.3s ease-in-out;
-
-    &:hover {
-      transform: scale(1.1);
-      cursor: pointer;
-    }
-  }
 `;
 
 const FlexWrapper = styled.div`
@@ -45,16 +20,47 @@ const Column = styled.div`
     display: flex;
   }
 
+  p {
+    font-size: 15px;
+    color: ${({ theme }) => theme.footerDetail};
+  }
+
+  a {
+    color: ${({ theme }) => theme.footerDetail};
+  }
+
   input {
     background-color: transparent;
     padding: 0.5rem 1rem;
-    border: 1px solid black;
+    border: 1px solid;
+    border-color: ${({ theme }) => theme.footerDetail};
     width: 13rem;
   }
 
   button {
-    width: 5rem;
     border: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid;
+    background-color: transparent;
+    border-color: ${({ theme }) => theme.footerDetail};
+    margin-left: -1px;
+  }
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-top: 2rem;
+
+  svg {
+    font-size: 30px;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
   }
 `;
 
@@ -72,9 +78,7 @@ function Footer() {
             delay: 0.5,
           }}
         >
-          <Logo>
-            <h2>BEAUTIFUL CAKES</h2>
-          </Logo>
+          <h2>BEAUTIFUL CAKES</h2>
         </motion.div>
         <FlexWrapper>
           <motion.div
@@ -89,9 +93,16 @@ function Footer() {
           >
             <Column>
               <h4>MORE INFO</h4>
-              <p>News & events</p>
-              <p>Privacy policy</p>
-              <p>Customer care</p>
+              <p>
+                <a href="#">News & events</a>
+              </p>
+              <p>
+                <a href="#">Privacy policy</a>
+              </p>
+              <p>
+                <a href="#">Customer care</a>
+              </p>
+
               <IconWrapper>
                 <FaTwitter />
                 <FaYoutube />
@@ -131,7 +142,8 @@ function Footer() {
               <h4>NEWSLETTER</h4>
               <div>
                 <input type="text" placeholder="Enter your email" />
-                <input type="btn" value="Subscribe" />
+                {/* <input type="btn" value="Subscribe" /> */}
+                <button>Subscribe</button>
               </div>
             </Column>
           </motion.div>
