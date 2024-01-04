@@ -8,6 +8,12 @@ body {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
      transition: all 0.30s linear;
+    .span {
+         background: ${({ theme }) => theme.text};
+    }
+    .header-menu-border {
+         border-bottom: 1px solid ${({ theme }) => theme.text};
+    }
 }
 input {
     background: ${({ theme }) => theme.input};

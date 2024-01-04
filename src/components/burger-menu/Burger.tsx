@@ -26,7 +26,7 @@ const Burger: React.FC<BurgerProps> = ({ isOpen, handleToggle }) => {
 };
 
 const StyledSpan = styled.span`
-  background: ${({ theme }) => theme.text};
+
 `;
 
 export default Burger;

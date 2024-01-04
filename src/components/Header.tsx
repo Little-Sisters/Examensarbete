@@ -12,6 +12,8 @@ import Burger from './burger-menu/Burger';
 import PageContentWrapper from './PageContentWrapper';
 import Toggle from './Toggle';
 import headerLinks from './data';
+import headerLogo from '/logo-dark.png'
+import headerLogoDark from '/logo.png';
 
 interface HeaderProps {
   themeToggler: () => void;
@@ -122,11 +124,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
             <MobileMenuWrapper>
               <Burger isOpen={isOpen} handleToggle={handleToggle}></Burger>
               <HeaderLogo
-                src={
-                  theme === 'dark'
-                    ? './assets/logo-dark.png'
-                    : './assets/logo.png'
-                }
+                src={theme === 'dark' ? headerLogoDark :  headerLogo}
               />
               <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </MobileMenuWrapper>
@@ -143,6 +141,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                       <LinkRotationBox key={i}>
                         <LinkAnimation
                           variants={perspective}
+                          className="header-menu-border"
                           animate="enter"
                           exit="exit"
                           initial="initial"
