@@ -6,6 +6,7 @@
 export const lightMode = {
   mode: 'light',
   body: '#F9F5F3',
+  bodyOpacity: 'rgba(249, 245, 243, 0.7)',
   text: '#222020',
   textHover: '#746E6B', // Slightly lighter color on hover
   input: '#706F6F',
@@ -16,17 +17,19 @@ export const lightMode = {
   footer: '#E7E2DF',
   footerDetail: '#373333',
   footerText: '#EFEAE9',
+  black: '#FFFFFF',
 };
 
 export const darkMode = {
   mode: 'dark',
   body: '#262524',
+  bodyOpacity: 'rgba(38, 37, 36, 0.7)',
   text: '#FBFCFE',
   textHover: '#9FA2AA', // Slightly darker color on hover
   input: '#C7C7C7',
   card: '#494847',
   background: '#262524',
-  button: '#D8C39A',
+  button: '#857452',
   paper: '#4E4A48',
   footer: '#211E1E',
   footerDetail: '#EFEAE9',

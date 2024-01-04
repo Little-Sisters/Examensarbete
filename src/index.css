@@ -33,3 +33,14 @@ h6 {
     font-family: 'Lora', sans-serif;
 }
 
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    z-index: 200000000;
+    background: #D8C39A;
+    transform-origin: 0%;
+}
+
