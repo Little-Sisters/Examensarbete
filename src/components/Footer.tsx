@@ -67,6 +67,7 @@ function Footer() {
   return (
     <footer>
       <StyledFooter>
+        {/* Animation for the divs to load in one by one */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -141,7 +142,6 @@ function Footer() {
               <h4>NEWSLETTER</h4>
               <div>
                 <input type="text" placeholder="Enter your email" />
-                {/* <input type="btn" value="Subscribe" /> */}
                 <button>Subscribe</button>
               </div>
             </Column>
