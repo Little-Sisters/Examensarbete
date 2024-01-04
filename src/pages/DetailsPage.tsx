@@ -140,7 +140,7 @@ const InputFlexWrapper = styled.div`
   flex-direction: column;
   gap: 1rem;
   justify-content: space-between;
-  padding: 0rem 3rem;
+  padding-left: 2rem;
   @media (max-width: 1024px) {
     padding: 0rem;
   }
