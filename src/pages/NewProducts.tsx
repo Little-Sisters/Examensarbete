@@ -1,11 +1,11 @@
 import MarginTopContainer from '../components/MarginTopContainer';
-import { Cart } from '../components/Cart';
+import { useProduct } from '../contexts/ProductContext';
 import FakeProduct from '../components/FakeProduct';
 import PageContentWrapper from '../components/PageContentWrapper';
-import { useProduct } from '../contexts/ProductContext';
+import { Cart } from '../components/Cart';
 import styled from 'styled-components';
 
-function ProductPage() {
+function NewProductsPage() {
   const { productList } = useProduct();
   return (
     <MarginTopContainer>
@@ -27,4 +27,4 @@ const FlexContainer = styled.div`
   justify-content: space-evenly;
 `;
 
-export default ProductPage;
+export default NewProductsPage;

@@ -1,5 +1,11 @@
+import MarginTopContainer from '../components/MarginTopContainer';
+
 function FlavorsPage() {
-  return <h1>FlavorsPage</h1>;
+  return (
+    <MarginTopContainer>
+      <h1>FlavourPage</h1>;
+    </MarginTopContainer>
+  );
 }
 
 export default FlavorsPage;
