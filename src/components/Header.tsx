@@ -1,12 +1,17 @@
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled, { useTheme } from 'styled-components';
 import useMobile from '../hooks/UseMobile';
+import Burger from './burger-menu/Burger';
 import PageContentWrapper from './PageContentWrapper';
 import Toggle from './Toggle';
 import headerLinks from './data';
-import Burger from './sidebar/Burger';
 
 interface HeaderProps {
   themeToggler: () => void;
@@ -17,11 +22,11 @@ interface HeaderProps {
 const perspective = {
   initial: {
     opacity: 0,
-    rotateX: 90,
+    rotateX: 45,
   },
   enter: (i: number) => ({
     opacity: 1,
-    transition: { delay: 0.4 + i * 0.1 },
+    transition: { delay: 0.4 + i * 0.12 },
     rotateX: 0,
   }),
   exit: {
@@ -38,7 +43,7 @@ const variants = {
   closed: {
     width: '100%',
     height: 0,
-    transition: { duration: 0.65, delay:0.35, ease: [0.75, 0, 0.25, 1] },
+    transition: { duration: 0.65, delay: 0.35, ease: [0.75, 0, 0.25, 1] },
   },
 };
 
@@ -49,6 +54,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
   const [isScrolling, setIsBig] = useState(false);
   const [backdropFilter, setBackdropFilter] = useState('none');
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -59,15 +65,13 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
 
   const myTheme = useTheme();
 
-  console.log(scrollY.get(), isOpen, backdropFilter);
-
   useEffect(() => {
     if (scrollY.get() > 0) {
       setBackgroundColor(myTheme.bodyOpacity);
       setBackdropFilter('blur(6px)');
     }
     if (scrollY.get() === 0 && isOpen) {
-      setBackdropFilter('blur(8px)');
+      setBackdropFilter('blur(6px)');
     }
     if (scrollY.get() === 0 && !isOpen) {
       setBackgroundColor('transparent');
@@ -84,12 +88,27 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
     }
   });
 
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, [menuRef]);
+
   const headerAnimation = isMobile
     ? { height: 'auto' }
     : { height: isScrolling ? '4rem' : '6rem' };
 
   return (
     <MyHeader
+      ref={menuRef}
       style={{
         background: backgroundColor,
         backdropFilter: backdropFilter,
@@ -102,15 +121,13 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
             {/* Content for mobile */}
             <MobileMenuWrapper>
               <Burger isOpen={isOpen} handleToggle={handleToggle}></Burger>
-              <Link to="../">
-                <HeaderLogo
-                  src={
-                    theme === 'dark'
-                      ? './assets/logo-dark.png'
-                      : './assets/logo.png'
-                  }
-                />
-              </Link>
+              <HeaderLogo
+                src={
+                  theme === 'dark'
+                    ? './assets/logo-dark.png'
+                    : './assets/logo.png'
+                }
+              />
               <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </MobileMenuWrapper>
 
@@ -130,6 +147,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                           exit="exit"
                           initial="initial"
                           custom={i}
+                          onClick={handleToggle}
                         >
                           <Link to={link.to}>{link.title}</Link>
                         </LinkAnimation>
@@ -191,7 +209,7 @@ const NavBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width:100%;
+  width: 100%;
 
   a {
     text-decoration: none;
@@ -202,12 +220,10 @@ const NavBox = styled.div`
 `;
 const LinkRotationBox = styled(motion.div)`
   perspective: 120px;
-
 `;
 
 const LinkAnimation = styled(motion.div)`
   border-bottom: 1px solid ${({ theme }) => theme.text};
-
 `;
 
 const AbsoluteBox = styled.div`
