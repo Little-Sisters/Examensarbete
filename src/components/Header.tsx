@@ -12,7 +12,7 @@ import Burger from './burger-menu/Burger';
 import PageContentWrapper from './PageContentWrapper';
 import Toggle from './Toggle';
 import headerLinks from './data';
-import headerLogo from '/logo.png'
+import headerLogo from '/logo.png';
 import headerLogoDark from '/logo-dark.png';
 
 interface HeaderProps {
@@ -124,7 +124,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
             <MobileMenuWrapper>
               <Burger isOpen={isOpen} handleToggle={handleToggle}></Burger>
               <HeaderLogo
-                src={theme === 'dark' ? headerLogoDark :  headerLogo}
+                src={theme === 'dark' ? headerLogoDark : headerLogo}
               />
               <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </MobileMenuWrapper>
@@ -239,7 +239,7 @@ const MyHeader = styled(motion.header)`
   display: flex;
   align-items: center;
   @media (max-width: 700px) {
-    padding: .8rem 0;
+    padding: 0.8rem 0;
   }
   transition: all 0.3s ease;
 `;

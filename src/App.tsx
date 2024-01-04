@@ -27,9 +27,9 @@ export function App() {
   const [theme, setTheme] = useLocalStorageState('light', 'theme');
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
-    console.log(theme)
+    console.log(theme);
   };
-  console.log(theme)
+  console.log(theme);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightMode : darkMode}>

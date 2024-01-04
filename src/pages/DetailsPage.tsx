@@ -36,17 +36,39 @@ function DetailsPage() {
                 <Information>
                   <h1>{product.title}</h1>
                   <p>{product.description}</p>
-                  <p>{product.price}</p>
+                  <p>${product.price}</p>
                 </Information>
                 <Selections>
-                  <input type="text" />
-                  <input type="text" />
-                  <input type="text" />
-                  <input type="text" />
-                  <input type="text" />
+                  <div>
+                    <span>Tiers</span>
+                    <input type="text" />
+                  </div>
+                  <div>
+                    <span>Color</span>
+                    <input type="text" />
+                  </div>
+                  <div>
+                    <span>Flavor</span>
+                    <input type="text" />
+                  </div>
+                  <div>
+                    <span>Frosting</span>
+                    <input type="text" />
+                  </div>
+                  <div>
+                    <span>Filling</span>
+                    <input type="text" />
+                  </div>
+                  <div>
+                    <span>Decorations</span>
+                    <input type="text" />
+                  </div>
+                  <div>
+                    <span>Topper</span>
+                    <input type="text" />
+                  </div>
                 </Selections>
               </SelectAndInformation>
-
               <button>Add to cart</button>
             </InputFlexWrapper>
           </InputContainer>
@@ -56,26 +78,25 @@ function DetailsPage() {
   );
 }
 const SelectAndInformation = styled.div`
-width: 100%;
-display: flex;
-flex-direction: column;
-gap: 2rem;
-input {
   width: 100%;
-}
-
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  input {
+    width: 100%;
+  }
 `;
 const Information = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.7rem;
   h1 {
     margin: 0;
   }
   p {
     margin: 0;
     @media (max-width: 1024px) {
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
   }
 `;
@@ -100,7 +121,6 @@ const Cake = styled.div`
     @media (max-width: 700px) {
       width: auto;
       height: 30rem;
-
     }
   }
 `;
@@ -108,7 +128,6 @@ const InputContainer = styled.div`
   width: 50%;
   @media (max-width: 700px) {
     width: 100%;
-    height: 32rem;
   }
   img {
     height: 100%;
@@ -123,6 +142,7 @@ const InputFlexWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   justify-content: space-between;
   padding: 0rem 3rem;
   @media (max-width: 1024px) {
@@ -130,14 +150,7 @@ const InputFlexWrapper = styled.div`
   }
   @media (max-width: 700px) {
     width: 100%;
-    height: 35rem;
     padding: 0rem;
-  }
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
   }
 `;
 
@@ -150,7 +163,7 @@ const ProductLayout = styled.div`
   height: 40rem;
   transition: background-color 0.3s ease-in;
   @media (max-width: 1024px) {
-    min-height: calc(80vh - 9rem ); /* Default height for desktop */
+    min-height: calc(80vh - 9rem); /* Default height for desktop */
   }
   @media (max-width: 700px) {
     flex-direction: column;
