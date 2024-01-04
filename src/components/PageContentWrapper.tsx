@@ -7,7 +7,6 @@ const PageContentWrapper = styled.div`
   height: 100%;
   position: relative;
   padding: 0 16px; /* Side margins for small screens */
-  padding-bottom: 2rem;
 `;
 
 export default PageContentWrapper;

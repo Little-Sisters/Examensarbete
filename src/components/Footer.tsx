@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import styled from 'styled-components';
+import PageContentWrapper from './PageContentWrapper';
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -65,9 +66,8 @@ const IconWrapper = styled.div`
 
 function Footer() {
   return (
-    <footer>
-      <StyledFooter>
-        {/* Animation for the divs to load in one by one */}
+    <StyledFooter>
+      <PageContentWrapper>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -147,8 +147,9 @@ function Footer() {
             </Column>
           </motion.div>
         </FlexWrapper>
-      </StyledFooter>
-    </footer>
+      </PageContentWrapper>
+      {/* Animation for the divs to load in one by one */}
+    </StyledFooter>
   );
 }
 

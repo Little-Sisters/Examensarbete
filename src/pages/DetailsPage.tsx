@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
 import { useProduct } from '../contexts/ProductContext';
+import { useCart } from '../contexts/CartContext';
 
 function DetailsPage() {
   const { productList } = useProduct();
   const { id } = useParams();
+  const { addToCart } = useCart();
 
   const product = productList.find((p) => p.id === id);
 
@@ -69,7 +71,7 @@ function DetailsPage() {
                   </div>
                 </Selections>
               </SelectAndInformation>
-              <button>Add to cart</button>
+              <button onClick={() => addToCart(product, 1)}>Add to cart</button>
             </InputFlexWrapper>
           </InputContainer>
         </ProductLayout>
@@ -117,7 +119,7 @@ const Cake = styled.div`
     height: 35rem;
   }
   img {
-    width: 75%;
+    height: 80%;
     @media (max-width: 700px) {
       width: auto;
       height: 30rem;
@@ -128,12 +130,6 @@ const InputContainer = styled.div`
   width: 50%;
   @media (max-width: 700px) {
     width: 100%;
-  }
-  img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
   }
 `;
 

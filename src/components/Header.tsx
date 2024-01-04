@@ -8,12 +8,12 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled, { useTheme } from 'styled-components';
 import useMobile from '../hooks/UseMobile';
-import Burger from './burger-menu/Burger';
 import PageContentWrapper from './PageContentWrapper';
 import Toggle from './Toggle';
+import Burger from './burger-menu/Burger';
 import headerLinks from './data';
-import headerLogo from '/logo.png';
 import headerLogoDark from '/logo-dark.png';
+import headerLogo from '/logo.png';
 
 interface HeaderProps {
   themeToggler: () => void;
@@ -177,11 +177,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                   <DesktopNavLink to="/gallery">Gallery</DesktopNavLink>
                 </DesktopLinkWrapper>
                 <HeaderLogo
-                  src={
-                    theme === 'dark'
-                      ? './assets/logo-dark.png'
-                      : './assets/logo.png'
-                  }
+                  src={theme === 'dark' ? headerLogoDark : headerLogo}
                 />
                 <RightDesktopLinkWrapper>
                   <DesktopNavLink to="/about">About</DesktopNavLink>

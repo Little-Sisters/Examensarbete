@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const MarginTopContainer = styled.div`
   margin-top: 7rem; /* Center the content */
+  padding-bottom: 2rem;
 
   @media (max-width: 700px) {
     margin-top: 6rem;
