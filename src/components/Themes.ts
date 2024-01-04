@@ -14,10 +14,10 @@ export const lightMode = {
   background: '#F9F5F3',
   button: '#D8C39A',
   paper: '#F9F5F3',
-  footer: '#E7E2DF',
-  footerDetail: '#373333',
-  footerText: '#EFEAE9',
+  footerBackground: '#E7E2DF',
+  transparentButtonText: '#EFEAE9',
   black: '#FFFFFF',
+  grey: '#211E1E',
 };
 
 export const darkMode = {
@@ -31,7 +31,6 @@ export const darkMode = {
   background: '#262524',
   button: '#857452',
   paper: '#4E4A48',
-  footer: '#211E1E',
-  footerDetail: '#EFEAE9',
-  footerText: '#373333',
+  footerBackground: '#211E1E',
+  grey: '#E7E2DF',
 };

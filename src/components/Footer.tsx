@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import styled from 'styled-components';
+import TransparentButton from './TransparentButton';
 
 const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
   padding: 3rem 6.5rem;
-  background: ${({ theme }) => theme.footer};
+  background: ${({ theme }) => theme.footerBackground};
 `;
 
 const FlexWrapper = styled.div`
@@ -28,21 +29,8 @@ const Column = styled.div`
     background-color: transparent;
     padding: 0.5rem 1rem;
     border: 1px solid;
-    border-color: ${({ theme }) => theme.footerDetail};
+    border-color: black;
     width: 13rem;
-  }
-
-  button {
-    border: none;
-    padding: 0.5rem 1rem;
-    border: 1px solid;
-    background-color: transparent;
-    border-color: ${({ theme }) => theme.footerDetail};
-    margin-left: -1px;
-    &:hover {
-      background-color: ${({ theme }) => theme.footerDetail};
-      color: ${({ theme }) => theme.footerText};
-    }
   }
 `;
 
@@ -142,7 +130,10 @@ function Footer() {
               <h4>NEWSLETTER</h4>
               <div>
                 <input type="text" placeholder="Enter your email" />
-                <button>Subscribe</button>
+                <TransparentButton
+                  title="Subscribe"
+                  onPress={() => console.log}
+                />
               </div>
             </Column>
           </motion.div>
