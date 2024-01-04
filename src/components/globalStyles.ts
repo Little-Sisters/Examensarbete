@@ -16,9 +16,10 @@ body {
     }
 }
 input {
-    background: ${({ theme }) => theme.input};
+    background: ${({ theme }) => theme.body};
+    border: 2px solid ${({ theme }) => theme.text};
     color: ${({ theme }) => theme.text};
-     transition: all 0.30s linear;
+    transition: all 0.30s linear;
 }
 button {
     background: ${({ theme }) => theme.button};

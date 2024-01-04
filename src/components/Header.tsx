@@ -12,8 +12,8 @@ import Burger from './burger-menu/Burger';
 import PageContentWrapper from './PageContentWrapper';
 import Toggle from './Toggle';
 import headerLinks from './data';
-import headerLogo from '/logo-dark.png'
-import headerLogoDark from '/logo.png';
+import headerLogo from '/logo.png'
+import headerLogoDark from '/logo-dark.png';
 
 interface HeaderProps {
   themeToggler: () => void;
@@ -50,7 +50,7 @@ const variants = {
 };
 
 function Header({ themeToggler, theme, isOn }: HeaderProps) {
-  const isMobile = useMobile(680);
+  const isMobile = useMobile(700);
   const { scrollY } = useScroll();
   const [backgroundColor, setBackgroundColor] = useState('transparent');
   const [isScrolling, setIsBig] = useState(false);
@@ -128,7 +128,6 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
               />
               <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </MobileMenuWrapper>
-
             <LinkBox
               variants={variants}
               animate={isOpen ? 'open' : 'closed'}
@@ -239,15 +238,15 @@ const MyHeader = styled(motion.header)`
   width: 100%;
   display: flex;
   align-items: center;
-  @media (max-width: 680px) {
-    padding: 1rem 0;
+  @media (max-width: 700px) {
+    padding: .8rem 0;
   }
   transition: all 0.3s ease;
 `;
 
 const HeaderLogo = styled.img`
   width: 5rem;
-  @media (max-width: 680px) {
+  @media (max-width: 700px) {
     width: 4rem;
   }
 `;
