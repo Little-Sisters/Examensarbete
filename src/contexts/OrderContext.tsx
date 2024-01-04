@@ -4,6 +4,9 @@ import { useCart } from './CartContext';
 import { Customer } from '../components/OrderForm';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 
+/* eslint-disable react-refresh/only-export-components */
+
+// Type definitions for OrderContext - individual order
 type Order = {
   itemList: CartItem[];
   contactInformation: Customer;
@@ -11,6 +14,7 @@ type Order = {
   totalPrice: number;
 };
 
+// Specifies the available functions in OrderContext
 type OrderContextType = {
   orderList: Order[];
   addOrder: (order: Order) => void;
@@ -18,6 +22,7 @@ type OrderContextType = {
   getLastOrder: () => { lastOrder: Order | undefined; ordersCopy: Order[] };
 };
 
+// Default values for OrderContext and methods
 const OrderContext = createContext<OrderContextType>({
   orderList: [],
   createOrder: () => ({
@@ -45,11 +50,12 @@ type Props = {
   children: React.ReactNode;
 };
 
+// Generates a unique id string for each order
 export function generateUniqueId(): string {
-    const timestamp = new Date().getTime();
-    const randomValue = Math.floor(Math.random() * 1000000);
-    return `${timestamp}-${randomValue}`;
-  }
+  const timestamp = new Date().getTime();
+  const randomValue = Math.floor(Math.random() * 1000000);
+  return `${timestamp}-${randomValue}`;
+}
 
 export function OrderProvider({ children }: Props) {
   const { cartList, clearCart } = useCart();
@@ -59,40 +65,41 @@ export function OrderProvider({ children }: Props) {
     'orderList',
   );
 
+  // Create new order based on customer information and cart items
+  // Calculates total price of order
+  // Generates unique order id
+  // Clears cart
   const createOrder = (customer: Customer) => {
     const itemList = cartList;
-    console.log('cart items:', itemList)
 
     const totalPrice = itemList.reduce((total, item) => {
       return total + item.quantity * item.price;
     }, 0);
 
     const orderId = generateUniqueId();
-    console.log('orderId:', orderId);
     const contactInformation = customer;
     const newOrder = { itemList, contactInformation, orderId, totalPrice };
-    console.log('New Order:', newOrder);
     addOrder(newOrder);
     clearCart(cartList);
 
     return newOrder;
   };
 
+  // Adds order to orderList
   const addOrder = (order: Order) => {
     setOrderList((prevOrderList) => {
       const updatedOrderList = [...prevOrderList, order];
-      console.log('Updated order list:', updatedOrderList);  
       return updatedOrderList;
     });
   };
 
+  // Retrieves the last order from the order list
   const getLastOrder = (): {
     lastOrder: Order | undefined;
     ordersCopy: Order[];
   } => {
     const ordersCopy = [...orderList];
     const lastOrder = ordersCopy.pop();
-    console.log('lastOrder:', lastOrder);
     return { lastOrder, ordersCopy };
   };
 

@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 import { useCart } from '../contexts/CartContext';
 import { useOrder } from '../contexts/OrderContext';
+/* eslint-disable react-refresh/only-export-components */
 
+// Generates unique number
+// Checks if the number is already in use in Local Storage
+// If it is, generate a new number
+// If it isn't, store the number in Local Storage and return it
 export function generateUniqueNumber(): number {
-  let number = Math.floor(Math.random() * 90000) + 10000;
+  const number = Math.floor(Math.random() * 90000) + 10000;
   if (localStorage.getItem(number.toString())) {
     return generateUniqueNumber();
   } else {
@@ -15,14 +20,12 @@ export function generateUniqueNumber(): number {
 export function OrderConfirmation() {
   const { getLastOrder } = useOrder();
   const { cartList } = useCart();
-
   const { lastOrder } = getLastOrder();
-  console.log('Last order:', lastOrder?.contactInformation.name);
 
   const totalPrice = cartList.reduce((total, cartItem) => {
     return total + cartItem.quantity * cartItem.price;
   }, 0);
-  console.log('totalPrice:', totalPrice);
+  console.log(totalPrice);
 
   return (
     <StyledCard>

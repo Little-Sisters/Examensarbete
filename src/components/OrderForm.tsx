@@ -10,6 +10,7 @@ interface StyledFormControlProps {
 
 const phoneRegExp = /^[0-9]{10}$/;
 
+// Validation schema for customer information
 const customerSchema = Yup.object({
   name: Yup.string()
     .required('First name required')
@@ -34,11 +35,16 @@ export function OrderForm() {
 
   const { createOrder } = useOrder();
 
+  // form values are validated against the customerSchema
+  // if validation passes, customer data is extracted from form values
+  // and an order is created
+  // the form is reset
+  // the user is navigated to the confirmation page
   const handleSubmit = async (
     values: Customer,
     actions: FormikHelpers<Customer>,
   ) => {
-    console.log("handleSubmit called")
+    console.log('handleSubmit called');
     try {
       await customerSchema.validate(values);
       const customer = {
@@ -49,11 +55,9 @@ export function OrderForm() {
         zipCode: values.zipCode,
         city: values.city,
       };
-      console.log('Customer data:', customer); 
       const order = createOrder(customer);
       console.log('created order:', order);
       actions.resetForm();
-      console.log("navigating to confirmation")
       navigate('/confirmation');
     } catch (err) {
       console.log(err);
@@ -74,135 +78,131 @@ export function OrderForm() {
       onSubmit={handleSubmit}
     >
       {(formik) => (
-        // <form onSubmit={(e) => {
-        //     e.preventDefault();
-        //     formik.handleSubmit(e);
-        //   }}>          
-          <StyledForm onSubmit={formik.handleSubmit}>
+        <StyledForm onSubmit={formik.handleSubmit}>
+          <FlexContainer>
             <FlexContainer>
-              <FlexContainer>
-                <h4>Contact Details</h4>
-              </FlexContainer>
-              <div>
-                <FlexContainer>
-                  <StyledFormControl>
-                    <StyledLabel>Name</StyledLabel>
-                    <StyledInput
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="Name"
-                      autoComplete="name"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.name}
-                    ></StyledInput>
-                    {formik.touched.name && formik.errors.name ? (
-                      <StyledText>{formik.errors.name}</StyledText>
-                    ) : null}
-                  </StyledFormControl>
-                  <StyledFormControl
-                    error={!!(formik.touched.email && formik.errors.email)}
-                  >
-                    <StyledLabel htmlFor="email">Email</StyledLabel>
-                    <StyledInput
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="Email"
-                      autoComplete="email"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.email}
-                    ></StyledInput>
-                    {formik.touched.email && formik.errors.email ? (
-                      <StyledText>{formik.errors.email}</StyledText>
-                    ) : null}
-                  </StyledFormControl>
-
-                  <StyledFormControl
-                    error={!!(formik.touched.phone && formik.errors.phone)}
-                  >
-                    <StyledLabel htmlFor="phone">Phone nr.</StyledLabel>
-                    <StyledInput
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      placeholder="Phone nr."
-                      autoComplete="tel"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.phone}
-                    ></StyledInput>
-                    {formik.touched.phone && formik.errors.phone ? (
-                      <StyledText>{formik.errors.phone}</StyledText>
-                    ) : null}
-                  </StyledFormControl>
-
-                  <StyledFormControl
-                    error={!!(formik.touched.street && formik.errors.street)}
-                  >
-                    <StyledLabel htmlFor="street">Street</StyledLabel>
-                    <StyledInput
-                      id="street"
-                      name="street"
-                      type="text"
-                      placeholder="Street"
-                      autoComplete="street-address"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.street}
-                    ></StyledInput>
-                    {formik.touched.street && formik.errors.street ? (
-                      <StyledText>{formik.errors.street}</StyledText>
-                    ) : null}
-                  </StyledFormControl>
-
-                  <StyledFormControl
-                    error={!!(formik.touched.zipCode && formik.errors.zipCode)}
-                  >
-                    <StyledLabel htmlFor="zipCode">Zip Code</StyledLabel>
-                    <StyledInput
-                      id="zipCode"
-                      name="zipCode"
-                      type="text"
-                      placeholder="Zip Code"
-                      autoComplete="postal-code"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.zipCode}
-                    ></StyledInput>
-                    {formik.touched.zipCode && formik.errors.zipCode ? (
-                      <StyledText>{formik.errors.zipCode}</StyledText>
-                    ) : null}
-                  </StyledFormControl>
-
-                  <StyledFormControl
-                    error={!!(formik.touched.city && formik.errors.city)}
-                  >
-                    <StyledLabel htmlFor="city">City</StyledLabel>
-                    <StyledInput
-                      id="city"
-                      name="city"
-                      type="text"
-                      placeholder="city"
-                      autoComplete="address-level2"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.city}
-                    ></StyledInput>
-                    {formik.touched.city && formik.errors.city ? (
-                      <StyledText>{formik.errors.city}</StyledText>
-                    ) : null}
-                  </StyledFormControl>
-
-                  <FlexContainer>
-                    <StyledButton type="submit">Place Order</StyledButton>
-                  </FlexContainer>
-                </FlexContainer>
-              </div>
+              <h4>Contact Details</h4>
             </FlexContainer>
-          </StyledForm>
+            <div>
+              <FlexContainer>
+                <StyledFormControl>
+                  <StyledLabel>Name</StyledLabel>
+                  <StyledInput
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Name"
+                    autoComplete="name"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.name}
+                  ></StyledInput>
+                  {formik.touched.name && formik.errors.name ? (
+                    <StyledText>{formik.errors.name}</StyledText>
+                  ) : null}
+                </StyledFormControl>
+                <StyledFormControl
+                  error={!!(formik.touched.email && formik.errors.email)}
+                >
+                  <StyledLabel htmlFor="email">Email</StyledLabel>
+                  <StyledInput
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    autoComplete="email"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}
+                  ></StyledInput>
+                  {formik.touched.email && formik.errors.email ? (
+                    <StyledText>{formik.errors.email}</StyledText>
+                  ) : null}
+                </StyledFormControl>
+
+                <StyledFormControl
+                  error={!!(formik.touched.phone && formik.errors.phone)}
+                >
+                  <StyledLabel htmlFor="phone">Phone nr.</StyledLabel>
+                  <StyledInput
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="Phone nr."
+                    autoComplete="tel"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.phone}
+                  ></StyledInput>
+                  {formik.touched.phone && formik.errors.phone ? (
+                    <StyledText>{formik.errors.phone}</StyledText>
+                  ) : null}
+                </StyledFormControl>
+
+                <StyledFormControl
+                  error={!!(formik.touched.street && formik.errors.street)}
+                >
+                  <StyledLabel htmlFor="street">Street</StyledLabel>
+                  <StyledInput
+                    id="street"
+                    name="street"
+                    type="text"
+                    placeholder="Street"
+                    autoComplete="street-address"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.street}
+                  ></StyledInput>
+                  {formik.touched.street && formik.errors.street ? (
+                    <StyledText>{formik.errors.street}</StyledText>
+                  ) : null}
+                </StyledFormControl>
+
+                <StyledFormControl
+                  error={!!(formik.touched.zipCode && formik.errors.zipCode)}
+                >
+                  <StyledLabel htmlFor="zipCode">Zip Code</StyledLabel>
+                  <StyledInput
+                    id="zipCode"
+                    name="zipCode"
+                    type="text"
+                    placeholder="Zip Code"
+                    autoComplete="postal-code"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.zipCode}
+                  ></StyledInput>
+                  {formik.touched.zipCode && formik.errors.zipCode ? (
+                    <StyledText>{formik.errors.zipCode}</StyledText>
+                  ) : null}
+                </StyledFormControl>
+
+                <StyledFormControl
+                  error={!!(formik.touched.city && formik.errors.city)}
+                >
+                  <StyledLabel htmlFor="city">City</StyledLabel>
+                  <StyledInput
+                    id="city"
+                    name="city"
+                    type="text"
+                    placeholder="city"
+                    autoComplete="address-level2"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.city}
+                  ></StyledInput>
+                  {formik.touched.city && formik.errors.city ? (
+                    <StyledText>{formik.errors.city}</StyledText>
+                  ) : null}
+                </StyledFormControl>
+
+                <FlexContainer>
+                  <StyledButton type="submit">Place Order</StyledButton>
+                </FlexContainer>
+              </FlexContainer>
+            </div>
+          </FlexContainer>
+        </StyledForm>
         // </form>
       )}
     </Formik>
