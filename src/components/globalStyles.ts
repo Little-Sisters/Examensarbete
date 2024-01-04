@@ -17,7 +17,7 @@ body {
 }
 input {
     background: ${({ theme }) => theme.body};
-    border: 2px solid ${({ theme }) => theme.text};
+    border: 1px solid ${({ theme }) => theme.text};
     color: ${({ theme }) => theme.text};
     transition: all 0.30s linear;
 }

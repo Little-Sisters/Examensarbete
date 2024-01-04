@@ -34,13 +34,9 @@ function DetailsPage() {
             <InputFlexWrapper>
               <SelectAndInformation>
                 <Information>
-                  <h1>The Cake</h1>
-                  <p>
-                    The first tier, 3 level de coratio, available in 5+ colors
-                    and more. Your journey starts here. The first tier, 3 level
-                    de coratio, available in 5+ colors and more. Your journey
-                    starts here The first tier.
-                  </p>
+                  <h1>{product.title}</h1>
+                  <p>{product.description}</p>
+                  <p>{product.price}</p>
                 </Information>
                 <Selections>
                   <input type="text" />
@@ -78,13 +74,15 @@ const Information = styled.div`
   }
   p {
     margin: 0;
+    @media (max-width: 1024px) {
+      font-size: .9rem;
+    }
   }
 `;
 const Selections = styled.div`
-display: flex;
-flex-direction: column;
-gap: 1rem;
- 
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 const Cake = styled.div`
@@ -107,9 +105,7 @@ const Cake = styled.div`
   }
 `;
 const InputContainer = styled.div`
-
   width: 50%;
-  
   @media (max-width: 700px) {
     width: 100%;
     height: 32rem;
@@ -128,10 +124,14 @@ const InputFlexWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem 3rem;
+  padding: 0rem 3rem;
+  @media (max-width: 1024px) {
+    padding: 0rem;
+  }
   @media (max-width: 700px) {
     width: 100%;
     height: 35rem;
+    padding: 0rem;
   }
   img {
     height: 100%;
