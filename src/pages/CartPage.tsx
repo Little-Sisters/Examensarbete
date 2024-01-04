@@ -1,5 +1,6 @@
 import { Cart } from '../components/Cart';
 import MarginTopContainer from '../components/MarginTopContainer';
+import { OrderForm } from '../components/OrderForm';
 import PageContentWrapper from '../components/PageContentWrapper';
 
 function CartPage() {
@@ -8,6 +9,7 @@ function CartPage() {
       <PageContentWrapper>
         <h1>Cart</h1>
         <Cart checkOutPage={true} />
+        <OrderForm />
       </PageContentWrapper>
     </MarginTopContainer>
   );
