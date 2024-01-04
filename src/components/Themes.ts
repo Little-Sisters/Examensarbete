@@ -15,6 +15,7 @@ export const lightMode = {
   paper: '#F9F5F3',
   footer: '#E7E2DF',
   footerDetail: '#373333',
+  footerText: '#EFEAE9',
 };
 
 export const darkMode = {
@@ -29,4 +30,5 @@ export const darkMode = {
   paper: '#4E4A48',
   footer: '#211E1E',
   footerDetail: '#EFEAE9',
+  footerText: '#373333',
 };

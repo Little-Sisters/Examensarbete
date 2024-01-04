@@ -22,11 +22,6 @@ const Column = styled.div`
 
   p {
     font-size: 15px;
-    color: ${({ theme }) => theme.footerDetail};
-  }
-
-  a {
-    color: ${({ theme }) => theme.footerDetail};
   }
 
   input {
@@ -44,6 +39,10 @@ const Column = styled.div`
     background-color: transparent;
     border-color: ${({ theme }) => theme.footerDetail};
     margin-left: -1px;
+    &:hover {
+      background-color: ${({ theme }) => theme.footerDetail};
+      color: ${({ theme }) => theme.footerText};
+    }
   }
 `;
 

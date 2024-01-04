@@ -31,6 +31,7 @@ a {
     &:hover {
       /* Hover styling */
       color: ${({ theme }) => theme.textHover};
+      cursor: pointer;
     }
     }
 #desktop-nav a.active {
