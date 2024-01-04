@@ -1,5 +1,4 @@
-
-import MarginTopContainer from "../components/MarginTopContainer";
+import MarginTopContainer from '../components/MarginTopContainer';
 import { Cart } from '../components/Cart';
 import FakeProduct from '../components/FakeProduct';
 import PageContentWrapper from '../components/PageContentWrapper';
@@ -9,7 +8,7 @@ import styled from 'styled-components';
 function ProductPage() {
   const { productList } = useProduct();
   return (
-     <MarginTopContainer>
+    <MarginTopContainer>
       <PageContentWrapper>
         <h1>ProductPage</h1>
         <FlexContainer>
@@ -19,7 +18,7 @@ function ProductPage() {
         </FlexContainer>
         <Cart />
       </PageContentWrapper>
-      </MarginTopContainer>
+    </MarginTopContainer>
   );
 }
 

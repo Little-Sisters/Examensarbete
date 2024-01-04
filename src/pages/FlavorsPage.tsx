@@ -1,4 +1,4 @@
-import MarginTopContainer from "../components/MarginTopContainer";
+import MarginTopContainer from '../components/MarginTopContainer';
 
 function FlavorsPage() {
   return (
