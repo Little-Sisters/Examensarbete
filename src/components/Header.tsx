@@ -1,11 +1,12 @@
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled, { useTheme } from 'styled-components';
-import PageContentWrapper from './PageContentWrapper';
 import useMobile from '../hooks/UseMobile';
+import PageContentWrapper from './PageContentWrapper';
 import Toggle from './Toggle';
-import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useEffect, useState } from 'react';
-
+import headerLinks from './data';
+import Burger from './sidebar/Burger';
 
 interface HeaderProps {
   themeToggler: () => void;
@@ -13,24 +14,66 @@ interface HeaderProps {
   isOn: boolean;
 }
 
+const perspective = {
+  initial: {
+    opacity: 0,
+    rotateX: 90,
+  },
+  enter: (i: number) => ({
+    opacity: 1,
+    transition: { delay: 0.4 + i * 0.1 },
+    rotateX: 0,
+  }),
+  exit: {
+    opacity: 0,
+  },
+};
+
+const variants = {
+  open: {
+    width: '100%',
+    height: 300,
+    transition: { duration: 0.65, ease: [0.75, 0, 0.25, 1] },
+  },
+  closed: {
+    width: '100%',
+    height: 0,
+    transition: { duration: 0.65, delay:0.35, ease: [0.75, 0, 0.25, 1] },
+  },
+};
+
 function Header({ themeToggler, theme, isOn }: HeaderProps) {
   const isMobile = useMobile(680);
   const { scrollY } = useScroll();
   const [backgroundColor, setBackgroundColor] = useState('transparent');
   const [isScrolling, setIsBig] = useState(false);
   const [backdropFilter, setBackdropFilter] = useState('none');
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+    if (scrollY.get() === 0) {
+      setBackdropFilter('blur(6px)');
+    }
+  };
 
   const myTheme = useTheme();
+
+  console.log(scrollY.get(), isOpen, backdropFilter);
 
   useEffect(() => {
     if (scrollY.get() > 0) {
       setBackgroundColor(myTheme.bodyOpacity);
       setBackdropFilter('blur(6px)');
-    } else {
+    }
+    if (scrollY.get() === 0 && isOpen) {
+      setBackdropFilter('blur(8px)');
+    }
+    if (scrollY.get() === 0 && !isOpen) {
       setBackgroundColor('transparent');
       setBackdropFilter('none');
     }
-  }, [theme, myTheme.bodyOpacity, scrollY]);
+  }, [theme, myTheme.bodyOpacity, scrollY, isOpen]);
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     const newBackgroundColor = latest > 0 ? myTheme.bodyOpacity : 'transparent';
@@ -39,9 +82,6 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
     if (!isMobile) {
       setIsBig(latest > 0);
     }
-
-    const newBackdropFilter = latest > 0 ? 'blur(6px)' : 'none';
-    setBackdropFilter(newBackdropFilter);
   });
 
   const headerAnimation = isMobile
@@ -61,7 +101,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
           <>
             {/* Content for mobile */}
             <MobileMenuWrapper>
-              <p>menu</p>
+              <Burger isOpen={isOpen} handleToggle={handleToggle}></Burger>
               <Link to="../">
                 <HeaderLogo
                   src={
@@ -73,13 +113,31 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
               </Link>
               <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </MobileMenuWrapper>
-            <LinkBox>
-              <Link to="../">Home</Link>
-              <Link to="../flavors">Flavors</Link>
-              <Link to="/gallery">Gallery</Link>
-              <Link to="/about">About</Link>
-              <Link to="/products">Products</Link>
-              <Link to="/cart">Cart</Link>
+
+            <LinkBox
+              variants={variants}
+              animate={isOpen ? 'open' : 'closed'}
+              initial={closed}
+            >
+              <AnimatePresence>
+                {isOpen && (
+                  <NavBox>
+                    {headerLinks.map((link, i) => (
+                      <LinkRotationBox key={i}>
+                        <LinkAnimation
+                          variants={perspective}
+                          animate="enter"
+                          exit="exit"
+                          initial="initial"
+                          custom={i}
+                        >
+                          <Link to={link.to}>{link.title}</Link>
+                        </LinkAnimation>
+                      </LinkRotationBox>
+                    ))}
+                  </NavBox>
+                )}
+              </AnimatePresence>
             </LinkBox>
           </>
         ) : (
@@ -122,6 +180,35 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
     </MyHeader>
   );
 }
+
+const LinkBox = styled(motion.div)`
+  width: 100%;
+  height: 300px;
+`;
+const NavBox = styled.div`
+  height: 100%;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width:100%;
+
+  a {
+    text-decoration: none;
+    width: 100%;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+  }
+`;
+const LinkRotationBox = styled(motion.div)`
+  perspective: 120px;
+
+`;
+
+const LinkAnimation = styled(motion.div)`
+  border-bottom: 1px solid ${({ theme }) => theme.text};
+
+`;
 
 const AbsoluteBox = styled.div`
   position: absolute;
@@ -200,13 +287,6 @@ const DesktopLinkWrapper = styled.div`
 `;
 const RightDesktopLinkWrapper = styled(DesktopLinkWrapper)`
   justify-content: flex-start;
-`;
-
-const LinkBox = styled.div`
-  display: flex;
-  justify-content: center;
-  font-size: small;
-  gap: 0.5rem;
 `;
 
 export default Header;

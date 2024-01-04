@@ -6,6 +6,7 @@ function GalleryPage() {
     <MarginTopContainer>
       <PageContentWrapper>
         <h1> Gallery Page</h1>
+       
       </PageContentWrapper>
     </MarginTopContainer>
   );
