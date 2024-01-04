@@ -11,6 +11,7 @@ import FlavorsPage from './pages/FlavorsPage';
 import GalleryPage from './pages/GalleryPage';
 import HomePage from './pages/HomePage';
 import DetailsPage from './pages/DetailsPage';
+import ConfirmationPage from './pages/ConfirmationPage';
 import { NestedPage } from './pages/NestedPage';
 import { Page } from './pages/Page';
 import ProductPage from './pages/ProductPage';
@@ -20,6 +21,7 @@ import { lightMode, darkMode } from './components/Themes';
 import { useState } from 'react';
 import { ProductProvider } from './contexts/ProductContext';
 import { CartProvider } from './contexts/CartContext';
+import { OrderProvider } from './contexts/OrderContext';
 
 export function App() {
   const location = useLocation();
@@ -33,6 +35,7 @@ export function App() {
     <ThemeProvider theme={theme === 'light' ? lightMode : darkMode}>
       <CartProvider>
         <ProductProvider>
+          <OrderProvider>
           <>
             <GlobalStyles />
             <StyleSheetManager shouldForwardProp={shouldForwardProp}>
@@ -135,12 +138,21 @@ export function App() {
                         </Page>
                       }
                     />
+                    <Route
+                      path="/confirmation"
+                      element={
+                        <Page>
+                          <ConfirmationPage />
+                        </Page>
+                      }
+                    />
                   </Routes>
                 </AnimatePresence>
               </main>
               <Footer />
             </StyleSheetManager>
           </>
+          </OrderProvider>
         </ProductProvider>
       </CartProvider>
     </ThemeProvider>
