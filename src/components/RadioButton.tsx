@@ -10,6 +10,8 @@ type RadioButtonProps = {
     text: string;
 };
 
+//TODO
+//Connect to check out logic
 function RadioButton({ text }: RadioButtonProps) {
   const [isChecked, setIsChecked] = useState(false);
 
