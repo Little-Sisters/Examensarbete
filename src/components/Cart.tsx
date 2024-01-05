@@ -14,11 +14,7 @@ export function Cart() {
   return (
     <StyledCard>
       <div>
-        <StyledCardHeader>
-          <StyledHeading>
             <h3>Here goes the logo</h3>
-          </StyledHeading>
-        </StyledCardHeader>
         <div>
           {cartList.length > 0 ? (
             <StyledUnorderedList>
@@ -30,14 +26,11 @@ export function Cart() {
                         src={cartItem.image}
                         alt={cartItem.imageAlt}
                       />
-                      <FlexRow>
-                        <h3>{cartItem.title}</h3>
-                        <StyledButton onClick={() => clearCart(cartList)}>
-                          <BsTrash3 />
-                        </StyledButton>
-                      </FlexRow>
+                      <h3>{cartItem.title}</h3>
                       <StyledButtons>
-                        <StyledButton onClick={() => removeFromCart(cartItem.id)}>
+                        <StyledButton
+                          onClick={() => removeFromCart(cartItem.id)}
+                        >
                           <CiCircleMinus />
                         </StyledButton>
                         <p>{cartItem.quantity}</p>
@@ -80,13 +73,15 @@ export function Cart() {
               ))}
             </StyledUnorderedList>
           ) : (
-            <StyledHeading>Your cart is empty!</StyledHeading>
+            <h3>Your cart is empty!</h3>
           )}
         </div>
         <StyledCardFooter>
           <StyledDivider />
           <StyledFlexFooter>
-            <button>edit</button>
+            <StyledTrash onClick={() => clearCart(cartList)}>
+              <BsTrash3 />
+            </StyledTrash>
             <FlexRow>
               <p>Total:</p>
               <p>${totalPrice}</p>
@@ -103,28 +98,14 @@ const StyledCard = styled.div`
   background: ${({ theme }) => theme.card};
   color: ${({ theme }) => theme.text};
   width: 20rem;
+  border-radius: 3px;
 `;
-
-const Size = styled.div`
-height: 3rem;
-width: 3rem;
-`
 
 const FlexCenter = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const StyledCardHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const StyledHeading = styled.h3`
-  text-align: center;
 `;
 
 const StyledUnorderedList = styled.ul`
@@ -159,6 +140,21 @@ const StyledButton = styled.button`
   svg {
     width: 1.5rem;
     height: 1.5rem;
+  }
+`;
+
+const StyledTrash = styled.button`
+  background: none;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
   }
 `;
 

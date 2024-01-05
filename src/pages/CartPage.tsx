@@ -8,10 +8,14 @@ function CartPage() {
   return (
     <MarginTopContainer>
       <PageContentWrapper>
-        <h1>Cart</h1>
+        <MobileTitle>Cart</MobileTitle>
         <FlexContainer>
-          <OrderForm />
-          <Cart checkOutPage={true} />
+          <div>
+            <h1>Cart</h1>
+
+            <OrderForm />
+          </div>
+          <Cart />
         </FlexContainer>
       </PageContentWrapper>
     </MarginTopContainer>
@@ -21,9 +25,22 @@ function CartPage() {
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
-  // TODO
-  // add mobile styling
-  // flex should be column and reversed
+  justify-content: space-evenly;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    flex-direction: column-reverse;
+  }
+
+  h1 {
+    display: none;
+  }
+`;
+
+const MobileTitle = styled.h1`
+  @media (min-width: 900) {
+    display: none;
+  }
 `;
 
 export default CartPage;
