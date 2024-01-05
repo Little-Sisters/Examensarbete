@@ -20,13 +20,13 @@ function Hero() {
 const StyledImage = styled.img`
   object-fit: cover;
   width: 100%;
-  height: 80vh;
+  height: 90vh;
 `;
 
 const HeroContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 80vh;
+  height: 90vh;
 `;
 
 const Overlay = styled.div`

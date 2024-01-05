@@ -50,7 +50,8 @@ const Card: React.FC<CardProps> = ({ image, title }) => {
 
 const cards = [
   {
-    image: 'https://i.ytimg.com/vi/kQHrGw6me7o/maxresdefault.jpg',
+    image:
+      'https://www.airtasker.com/blog/wp-content/uploads/2023/04/wedding-cake-ideas-scaled.jpg',
     title: 'Vanilla',
   },
   {
