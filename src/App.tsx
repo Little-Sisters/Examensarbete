@@ -18,18 +18,21 @@ import ProductPage from './pages/ProductPage';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './components/globalStyles';
 import { lightMode, darkMode } from './components/Themes';
-import { useState } from 'react';
 import { ProductProvider } from './contexts/ProductContext';
 import { CartProvider } from './contexts/CartContext';
+import { useLocalStorageState } from './hooks/useLocalStorage';
 import { OrderProvider } from './contexts/OrderContext';
+
 
 export function App() {
   const location = useLocation();
   const locationArr = location.pathname?.split('/') ?? [];
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useLocalStorageState('light', 'theme');
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
+    console.log(theme);
   };
+  console.log(theme);
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightMode : darkMode}>

@@ -8,10 +8,12 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled, { useTheme } from 'styled-components';
 import useMobile from '../hooks/UseMobile';
-import Burger from './burger-menu/Burger';
 import PageContentWrapper from './PageContentWrapper';
 import Toggle from './Toggle';
+import Burger from './burger-menu/Burger';
 import headerLinks from './data';
+import headerLogoDark from '/logo-dark.png';
+import headerLogo from '/logo.png';
 
 interface HeaderProps {
   themeToggler: () => void;
@@ -48,7 +50,7 @@ const variants = {
 };
 
 function Header({ themeToggler, theme, isOn }: HeaderProps) {
-  const isMobile = useMobile(680);
+  const isMobile = useMobile(700);
   const { scrollY } = useScroll();
   const [backgroundColor, setBackgroundColor] = useState('transparent');
   const [isScrolling, setIsBig] = useState(false);
@@ -122,15 +124,10 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
             <MobileMenuWrapper>
               <Burger isOpen={isOpen} handleToggle={handleToggle}></Burger>
               <HeaderLogo
-                src={
-                  theme === 'dark'
-                    ? './assets/logo-dark.png'
-                    : './assets/logo.png'
-                }
+                src={theme === 'dark' ? headerLogoDark : headerLogo}
               />
               <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </MobileMenuWrapper>
-
             <LinkBox
               variants={variants}
               animate={isOpen ? 'open' : 'closed'}
@@ -143,6 +140,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                       <LinkRotationBox key={i}>
                         <LinkAnimation
                           variants={perspective}
+                          className="header-menu-border"
                           animate="enter"
                           exit="exit"
                           initial="initial"
@@ -179,11 +177,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                   <DesktopNavLink to="/gallery">Gallery</DesktopNavLink>
                 </DesktopLinkWrapper>
                 <HeaderLogo
-                  src={
-                    theme === 'dark'
-                      ? './assets/logo-dark.png'
-                      : './assets/logo.png'
-                  }
+                  src={theme === 'dark' ? headerLogoDark : headerLogo}
                 />
                 <RightDesktopLinkWrapper>
                   <DesktopNavLink to="/about">About</DesktopNavLink>
@@ -240,15 +234,15 @@ const MyHeader = styled(motion.header)`
   width: 100%;
   display: flex;
   align-items: center;
-  @media (max-width: 680px) {
-    padding: 1rem 0;
+  @media (max-width: 700px) {
+    padding: 0.8rem 0;
   }
   transition: all 0.3s ease;
 `;
 
 const HeaderLogo = styled.img`
   width: 5rem;
-  @media (max-width: 680px) {
+  @media (max-width: 700px) {
     width: 4rem;
   }
 `;
