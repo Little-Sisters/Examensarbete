@@ -8,7 +8,7 @@ function CartPage() {
   return (
     <MarginTopContainer>
       <PageContentWrapper>
-      <MobileTitle>Cart</MobileTitle>
+        <MobileTitle>Cart</MobileTitle>
         <FlexContainer>
           <FlexBox>
             <h1>Cart</h1>
@@ -24,7 +24,7 @@ function CartPage() {
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
 
   @media (max-width: 900px) {
     flex-direction: column-reverse;
@@ -37,15 +37,18 @@ const FlexContainer = styled.div`
 `;
 
 const FlexBox = styled.div`
-display: flex;
-flex-direction: column;
-`
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 900px) {
+    margin: 1rem;
+  }
+`;
 
 const MobileTitle = styled.h1`
   @media (min-width: 901px) {
     display: none;
   }
 `;
-
 
 export default CartPage;

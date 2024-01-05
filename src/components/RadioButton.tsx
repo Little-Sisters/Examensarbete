@@ -7,7 +7,7 @@ type StyledRadioButtonProps = {
 };
 
 type RadioButtonProps = {
-    text: string;
+  text: string;
 };
 
 //TODO
@@ -73,7 +73,6 @@ const StyledRadioButton = styled.div<StyledRadioButtonProps>`
       transform: scale(1); // Scale up to fill the radio button
     }
   `}
-
 
   ${HiddenCheckBox}:checked + &::after {
     transform: scale(1);
