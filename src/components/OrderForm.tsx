@@ -80,18 +80,14 @@ export function OrderForm() {
       {(formik) => (
         <StyledForm onSubmit={formik.handleSubmit}>
           <FlexContainer>
-            <FlexContainer>
-              <h4>Contact Details</h4>
-            </FlexContainer>
             <div>
               <FlexContainer>
                 <StyledFormControl>
-                  <StyledLabel>Name</StyledLabel>
+                  <StyledLabel>Name<Required>*</Required></StyledLabel>
                   <StyledInput
                     id="name"
                     name="name"
                     type="text"
-                    placeholder="Name"
                     autoComplete="name"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -104,12 +100,11 @@ export function OrderForm() {
                 <StyledFormControl
                   error={!!(formik.touched.email && formik.errors.email)}
                 >
-                  <StyledLabel htmlFor="email">Email</StyledLabel>
+                  <StyledLabel htmlFor="email">Email<Required>*</Required></StyledLabel>
                   <StyledInput
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="Email"
                     autoComplete="email"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -123,12 +118,11 @@ export function OrderForm() {
                 <StyledFormControl
                   error={!!(formik.touched.phone && formik.errors.phone)}
                 >
-                  <StyledLabel htmlFor="phone">Phone nr.</StyledLabel>
+                  <StyledLabel htmlFor="phone">Phone nr.<Required>*</Required></StyledLabel>
                   <StyledInput
                     id="phone"
                     name="phone"
                     type="tel"
-                    placeholder="Phone nr."
                     autoComplete="tel"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -142,12 +136,11 @@ export function OrderForm() {
                 <StyledFormControl
                   error={!!(formik.touched.street && formik.errors.street)}
                 >
-                  <StyledLabel htmlFor="street">Street</StyledLabel>
+                  <StyledLabel htmlFor="street">Street<Required>*</Required></StyledLabel>
                   <StyledInput
                     id="street"
                     name="street"
                     type="text"
-                    placeholder="Street"
                     autoComplete="street-address"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -161,12 +154,11 @@ export function OrderForm() {
                 <StyledFormControl
                   error={!!(formik.touched.zipCode && formik.errors.zipCode)}
                 >
-                  <StyledLabel htmlFor="zipCode">Zip Code</StyledLabel>
+                  <StyledLabel htmlFor="zipCode">Zip Code<Required>*</Required></StyledLabel>
                   <StyledInput
                     id="zipCode"
                     name="zipCode"
                     type="text"
-                    placeholder="Zip Code"
                     autoComplete="postal-code"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -180,12 +172,11 @@ export function OrderForm() {
                 <StyledFormControl
                   error={!!(formik.touched.city && formik.errors.city)}
                 >
-                  <StyledLabel htmlFor="city">City</StyledLabel>
+                  <StyledLabel htmlFor="city">City<Required>*</Required></StyledLabel>
                   <StyledInput
                     id="city"
                     name="city"
                     type="text"
-                    placeholder="city"
                     autoComplete="address-level2"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -196,9 +187,10 @@ export function OrderForm() {
                   ) : null}
                 </StyledFormControl>
 
-                <FlexContainer>
+                <FlexRow>
+                  <StyledButton>Shop more</StyledButton>
                   <StyledButton type="submit">Place Order</StyledButton>
-                </FlexContainer>
+                </FlexRow>
               </FlexContainer>
             </div>
           </FlexContainer>
@@ -211,10 +203,9 @@ export function OrderForm() {
 
 const StyledForm = styled.form`
   margin: auto;
-  background: white;
+  background: transparent;
   margin-top: 1rem;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.625rem;
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -223,26 +214,31 @@ const StyledForm = styled.form`
 
 const StyledFormControl = styled.div<StyledFormControlProps>`
   color: ${(props) => (props.error ? 'red' : 'black')};
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const StyledInput = styled.input`
-  border: 1px solid black;
+  border: none;
+  border-bottom: 1px solid ${({ theme }) => theme.text};;
+  margin-bottom: 1rem;
+  width: 100%;
+  outline: none;
 `;
 
 const StyledLabel = styled.label`
   margin: 0.5rem;
+  color: ${({ theme }) => theme.text};
 `;
 
 const StyledButton = styled.button`
-  width: 14rem;
-  height: 4rem;
   margin: auto;
-  background-color: lightGreenButton;
-  color: black;
   border: none;
 `;
 
-const StyledText = styled.p``;
+const StyledText = styled.p`
+`;
 
 const FlexContainer = styled.div`
   display: flex;
@@ -250,3 +246,14 @@ const FlexContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+const FlexRow = styled.div`
+display: flex;
+flex-direction: row;
+gap: 1rem;
+`
+
+const Required = styled.span`
+color: red;
+margin-left: 0.2rem;
+`
