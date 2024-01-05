@@ -10,8 +10,8 @@ function CartPage() {
       <PageContentWrapper>
         <h1>Cart</h1>
         <FlexContainer>
-        <OrderForm />
-        <Cart checkOutPage={true} />
+          <OrderForm />
+          <Cart checkOutPage={true} />
         </FlexContainer>
       </PageContentWrapper>
     </MarginTopContainer>
@@ -19,11 +19,11 @@ function CartPage() {
 }
 
 const FlexContainer = styled.div`
-display: flex;
-flex-direction: row;
-// TODO
-// add mobile styling
-// flex should be column and reversed
-`
+  display: flex;
+  flex-direction: row;
+  // TODO
+  // add mobile styling
+  // flex should be column and reversed
+`;
 
 export default CartPage;
