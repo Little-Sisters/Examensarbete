@@ -23,7 +23,6 @@ import { CartProvider } from './contexts/CartContext';
 import { useLocalStorageState } from './hooks/useLocalStorage';
 import { OrderProvider } from './contexts/OrderContext';
 
-
 export function App() {
   const location = useLocation();
   const locationArr = location.pathname?.split('/') ?? [];
