@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useOrder } from '../contexts/OrderContext';
 import styled from 'styled-components';
+import RadioButton from './RadioButton';
 
 interface StyledFormControlProps {
   error?: boolean | string;
@@ -80,125 +81,129 @@ export function OrderForm() {
       {(formik) => (
         <StyledForm onSubmit={formik.handleSubmit}>
           <FlexContainer>
-            <FlexContainer>
-              <h4>Contact Details</h4>
-            </FlexContainer>
             <div>
               <FlexContainer>
                 <StyledFormControl>
-                  <StyledLabel>Name</StyledLabel>
+                  <StyledLabel>
+                    Name<Required>*</Required>
+                  </StyledLabel>
+                  {formik.touched.name && formik.errors.name ? (
+                    <StyledText>{formik.errors.name}</StyledText>
+                  ) : null}
                   <StyledInput
                     id="name"
                     name="name"
                     type="text"
-                    placeholder="Name"
                     autoComplete="name"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.name}
                   ></StyledInput>
-                  {formik.touched.name && formik.errors.name ? (
-                    <StyledText>{formik.errors.name}</StyledText>
-                  ) : null}
                 </StyledFormControl>
                 <StyledFormControl
                   error={!!(formik.touched.email && formik.errors.email)}
                 >
-                  <StyledLabel htmlFor="email">Email</StyledLabel>
+                  <StyledLabel htmlFor="email">
+                    Email<Required>*</Required>
+                  </StyledLabel>
+                  {formik.touched.email && formik.errors.email ? (
+                    <StyledText>{formik.errors.email}</StyledText>
+                  ) : null}
                   <StyledInput
                     id="email"
                     name="email"
                     type="email"
-                    placeholder="Email"
                     autoComplete="email"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.email}
                   ></StyledInput>
-                  {formik.touched.email && formik.errors.email ? (
-                    <StyledText>{formik.errors.email}</StyledText>
-                  ) : null}
                 </StyledFormControl>
 
                 <StyledFormControl
                   error={!!(formik.touched.phone && formik.errors.phone)}
                 >
-                  <StyledLabel htmlFor="phone">Phone nr.</StyledLabel>
+                  <StyledLabel htmlFor="phone">
+                    Phone nr.<Required>*</Required>
+                  </StyledLabel>
+                  {formik.touched.phone && formik.errors.phone ? (
+                    <StyledText>{formik.errors.phone}</StyledText>
+                  ) : null}
                   <StyledInput
                     id="phone"
                     name="phone"
                     type="tel"
-                    placeholder="Phone nr."
                     autoComplete="tel"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.phone}
                   ></StyledInput>
-                  {formik.touched.phone && formik.errors.phone ? (
-                    <StyledText>{formik.errors.phone}</StyledText>
-                  ) : null}
                 </StyledFormControl>
 
                 <StyledFormControl
                   error={!!(formik.touched.street && formik.errors.street)}
                 >
-                  <StyledLabel htmlFor="street">Street</StyledLabel>
+                  <StyledLabel htmlFor="street">
+                    Street<Required>*</Required>
+                  </StyledLabel>
+                  {formik.touched.street && formik.errors.street ? (
+                    <StyledText>{formik.errors.street}</StyledText>
+                  ) : null}
                   <StyledInput
                     id="street"
                     name="street"
                     type="text"
-                    placeholder="Street"
                     autoComplete="street-address"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.street}
                   ></StyledInput>
-                  {formik.touched.street && formik.errors.street ? (
-                    <StyledText>{formik.errors.street}</StyledText>
-                  ) : null}
                 </StyledFormControl>
 
                 <StyledFormControl
                   error={!!(formik.touched.zipCode && formik.errors.zipCode)}
                 >
-                  <StyledLabel htmlFor="zipCode">Zip Code</StyledLabel>
+                  <StyledLabel htmlFor="zipCode">
+                    Zip Code<Required>*</Required>
+                  </StyledLabel>
+                  {formik.touched.zipCode && formik.errors.zipCode ? (
+                    <StyledText>{formik.errors.zipCode}</StyledText>
+                  ) : null}
                   <StyledInput
                     id="zipCode"
                     name="zipCode"
                     type="text"
-                    placeholder="Zip Code"
                     autoComplete="postal-code"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.zipCode}
                   ></StyledInput>
-                  {formik.touched.zipCode && formik.errors.zipCode ? (
-                    <StyledText>{formik.errors.zipCode}</StyledText>
-                  ) : null}
                 </StyledFormControl>
 
                 <StyledFormControl
                   error={!!(formik.touched.city && formik.errors.city)}
                 >
-                  <StyledLabel htmlFor="city">City</StyledLabel>
+                  <StyledLabel htmlFor="city">
+                    City<Required>*</Required>
+                  </StyledLabel>
+                  {formik.touched.city && formik.errors.city ? (
+                    <StyledText>{formik.errors.city}</StyledText>
+                  ) : null}
                   <StyledInput
                     id="city"
                     name="city"
                     type="text"
-                    placeholder="city"
                     autoComplete="address-level2"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.city}
                   ></StyledInput>
-                  {formik.touched.city && formik.errors.city ? (
-                    <StyledText>{formik.errors.city}</StyledText>
-                  ) : null}
                 </StyledFormControl>
-
-                <FlexContainer>
+                <RadioButton text="I accept the terms and conditions" />
+                <FlexRow>
+                  <StyledButton>Shop more</StyledButton>
                   <StyledButton type="submit">Place Order</StyledButton>
-                </FlexContainer>
+                </FlexRow>
               </FlexContainer>
             </div>
           </FlexContainer>
@@ -211,10 +216,9 @@ export function OrderForm() {
 
 const StyledForm = styled.form`
   margin: auto;
-  background: white;
-  margin-top: 1rem;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.625rem;
+  background: transparent;
+  /* margin-top: 1rem; */
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -223,30 +227,51 @@ const StyledForm = styled.form`
 
 const StyledFormControl = styled.div<StyledFormControlProps>`
   color: ${(props) => (props.error ? 'red' : 'black')};
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 0.5;
 `;
 
 const StyledInput = styled.input`
-  border: 1px solid black;
+  border: none;
+  border-bottom: 1px solid ${({ theme }) => theme.text};
+  margin-bottom: 1rem;
+  width: 100%;
+  outline: none;
 `;
 
 const StyledLabel = styled.label`
-  margin: 0.5rem;
+  color: ${({ theme }) => theme.text};
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 `;
 
 const StyledButton = styled.button`
-  width: 14rem;
-  height: 4rem;
   margin: auto;
-  background-color: lightGreenButton;
-  color: black;
   border: none;
 `;
 
-const StyledText = styled.p``;
+const StyledText = styled.p`
+  color: red;
+  font-size: 12px;
+`;
 
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+`;
+
+const FlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 1rem;
+`;
+
+const Required = styled.span`
+  color: red;
+  margin-left: 0.2rem;
 `;
