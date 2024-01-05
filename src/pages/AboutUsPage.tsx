@@ -5,7 +5,7 @@ function AboutUsPage() {
   return (
     <MarginTopContainer>
       <PageContentWrapper>
-        <h1>About Page</h1>
+        <h1>About us page</h1>
       </PageContentWrapper>
     </MarginTopContainer>
   );
