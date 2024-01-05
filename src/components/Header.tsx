@@ -58,7 +58,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
   const [backdropFilter, setBackdropFilter] = useState('none');
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const { totalItems, cartList } = useCart();
+  const { totalItems } = useCart();
 
   const handleToggle = () => {
     setIsOpen(!isOpen);

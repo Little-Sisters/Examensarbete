@@ -8,13 +8,12 @@ function CartPage() {
   return (
     <MarginTopContainer>
       <PageContentWrapper>
-        <MobileTitle>Cart</MobileTitle>
+      <MobileTitle>Cart</MobileTitle>
         <FlexContainer>
-          <div>
+          <FlexBox>
             <h1>Cart</h1>
-
             <OrderForm />
-          </div>
+          </FlexBox>
           <Cart />
         </FlexContainer>
       </PageContentWrapper>
@@ -26,21 +25,27 @@ const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  align-items: center;
 
   @media (max-width: 900px) {
     flex-direction: column-reverse;
-  }
+    align-items: center;
 
-  h1 {
-    display: none;
+    h1 {
+      display: none;
+    }
   }
 `;
+
+const FlexBox = styled.div`
+display: flex;
+flex-direction: column;
+`
 
 const MobileTitle = styled.h1`
-  @media (min-width: 900) {
+  @media (min-width: 901px) {
     display: none;
   }
 `;
+
 
 export default CartPage;

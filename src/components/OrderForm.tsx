@@ -217,7 +217,7 @@ export function OrderForm() {
 const StyledForm = styled.form`
   margin: auto;
   background: transparent;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   border-radius: 3px;
   display: flex;
   flex-direction: column;

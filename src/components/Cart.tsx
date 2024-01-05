@@ -14,7 +14,7 @@ export function Cart() {
   return (
     <StyledCard>
       <div>
-            <h3>Here goes the logo</h3>
+        <h3>Here goes the logo</h3>
         <div>
           {cartList.length > 0 ? (
             <StyledUnorderedList>
@@ -73,7 +73,9 @@ export function Cart() {
               ))}
             </StyledUnorderedList>
           ) : (
-            <h3>Your cart is empty!</h3>
+            <FlexCenter>
+              <h3>Your cart is empty!</h3>
+            </FlexCenter>
           )}
         </div>
         <StyledCardFooter>
