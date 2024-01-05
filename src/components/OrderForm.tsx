@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { useOrder } from '../contexts/OrderContext';
 import styled from 'styled-components';
+import RadioButton from './RadioButton';
 
 interface StyledFormControlProps {
   error?: boolean | string;
@@ -198,7 +199,7 @@ export function OrderForm() {
                     value={formik.values.city}
                   ></StyledInput>
                 </StyledFormControl>
-
+                <RadioButton />
                 <FlexRow>
                   <StyledButton>Shop more</StyledButton>
                   <StyledButton type="submit">Place Order</StyledButton>
@@ -243,6 +244,7 @@ const StyledInput = styled.input`
 const StyledLabel = styled.label`
   color: ${({ theme }) => theme.text};
   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 `;
 
 const StyledButton = styled.button`
