@@ -14,6 +14,7 @@ import Burger from './burger-menu/Burger';
 import headerLinks from './data';
 import headerLogoDark from '/logo-dark.png';
 import headerLogo from '/logo.png';
+import { useCart } from '../contexts/CartContext';
 
 interface HeaderProps {
   themeToggler: () => void;
@@ -57,6 +58,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
   const [backdropFilter, setBackdropFilter] = useState('none');
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { totalItems, cartList } = useCart();
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -182,7 +184,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                 <RightDesktopLinkWrapper>
                   <DesktopNavLink to="/about">About</DesktopNavLink>
                   <DesktopNavLink to="/products">Products</DesktopNavLink>
-                  <DesktopNavLink to="/cart">Cart</DesktopNavLink>
+                  <DesktopNavLink to="/cart">Cart({totalItems})</DesktopNavLink>
                 </RightDesktopLinkWrapper>
               </DesktopNav>
             </DesktopMenuWrapper>
@@ -197,6 +199,7 @@ const LinkBox = styled(motion.div)`
   width: 100%;
   height: 300px;
 `;
+
 const NavBox = styled.div`
   height: 100%;
   padding: 1rem 0;
