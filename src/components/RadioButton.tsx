@@ -6,7 +6,11 @@ type StyledRadioButtonProps = {
   isChecked: boolean;
 };
 
-function RadioButton() {
+type RadioButtonProps = {
+    text: string;
+};
+
+function RadioButton({ text }: RadioButtonProps) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheck = () => {
@@ -21,14 +25,13 @@ function RadioButton() {
         onChange={handleCheck}
       />
       <StyledRadioButton isChecked={isChecked} />
-      <Label onClick={handleCheck}>I accept the terms and conditions</Label>
+      <Label onClick={handleCheck}>{text}</Label>
     </RadioButtonContainer>
   );
 }
 
 const RadioButtonContainer = styled.label`
   display: flex;
-  align-items: center;
   cursor: pointer;
 `;
 
@@ -40,41 +43,35 @@ const HiddenCheckBox = styled.input`
 `;
 
 const StyledRadioButton = styled.div<StyledRadioButtonProps>`
-  // Use the custom props type here
-  width: 20px;
-  height: 20px;
+  width: 1rem;
+  height: 1rem;
   border: 2px solid ${({ theme }) => theme.text};
   border-radius: 50%;
   margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  ${({ isChecked, theme }) =>
-    isChecked &&
-    `
-    background-color: ${theme.text};
-
-    &::after {
-      content: '';
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: white;
-      transform: scale(1);
-      transition: transform 0.2s ease-in-out;
-    }
-  `}
+  position: relative;
 
   &::after {
     content: '';
-    width: 10px;
-    height: 10px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
     border-radius: 50%;
     transform: scale(0);
     transition: transform 0.2s ease-in-out;
-    background-color: white;
+    background-color: ${({ theme }) => theme.text};
   }
+
+  ${({ isChecked }) =>
+    isChecked &&
+    `
+    &::after {
+      transform: scale(1); // Scale up to fill the radio button
+    }
+  `}
+
 
   ${HiddenCheckBox}:checked + &::after {
     transform: scale(1);

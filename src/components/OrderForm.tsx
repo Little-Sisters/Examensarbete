@@ -199,7 +199,7 @@ export function OrderForm() {
                     value={formik.values.city}
                   ></StyledInput>
                 </StyledFormControl>
-                <RadioButton />
+                <RadioButton text="I accept the terms and conditions" />
                 <FlexRow>
                   <StyledButton>Shop more</StyledButton>
                   <StyledButton type="submit">Place Order</StyledButton>
@@ -268,6 +268,7 @@ const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  margin-top: 1rem;
 `;
 
 const Required = styled.span`
