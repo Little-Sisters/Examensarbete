@@ -1,13 +1,11 @@
-import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
+import ScrollerTesting from '../components/ScorllerTesting';
 
 function AboutUsPage() {
   return (
-    <MarginTopContainer>
       <PageContentWrapper>
-        <h1>About us page</h1>
+        <ScrollerTesting></ScrollerTesting>
       </PageContentWrapper>
-    </MarginTopContainer>
   );
 }
 
