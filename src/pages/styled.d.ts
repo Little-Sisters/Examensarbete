@@ -15,6 +15,7 @@ import 'styled-components';
     card: string;
     background: string;
     button: string;
+    menuHover: string;
     paper: string;
     footer: string;
     footerDetail: string;
