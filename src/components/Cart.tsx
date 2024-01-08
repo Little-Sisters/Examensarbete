@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { BsTrash3 } from 'react-icons/bs';
 import { CiCirclePlus } from 'react-icons/ci';
 import { CiCircleMinus } from 'react-icons/ci';
+import Logo from './Logo';
 
 export function Cart() {
   const { addToCart, removeFromCart, cartList, clearCart } = useCart();
@@ -14,7 +15,9 @@ export function Cart() {
   return (
     <StyledCard>
       <div>
-        <h3>Here goes the logo</h3>
+        <StyledLogo>
+          <Logo width="3rem" mobileWidth="3rem" />
+        </StyledLogo>
         <div>
           {cartList.length > 0 ? (
             <StyledUnorderedList>
@@ -73,11 +76,11 @@ export function Cart() {
                       <StyledItem>1</StyledItem>
                     </FlexRow>
                     <FlexRight>
-                        <StyledItem>{cartItem.quantity}x</StyledItem>
-                        <StyledItem>
-                          ${cartItem.quantity * cartItem.price}
-                        </StyledItem>
-                      </FlexRight>
+                      <StyledItem>{cartItem.quantity}x</StyledItem>
+                      <StyledItem>
+                        ${cartItem.quantity * cartItem.price}
+                      </StyledItem>
+                    </FlexRight>
                   </StyledCartItem>
                 </li>
               ))}
@@ -111,6 +114,15 @@ const StyledCard = styled.div`
   color: ${({ theme }) => theme.text};
   width: 20rem;
   border-radius: 3px;
+`;
+
+const StyledLogo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 20rem;
+  border-radius: 3px;
+  padding: 1rem;
 `;
 
 const FlexCenter = styled.div`
