@@ -41,7 +41,12 @@ export function Cart() {
                     </FlexCenter>
                     <FlexRow>
                       <StyledItem>Quantity:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <FlexRow>
+                        <StyledItem>{cartItem.quantity} x </StyledItem>
+                        <StyledItem>
+                          ${cartItem.quantity * cartItem.price}
+                        </StyledItem>
+                      </FlexRow>
                     </FlexRow>
                     <FlexRow>
                       <StyledItem>Tiers:</StyledItem>
@@ -67,7 +72,6 @@ export function Cart() {
                       <StyledItem>Topper:</StyledItem>
                       <StyledItem>1</StyledItem>
                     </FlexRow>
-                    <p>${cartItem.quantity * cartItem.price}</p>
                   </StyledCartItem>
                 </li>
               ))}
@@ -162,8 +166,8 @@ const StyledTrash = styled.button`
 `;
 
 const StyledDivider = styled.div`
-border-bottom: 1px solid ${({ theme }) => theme.text};
-`
+  border-bottom: 1px solid ${({ theme }) => theme.text};
+`;
 
 const StyledItem = styled.p`
   font-size: 12px;
@@ -186,9 +190,10 @@ const FlexGap = styled.div`
   gap: 0.5rem;
 `;
 
-
 const StyledCardFooter = styled.div`
   padding: 1rem;
+  margin-right: 0.3rem;
+  margin-left: 0.3rem;
 `;
 
 const StyledFlexFooter = styled.div`
