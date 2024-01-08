@@ -1,41 +1,44 @@
 import styled from 'styled-components';
+import { FormikProps } from 'formik';
+
+interface FormValues {
+  name: string;
+  email: string;
+  phone: string;
+  street: string;
+  zipCode: string;
+  city: string;
+  termsAccepted: boolean;
+}
 
 //Define a type for the custom props
 type StyledRadioButtonProps = {
   isChecked: boolean;
 };
 
+type BooleanKeys = {
+  [K in keyof FormValues]: FormValues[K] extends boolean ? K : never;
+}[keyof FormValues];
+
 type RadioButtonProps = {
   text: string;
-  name: string;
-  formik: any;
-
+  name: BooleanKeys;
+  formik: FormikProps<FormValues>;
 };
 
 function RadioButton({ text, name, formik }: RadioButtonProps) {
-
   const handleCheck = (event: React.MouseEvent<HTMLLabelElement>) => {
-    // Prevent the default action
     event.preventDefault();
-  
-    // Determine the new value
     const newValue = !formik.values[name];
-  
-    // Log the new value
-    console.log(`Radio Button Clicked - New Value: ${newValue}`);
-  
-    // Update the Formik state
     formik.setFieldValue(name, newValue);
-    formik.setFieldTouched(name, true, false); 
+    formik.setFieldTouched(name, true, false);
   };
-  
 
   return (
     <RadioButtonContainer onClick={handleCheck}>
       <HiddenCheckBox
-      name={name}
+        name={name}
         checked={formik.values[name]}
-        onChange={() => {}}
         onBlur={formik.handleBlur}
       />
       <StyledRadioButton isChecked={formik.values[name]} />
@@ -75,12 +78,10 @@ const StyledRadioButton = styled.div<StyledRadioButtonProps>`
     isChecked &&
     `
     &::after {
-      transform: scale(1); // This makes the radio button appear filled
+      transform: scale(1);
     }
   `}
 `;
-
-
 
 const Label = styled.span`
   color: ${({ theme }) => theme.text};
@@ -97,6 +98,5 @@ const HiddenCheckBox = styled.input.attrs({ type: 'checkbox' })`
   clip: rect(0, 0, 0, 0);
   border: 0;
 `;
-
 
 export default RadioButton;

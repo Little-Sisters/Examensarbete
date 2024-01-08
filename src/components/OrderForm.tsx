@@ -28,8 +28,8 @@ const customerSchema = Yup.object({
     .matches(/^[0-9]{5}(?:-[0-9]{4})?$/, 'Invalid zip code'),
   city: Yup.string().required('City required').min(2, 'City is too short'),
   termsAccepted: Yup.boolean()
-  .required("You must accept the terms and conditions")
-  .oneOf([true], "You must accept the terms and conditions"),
+    .required('You must accept the terms and conditions')
+    .oneOf([true], 'You must accept the terms and conditions'),
 });
 
 export type Customer = Yup.InferType<typeof customerSchema>;
@@ -204,19 +204,25 @@ export function OrderForm() {
                 ></StyledInput>
               </StyledFormControl>
               <RadioContainer>
-                <RadioButton text="I accept the terms and conditions"
-                name="termsAccepted"
-                formik={formik}
+                <RadioButton
+                  text="I accept the terms and conditions"
+                  name="termsAccepted"
+                  formik={formik}
                 />
                 <Required>*</Required>
               </RadioContainer>
               {formik.touched.termsAccepted && formik.errors.termsAccepted ? (
-                  <StyledText>{formik.errors.termsAccepted}</StyledText>
-                ) : null}
+                <StyledText>{formik.errors.termsAccepted}</StyledText>
+              ) : null}
 
               <FlexRow>
                 <StyledButton>Shop more</StyledButton>
-                <StyledButton type="submit" disabled={!formik.values.termsAccepted}>Place Order</StyledButton>
+                <StyledButton
+                  type="submit"
+                  disabled={!formik.values.termsAccepted}
+                >
+                  Place Order
+                </StyledButton>
               </FlexRow>
             </FlexContainer>
           </div>

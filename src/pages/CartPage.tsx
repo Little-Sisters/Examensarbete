@@ -45,6 +45,10 @@ const FlexBox = styled.div`
   display: flex;
   flex-direction: column;
 
+  h1 {
+    margin-bottom: 2rem;
+  }
+
   @media (max-width: 900px) {
     margin: 1rem;
   }
