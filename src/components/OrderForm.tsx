@@ -198,7 +198,8 @@ export function OrderForm() {
                     value={formik.values.city}
                   ></StyledInput>
                 </StyledFormControl>
-                <RadioButton text="I accept the terms and conditions" />
+                <Margin><RadioButton text="I accept the terms and conditions" /></Margin>
+                
                 <FlexRow>
                   <StyledButton>Shop more</StyledButton>
                   <StyledButton type="submit">Place Order</StyledButton>
@@ -272,3 +273,7 @@ const Required = styled.span`
   color: red;
   margin-left: 0.2rem;
 `;
+
+const Margin = styled.div`
+margin-top: 2rem;
+`
