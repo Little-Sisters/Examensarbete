@@ -19,6 +19,6 @@ import 'styled-components';
     footer: string;
     footerDetail: string;
     footerText: string;
-    black: string;
+    black?: string;
   }
 
