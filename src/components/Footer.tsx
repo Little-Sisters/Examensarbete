@@ -80,13 +80,13 @@ function Footer() {
           >
             <Column>
               <h4>NEWSLETTER</h4>
-              <div>
+              <InputWrapper>
                 <input type="text" placeholder="Enter your email" />
                 <TransparentButton
                   title="Subscribe"
                   onPress={() => console.log}
                 />
-              </div>
+              </InputWrapper>
             </Column>
           </motion.div>
         </FlexWrapper>
@@ -124,6 +124,26 @@ const Column = styled.div`
     border-color: ${({ theme }) => theme.grey};
     width: 13rem;
     border-radius: 3px 0px 0px 3px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: ${({ theme }) => theme.text};
+    }
+
+    &:hover {
+      background-color: ${({ theme }) => theme.grey};
+    }
+  }
+`;
+
+const InputWrapper = styled.div`
+  @media (max-width: 440px) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
   }
 `;
 

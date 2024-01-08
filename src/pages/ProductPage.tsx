@@ -36,6 +36,8 @@ const FlexContainerCentered = styled.div`
 const FlexContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2rem;
 `;
 
 export default ProductPage;
