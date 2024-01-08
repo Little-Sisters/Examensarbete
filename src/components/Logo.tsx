@@ -8,8 +8,7 @@ interface LogoProps {
   mobileWidth: string;
 }
 
-
-// Logo has 2  breakpoints atm, that you can send as props. 
+// Logo has 2  breakpoints atm, that you can send as props.
 const StyledLogo = styled.img<LogoProps>`
   transition: all 0.3s linear;
   width: ${(props) => props.width || '5rem'};

@@ -5,6 +5,7 @@ import 'styled-components';
 // Defines theme interface and extends DefaultTheme
 // This is used so that typescript knows what the theme object looks like and doesn't throw errors
 
+
   export interface DefaultTheme {
     mode: string;
     body: string;
@@ -22,4 +23,5 @@ import 'styled-components';
     footerText: string;
     black?: string;
   }
+
 
