@@ -7,14 +7,13 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled, { useTheme } from 'styled-components';
+import { useCart } from '../contexts/CartContext';
 import useMobile from '../hooks/UseMobile';
+import Logo from './Logo';
 import PageContentWrapper from './PageContentWrapper';
 import Toggle from './Toggle';
 import Burger from './burger-menu/Burger';
 import headerLinks from './data';
-import headerLogoDark from '/logo-dark.png';
-import headerLogo from '/logo.png';
-import { useCart } from '../contexts/CartContext';
 
 interface HeaderProps {
   themeToggler: () => void;
@@ -128,9 +127,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
             {/* Content for mobile */}
             <MobileMenuWrapper>
               <Burger isOpen={isOpen} handleToggle={handleToggle}></Burger>
-              <HeaderLogo
-                src={theme === 'dark' ? headerLogoDark : headerLogo}
-              />
+              <Logo width="5rem" mobileWidth="4rem" />
               <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </MobileMenuWrapper>
             <LinkBox
@@ -181,9 +178,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                   <DesktopNavLink to="../flavors">Flavors</DesktopNavLink>
                   <DesktopNavLink to="/gallery">Gallery</DesktopNavLink>
                 </DesktopLinkWrapper>
-                <HeaderLogo
-                  src={theme === 'dark' ? headerLogoDark : headerLogo}
-                />
+                <Logo width="5rem" mobileWidth="4rem" />
                 <RightDesktopLinkWrapper>
                   <DesktopNavLink to="/about">About</DesktopNavLink>
                   <DesktopNavLink to="/products">Products</DesktopNavLink>
@@ -244,13 +239,6 @@ const MyHeader = styled(motion.header)`
     padding: 0.8rem 0;
   }
   transition: all 0.3s ease;
-`;
-
-const HeaderLogo = styled.img`
-  width: 5rem;
-  @media (max-width: 700px) {
-    width: 4rem;
-  }
 `;
 
 const DesktopMenuWrapper = styled.div`

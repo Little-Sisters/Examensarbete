@@ -34,4 +34,5 @@ export const darkMode = {
   footer: '#211E1E',
   footerDetail: '#EFEAE9',
   footerText: '#373333',
+  black: '#FFFFFF',
 };

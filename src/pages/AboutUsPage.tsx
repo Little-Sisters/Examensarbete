@@ -1,10 +1,11 @@
+import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
-
 
 function AboutUsPage() {
   return (
-      <PageContentWrapper>
-      </PageContentWrapper>
+    <PageContentWrapper>
+      <MarginTopContainer></MarginTopContainer>
+    </PageContentWrapper>
   );
 }
 
