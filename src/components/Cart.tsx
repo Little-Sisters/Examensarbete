@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { BsTrash3 } from 'react-icons/bs';
 import { CiCirclePlus } from 'react-icons/ci';
 import { CiCircleMinus } from 'react-icons/ci';
+import Logo from './Logo';
 
 export function Cart() {
   const { addToCart, removeFromCart, cartList, clearCart } = useCart();
@@ -14,7 +15,9 @@ export function Cart() {
   return (
     <StyledCard>
       <div>
-        <h3>Here goes the logo</h3>
+        <StyledLogo>
+          <Logo width="3rem" mobileWidth="3rem" />
+        </StyledLogo>
         <div>
           {cartList.length > 0 ? (
             <StyledUnorderedList>
@@ -39,10 +42,15 @@ export function Cart() {
                         </StyledButton>
                       </StyledButtons>
                     </FlexCenter>
-                    <FlexRow>
+                    {/* <FlexRow>
                       <StyledItem>Quantity:</StyledItem>
-                      <StyledItem>1</StyledItem>
-                    </FlexRow>
+                      <FlexRow>
+                        <StyledItem>{cartItem.quantity} x </StyledItem>
+                        <StyledItem>
+                          ${cartItem.quantity * cartItem.price}
+                        </StyledItem>
+                      </FlexRow>
+                    </FlexRow> */}
                     <FlexRow>
                       <StyledItem>Tiers:</StyledItem>
                       <StyledItem>1</StyledItem>
@@ -67,7 +75,12 @@ export function Cart() {
                       <StyledItem>Topper:</StyledItem>
                       <StyledItem>1</StyledItem>
                     </FlexRow>
-                    <p>${cartItem.quantity * cartItem.price}</p>
+                    <FlexRight>
+                      <StyledItem>{cartItem.quantity}x</StyledItem>
+                      <StyledItem>
+                        ${cartItem.quantity * cartItem.price}
+                      </StyledItem>
+                    </FlexRight>
                   </StyledCartItem>
                 </li>
               ))}
@@ -79,15 +92,15 @@ export function Cart() {
           )}
         </div>
         <StyledCardFooter>
-          <StyledDivider />
+          <StyledDivider></StyledDivider>
           <StyledFlexFooter>
             <StyledTrash onClick={() => clearCart(cartList)}>
               <BsTrash3 />
             </StyledTrash>
-            <FlexRow>
+            <FlexGap>
               <p>Total:</p>
               <p>${totalPrice}</p>
-            </FlexRow>
+            </FlexGap>
           </StyledFlexFooter>
         </StyledCardFooter>
       </div>
@@ -101,6 +114,15 @@ const StyledCard = styled.div`
   color: ${({ theme }) => theme.text};
   width: 20rem;
   border-radius: 3px;
+`;
+
+const StyledLogo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 20rem;
+  border-radius: 3px;
+  padding: 1rem;
 `;
 
 const FlexCenter = styled.div`
@@ -148,16 +170,21 @@ const StyledButton = styled.button`
 const StyledTrash = styled.button`
   background: none;
   border: none;
-  padding: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
+  padding: 0;
 
   svg {
     width: 1rem;
     height: 1rem;
   }
+`;
+
+const StyledDivider = styled.div`
+  border-bottom: 1px solid ${({ theme }) => theme.text};
 `;
 
 const StyledItem = styled.p`
@@ -173,11 +200,27 @@ const FlexRow = styled.div`
   align-items: center;
 `;
 
-const StyledCardFooter = styled.div`
-  padding: 1rem;
+const FlexRight = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0.5rem;
 `;
 
-const StyledDivider = styled.hr``;
+const FlexGap = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const StyledCardFooter = styled.div`
+  padding: 1rem;
+  margin-right: 0.3rem;
+  margin-left: 0.3rem;
+`;
 
 const StyledFlexFooter = styled.div`
   display: flex;
