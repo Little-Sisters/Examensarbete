@@ -3,54 +3,6 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import styled from 'styled-components';
 import TransparentButton from './TransparentButton';
 
-const StyledFooter = styled.footer`
-  display: flex;
-  flex-direction: column;
-  padding: 3rem 6.5rem;
-  background: ${({ theme }) => theme.footerBackground};
-`;
-
-const FlexWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
-const Column = styled.div`
-  div {
-    display: flex;
-  }
-
-  p {
-    font-size: 15px;
-  }
-
-  input {
-    background-color: transparent;
-    padding: 0.5rem 1rem;
-    border: 1px solid;
-    border-color: black;
-    width: 13rem;
-  }
-`;
-
-const IconWrapper = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-top: 2rem;
-
-  svg {
-    font-size: 30px;
-    display: inline-block;
-    transition: transform 0.3s ease-in-out;
-
-    &:hover {
-      transform: scale(1.1);
-      cursor: pointer;
-    }
-  }
-`;
-
 function Footer() {
   return (
     <footer>
@@ -142,5 +94,54 @@ function Footer() {
     </footer>
   );
 }
+
+const StyledFooter = styled.footer`
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 6.5rem;
+  background: ${({ theme }) => theme.footerBackground};
+`;
+
+const FlexWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+const Column = styled.div`
+  div {
+    display: flex;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  input {
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    border: 1px solid;
+    border-color: ${({ theme }) => theme.grey};
+    width: 13rem;
+    border-radius: 3px 0px 0px 3px;
+  }
+`;
+
+const IconWrapper = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-top: 2rem;
+
+  svg {
+    font-size: 30px;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  }
+`;
 
 export default Footer;

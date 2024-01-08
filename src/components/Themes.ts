@@ -15,9 +15,10 @@ export const lightMode = {
   button: '#D8C39A',
   paper: '#F9F5F3',
   footerBackground: '#E7E2DF',
-  transparentButtonText: '#EFEAE9',
   black: '#FFFFFF',
   grey: '#211E1E',
+  productOne: '#E7E2DF', // Product card background color
+  productTwo: '#F5EDDD', // Product card background color
 };
 
 export const darkMode = {
@@ -33,4 +34,6 @@ export const darkMode = {
   paper: '#4E4A48',
   footerBackground: '#211E1E',
   grey: '#E7E2DF',
+  productOne: '#383432', // Product card background color
+  productTwo: '#574840', // Product card background color
 };

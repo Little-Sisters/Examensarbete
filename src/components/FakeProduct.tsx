@@ -12,10 +12,14 @@ function FakeProduct({ product }: FakeProductProps) {
   const { addToCart } = useCart();
 
   return (
-    <Card>
+    <Card
+      style={{
+        background: `linear-gradient(${product.backgroundColor}, #f9f5f3 99%)`,
+      }}
+    >
       <Link to={`/product/${product.id}`}>
         <StyledImg src={product.image} alt={product.imageAlt} />
-        <h4>{product.title}</h4>
+        <h3>{product.title}</h3>
         <p>From ${product.price}</p>
         <h5>{product.description}</h5>
       </Link>
@@ -25,7 +29,6 @@ function FakeProduct({ product }: FakeProductProps) {
 }
 
 const Card = styled.div`
-  background: ${({ theme }) => theme.card};
   color: ${({ theme }) => theme.text};
   display: flex;
   flex-direction: column;
@@ -33,11 +36,16 @@ const Card = styled.div`
   align-items: center;
   border-radius: 3px;
   padding: 3rem;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const StyledImg = styled.img`
-  height: 10rem;
-  width: 6rem;
+  width: 100%;
 `;
 
 export default FakeProduct;
