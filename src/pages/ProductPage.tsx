@@ -12,10 +12,10 @@ function ProductPage() {
         <FlexContainerCentered>
           <h1>Our Cakes</h1>
           <p>
-            Description Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Amet et neque obcaecati placeat cum ab id quam provident maiores
-            quaerat, dicta incidunt recusandae minus quod quae in libero quia
-            enim!
+            Hej Description Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Amet et neque obcaecati placeat cum ab id quam provident
+            maiores quaerat, dicta incidunt recusandae minus quod quae in libero
+            quia enim!
           </p>
         </FlexContainerCentered>
         <FlexContainer>
