@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useState } from 'react';
 
 //Define a type for the custom props
 type StyledRadioButtonProps = {
@@ -8,26 +7,38 @@ type StyledRadioButtonProps = {
 
 type RadioButtonProps = {
   text: string;
+  name: string;
+  formik: any;
+
 };
 
-//TODO
-//Connect to check out logic
-function RadioButton({ text }: RadioButtonProps) {
-  const [isChecked, setIsChecked] = useState(false);
+function RadioButton({ text, name, formik }: RadioButtonProps) {
 
-  const handleCheck = () => {
-    setIsChecked(!isChecked);
+  const handleCheck = (event: React.MouseEvent<HTMLLabelElement>) => {
+    // Prevent the default action
+    event.preventDefault();
+  
+    // Determine the new value
+    const newValue = !formik.values[name];
+  
+    // Log the new value
+    console.log(`Radio Button Clicked - New Value: ${newValue}`);
+  
+    // Update the Formik state
+    formik.setFieldValue(name, newValue);
   };
+  
 
   return (
-    <RadioButtonContainer>
+    <RadioButtonContainer onClick={handleCheck}>
       <HiddenCheckBox
-        type="checkbox"
-        checked={isChecked}
-        onChange={handleCheck}
+      name={name}
+        checked={formik.values[name]}
+        onChange={() => {}}
+        onBlur={formik.handleBlur}
       />
-      <StyledRadioButton isChecked={isChecked} />
-      <Label onClick={handleCheck}>{text}</Label>
+      <StyledRadioButton isChecked={formik.values[name]} />
+      <Label>{text}</Label>
     </RadioButtonContainer>
   );
 }
@@ -35,13 +46,6 @@ function RadioButton({ text }: RadioButtonProps) {
 const RadioButtonContainer = styled.label`
   display: flex;
   cursor: pointer;
-`;
-
-const HiddenCheckBox = styled.input`
-  opacity: 0;
-  position: absolute;
-  width: 0;
-  height: 0;
 `;
 
 const StyledRadioButton = styled.div<StyledRadioButtonProps>`
@@ -70,17 +74,28 @@ const StyledRadioButton = styled.div<StyledRadioButtonProps>`
     isChecked &&
     `
     &::after {
-      transform: scale(1); // Scale up to fill the radio button
+      transform: scale(1); // This makes the radio button appear filled
     }
   `}
-
-  ${HiddenCheckBox}:checked + &::after {
-    transform: scale(1);
-  }
 `;
+
+
 
 const Label = styled.span`
   color: ${({ theme }) => theme.text};
 `;
+
+const HiddenCheckBox = styled.input.attrs({ type: 'checkbox' })`
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+`;
+
 
 export default RadioButton;
