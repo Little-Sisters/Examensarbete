@@ -79,15 +79,15 @@ export function Cart() {
           )}
         </div>
         <StyledCardFooter>
-          <StyledDivider />
+          <StyledDivider></StyledDivider>
           <StyledFlexFooter>
             <StyledTrash onClick={() => clearCart(cartList)}>
               <BsTrash3 />
             </StyledTrash>
-            <FlexRow>
+            <FlexGap>
               <p>Total:</p>
               <p>${totalPrice}</p>
-            </FlexRow>
+            </FlexGap>
           </StyledFlexFooter>
         </StyledCardFooter>
       </div>
@@ -148,17 +148,22 @@ const StyledButton = styled.button`
 const StyledTrash = styled.button`
   background: none;
   border: none;
-  padding: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0;
+  padding: 0;
 
   svg {
     width: 1rem;
     height: 1rem;
   }
 `;
+
+const StyledDivider = styled.div`
+border-bottom: 1px solid ${({ theme }) => theme.text};
+`
 
 const StyledItem = styled.p`
   font-size: 12px;
@@ -173,11 +178,18 @@ const FlexRow = styled.div`
   align-items: center;
 `;
 
+const FlexGap = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+
 const StyledCardFooter = styled.div`
   padding: 1rem;
 `;
-
-const StyledDivider = styled.hr``;
 
 const StyledFlexFooter = styled.div`
   display: flex;
