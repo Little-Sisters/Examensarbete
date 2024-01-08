@@ -210,7 +210,7 @@ export function OrderForm() {
                 />
                 <Required>*</Required>
               </RadioContainer>
-              {formik.touched.name && formik.errors.termsAccepted ? (
+              {formik.touched.termsAccepted && formik.errors.termsAccepted ? (
                   <StyledText>{formik.errors.termsAccepted}</StyledText>
                 ) : null}
 

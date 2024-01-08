@@ -26,6 +26,7 @@ function RadioButton({ text, name, formik }: RadioButtonProps) {
   
     // Update the Formik state
     formik.setFieldValue(name, newValue);
+    formik.setFieldTouched(name, true, false); 
   };
   
 

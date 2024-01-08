@@ -26,6 +26,11 @@ const FlexContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
 
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+
   @media (max-width: 900px) {
     flex-direction: column-reverse;
     align-items: center;
