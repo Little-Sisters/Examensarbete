@@ -14,7 +14,6 @@ const NewSelect: React.FC<Props> = ({ label }) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleSelectChange = (selectedOption: any) => {
-    console.log('Selected Option:', selectedOption);
     setSelectedOption(selectedOption);
   };
 
