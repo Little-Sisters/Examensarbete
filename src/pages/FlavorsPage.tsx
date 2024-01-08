@@ -1,11 +1,6 @@
-import MarginTopContainer from '../components/MarginTopContainer';
-
+import HorizontalCarousel from '../components/HorizontalCarousel';
 function FlavorsPage() {
-  return (
-    <MarginTopContainer>
-      <h1>FlavourPage</h1>;
-    </MarginTopContainer>
-  );
+  return <HorizontalCarousel></HorizontalCarousel>;
 }
 
 export default FlavorsPage;

@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+
 body {
     border: 0;
     margin: 0;
@@ -32,15 +33,22 @@ h5,
 h6 {
     font-family: 'Lora', sans-serif;
 }
-
-.progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 10px;
-    z-index: 200000000;
-    background: #D8C39A;
-    transform-origin: 0%;
+html.lenis {
+    height: auto;
 }
 
+.lenis.lenis-smooth {
+    scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}

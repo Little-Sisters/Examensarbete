@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import styled from 'styled-components';
 import { BsTrash3 } from 'react-icons/bs';
 import { CiCirclePlus } from 'react-icons/ci';
 import { CiCircleMinus } from 'react-icons/ci';
+import Logo from './Logo';
 
-export function Cart({ checkOutPage = true }) {
+export function Cart() {
   const { addToCart, removeFromCart, cartList, clearCart } = useCart();
 
   const totalPrice = cartList.reduce((total, cartItem) => {
@@ -14,59 +14,96 @@ export function Cart({ checkOutPage = true }) {
 
   return (
     <StyledCard>
-      <StyledFlex>
-        <StyledCardHeader>
-          <StyledHeading>{checkOutPage ? 'Cart' : 'Cart'}</StyledHeading>
-          <StyledIconButton onClick={() => clearCart(cartList)}>
-            <BsTrash3 />
-          </StyledIconButton>
-        </StyledCardHeader>
-        <StyledCardBody>
+      <div>
+        <StyledLogo>
+          <Logo width="3rem" mobileWidth="3rem" />
+        </StyledLogo>
+        <div>
           {cartList.length > 0 ? (
             <StyledUnorderedList>
               {cartList.map((cartItem) => (
-                <StyledListItem key={cartItem.id}>
+                <li key={cartItem.id}>
                   <StyledCartItem>
-                    {checkOutPage && (
+                    <FlexCenter>
                       <StyledImage
                         src={cartItem.image}
                         alt={cartItem.imageAlt}
                       />
-                    )}
-                    <StyledButtons>
-                      <StyledButton onClick={() => removeFromCart(cartItem.id)}>
-                        <CiCircleMinus />
-                      </StyledButton>
-                      <StyledText>{cartItem.quantity}</StyledText>
-                      <StyledButton onClick={() => addToCart(cartItem, 1)}>
-                        <CiCirclePlus />
-                      </StyledButton>
-                    </StyledButtons>
-                    <StyledText>{cartItem.title}</StyledText>
-                    <StyledText>
-                      ${cartItem.quantity * cartItem.price}
-                    </StyledText>
+                      <h3>{cartItem.title}</h3>
+                      <StyledButtons>
+                        <StyledButton
+                          onClick={() => removeFromCart(cartItem.id)}
+                        >
+                          <CiCircleMinus />
+                        </StyledButton>
+                        <p>{cartItem.quantity}</p>
+                        <StyledButton onClick={() => addToCart(cartItem, 1)}>
+                          <CiCirclePlus />
+                        </StyledButton>
+                      </StyledButtons>
+                    </FlexCenter>
+                    {/* <FlexRow>
+                      <StyledItem>Quantity:</StyledItem>
+                      <FlexRow>
+                        <StyledItem>{cartItem.quantity} x </StyledItem>
+                        <StyledItem>
+                          ${cartItem.quantity * cartItem.price}
+                        </StyledItem>
+                      </FlexRow>
+                    </FlexRow> */}
+                    <FlexRow>
+                      <StyledItem>Tiers:</StyledItem>
+                      <StyledItem>1</StyledItem>
+                    </FlexRow>
+                    <FlexRow>
+                      <StyledItem>Color:</StyledItem>
+                      <StyledItem>1</StyledItem>
+                    </FlexRow>
+                    <FlexRow>
+                      <StyledItem>Cake sponge:</StyledItem>
+                      <StyledItem>1</StyledItem>
+                    </FlexRow>
+                    <FlexRow>
+                      <StyledItem>Frosting:</StyledItem>
+                      <StyledItem>1</StyledItem>
+                    </FlexRow>
+                    <FlexRow>
+                      <StyledItem>Decorations:</StyledItem>
+                      <StyledItem>1</StyledItem>
+                    </FlexRow>
+                    <FlexRow>
+                      <StyledItem>Topper:</StyledItem>
+                      <StyledItem>1</StyledItem>
+                    </FlexRow>
+                    <FlexRight>
+                      <StyledItem>{cartItem.quantity}x</StyledItem>
+                      <StyledItem>
+                        ${cartItem.quantity * cartItem.price}
+                      </StyledItem>
+                    </FlexRight>
                   </StyledCartItem>
-                </StyledListItem>
+                </li>
               ))}
             </StyledUnorderedList>
           ) : (
-            <StyledHeading>Your cart is empty!</StyledHeading>
+            <FlexCenter>
+              <h3>Your cart is empty!</h3>
+            </FlexCenter>
           )}
-        </StyledCardBody>
+        </div>
         <StyledCardFooter>
-          <StyledDivider />
+          <StyledDivider></StyledDivider>
           <StyledFlexFooter>
-            <StyledText>Total:</StyledText>
-            <StyledText>${totalPrice}</StyledText>
+            <StyledTrash onClick={() => clearCart(cartList)}>
+              <BsTrash3 />
+            </StyledTrash>
+            <FlexGap>
+              <p>Total:</p>
+              <p>${totalPrice}</p>
+            </FlexGap>
           </StyledFlexFooter>
-          {!checkOutPage && (
-            <StyledLink to="/checkout">
-              <StyledOrderButton>Order</StyledOrderButton>
-            </StyledLink>
-          )}
         </StyledCardFooter>
-      </StyledFlex>
+      </div>
     </StyledCard>
   );
 }
@@ -75,41 +112,33 @@ export function Cart({ checkOutPage = true }) {
 const StyledCard = styled.div`
   background: ${({ theme }) => theme.card};
   color: ${({ theme }) => theme.text};
-  margin: 1rem;
   width: 20rem;
+  border-radius: 3px;
 `;
 
-const StyledFlex = styled.div``;
-
-const StyledCardHeader = styled.div`
+const StyledLogo = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 20rem;
+  border-radius: 3px;
+  padding: 1rem;
 `;
 
-const StyledHeading = styled.h3`
-  text-align: center;
-`;
-
-const StyledIconButton = styled.button`
-  /* Replace buttonStyle */
-`;
-
-const StyledCardBody = styled.div`
-  /* Replace CardBody styles */
+const FlexCenter = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledUnorderedList = styled.ul`
   list-style: none;
+  margin: 0;
+  padding: 1rem;
 `;
 
-const StyledListItem = styled.li`
-  /* Replace ListItem styles */
-`;
-
-const StyledCartItem = styled.div`
-  /* Replace cartItemStyle */
-`;
+const StyledCartItem = styled.div``;
 
 const StyledImage = styled.img`
   height: 10rem;
@@ -119,22 +148,78 @@ const StyledImage = styled.img`
 const StyledButtons = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledButton = styled.button`
-  /* Replace incrementButtonStyle */
+  background: none;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 `;
 
-const StyledText = styled.p`
-  /* Replace Text styles */
+const StyledTrash = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+`;
+
+const StyledDivider = styled.div`
+  border-bottom: 1px solid ${({ theme }) => theme.text};
+`;
+
+const StyledItem = styled.p`
+  font-size: 12px;
+  margin: 0.3rem;
+  padding: 0;
+`;
+
+const FlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const FlexRight = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0.5rem;
+`;
+
+const FlexGap = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 `;
 
 const StyledCardFooter = styled.div`
-  /* Replace CardFooter styles */
-`;
-
-const StyledDivider = styled.hr`
-  /* Add your Divider styles */
+  padding: 1rem;
+  margin-right: 0.3rem;
+  margin-left: 0.3rem;
 `;
 
 const StyledFlexFooter = styled.div`
@@ -142,13 +227,3 @@ const StyledFlexFooter = styled.div`
   flex-direction: row;
   justify-content: space-between;
 `;
-
-const StyledLink = styled(Link)`
-  /* Add your Link styles */
-`;
-
-const StyledOrderButton = styled.button`
-  /* Replace orderButtonStyle */
-`;
-
-// Add more styled components as needed

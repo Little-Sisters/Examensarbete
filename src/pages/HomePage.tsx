@@ -1,7 +1,12 @@
 import Hero from '../components/Hero';
 
 function HomePage() {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <Hero />
+    </>
+  );
 }
 
 export default HomePage;

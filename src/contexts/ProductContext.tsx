@@ -52,7 +52,6 @@ export function ProductProvider({ children }: PropsWithChildren) {
       return updatedProductList;
     });
   };
-  console.log('Providing products:', productList);
   return (
     <ProductContext.Provider value={{ productList, addProduct, removeProduct }}>
       {children}

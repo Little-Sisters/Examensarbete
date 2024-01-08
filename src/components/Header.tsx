@@ -7,10 +7,12 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled, { useTheme } from 'styled-components';
+import { useCart } from '../contexts/CartContext';
 import useMobile from '../hooks/UseMobile';
-import Burger from './burger-menu/Burger';
+import Logo from './Logo';
 import PageContentWrapper from './PageContentWrapper';
 import Toggle from './Toggle';
+import Burger from './burger-menu/Burger';
 import headerLinks from './data';
 
 interface HeaderProps {
@@ -48,13 +50,14 @@ const variants = {
 };
 
 function Header({ themeToggler, theme, isOn }: HeaderProps) {
-  const isMobile = useMobile(680);
+  const isMobile = useMobile(700);
   const { scrollY } = useScroll();
   const [backgroundColor, setBackgroundColor] = useState('transparent');
   const [isScrolling, setIsBig] = useState(false);
   const [backdropFilter, setBackdropFilter] = useState('none');
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { totalItems } = useCart();
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -66,14 +69,14 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
   const myTheme = useTheme();
 
   useEffect(() => {
-    if (scrollY.get() > 0) {
+    if (scrollY.get() > 5) {
       setBackgroundColor(myTheme.bodyOpacity);
       setBackdropFilter('blur(6px)');
     }
     if (scrollY.get() === 0 && isOpen) {
       setBackdropFilter('blur(6px)');
     }
-    if (scrollY.get() === 0 && !isOpen) {
+    if (scrollY.get() < 5 && !isOpen) {
       setBackgroundColor('transparent');
       setBackdropFilter('none');
     }
@@ -85,6 +88,9 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
 
     if (!isMobile) {
       setIsBig(latest > 0);
+    }
+    if (latest > 0) {
+      setBackdropFilter('blur(6px)');
     }
   });
 
@@ -121,16 +127,9 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
             {/* Content for mobile */}
             <MobileMenuWrapper>
               <Burger isOpen={isOpen} handleToggle={handleToggle}></Burger>
-              <HeaderLogo
-                src={
-                  theme === 'dark'
-                    ? './assets/logo-dark.png'
-                    : './assets/logo.png'
-                }
-              />
+              <Logo width="5rem" mobileWidth="4rem" />
               <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </MobileMenuWrapper>
-
             <LinkBox
               variants={variants}
               animate={isOpen ? 'open' : 'closed'}
@@ -143,6 +142,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                       <LinkRotationBox key={i}>
                         <LinkAnimation
                           variants={perspective}
+                          className="header-menu-border"
                           animate="enter"
                           exit="exit"
                           initial="initial"
@@ -178,17 +178,11 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                   <DesktopNavLink to="../flavors">Flavors</DesktopNavLink>
                   <DesktopNavLink to="/gallery">Gallery</DesktopNavLink>
                 </DesktopLinkWrapper>
-                <HeaderLogo
-                  src={
-                    theme === 'dark'
-                      ? './assets/logo-dark.png'
-                      : './assets/logo.png'
-                  }
-                />
+                <Logo width="5rem" mobileWidth="4rem" />
                 <RightDesktopLinkWrapper>
                   <DesktopNavLink to="/about">About</DesktopNavLink>
                   <DesktopNavLink to="/products">Products</DesktopNavLink>
-                  <DesktopNavLink to="/cart">Cart</DesktopNavLink>
+                  <DesktopNavLink to="/cart">Cart({totalItems})</DesktopNavLink>
                 </RightDesktopLinkWrapper>
               </DesktopNav>
             </DesktopMenuWrapper>
@@ -203,6 +197,7 @@ const LinkBox = styled(motion.div)`
   width: 100%;
   height: 300px;
 `;
+
 const NavBox = styled.div`
   height: 100%;
   padding: 1rem 0;
@@ -240,17 +235,10 @@ const MyHeader = styled(motion.header)`
   width: 100%;
   display: flex;
   align-items: center;
-  @media (max-width: 680px) {
-    padding: 1rem 0;
+  @media (max-width: 700px) {
+    padding: 0.8rem 0;
   }
   transition: all 0.3s ease;
-`;
-
-const HeaderLogo = styled.img`
-  width: 5rem;
-  @media (max-width: 680px) {
-    width: 4rem;
-  }
 `;
 
 const DesktopMenuWrapper = styled.div`
