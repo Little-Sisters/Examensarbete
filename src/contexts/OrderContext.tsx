@@ -34,6 +34,7 @@ const OrderContext = createContext<OrderContextType>({
       street: '',
       zipCode: '',
       city: '',
+      termsAccepted: false,
     },
     orderId: '',
     totalPrice: 0,
