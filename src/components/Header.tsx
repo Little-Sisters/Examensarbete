@@ -70,14 +70,14 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
   const myTheme = useTheme();
 
   useEffect(() => {
-    if (scrollY.get() > 0) {
+    if (scrollY.get() > 5) {
       setBackgroundColor(myTheme.bodyOpacity);
       setBackdropFilter('blur(6px)');
     }
     if (scrollY.get() === 0 && isOpen) {
       setBackdropFilter('blur(6px)');
     }
-    if (scrollY.get() === 0 && !isOpen) {
+    if (scrollY.get() < 5 && !isOpen) {
       setBackgroundColor('transparent');
       setBackdropFilter('none');
     }
@@ -89,6 +89,9 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
 
     if (!isMobile) {
       setIsBig(latest > 0);
+    }
+    if (latest > 0) {
+      setBackdropFilter('blur(6px)');
     }
   });
 

@@ -6,7 +6,7 @@
 export const lightMode = {
   mode: 'light',
   body: '#F9F5F3',
-  bodyOpacity: 'rgba(249, 245, 243, 0.7)',
+  bodyOpacity: 'rgba(249, 245, 243, 0.5)',
   text: '#222020',
   textHover: '#746E6B', // Slightly lighter color on hover
   input: '#706F6F',
@@ -23,7 +23,7 @@ export const lightMode = {
 export const darkMode = {
   mode: 'dark',
   body: '#262524',
-  bodyOpacity: 'rgba(38, 37, 36, 0.7)',
+  bodyOpacity: 'rgba(38, 37, 36, 0.5)',
   text: '#FBFCFE',
   textHover: '#9FA2AA', // Slightly darker color on hover
   input: '#C7C7C7',
