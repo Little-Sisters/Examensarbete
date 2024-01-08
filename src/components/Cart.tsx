@@ -39,7 +39,7 @@ export function Cart() {
                         </StyledButton>
                       </StyledButtons>
                     </FlexCenter>
-                    <FlexRow>
+                    {/* <FlexRow>
                       <StyledItem>Quantity:</StyledItem>
                       <FlexRow>
                         <StyledItem>{cartItem.quantity} x </StyledItem>
@@ -47,7 +47,7 @@ export function Cart() {
                           ${cartItem.quantity * cartItem.price}
                         </StyledItem>
                       </FlexRow>
-                    </FlexRow>
+                    </FlexRow> */}
                     <FlexRow>
                       <StyledItem>Tiers:</StyledItem>
                       <StyledItem>1</StyledItem>
@@ -72,6 +72,12 @@ export function Cart() {
                       <StyledItem>Topper:</StyledItem>
                       <StyledItem>1</StyledItem>
                     </FlexRow>
+                    <FlexRight>
+                        <StyledItem>{cartItem.quantity}x</StyledItem>
+                        <StyledItem>
+                          ${cartItem.quantity * cartItem.price}
+                        </StyledItem>
+                      </FlexRight>
                   </StyledCartItem>
                 </li>
               ))}
@@ -180,6 +186,14 @@ const FlexRow = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+`;
+
+const FlexRight = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0.5rem;
 `;
 
 const FlexGap = styled.div`

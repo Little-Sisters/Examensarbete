@@ -80,7 +80,6 @@ export function OrderForm() {
     >
       {(formik) => (
         <StyledForm onSubmit={formik.handleSubmit}>
-          <FlexContainer>
             <div>
               <FlexContainer>
                 <StyledFormControl>
@@ -206,7 +205,6 @@ export function OrderForm() {
                 </FlexRow>
               </FlexContainer>
             </div>
-          </FlexContainer>
         </StyledForm>
         // </form>
       )}
@@ -215,9 +213,8 @@ export function OrderForm() {
 }
 
 const StyledForm = styled.form`
-  margin: auto;
   background: transparent;
-  /* margin-top: 1rem; */
+  margin-top: 1rem;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
@@ -258,7 +255,7 @@ const StyledText = styled.p`
 `;
 
 const FlexContainer = styled.div`
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
