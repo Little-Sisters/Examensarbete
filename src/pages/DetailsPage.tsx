@@ -1,10 +1,25 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
-import { useProduct } from '../contexts/ProductContext';
-import { useCart } from '../contexts/CartContext';
+import {
+  ColourOption,
+  DecorationsOption,
+  FlavourOption,
+  FrostingOption,
+  TierOption,
+  TopperOption,
+  colourOptions,
+  decorationsOptions,
+  flavourOptions,
+  frostingOptions,
+  tierOptions,
+  topperOptions,
+} from '../components/select/data';
 import NewSelect from '../components/select/newSelect';
+import { useCart } from '../contexts/CartContext';
+import { useProduct } from '../contexts/ProductContext';
 
 function DetailsPage() {
   const { productList } = useProduct();
@@ -12,6 +27,87 @@ function DetailsPage() {
   const { addToCart } = useCart();
 
   const product = productList.find((p) => p.id === id);
+
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleAddToCart = () => {
+    if (product && product.id) {
+      if (
+        !selectedFlavour ||
+        !selectedTier ||
+        !selectedColour ||
+        !selectedFrosting ||
+        !selectedDecorations ||
+        !selectedTopper
+      ) {
+        setErrorMessage(
+          'Please select all required options before adding to cart',
+        );
+        return;
+      }
+      const updatedProduct = {
+        ...product,
+        flavour: selectedFlavour?.value ?? null,
+        tiers: selectedTier?.value ?? null,
+        colour: selectedColour?.value ?? '',
+        frosting: selectedFrosting?.value ?? '',
+        decorations: selectedDecorations?.value ?? '',
+        topper: selectedTopper?.value ?? '',
+      };
+      addToCart(updatedProduct, 1);
+      setErrorMessage('');
+      setSelectedFlavour(null);
+      setSelectedTier(null);
+      setSelectedColour(null);
+      setSelectedFrosting(null);
+      setSelectedDecorations(null);
+      setSelectedTopper(null);
+    } else {
+      console.log('Product is undefined or missing an ID');
+    }
+  };
+
+  const [selectedFlavour, setSelectedFlavour] = useState<FlavourOption | null>(
+    null,
+  );
+  const [selectedTier, setSelectedTier] = useState<TierOption | null>(null);
+  const [selectedColour, setSelectedColour] = useState<ColourOption | null>(
+    null,
+  );
+  const [selectedFrosting, setSelectedFrosting] =
+    useState<FrostingOption | null>(null);
+  const [selectedDecorations, setSelectedDecorations] =
+    useState<DecorationsOption | null>(null);
+  const [selectedTopper, setSelectedTopper] = useState<TopperOption | null>(
+    null,
+  );
+
+  const handleTierChange = (selectedTier: TierOption | null) => {
+    setSelectedTier(selectedTier);
+    console.log(`Selected Tier: ${selectedTier?.value}`);
+  };
+
+  const handleSelectChange = (selectedFlavour: FlavourOption | null) => {
+    setSelectedFlavour(selectedFlavour);
+  };
+
+  const handleColourChange = (selectedColour: ColourOption | null) => {
+    setSelectedColour(selectedColour);
+  };
+
+  const handleFrostingChange = (selectedFrosting: FrostingOption | null) => {
+    setSelectedFrosting(selectedFrosting);
+  };
+
+  const handleDecorationsChange = (
+    selectedDecorations: DecorationsOption | null,
+  ) => {
+    setSelectedDecorations(selectedDecorations);
+  };
+
+  const handleTopperChange = (selectedTopper: TopperOption | null) => {
+    setSelectedTopper(selectedTopper);
+  };
 
   if (!product) {
     return (
@@ -42,14 +138,54 @@ function DetailsPage() {
                   <p>${product.price}</p>
                 </Information>
                 <Selections>
-                  <NewSelect label="Tiers"></NewSelect>
-                  <NewSelect label="Color"></NewSelect>
-                  <NewSelect label="Flavor"></NewSelect>
-                  <NewSelect label="Filling"></NewSelect>
-                  <NewSelect label="Decorations"></NewSelect>
+                  <NewSelect
+                    label="Flavours"
+                    placeholder="Select your flavour..."
+                    options={flavourOptions}
+                    selectedOption={selectedFlavour}
+                    setSelectedOption={handleSelectChange}
+                  />
+                  <NewSelect
+                    label="Tiers"
+                    placeholder="Select number of tiers..."
+                    options={tierOptions}
+                    selectedOption={selectedTier}
+                    setSelectedOption={handleTierChange}
+                  />
+                  <NewSelect
+                    label="Colour"
+                    placeholder="Select your colour..."
+                    options={colourOptions}
+                    selectedOption={selectedColour}
+                    setSelectedOption={handleColourChange}
+                  />
+                  <NewSelect
+                    label="Frosting"
+                    placeholder="Select your frosting..."
+                    options={frostingOptions}
+                    selectedOption={selectedFrosting}
+                    setSelectedOption={handleFrostingChange}
+                  />
+                  <NewSelect
+                    label="Decorations"
+                    placeholder="Select your decorations..."
+                    options={decorationsOptions}
+                    selectedOption={selectedDecorations}
+                    setSelectedOption={handleDecorationsChange}
+                  />
+                  <NewSelect
+                    label="Topper"
+                    placeholder="Select your topper..."
+                    options={topperOptions}
+                    selectedOption={selectedTopper}
+                    setSelectedOption={handleTopperChange}
+                  />
                 </Selections>
               </SelectAndInformation>
-              <button onClick={() => addToCart(product, 1)}>Add to cart</button>
+              <ButtonBox>
+                {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+                <CartButton onClick={handleAddToCart}>Add to cart</CartButton>
+              </ButtonBox>
             </InputFlexWrapper>
           </InputContainer>
         </ProductLayout>
@@ -57,6 +193,7 @@ function DetailsPage() {
     </MarginTopContainer>
   );
 }
+
 const SelectAndInformation = styled.div`
   width: 100%;
   display: flex;
@@ -144,6 +281,17 @@ const ProductLayout = styled.div`
     height: auto;
     min-height: auto; /* Adjust the height for smaller screens */
   }
+`;
+
+const ErrorMessage = styled.div`
+  color: red;
+  padding: 1rem 0rem;
+`;
+const CartButton = styled.button`
+  width: 100%;
+`;
+const ButtonBox = styled.div`
+  width: 100%;
 `;
 
 export default DetailsPage;

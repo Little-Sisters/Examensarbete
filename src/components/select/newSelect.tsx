@@ -1,31 +1,34 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Select from 'react-select';
 import styled, { ThemeContext } from 'styled-components';
-import { flavourOptions } from './data';
+import { Option } from './data';
 
-type Props = {
+interface NewSelectProps {
   label: string;
-};
+  placeholder: string;
+  options: Option[];
+  selectedOption: Option | null;
+  setSelectedOption: (selectedOption: Option | null) => void;
+}
 
-const NewSelect: React.FC<Props> = ({ label }) => { 
+const NewSelect: React.FC<NewSelectProps> = ({
+  label,
+  selectedOption,
+  options,
+  placeholder,
+  setSelectedOption,
+}) => {
   const themeContext = useContext(ThemeContext);
-
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleSelectChange = (selectedOption: any) => {
-    setSelectedOption(selectedOption);
-  };
 
   return (
     <div>
       <SelectLabel>{label}</SelectLabel>
       {themeContext && (
         <Select
-          placeholder="Select a flavor..."
-          options={flavourOptions}
+          placeholder={placeholder}
+          options={options}
           value={selectedOption}
-          onChange={handleSelectChange}
+          onChange={setSelectedOption}
           theme={(theme) => ({
             ...theme,
             borderRadius: 0,
@@ -73,7 +76,7 @@ const NewSelect: React.FC<Props> = ({ label }) => {
         />
       )}
     </div>
-   );
+  );
 };
 
 export const SelectLabel = styled.span`

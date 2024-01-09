@@ -1,30 +1,77 @@
-export interface ColourOption {
-  readonly value: string;
-  readonly label: string;
-  readonly color: string;
-  readonly isFixed?: boolean;
-  readonly isDisabled?: boolean;
-}
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-export const colourOptions: readonly ColourOption[] = [
-  { value: 'ocean', label: 'Ocean', color: '#00B8D9', isFixed: true },
-  { value: 'purple', label: 'Purple', color: '#5243AA' },
-  { value: 'red', label: 'Red', color: '#FF5630', isFixed: true },
-  { value: 'orange', label: 'Orange', color: '#FF8B00' },
-  { value: 'yellow', label: 'Yellow', color: '#FFC400' },
-  { value: 'green', label: 'Green', color: '#36B37E' },
-  { value: 'blue', label: 'Blue', color: '#0052CC', isDisabled: true },
-];
+export interface Option {
+  value: any;
+  label: any;
+}
 
 export interface FlavourOption {
-  readonly value: string;
-  readonly label: string;
-  readonly rating: string;
+  value: string;
+  label: string;
 }
 
-export const flavourOptions: readonly FlavourOption[] = [
-  { value: 'vanilla', label: 'Vanilla', rating: 'safe' },
-  { value: 'chocolate', label: 'Chocolate', rating: 'good' },
-  { value: 'strawberry', label: 'Strawberry', rating: 'wild' },
-  { value: 'salted-caramel', label: 'Salted Caramel', rating: 'crazy' },
+export const flavourOptions: FlavourOption[] = [
+  { value: 'vanilla', label: 'Vanilla' },
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'salted-caramel', label: 'Salted Caramel' },
+];
+
+export interface TierOption {
+  value: number;
+  label: number;
+}
+
+export const tierOptions: TierOption[] = [
+  { value: 1, label: 1 },
+  { value: 2, label: 2 },
+  { value: 3, label: 3 },
+  { value: 4, label: 4 },
+  { value: 5, label: 5 },
+];
+
+export interface ColourOption {
+  value: string;
+  label: string;
+}
+
+export const colourOptions: ColourOption[] = [
+  { value: 'vanilla-bean', label: 'Vanilla Bean' },
+  { value: 'white', label: 'White' },
+  { value: 'black', label: 'Black' },
+  { value: 'pink', label: 'Pink' },
+];
+
+export interface FrostingOption {
+  value: string;
+  label: string;
+}
+
+export const frostingOptions: FrostingOption[] = [
+  { value: 'buttercream', label: 'Buttercream' },
+  { value: 'fondant', label: 'Fondant' },
+];
+
+export interface DecorationsOption {
+  value: string;
+  label: string;
+}
+
+export const decorationsOptions: DecorationsOption[] = [
+  { value: 'flowers', label: 'Flowers' },
+  { value: 'sprinkles', label: 'Sprinkles' },
+  { value: 'no-decorations', label: 'No Decorations' },
+];
+
+export interface TopperOption {
+  value: string;
+  label: string;
+}
+
+export const topperOptions: TopperOption[] = [
+  { value: 'ring', label: 'Ring' },
+  { value: 'rose', label: 'Rose' },
+  { value: 'character', label: 'Character' },
+  { value: 'bride-groom', label: 'Bride and Groom' },
+  { value: 'no-topper', label: 'No Topper' },
 ];
