@@ -4,6 +4,7 @@ import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
 import { useProduct } from '../contexts/ProductContext';
 import { useCart } from '../contexts/CartContext';
+import NewSelect from '../components/select/newSelect';
 
 function DetailsPage() {
   const { productList } = useProduct();
@@ -41,34 +42,11 @@ function DetailsPage() {
                   <p>${product.price}</p>
                 </Information>
                 <Selections>
-                  <div>
-                    <span>Tiers</span>
-                    <input type="text" />
-                  </div>
-                  <div>
-                    <span>Color</span>
-                    <input type="text" />
-                  </div>
-                  <div>
-                    <span>Flavor</span>
-                    <input type="text" />
-                  </div>
-                  <div>
-                    <span>Frosting</span>
-                    <input type="text" />
-                  </div>
-                  <div>
-                    <span>Filling</span>
-                    <input type="text" />
-                  </div>
-                  <div>
-                    <span>Decorations</span>
-                    <input type="text" />
-                  </div>
-                  <div>
-                    <span>Topper</span>
-                    <input type="text" />
-                  </div>
+                  <NewSelect label="Tiers"></NewSelect>
+                  <NewSelect label="Color"></NewSelect>
+                  <NewSelect label="Flavor"></NewSelect>
+                  <NewSelect label="Filling"></NewSelect>
+                  <NewSelect label="Decorations"></NewSelect>
                 </Selections>
               </SelectAndInformation>
               <button onClick={() => addToCart(product, 1)}>Add to cart</button>
