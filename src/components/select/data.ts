@@ -62,6 +62,7 @@ export interface DecorationsOption {
 export const decorationsOptions: DecorationsOption[] = [
   { value: 'flowers', label: 'Flowers'},
   { value: 'sprinkles', label: 'Sprinkles' },
+  { value: 'no-decorations', label: 'No Decorations' },
 ];
 
 export interface TopperOption {
@@ -74,5 +75,6 @@ export const topperOptions: TopperOption[] = [
   { value: 'rose', label: 'Rose' },
   { value: 'character', label: 'Character' },
   { value: 'bride-groom', label: 'Bride and Groom' },
+  { value: 'no-topper', label: 'No Topper' },
 ];
 

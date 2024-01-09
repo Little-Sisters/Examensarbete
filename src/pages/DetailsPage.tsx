@@ -29,14 +29,20 @@ function DetailsPage() {
         topper: selectedTopper?.value ?? '',
       };
       addToCart(updatedProduct, 1);
-      console.log("updated product:", updatedProduct);
+      // Reset the selection states
+    setSelectedFlavour(null);
+    setSelectedTier(null);
+    setSelectedColour(null);
+    setSelectedFrosting(null);
+    setSelectedDecorations(null);
+    setSelectedTopper(null);
     } else {
       console.log("Product is undefined or missing an ID");
     }
   };
   
 
-  const [selectedFlavour, setSelectedOption] = useState<FlavourOption | null>(
+  const [selectedFlavour, setSelectedFlavour] = useState<FlavourOption | null>(
     null,
   );
   const [selectedTier, setSelectedTier] = useState<TierOption | null>(null);
@@ -50,14 +56,12 @@ function DetailsPage() {
     console.log(`Selected Tier: ${selectedTier?.value}`);
   };
   
-  const handleSelectChange = (selectedOption: FlavourOption | null) => {
-    setSelectedOption(selectedOption);
-    console.log(selectedOption);
+  const handleSelectChange = (selectedFlavour: FlavourOption | null) => {
+    setSelectedFlavour(selectedFlavour);
   };
 
   const handleColourChange = (selectedColour: ColourOption | null) => {
     setSelectedColour(selectedColour);
-    console.log(selectedColour);
   };
 
   const handleFrostingChange = (selectedFrosting: FrostingOption | null) => {
