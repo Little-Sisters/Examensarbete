@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 import { Product } from '../../data/productdata';
 import { CartItem } from '../../data/productdata';
+import { generateUniqueId } from './OrderContext';
 
 type CartContextType = {
   cartList: CartItem[];
@@ -42,6 +43,9 @@ export function CartProvider({ children }: Props) {
   }, [cartList]);
 
   const addToCart = (item: Product, quantity: number) => {
+    // Generate a unique ID for the new cart item
+    const cartItemId = generateUniqueId();
+  
     const existingCartItemIndex = cartList.findIndex(
       (cartItem) =>
         cartItem.id === item.id &&
@@ -49,17 +53,21 @@ export function CartProvider({ children }: Props) {
     );
   
     if (existingCartItemIndex !== -1) {
+      // If the item already exists in the cart, just update its quantity
       setCartList((prevCartList) => {
         const newCartList = [...prevCartList];
         newCartList[existingCartItemIndex].quantity += quantity;
         return newCartList;
       });
     } else {
-      setCartList([...cartList, { ...item, quantity }]);
+      // If the item is new, add it to the cart with the unique ID
+      setCartList([
+        ...cartList, 
+        { ...item, id: cartItemId, quantity }
+      ]);
     }
   };
   
-
   const removeFromCart = (itemId: string) => {
     setCartList((prevCartList) => {
       const itemIndex = prevCartList.findIndex(
