@@ -15,16 +15,24 @@ function DetailsPage() {
   const { addToCart } = useCart();
 
   const product = productList.find((p) => p.id === id);
-  console.log(product)
 
 
   const handleAddToCart = () => {
+    console.log(
+      'product:',
+      product,
+      'selected option:',
+      selectedOption,
+      'selected option value:',
+      selectedOption?.value,
+    );
     if (product && product.id) {
       const updatedProduct = {
         ...product,
-          flavour: selectedValue,
+        flavour: selectedOption?.value,
       };
       addToCart(updatedProduct, 1);
+      console.log("updated product:" ,updatedProduct)
     } else {
       console.log("Product is undefined or missing an ID");
     } 
@@ -33,18 +41,12 @@ function DetailsPage() {
   const [selectedOption, setSelectedOption] = useState<FlavourOption | null>(
     null,
   );
-  const [selectedValue, setSelectedValue] = useState<string | null | undefined>(
-    null,
-  );
 
   const handleSelectChange = (selectedOption: FlavourOption | null) => {
     setSelectedOption(selectedOption);
-    setSelectedValue(selectedOption?.value);
     console.log(selectedOption);
-    console.log(selectedOption?.value);
   };
   console.log(selectedOption);
-  console.log(selectedValue);
 
   if (!product) {
     return (

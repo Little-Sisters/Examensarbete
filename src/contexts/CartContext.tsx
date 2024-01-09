@@ -42,22 +42,23 @@ export function CartProvider({ children }: Props) {
   }, [cartList]);
 
   const addToCart = (item: Product, quantity: number) => {
-    const existingCartItem = cartList.find(
-      (cartItem) => cartItem.id === item.id,
+    const existingCartItemIndex = cartList.findIndex(
+      (cartItem) =>
+        cartItem.id === item.id &&
+        cartItem?.flavour === item?.flavour,
     );
-
-    if (existingCartItem) {
-      setCartList((prevCartList) =>
-        prevCartList.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + quantity }
-            : cartItem,
-        ),
-      );
+  
+    if (existingCartItemIndex !== -1) {
+      setCartList((prevCartList) => {
+        const newCartList = [...prevCartList];
+        newCartList[existingCartItemIndex].quantity += quantity;
+        return newCartList;
+      });
     } else {
-      setCartList([...cartList, { ...item, quantity: quantity }]);
+      setCartList([...cartList, { ...item, quantity }]);
     }
   };
+  
 
   const removeFromCart = (itemId: string) => {
     setCartList((prevCartList) => {

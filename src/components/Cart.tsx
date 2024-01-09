@@ -11,7 +11,6 @@ export function Cart() {
   const totalPrice = cartList.reduce((total, cartItem) => {
     return total + cartItem.quantity * cartItem.price;
   }, 0);
-  console.log(cartList)
 
   return (
     <StyledCard>
