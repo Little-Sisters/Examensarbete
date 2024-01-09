@@ -34,16 +34,21 @@ function FakeProduct({ product }: FakeProductProps) {
   );
 }
 
-const ProductWrapper = styled.div`
+const Card = styled.div`
+  color: ${({ theme }) => theme.text};
+  border-radius: 3px;
+  padding: 3rem;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  text-align: center;
+
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 `;
 
+// Flower overlay on top of product card
 const Overlay = styled.div`
   position: absolute;
   top: 0;
@@ -55,27 +60,20 @@ const Overlay = styled.div`
   mask: linear-gradient(to top, transparent, black);
   background-image: url('flowerOverlay.png');
   z-index: 1;
+  opacity: 0.3;
+  transition: opacity 0.3s ease-in-out;
 `;
 
-const Card = styled.div`
-  color: ${({ theme }) => theme.text};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 3px;
-  padding: 3rem;
-  transition: transform 0.3s ease-in-out;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+const ProductWrapper = styled.div`
   position: relative;
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  z-index: 2;
+  width: 100%;
 `;
 
 const StyledImg = styled.img`
-  width: 100%;
+  width: 60%;
+  display: flex;
+  margin: auto; // Center the image horizontally
 `;
 
 export default FakeProduct;

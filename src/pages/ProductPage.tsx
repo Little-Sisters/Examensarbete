@@ -45,12 +45,12 @@ const FlexContainerCentered = styled.div`
 
 const FlexContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 2rem;
 `;
 
 const StyledFakeProduct = styled.div`
-  width: calc(50% - 1rem);
+  width: calc(45% - 1rem);
   margin: 0.5rem;
 `;
 
