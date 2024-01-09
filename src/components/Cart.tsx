@@ -56,15 +56,15 @@ export function Cart() {
                     </FlexRow>
                     <FlexRow>
                       <StyledItem>Frosting:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <StyledItem>{cartItem.frosting}</StyledItem>
                     </FlexRow>
                     <FlexRow>
                       <StyledItem>Decorations:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <StyledItem>{cartItem.decorations}</StyledItem>
                     </FlexRow>
                     <FlexRow>
                       <StyledItem>Topper:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <StyledItem>{cartItem.topper}</StyledItem>
                     </FlexRow>
                     <FlexRight>
                       <StyledItem>{cartItem.quantity}x</StyledItem>

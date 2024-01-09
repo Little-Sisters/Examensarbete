@@ -8,6 +8,9 @@ export interface Product {
   flavour: string | undefined | null;
   tiers: number | null,
   colour: string | null;
+  frosting: string | null;
+  decorations: string | null;
+  topper: string | null;
 }
 
 export interface CartItem extends Product {
@@ -25,6 +28,9 @@ export const products: Product[] = [
     flavour: '',
     tiers: null,
     colour: '',
+    frosting: '',
+    decorations: '',
+    topper: '',
   },
   {
     id: '2',
@@ -36,5 +42,8 @@ export const products: Product[] = [
     flavour: '',
     tiers: null,
     colour: '',
-  },
+    frosting: '',
+    decorations: '',
+    topper: '',
+    },
 ];

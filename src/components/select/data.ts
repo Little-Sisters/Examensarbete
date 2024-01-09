@@ -43,3 +43,36 @@ export const colourOptions: ColourOption[] = [
   { value: 'black', label: 'Black',  },
   { value: 'pink', label: 'Pink'},
 ];
+
+export interface FrostingOption {
+  value: string;
+  label: string;
+}
+
+export const frostingOptions: FrostingOption[] = [
+  { value: 'buttercream', label: 'Buttercream'},
+  { value: 'fondant', label: 'Fondant' },
+];
+
+export interface DecorationsOption {
+  value: string;
+  label: string;
+}
+
+export const decorationsOptions: DecorationsOption[] = [
+  { value: 'flowers', label: 'Flowers'},
+  { value: 'sprinkles', label: 'Sprinkles' },
+];
+
+export interface TopperOption {
+  value: string;
+  label: string;
+}
+
+export const topperOptions: TopperOption[] = [
+  { value: 'ring', label: 'Ring'},
+  { value: 'rose', label: 'Rose' },
+  { value: 'character', label: 'Character' },
+  { value: 'bride-groom', label: 'Bride and Groom' },
+];
+

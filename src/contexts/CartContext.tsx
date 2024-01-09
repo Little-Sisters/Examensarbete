@@ -51,7 +51,9 @@ export function CartProvider({ children }: Props) {
         cartItem.id === item.id &&
         cartItem?.flavour === item?.flavour &&
         cartItem?.tiers === item?.tiers &&
-        cartItem?.colour === item?.colour
+        cartItem?.colour === item?.colour &&
+        cartItem?.decorations === item?.decorations &&
+        cartItem?.topper === item?.topper
     );
   
     if (existingCartItemIndex !== -1) {

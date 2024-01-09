@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
-import { flavourOptions, tierOptions, TierOption, FlavourOption, ColourOption, colourOptions } from '../components/select/data';
+import { flavourOptions, tierOptions, TierOption, FlavourOption, ColourOption, colourOptions, FrostingOption, frostingOptions, decorationsOptions, DecorationsOption, topperOptions, TopperOption } from '../components/select/data';
 import NewSelect from '../components/select/newSelect';
 import { useCart } from '../contexts/CartContext';
 import { useProduct } from '../contexts/ProductContext';
@@ -24,6 +24,9 @@ function DetailsPage() {
         flavour: selectedFlavour?.value ?? null,
         tiers: selectedTier?.value ?? null,
         colour: selectedColour?.value ?? '',
+        frosting: selectedFrosting?.value ?? '',
+        decorations: selectedDecorations?.value ?? '',
+        topper: selectedTopper?.value ?? '',
       };
       addToCart(updatedProduct, 1);
       console.log("updated product:", updatedProduct);
@@ -36,17 +39,17 @@ function DetailsPage() {
   const [selectedFlavour, setSelectedOption] = useState<FlavourOption | null>(
     null,
   );
-
   const [selectedTier, setSelectedTier] = useState<TierOption | null>(null);
-
   const [selectedColour, setSelectedColour] = useState<ColourOption | null>(null);
+  const [selectedFrosting, setSelectedFrosting] = useState<FrostingOption | null>(null);
+  const [selectedDecorations, setSelectedDecorations] = useState<DecorationsOption | null>(null);
+  const [selectedTopper, setSelectedTopper] = useState<TopperOption | null>(null);
 
   const handleTierChange = (selectedTier: TierOption | null) => {
     setSelectedTier(selectedTier);
     console.log(`Selected Tier: ${selectedTier?.value}`);
   };
   
-
   const handleSelectChange = (selectedOption: FlavourOption | null) => {
     setSelectedOption(selectedOption);
     console.log(selectedOption);
@@ -55,6 +58,20 @@ function DetailsPage() {
   const handleColourChange = (selectedColour: ColourOption | null) => {
     setSelectedColour(selectedColour);
     console.log(selectedColour);
+  };
+
+  const handleFrostingChange = (selectedFrosting: FrostingOption | null) => {
+    setSelectedFrosting(selectedFrosting);
+  }
+
+  const handleDecorationsChange = (selectedDecorations: DecorationsOption | null) => {
+    setSelectedDecorations(selectedDecorations);
+  }
+
+  const handleTopperChange = (
+    selectedTopper: TopperOption | null,
+  ) => {
+    setSelectedTopper(selectedTopper);
   };
 
   if (!product) {
@@ -106,6 +123,27 @@ function DetailsPage() {
                     options={colourOptions}
                     selectedOption={selectedColour}
                     setSelectedOption={handleColourChange}
+                  />
+                  <NewSelect
+                    label="Frosting"
+                    placeholder="Select your frosting..."
+                    options={frostingOptions}
+                    selectedOption={selectedFrosting}
+                    setSelectedOption={handleFrostingChange}
+                  />
+                  <NewSelect
+                    label="Decorations"
+                    placeholder="Select your decorations..."
+                    options={decorationsOptions}
+                    selectedOption={selectedDecorations}
+                    setSelectedOption={handleDecorationsChange}
+                  />
+                  <NewSelect
+                    label="Topper"
+                    placeholder="Select your topper..."
+                    options={topperOptions}
+                    selectedOption={selectedTopper}
+                    setSelectedOption={handleTopperChange}
                   />
                 </Selections>
               </SelectAndInformation>
