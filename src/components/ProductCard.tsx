@@ -36,8 +36,8 @@ function ProductCard({ product, background }: ProductProps) {
   );
 }
 
-const Card = styled.div<{ theme: string | undefined }>`
-  color: ${({ theme }) => theme.text};
+const Card = styled.div<{ background: string; theme: string | undefined }>`
+  color: ${({ theme }) => theme?.text};
   background: ${({ background }) => background};
   border-radius: 3px;
   padding: 3rem;
