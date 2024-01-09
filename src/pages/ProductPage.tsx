@@ -7,8 +7,8 @@ import { useProduct } from '../contexts/ProductContext';
 
 function ProductPage() {
   const { productList } = useProduct();
-  const themeContext = useContext(ThemeContext);
 
+  const themeContext = useContext(ThemeContext);
   const card1 = themeContext?.productOne;
   const card2 = themeContext?.productTwo;
   const gradient1 = themeContext?.gradient;

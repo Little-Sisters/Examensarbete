@@ -63,6 +63,7 @@ const Overlay = styled.div<{ theme: string | undefined }>`
   background-size: cover;
   mask: linear-gradient(to top, transparent, black);
   background-repeat: no-repeat;
+  // Flower overlay for darkmode and lightmode
   background-image: url(${({ theme }) =>
     theme === 'dark' ? flowerOverlayDarkmode : flowerOverlay});
 `;
