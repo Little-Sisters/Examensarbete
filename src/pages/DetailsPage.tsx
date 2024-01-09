@@ -194,7 +194,6 @@ function DetailsPage() {
   );
 }
 
-
 const SelectAndInformation = styled.div`
   width: 100%;
   display: flex;
@@ -292,8 +291,7 @@ const CartButton = styled.button`
   width: 100%;
 `;
 const ButtonBox = styled.div`
-width: 100%;
-
+  width: 100%;
 `;
 
 export default DetailsPage;

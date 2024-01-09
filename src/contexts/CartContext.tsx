@@ -45,7 +45,7 @@ export function CartProvider({ children }: Props) {
   const addToCart = (item: Product, quantity: number) => {
     // Generate a unique ID for the new cart item
     const cartItemId = generateUniqueId();
-  
+
     const existingCartItemIndex = cartList.findIndex(
       (cartItem) =>
         cartItem.id === item.id &&
@@ -53,9 +53,9 @@ export function CartProvider({ children }: Props) {
         cartItem?.tiers === item?.tiers &&
         cartItem?.colour === item?.colour &&
         cartItem?.decorations === item?.decorations &&
-        cartItem?.topper === item?.topper
+        cartItem?.topper === item?.topper,
     );
-  
+
     if (existingCartItemIndex !== -1) {
       // If the item already exists in the cart, just update its quantity
       setCartList((prevCartList) => {
@@ -65,13 +65,10 @@ export function CartProvider({ children }: Props) {
       });
     } else {
       // If the item is new, add it to the cart with the unique ID
-      setCartList([
-        ...cartList, 
-        { ...item, id: cartItemId, quantity }
-      ]);
+      setCartList([...cartList, { ...item, id: cartItemId, quantity }]);
     }
   };
-  
+
   const removeFromCart = (itemId: string) => {
     setCartList((prevCartList) => {
       const itemIndex = prevCartList.findIndex(

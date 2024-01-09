@@ -6,7 +6,7 @@ export interface Product {
   description: string;
   price: number;
   flavour: string | undefined | null;
-  tiers: number | null,
+  tiers: number | null;
   colour: string | null;
   frosting: string | null;
   decorations: string | null;
@@ -45,5 +45,5 @@ export const products: Product[] = [
     frosting: '',
     decorations: '',
     topper: '',
-    },
+  },
 ];

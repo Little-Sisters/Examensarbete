@@ -5,18 +5,16 @@ export interface Option {
   label: any;
 }
 
-
-
 export interface FlavourOption {
   value: string;
   label: string;
 }
 
 export const flavourOptions: FlavourOption[] = [
-  { value: 'vanilla', label: 'Vanilla'},
+  { value: 'vanilla', label: 'Vanilla' },
   { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry',  },
-  { value: 'salted-caramel', label: 'Salted Caramel'},
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'salted-caramel', label: 'Salted Caramel' },
 ];
 
 export interface TierOption {
@@ -29,7 +27,7 @@ export const tierOptions: TierOption[] = [
   { value: 2, label: 2 },
   { value: 3, label: 3 },
   { value: 4, label: 4 },
-  { value: 5, label: 5 }
+  { value: 5, label: 5 },
 ];
 
 export interface ColourOption {
@@ -38,10 +36,10 @@ export interface ColourOption {
 }
 
 export const colourOptions: ColourOption[] = [
-  { value: 'vanilla-bean', label: 'Vanilla Bean'},
+  { value: 'vanilla-bean', label: 'Vanilla Bean' },
   { value: 'white', label: 'White' },
-  { value: 'black', label: 'Black',  },
-  { value: 'pink', label: 'Pink'},
+  { value: 'black', label: 'Black' },
+  { value: 'pink', label: 'Pink' },
 ];
 
 export interface FrostingOption {
@@ -50,7 +48,7 @@ export interface FrostingOption {
 }
 
 export const frostingOptions: FrostingOption[] = [
-  { value: 'buttercream', label: 'Buttercream'},
+  { value: 'buttercream', label: 'Buttercream' },
   { value: 'fondant', label: 'Fondant' },
 ];
 
@@ -60,7 +58,7 @@ export interface DecorationsOption {
 }
 
 export const decorationsOptions: DecorationsOption[] = [
-  { value: 'flowers', label: 'Flowers'},
+  { value: 'flowers', label: 'Flowers' },
   { value: 'sprinkles', label: 'Sprinkles' },
   { value: 'no-decorations', label: 'No Decorations' },
 ];
@@ -71,10 +69,9 @@ export interface TopperOption {
 }
 
 export const topperOptions: TopperOption[] = [
-  { value: 'ring', label: 'Ring'},
+  { value: 'ring', label: 'Ring' },
   { value: 'rose', label: 'Rose' },
   { value: 'character', label: 'Character' },
   { value: 'bride-groom', label: 'Bride and Groom' },
   { value: 'no-topper', label: 'No Topper' },
 ];
-
