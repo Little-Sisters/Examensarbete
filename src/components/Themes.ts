@@ -15,10 +15,12 @@ export const lightMode = {
   button: '#BFAF82',
   menuHover: '#E3D9B3',
   paper: '#F9F5F3',
-  footer: '#E7E2DF',
-  footerDetail: '#373333',
-  footerText: '#EFEAE9',
+  footerBackground: '#E7E2DF',
   black: '#FFFFFF',
+  grey: '#211E1E',
+  productOne: '#E7E2DF', // Product card background color
+  productTwo: '#F5EDDD', // Product card background color
+  gradient: '#F9F5F3', // Gradient color for the background
 };
 
 export const darkMode = {
@@ -33,8 +35,10 @@ export const darkMode = {
   button: '#857452',
   menuHover: '#D8C39A',
   paper: '#4E4A48',
-  footer: '#211E1E',
-  footerDetail: '#EFEAE9',
-  footerText: '#373333',
+  footerBackground: '#211E1E',
+  grey: '#E7E2DF',
+  productOne: '#383432', // Product card background color
+  productTwo: '#574840', // Product card background color
+  gradient: '#262524', // Gradient color for the background
   black: '#FFFFFF',
 };
