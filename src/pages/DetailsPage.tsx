@@ -3,11 +3,23 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
-import { flavourOptions, tierOptions, TierOption, FlavourOption, ColourOption, colourOptions, FrostingOption, frostingOptions, decorationsOptions, DecorationsOption, topperOptions, TopperOption } from '../components/select/data';
+import {
+  ColourOption,
+  DecorationsOption,
+  FlavourOption,
+  FrostingOption,
+  TierOption,
+  TopperOption,
+  colourOptions,
+  decorationsOptions,
+  flavourOptions,
+  frostingOptions,
+  tierOptions,
+  topperOptions,
+} from '../components/select/data';
 import NewSelect from '../components/select/newSelect';
 import { useCart } from '../contexts/CartContext';
 import { useProduct } from '../contexts/ProductContext';
-
 
 function DetailsPage() {
   const { productList } = useProduct();
@@ -16,9 +28,23 @@ function DetailsPage() {
 
   const product = productList.find((p) => p.id === id);
 
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleAddToCart = () => {
     if (product && product.id) {
+      if (
+        !selectedFlavour ||
+        !selectedTier ||
+        !selectedColour ||
+        !selectedFrosting ||
+        !selectedDecorations ||
+        !selectedTopper
+      ) {
+        setErrorMessage(
+          'Please select all required options before adding to cart',
+        );
+        return;
+      }
       const updatedProduct = {
         ...product,
         flavour: selectedFlavour?.value ?? null,
@@ -29,33 +55,38 @@ function DetailsPage() {
         topper: selectedTopper?.value ?? '',
       };
       addToCart(updatedProduct, 1);
-      // Reset the selection states
-    setSelectedFlavour(null);
-    setSelectedTier(null);
-    setSelectedColour(null);
-    setSelectedFrosting(null);
-    setSelectedDecorations(null);
-    setSelectedTopper(null);
+      setErrorMessage('');
+      setSelectedFlavour(null);
+      setSelectedTier(null);
+      setSelectedColour(null);
+      setSelectedFrosting(null);
+      setSelectedDecorations(null);
+      setSelectedTopper(null);
     } else {
-      console.log("Product is undefined or missing an ID");
+      console.log('Product is undefined or missing an ID');
     }
   };
-  
 
   const [selectedFlavour, setSelectedFlavour] = useState<FlavourOption | null>(
     null,
   );
   const [selectedTier, setSelectedTier] = useState<TierOption | null>(null);
-  const [selectedColour, setSelectedColour] = useState<ColourOption | null>(null);
-  const [selectedFrosting, setSelectedFrosting] = useState<FrostingOption | null>(null);
-  const [selectedDecorations, setSelectedDecorations] = useState<DecorationsOption | null>(null);
-  const [selectedTopper, setSelectedTopper] = useState<TopperOption | null>(null);
+  const [selectedColour, setSelectedColour] = useState<ColourOption | null>(
+    null,
+  );
+  const [selectedFrosting, setSelectedFrosting] =
+    useState<FrostingOption | null>(null);
+  const [selectedDecorations, setSelectedDecorations] =
+    useState<DecorationsOption | null>(null);
+  const [selectedTopper, setSelectedTopper] = useState<TopperOption | null>(
+    null,
+  );
 
   const handleTierChange = (selectedTier: TierOption | null) => {
     setSelectedTier(selectedTier);
     console.log(`Selected Tier: ${selectedTier?.value}`);
   };
-  
+
   const handleSelectChange = (selectedFlavour: FlavourOption | null) => {
     setSelectedFlavour(selectedFlavour);
   };
@@ -66,15 +97,15 @@ function DetailsPage() {
 
   const handleFrostingChange = (selectedFrosting: FrostingOption | null) => {
     setSelectedFrosting(selectedFrosting);
-  }
+  };
 
-  const handleDecorationsChange = (selectedDecorations: DecorationsOption | null) => {
-    setSelectedDecorations(selectedDecorations);
-  }
-
-  const handleTopperChange = (
-    selectedTopper: TopperOption | null,
+  const handleDecorationsChange = (
+    selectedDecorations: DecorationsOption | null,
   ) => {
+    setSelectedDecorations(selectedDecorations);
+  };
+
+  const handleTopperChange = (selectedTopper: TopperOption | null) => {
     setSelectedTopper(selectedTopper);
   };
 
@@ -151,7 +182,10 @@ function DetailsPage() {
                   />
                 </Selections>
               </SelectAndInformation>
-              <button onClick={handleAddToCart}>Add to cart</button>
+              <ButtonBox>
+                {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+                <CartButton onClick={handleAddToCart}>Add to cart</CartButton>
+              </ButtonBox>
             </InputFlexWrapper>
           </InputContainer>
         </ProductLayout>
@@ -159,6 +193,8 @@ function DetailsPage() {
     </MarginTopContainer>
   );
 }
+
+
 const SelectAndInformation = styled.div`
   width: 100%;
   display: flex;
@@ -246,6 +282,18 @@ const ProductLayout = styled.div`
     height: auto;
     min-height: auto; /* Adjust the height for smaller screens */
   }
+`;
+
+const ErrorMessage = styled.div`
+  color: red;
+  padding: 1rem 0rem;
+`;
+const CartButton = styled.button`
+  width: 100%;
+`;
+const ButtonBox = styled.div`
+width: 100%;
+
 `;
 
 export default DetailsPage;
