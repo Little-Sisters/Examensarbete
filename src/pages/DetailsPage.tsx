@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
-import { useProduct } from '../contexts/ProductContext';
-import { useCart } from '../contexts/CartContext';
+import { FlavourOption } from '../components/select/data';
 import NewSelect from '../components/select/newSelect';
+import { useCart } from '../contexts/CartContext';
+import { useProduct } from '../contexts/ProductContext';
+
 
 function DetailsPage() {
   const { productList } = useProduct();
@@ -12,6 +15,36 @@ function DetailsPage() {
   const { addToCart } = useCart();
 
   const product = productList.find((p) => p.id === id);
+  console.log(product)
+
+
+  const handleAddToCart = () => {
+    if (product && product.id) {
+      const updatedProduct = {
+        ...product,
+          flavour: selectedValue,
+      };
+      addToCart(updatedProduct, 1);
+    } else {
+      console.log("Product is undefined or missing an ID");
+    } 
+  };
+
+  const [selectedOption, setSelectedOption] = useState<FlavourOption | null>(
+    null,
+  );
+  const [selectedValue, setSelectedValue] = useState<string | null | undefined>(
+    null,
+  );
+
+  const handleSelectChange = (selectedOption: FlavourOption | null) => {
+    setSelectedOption(selectedOption);
+    setSelectedValue(selectedOption?.value);
+    console.log(selectedOption);
+    console.log(selectedOption?.value);
+  };
+  console.log(selectedOption);
+  console.log(selectedValue);
 
   if (!product) {
     return (
@@ -42,14 +75,14 @@ function DetailsPage() {
                   <p>${product.price}</p>
                 </Information>
                 <Selections>
-                  <NewSelect label="Tiers"></NewSelect>
-                  <NewSelect label="Color"></NewSelect>
-                  <NewSelect label="Flavor"></NewSelect>
-                  <NewSelect label="Filling"></NewSelect>
-                  <NewSelect label="Decorations"></NewSelect>
+                  <NewSelect
+                    label="Flavours"
+                    selectedOption={selectedOption}
+                    setSelectedOption={handleSelectChange}
+                  />
                 </Selections>
               </SelectAndInformation>
-              <button onClick={() => addToCart(product, 1)}>Add to cart</button>
+              <button onClick={handleAddToCart}>Add to cart</button>
             </InputFlexWrapper>
           </InputContainer>
         </ProductLayout>

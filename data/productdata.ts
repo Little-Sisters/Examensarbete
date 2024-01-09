@@ -5,6 +5,7 @@ export interface Product {
   title: string;
   description: string;
   price: number;
+  flavour: string | undefined | null;
 }
 
 export interface CartItem extends Product {
@@ -19,6 +20,7 @@ export const products: Product[] = [
     title: 'Product Title',
     description: 'This is a product description',
     price: 300,
+    flavour: '',
   },
   {
     id: '2',
@@ -27,5 +29,6 @@ export const products: Product[] = [
     title: 'Product Title 2',
     description: 'This is a product description 2',
     price: 600,
+    flavour: '',
   },
 ];

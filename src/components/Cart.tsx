@@ -11,6 +11,7 @@ export function Cart() {
   const totalPrice = cartList.reduce((total, cartItem) => {
     return total + cartItem.quantity * cartItem.price;
   }, 0);
+  console.log(cartList)
 
   return (
     <StyledCard>
@@ -42,15 +43,6 @@ export function Cart() {
                         </StyledButton>
                       </StyledButtons>
                     </FlexCenter>
-                    {/* <FlexRow>
-                      <StyledItem>Quantity:</StyledItem>
-                      <FlexRow>
-                        <StyledItem>{cartItem.quantity} x </StyledItem>
-                        <StyledItem>
-                          ${cartItem.quantity * cartItem.price}
-                        </StyledItem>
-                      </FlexRow>
-                    </FlexRow> */}
                     <FlexRow>
                       <StyledItem>Tiers:</StyledItem>
                       <StyledItem>1</StyledItem>
@@ -60,8 +52,8 @@ export function Cart() {
                       <StyledItem>1</StyledItem>
                     </FlexRow>
                     <FlexRow>
-                      <StyledItem>Cake sponge:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <StyledItem>Flavour:</StyledItem>
+                      <StyledItem>{cartItem.flavour}</StyledItem>
                     </FlexRow>
                     <FlexRow>
                       <StyledItem>Frosting:</StyledItem>
