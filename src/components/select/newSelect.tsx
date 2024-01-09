@@ -11,6 +11,36 @@ interface NewSelectProps {
   setSelectedOption: (selectedOption: Option | null) => void;
 }
 
+const Dot = styled.span``;
+const OptionContainer = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s linear;
+  &:hover {
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.2
+    ); // Adjust the hover background color as needed
+  }
+
+  &.react-select__option--is-selected {
+    background-color: #186179; // Adjust the selected background color as needed
+  }
+`;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const CustomOption = ({ innerProps, label, data }: any) => (
+  <OptionContainer {...innerProps}>
+    {label}
+    {data && <Dot>{data.price && `+ $${data.price}`}</Dot>}
+  </OptionContainer>
+);
+
 const NewSelect: React.FC<NewSelectProps> = ({
   label,
   selectedOption,
@@ -51,6 +81,9 @@ const NewSelect: React.FC<NewSelectProps> = ({
               neutral90: themeContext.text,
             },
           })}
+          components={{
+            Option: CustomOption,
+          }}
           styles={{
             control: (styles) => ({
               ...styles,
