@@ -42,38 +42,29 @@ export function Cart() {
                         </StyledButton>
                       </StyledButtons>
                     </FlexCenter>
-                    {/* <FlexRow>
-                      <StyledItem>Quantity:</StyledItem>
-                      <FlexRow>
-                        <StyledItem>{cartItem.quantity} x </StyledItem>
-                        <StyledItem>
-                          ${cartItem.quantity * cartItem.price}
-                        </StyledItem>
-                      </FlexRow>
-                    </FlexRow> */}
                     <FlexRow>
                       <StyledItem>Tiers:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <StyledItem>{cartItem.tiers}</StyledItem>
                     </FlexRow>
                     <FlexRow>
                       <StyledItem>Color:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <StyledItem>{cartItem.colour}</StyledItem>
                     </FlexRow>
                     <FlexRow>
-                      <StyledItem>Cake sponge:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <StyledItem>Flavour:</StyledItem>
+                      <StyledItem>{cartItem.flavour}</StyledItem>
                     </FlexRow>
                     <FlexRow>
                       <StyledItem>Frosting:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <StyledItem>{cartItem.frosting}</StyledItem>
                     </FlexRow>
                     <FlexRow>
                       <StyledItem>Decorations:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <StyledItem>{cartItem.decorations}</StyledItem>
                     </FlexRow>
                     <FlexRow>
                       <StyledItem>Topper:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <StyledItem>{cartItem.topper}</StyledItem>
                     </FlexRow>
                     <FlexRight>
                       <StyledItem>{cartItem.quantity}x</StyledItem>
