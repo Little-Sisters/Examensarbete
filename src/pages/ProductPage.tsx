@@ -26,8 +26,14 @@ function ProductPage() {
           </p>
         </FlexContainerCentered>
         <FlexContainer>
-          <ProductCard product={productList[0]} background={card2} />
-          <ProductCard product={productList[1]} background={card1} />
+          <ProductCard
+            product={productList[0]}
+            background={`linear-gradient(to bottom, ${card2}, #F9F5F3)`}
+          />
+          <ProductCard
+            product={productList[0]}
+            background={`linear-gradient(to bottom, ${card1}, #F9F5F3)`}
+          />
         </FlexContainer>
       </MarginTopContainer>
     </PageContentWrapper>

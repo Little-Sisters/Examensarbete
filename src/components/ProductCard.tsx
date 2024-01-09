@@ -61,6 +61,7 @@ const Overlay = styled.div<{ theme: string | undefined }>`
   opacity: 0.3;
   transition: opacity 0.3s ease-in-out;
   background-size: cover;
+  mask: linear-gradient(to top, transparent, black);
   background-repeat: no-repeat;
   background-image: url(${({ theme }) =>
     theme === 'dark' ? flowerOverlayDarkmode : flowerOverlay});
