@@ -27,14 +27,18 @@ function ProductPage() {
           </p>
         </FlexContainerCentered>
         <FlexContainer>
-          <ProductCard
-            product={productList[0]}
-            background={`linear-gradient(to bottom, ${card2}, ${gradient1})`}
-          />
-          <ProductCard
-            product={productList[0]}
-            background={`linear-gradient(to bottom, ${card1}, ${gradient2})`}
-          />
+          <StyledProduct>
+            <ProductCard
+              product={productList[0]}
+              background={`linear-gradient(to bottom, ${card1}, ${gradient1})`}
+            />
+          </StyledProduct>
+          <StyledProduct>
+            <ProductCard
+              product={productList[1]}
+              background={`linear-gradient(to bottom, ${card2}, ${gradient2})`}
+            />
+          </StyledProduct>
         </FlexContainer>
       </MarginTopContainer>
     </PageContentWrapper>
@@ -58,11 +62,20 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 2rem;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
-// const StyledProduct = styled.div`
-//   width: calc(40% - 1rem);
-//   margin: 0.5rem;
-// `;
+const StyledProduct = styled.div`
+  width: calc(40% - 1rem);
+  margin: 0.5rem;
+
+  @media (max-width: 800px) {
+    width: calc(80% - 1rem);
+  }
+`;
 
 export default ProductPage;
