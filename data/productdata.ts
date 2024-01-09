@@ -6,6 +6,8 @@ export interface Product {
   description: string;
   price: number;
   flavour: string | undefined | null;
+  tiers: number | null,
+  colour: string | null;
 }
 
 export interface CartItem extends Product {
@@ -21,6 +23,8 @@ export const products: Product[] = [
     description: 'This is a product description',
     price: 300,
     flavour: '',
+    tiers: null,
+    colour: '',
   },
   {
     id: '2',
@@ -30,5 +34,7 @@ export const products: Product[] = [
     description: 'This is a product description 2',
     price: 600,
     flavour: '',
+    tiers: null,
+    colour: '',
   },
 ];

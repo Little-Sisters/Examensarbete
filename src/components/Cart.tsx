@@ -44,11 +44,11 @@ export function Cart() {
                     </FlexCenter>
                     <FlexRow>
                       <StyledItem>Tiers:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <StyledItem>{cartItem.tiers}</StyledItem>
                     </FlexRow>
                     <FlexRow>
                       <StyledItem>Color:</StyledItem>
-                      <StyledItem>1</StyledItem>
+                      <StyledItem>{cartItem.colour}</StyledItem>
                     </FlexRow>
                     <FlexRow>
                       <StyledItem>Flavour:</StyledItem>

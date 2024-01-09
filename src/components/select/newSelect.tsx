@@ -1,17 +1,21 @@
 import { useContext } from 'react';
 import Select from 'react-select';
 import styled, { ThemeContext } from 'styled-components';
-import { FlavourOption, flavourOptions } from './data';
+import { Option } from './data';
 
 interface NewSelectProps {
   label: string;
-  selectedOption: FlavourOption | null;
-  setSelectedOption: (selectedOption: FlavourOption | null) => void;
+  placeholder: string;
+  options: Option[];
+  selectedOption: Option | null;
+  setSelectedOption: (selectedOption: Option | null) => void;
 }
 
 const NewSelect: React.FC<NewSelectProps> = ({
   label,
   selectedOption,
+  options,
+  placeholder,
   setSelectedOption,
 }) => {
   const themeContext = useContext(ThemeContext);
@@ -21,8 +25,8 @@ const NewSelect: React.FC<NewSelectProps> = ({
       <SelectLabel>{label}</SelectLabel>
       {themeContext && (
         <Select
-          placeholder="Select a flavor..."
-          options={flavourOptions}
+          placeholder={placeholder}
+          options={options}
           value={selectedOption}
           onChange={setSelectedOption}
           theme={(theme) => ({

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
-import { FlavourOption } from '../components/select/data';
+import { flavourOptions, tierOptions, TierOption, FlavourOption, ColourOption, colourOptions } from '../components/select/data';
 import NewSelect from '../components/select/newSelect';
 import { useCart } from '../contexts/CartContext';
 import { useProduct } from '../contexts/ProductContext';
@@ -18,35 +18,44 @@ function DetailsPage() {
 
 
   const handleAddToCart = () => {
-    console.log(
-      'product:',
-      product,
-      'selected option:',
-      selectedOption,
-      'selected option value:',
-      selectedOption?.value,
-    );
     if (product && product.id) {
       const updatedProduct = {
         ...product,
-        flavour: selectedOption?.value,
+        flavour: selectedFlavour?.value ?? null,
+        tiers: selectedTier?.value ?? null,
+        colour: selectedColour?.value ?? '',
       };
       addToCart(updatedProduct, 1);
-      console.log("updated product:" ,updatedProduct)
+      console.log("updated product:", updatedProduct);
     } else {
       console.log("Product is undefined or missing an ID");
-    } 
+    }
   };
+  
 
-  const [selectedOption, setSelectedOption] = useState<FlavourOption | null>(
+  const [selectedFlavour, setSelectedOption] = useState<FlavourOption | null>(
     null,
   );
+
+  const [selectedTier, setSelectedTier] = useState<TierOption | null>(null);
+
+  const [selectedColour, setSelectedColour] = useState<ColourOption | null>(null);
+
+  const handleTierChange = (selectedTier: TierOption | null) => {
+    setSelectedTier(selectedTier);
+    console.log(`Selected Tier: ${selectedTier?.value}`);
+  };
+  
 
   const handleSelectChange = (selectedOption: FlavourOption | null) => {
     setSelectedOption(selectedOption);
     console.log(selectedOption);
   };
-  console.log(selectedOption);
+
+  const handleColourChange = (selectedColour: ColourOption | null) => {
+    setSelectedColour(selectedColour);
+    console.log(selectedColour);
+  };
 
   if (!product) {
     return (
@@ -79,8 +88,24 @@ function DetailsPage() {
                 <Selections>
                   <NewSelect
                     label="Flavours"
-                    selectedOption={selectedOption}
+                    placeholder="Select your flavour..."
+                    options={flavourOptions}
+                    selectedOption={selectedFlavour}
                     setSelectedOption={handleSelectChange}
+                  />
+                  <NewSelect
+                    label="Tiers"
+                    placeholder="Select number of tiers..."
+                    options={tierOptions}
+                    selectedOption={selectedTier}
+                    setSelectedOption={handleTierChange}
+                  />
+                  <NewSelect
+                    label="Colour"
+                    placeholder="Select your colour..."
+                    options={colourOptions}
+                    selectedOption={selectedColour}
+                    setSelectedOption={handleColourChange}
                   />
                 </Selections>
               </SelectAndInformation>

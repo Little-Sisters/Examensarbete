@@ -49,7 +49,9 @@ export function CartProvider({ children }: Props) {
     const existingCartItemIndex = cartList.findIndex(
       (cartItem) =>
         cartItem.id === item.id &&
-        cartItem?.flavour === item?.flavour,
+        cartItem?.flavour === item?.flavour &&
+        cartItem?.tiers === item?.tiers &&
+        cartItem?.colour === item?.colour
     );
   
     if (existingCartItemIndex !== -1) {
