@@ -26,10 +26,8 @@ function ProductPage() {
           </p>
         </FlexContainerCentered>
         <FlexContainer>
-          <StyledProduct>
-            <ProductCard product={productList[0]} background={card2} />
-            <ProductCard product={productList[1]} background={card1} />
-          </StyledProduct>
+          <ProductCard product={productList[0]} background={card2} />
+          <ProductCard product={productList[1]} background={card1} />
         </FlexContainer>
       </MarginTopContainer>
     </PageContentWrapper>
@@ -55,9 +53,9 @@ const FlexContainer = styled.div`
   gap: 2rem;
 `;
 
-const StyledProduct = styled.div`
-  width: calc(45% - 1rem);
-  margin: 0.5rem;
-`;
+// const StyledProduct = styled.div`
+//   width: calc(40% - 1rem);
+//   margin: 0.5rem;
+// `;
 
 export default ProductPage;

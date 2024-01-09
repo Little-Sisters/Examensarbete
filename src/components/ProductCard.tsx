@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import { Product } from '../../data/productdata';
 import { useCart } from '../contexts/CartContext';
 import TransparentButton from './TransparentButton';
+import flowerOverlay from '/flowerOverlay.png';
+import flowerOverlayDarkmode from '/flowerOverlayDarkmode.png';
 
 interface ProductProps {
   product: Product;
@@ -11,10 +14,12 @@ interface ProductProps {
 
 function ProductCard({ product, background }: ProductProps) {
   const { addToCart } = useCart();
+  const themeContext = useContext(ThemeContext);
+  const theme = themeContext?.mode;
 
   return (
-    <Card background={background}>
-      <Overlay></Overlay>
+    <Card background={background} theme={theme}>
+      <Overlay theme={theme} />
       <ProductWrapper>
         <Link to={`/product/${product.id}`}>
           <StyledImg src={product.image} alt={product.imageAlt} />
@@ -31,7 +36,7 @@ function ProductCard({ product, background }: ProductProps) {
   );
 }
 
-const Card = styled.div`
+const Card = styled.div<{ theme: string | undefined }>`
   color: ${({ theme }) => theme.text};
   background: ${({ background }) => background};
   border-radius: 3px;
@@ -46,20 +51,19 @@ const Card = styled.div`
   }
 `;
 
-// Flower overlay on top of product card
-const Overlay = styled.div`
+const Overlay = styled.div<{ theme: string | undefined }>`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  mask: linear-gradient(to top, transparent, black);
-  background-image: url('flowerOverlay.png');
   z-index: 1;
   opacity: 0.3;
   transition: opacity 0.3s ease-in-out;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(${({ theme }) =>
+    theme === 'dark' ? flowerOverlayDarkmode : flowerOverlay});
 `;
 
 const ProductWrapper = styled.div`
