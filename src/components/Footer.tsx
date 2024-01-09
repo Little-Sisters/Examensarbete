@@ -135,10 +135,6 @@ const Column = styled.div`
     &::placeholder {
       color: ${({ theme }) => theme.text};
     }
-
-    &:hover {
-      background-color: ${({ theme }) => theme.grey};
-    }
   }
 `;
 

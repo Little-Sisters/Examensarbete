@@ -7,11 +7,12 @@ import { useProduct } from '../contexts/ProductContext';
 
 function ProductPage() {
   const { productList } = useProduct();
-
   const themeContext = useContext(ThemeContext);
 
   const card1 = themeContext?.productOne;
   const card2 = themeContext?.productTwo;
+  const gradient1 = themeContext?.gradient;
+  const gradient2 = themeContext?.gradient;
 
   return (
     <PageContentWrapper>
@@ -28,11 +29,11 @@ function ProductPage() {
         <FlexContainer>
           <ProductCard
             product={productList[0]}
-            background={`linear-gradient(to bottom, ${card2}, #F9F5F3)`}
+            background={`linear-gradient(to bottom, ${card2}, ${gradient1})`}
           />
           <ProductCard
             product={productList[0]}
-            background={`linear-gradient(to bottom, ${card1}, #F9F5F3)`}
+            background={`linear-gradient(to bottom, ${card1}, ${gradient2})`}
           />
         </FlexContainer>
       </MarginTopContainer>

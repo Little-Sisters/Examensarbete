@@ -20,6 +20,7 @@ export const lightMode = {
   grey: '#211E1E',
   productOne: '#E7E2DF', // Product card background color
   productTwo: '#F5EDDD', // Product card background color
+  gradient: '#F9F5F3',
 };
 
 export const darkMode = {
@@ -38,5 +39,6 @@ export const darkMode = {
   grey: '#E7E2DF',
   productOne: '#383432', // Product card background color
   productTwo: '#574840', // Product card background color
+  gradient: '#262524',
   black: '#FFFFFF',
 };
