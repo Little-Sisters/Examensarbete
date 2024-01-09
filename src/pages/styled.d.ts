@@ -15,6 +15,7 @@ export interface DefaultTheme {
   card: string;
   background: string;
   button: string;
+  menuHover: string;
   paper: string;
   footer: string;
   footerDetail: string;
