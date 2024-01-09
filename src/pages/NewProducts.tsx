@@ -1,9 +1,9 @@
-import MarginTopContainer from '../components/MarginTopContainer';
-import { useProduct } from '../contexts/ProductContext';
-import FakeProduct from '../components/FakeProduct';
-import PageContentWrapper from '../components/PageContentWrapper';
-import { Cart } from '../components/Cart';
 import styled from 'styled-components';
+import { Cart } from '../components/Cart';
+import MarginTopContainer from '../components/MarginTopContainer';
+import PageContentWrapper from '../components/PageContentWrapper';
+import ProductCard from '../components/ProductCard';
+import { useProduct } from '../contexts/ProductContext';
 
 function NewProductsPage() {
   const { productList } = useProduct();
@@ -13,7 +13,7 @@ function NewProductsPage() {
         <h1>ProductPage</h1>
         <FlexContainer>
           {productList.map((product) => (
-            <FakeProduct key={product.id} product={product} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </FlexContainer>
         <Cart />

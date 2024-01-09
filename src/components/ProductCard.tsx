@@ -4,19 +4,16 @@ import { Product } from '../../data/productdata';
 import { useCart } from '../contexts/CartContext';
 import TransparentButton from './TransparentButton';
 
-interface FakeProductProps {
+interface ProductProps {
   product: Product;
+  background: string;
 }
 
-function FakeProduct({ product }: FakeProductProps) {
+function ProductCard({ product, background }: ProductProps) {
   const { addToCart } = useCart();
 
   return (
-    <Card
-      style={{
-        background: `linear-gradient(${product.backgroundColor}, #f9f5f3 99%)`,
-      }}
-    >
+    <Card background={background}>
       <Overlay></Overlay>
       <ProductWrapper>
         <Link to={`/product/${product.id}`}>
@@ -36,6 +33,7 @@ function FakeProduct({ product }: FakeProductProps) {
 
 const Card = styled.div`
   color: ${({ theme }) => theme.text};
+  background: ${({ background }) => background};
   border-radius: 3px;
   padding: 3rem;
   transition: transform 0.3s ease-in-out;
@@ -73,7 +71,7 @@ const ProductWrapper = styled.div`
 const StyledImg = styled.img`
   width: 60%;
   display: flex;
-  margin: auto; // Center the image horizontally
+  margin: auto;
 `;
 
-export default FakeProduct;
+export default ProductCard;

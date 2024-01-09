@@ -1,11 +1,18 @@
-import styled from 'styled-components';
-import FakeProduct from '../components/FakeProduct';
+import { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
+import ProductCard from '../components/ProductCard';
 import { useProduct } from '../contexts/ProductContext';
 
 function ProductPage() {
   const { productList } = useProduct();
+
+  const themeContext = useContext(ThemeContext);
+
+  const card1 = themeContext?.productOne;
+  const card2 = themeContext?.productTwo;
+
   return (
     <PageContentWrapper>
       <MarginTopContainer>
@@ -19,11 +26,10 @@ function ProductPage() {
           </p>
         </FlexContainerCentered>
         <FlexContainer>
-          {productList.map((product) => (
-            <StyledFakeProduct key={product.id}>
-              <FakeProduct product={product} />
-            </StyledFakeProduct>
-          ))}
+          <StyledProduct>
+            <ProductCard product={productList[0]} background={card2} />
+            <ProductCard product={productList[1]} background={card1} />
+          </StyledProduct>
         </FlexContainer>
       </MarginTopContainer>
     </PageContentWrapper>
@@ -49,7 +55,7 @@ const FlexContainer = styled.div`
   gap: 2rem;
 `;
 
-const StyledFakeProduct = styled.div`
+const StyledProduct = styled.div`
   width: calc(45% - 1rem);
   margin: 0.5rem;
 `;

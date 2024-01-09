@@ -19,5 +19,7 @@ export interface DefaultTheme {
   footer: string;
   footerDetail: string;
   footerText: string;
+  productOne: string;
+  productTwo: string;
   black?: string;
 }

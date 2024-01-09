@@ -5,7 +5,6 @@ export interface Product {
   title: string;
   description: string;
   price: number;
-  backgroundColor: string;
 }
 
 export interface CartItem extends Product {
@@ -17,18 +16,16 @@ export const products: Product[] = [
     id: '1',
     image: '/transparent-cake.png',
     imageAlt: 'cake',
-    title: 'Product Title',
+    title: 'Customized Cake',
     description: 'This is a product description',
     price: 300,
-    backgroundColor: '#E7E2DF',
   },
   {
     id: '2',
     image: '/transparent-cake.png',
     imageAlt: 'cake',
-    title: 'Product Title 2',
-    description: 'This is a product description 2',
+    title: 'Bespoke Cake',
+    description: 'This is a product description',
     price: 600,
-    backgroundColor: '#F5EDDD',
   },
 ];
