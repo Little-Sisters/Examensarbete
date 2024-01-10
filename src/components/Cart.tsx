@@ -4,9 +4,47 @@ import { BsTrash3 } from 'react-icons/bs';
 import { CiCirclePlus } from 'react-icons/ci';
 import { CiCircleMinus } from 'react-icons/ci';
 import Logo from './Logo';
+import { useState } from 'react';
+import NewSelect from './select/newSelect';
+import { flavourOptions, FlavourOption } from './select/data';
+import { Product} from '../../data/productdata';
+
+export interface CartItem extends Product {
+  quantity: number;
+  editedFlavour?: string;
+
+}
+
 
 export function Cart() {
-  const { addToCart, removeFromCart, cartList, clearCart } = useCart();
+  const { addToCart, removeFromCart, cartList, clearCart, updateCartItem } = useCart();
+  const [editingItemId, setEditingItemId] = useState<string | null>(null);
+  const [editFlavour, setEditFlavour] = useState<FlavourOption | null>(null);
+  
+  const handleEditClick = (cartItem: CartItem) => {
+    setEditingItemId(cartItem.id);
+    const flavourOption = flavourOptions.find(option => option.value === cartItem.flavour);
+    setEditFlavour(flavourOption || null);
+    // Similarly handle other editable properties
+  };
+  
+  
+  const handleSaveEdit = () => {
+    if (editingItemId) {
+      const itemIndex = cartList.findIndex(item => item.id === editingItemId);
+      if (itemIndex !== -1) {
+        const updatedItem = {
+          ...cartList[itemIndex],
+          flavour: editFlavour?.value ?? cartList[itemIndex].flavour,
+          // other properties...
+        };
+        updateCartItem(editingItemId, updatedItem);
+        setEditingItemId(null);
+      }
+    }
+  };
+  
+    
 
   const totalPrice = cartList.reduce((total, cartItem) => {
     return total + cartItem.quantity * cartItem.price;
@@ -29,7 +67,11 @@ export function Cart() {
                         src={cartItem.image}
                         alt={cartItem.imageAlt}
                       />
+                      <FlexRow>
                       <h3>{cartItem.title}</h3>
+                      <button onClick={() => handleEditClick(cartItem)}>edit</button>
+                      </FlexRow>
+                      
                       <StyledButtons>
                         <StyledButton
                           onClick={() => removeFromCart(cartItem.id)}
@@ -50,10 +92,19 @@ export function Cart() {
                       <StyledItem>Color:</StyledItem>
                       <StyledItem>{cartItem.colour}</StyledItem>
                     </FlexRow>
-                    <FlexRow>
-                      <StyledItem>Flavour:</StyledItem>
-                      <StyledItem>{cartItem.flavour}</StyledItem>
-                    </FlexRow>
+                    {editingItemId === cartItem.id ? (
+      <NewSelect
+      placeholder='select a flavour'
+        label="Flavour"
+        options={flavourOptions}
+        selectedOption={editFlavour}
+        setSelectedOption={(option: FlavourOption | null) => setEditFlavour(option)}
+      />
+    ) : (
+      <FlexRow><StyledItem>Flavour:</StyledItem><StyledItem>{cartItem.flavour}</StyledItem></FlexRow>
+      
+    )}
+
                     <FlexRow>
                       <StyledItem>Frosting:</StyledItem>
                       <StyledItem>{cartItem.frosting}</StyledItem>
