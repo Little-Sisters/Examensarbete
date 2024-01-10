@@ -4,10 +4,24 @@ import { BsTrash3 } from 'react-icons/bs';
 import { CiCirclePlus } from 'react-icons/ci';
 import { CiCircleMinus } from 'react-icons/ci';
 import Logo from './Logo';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import NewSelect from './select/newSelect';
-import { flavourOptions, FlavourOption } from './select/data';
+import {
+  flavourOptions,
+  FlavourOption,
+  tierOptions,
+  TierOption,
+  ColourOption,
+  colourOptions,
+  frostingOptions,
+  FrostingOption,
+  decorationsOptions,
+  DecorationsOption,
+  topperOptions,
+  TopperOption
+} from './select/data';
 import { Product } from '../../data/productdata';
+import { CiEdit } from 'react-icons/ci';
 
 export interface CartItem extends Product {
   quantity: number;
@@ -19,6 +33,12 @@ export function Cart() {
     useCart();
   const [editingItemId, setEditingItemId] = useState<string | null>(null);
   const [editFlavour, setEditFlavour] = useState<FlavourOption | null>(null);
+  const [editTiers, setEditTiers] = useState<TierOption | null>(null);
+  const [editColour, setEditColour] = useState<ColourOption | null>(null);
+  const [editFrosting, setEditFrosting] = useState<FrostingOption | null>(null);
+  const [editDecorations, setEditDecorations] = useState<DecorationsOption | null>(null);
+  const [editTopper, setEditTopper] = useState<TopperOption | null>(null);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const handleEditClick = (cartItem: CartItem) => {
     setEditingItemId(cartItem.id);
@@ -26,7 +46,31 @@ export function Cart() {
       (option) => option.value === cartItem.flavour,
     );
     setEditFlavour(flavourOption || null);
-    // Similarly handle other editable properties
+
+    const tierOption = tierOptions.find(
+      (option) => option.value === cartItem.tiers,
+    );
+    setEditTiers(tierOption || null);
+
+    const colourOption = colourOptions.find(
+      (option) => option.value === cartItem.colour,
+    );
+    setEditColour(colourOption || null);
+
+    const frostingOption = frostingOptions.find(
+      (option) => option.value === cartItem.frosting,
+    );
+    setEditFrosting(frostingOption || null);
+
+    const decorationsOption = decorationsOptions.find(
+      (option) => option.value === cartItem.decorations,
+    );
+    setEditDecorations(decorationsOption || null);
+
+    const topperOption = topperOptions.find(
+      (option) => option.value === cartItem.topper,
+    );
+    setEditTopper(topperOption || null);
   };
 
   const handleSaveEdit = () => {
@@ -40,7 +84,11 @@ export function Cart() {
     const updatedCartItem = {
       ...cartItemToUpdate,
       flavour: editFlavour ? editFlavour.value : cartItemToUpdate.flavour,
-      // Include other properties if they are editable
+      tiers: editTiers ? editTiers.value : cartItemToUpdate.tiers,
+      colour: editColour ? editColour.value : cartItemToUpdate.colour,
+      frosting: editFrosting ? editFrosting.value : cartItemToUpdate.frosting,
+      decorations: editDecorations ? editDecorations.value : cartItemToUpdate.decorations,
+      topper: editTopper ? editTopper.value : cartItemToUpdate.topper,
     };
 
     // Update the cart
@@ -49,12 +97,33 @@ export function Cart() {
     // Reset the editing state
     setEditingItemId(null);
     setEditFlavour(null);
-    // Reset other states if needed
+    setEditTiers(null);
+    setEditColour(null);
+    setEditFrosting(null);
+    setEditDecorations(null);
+    setEditTopper(null);
+    updateTotalPrice();
   };
 
-  const totalPrice = cartList.reduce((total, cartItem) => {
-    return total + cartItem.quantity * cartItem.price;
-  }, 0);
+  const calculateItemPrice = (cartItem: CartItem) => {
+    let extraPrice = 0;
+    const flavourExtra =
+      flavourOptions.find((option) => option.value === cartItem.flavour)
+        ?.price || 0;
+    extraPrice += flavourExtra;
+    return cartItem.price + extraPrice;
+  };
+
+  const updateTotalPrice = () => {
+    const newTotalPrice = cartList.reduce((total, cartItem) => {
+      return total + cartItem.quantity * calculateItemPrice(cartItem);
+    }, 0);
+    setTotalPrice(newTotalPrice);
+  };
+
+  useEffect(() => {
+    updateTotalPrice();
+  }, [cartList]);
 
   return (
     <StyledCard>
@@ -78,9 +147,9 @@ export function Cart() {
                         {editingItemId === cartItem.id ? (
                           <div></div>
                         ) : (
-                          <button onClick={() => handleEditClick(cartItem)}>
-                            Edit
-                          </button>
+                          <StyledEdit onClick={() => handleEditClick(cartItem)}>
+                            <CiEdit />
+                          </StyledEdit>
                         )}
                       </FlexRow>
 
@@ -96,14 +165,38 @@ export function Cart() {
                         </StyledButton>
                       </StyledButtons>
                     </FlexCenter>
-                    <FlexRow>
-                      <StyledItem>Tiers:</StyledItem>
-                      <StyledItem>{cartItem.tiers}</StyledItem>
-                    </FlexRow>
-                    <FlexRow>
-                      <StyledItem>Color:</StyledItem>
-                      <StyledItem>{cartItem.colour}</StyledItem>
-                    </FlexRow>
+                    {editingItemId === cartItem.id ? (
+                      <NewSelect
+                        placeholder="select number of tiers"
+                        label="Tier"
+                        options={tierOptions}
+                        selectedOption={editTiers}
+                        setSelectedOption={(option: TierOption | null) =>
+                          setEditTiers(option)
+                        }
+                      />
+                    ) : (
+                      <FlexRow>
+                        <StyledItem>Tiers:</StyledItem>
+                        <StyledItem>{cartItem.tiers}</StyledItem>
+                      </FlexRow>
+                    )}
+                    {editingItemId === cartItem.id ? (
+                      <NewSelect
+                        placeholder="select colour"
+                        label="Colour"
+                        options={colourOptions}
+                        selectedOption={editColour}
+                        setSelectedOption={(option: ColourOption | null) =>
+                          setEditColour(option)
+                        }
+                      />
+                    ) : (
+                      <FlexRow>
+                        <StyledItem>Color:</StyledItem>
+                        <StyledItem>{cartItem.colour}</StyledItem>
+                      </FlexRow>
+                    )}
                     {editingItemId === cartItem.id ? (
                       <NewSelect
                         placeholder="select a flavour"
@@ -116,32 +209,68 @@ export function Cart() {
                       />
                     ) : (
                       <FlexRow>
-                        <StyledItem>Flavour:</StyledItem>
+                        <StyledItem>Flavor:</StyledItem>
                         <StyledItem>{cartItem.flavour}</StyledItem>
                       </FlexRow>
                     )}
-
-                    <FlexRow>
-                      <StyledItem>Frosting:</StyledItem>
-                      <StyledItem>{cartItem.frosting}</StyledItem>
-                    </FlexRow>
-                    <FlexRow>
-                      <StyledItem>Decorations:</StyledItem>
-                      <StyledItem>{cartItem.decorations}</StyledItem>
-                    </FlexRow>
-                    <FlexRow>
-                      <StyledItem>Topper:</StyledItem>
-                      <StyledItem>{cartItem.topper}</StyledItem>
-                    </FlexRow>
+                    {editingItemId === cartItem.id ? (
+                      <NewSelect
+                        placeholder="select frosting"
+                        label="Frosting"
+                        options={frostingOptions}
+                        selectedOption={editFrosting}
+                        setSelectedOption={(option: FrostingOption | null) =>
+                          setEditFrosting(option)
+                        }
+                      />
+                    ) : (
+                      <FlexRow>
+                        <StyledItem>Frosting:</StyledItem>
+                        <StyledItem>{cartItem.frosting}</StyledItem>
+                      </FlexRow>
+                    )}
+                    {editingItemId === cartItem.id ? (
+                      <NewSelect
+                        placeholder="select decorations"
+                        label="Decorations"
+                        options={decorationsOptions}
+                        selectedOption={editDecorations}
+                        setSelectedOption={(option: DecorationsOption | null) =>
+                          setEditDecorations(option)
+                        }
+                      />
+                    ) : (
+                      <FlexRow>
+                        <StyledItem>Decorations:</StyledItem>
+                        <StyledItem>{cartItem.decorations}</StyledItem>
+                      </FlexRow>
+                    )}
+                    {editingItemId === cartItem.id ? (
+                      <NewSelect
+                        placeholder="select topper"
+                        label="Topper"
+                        options={topperOptions}
+                        selectedOption={editTopper}
+                        setSelectedOption={(option: TopperOption | null) =>
+                          setEditTopper(option)
+                        }
+                      />
+                    ) : (
+                      <FlexRow>
+                        <StyledItem>Topper:</StyledItem>
+                        <StyledItem>{cartItem.topper}</StyledItem>
+                      </FlexRow>
+                    )}
                     <FlexRight>
                       <StyledItem>{cartItem.quantity}x</StyledItem>
                       <StyledItem>
-                        ${cartItem.quantity * cartItem.price}
+                        ${cartItem.quantity * calculateItemPrice(cartItem)}
                       </StyledItem>
                     </FlexRight>
                     {editingItemId === cartItem.id && (
                       <StyledCenter>
-                      <button onClick={() => handleSaveEdit()}>Save</button></StyledCenter>
+                        <button onClick={() => handleSaveEdit()}>Save</button>
+                      </StyledCenter>
                     )}
                   </StyledCartItem>
                 </li>
@@ -233,6 +362,21 @@ const StyledButton = styled.button`
   svg {
     width: 1.5rem;
     height: 1.5rem;
+  }
+`;
+
+const StyledEdit = styled.button`
+  background: none;
+  border: none;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
   }
 `;
 
