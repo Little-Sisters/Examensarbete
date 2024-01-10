@@ -15,6 +15,10 @@ function BespokeDetailsPage({}: BespokeDetailsPageProps) {
     setIsColorPickerVisible((prevState) => !prevState);
   };
 
+  const sendRequest = () => {
+    console.log('Sending request...');
+  };
+
   return (
     <MarginTopContainer>
       <PageContentWrapper>
@@ -25,31 +29,35 @@ function BespokeDetailsPage({}: BespokeDetailsPageProps) {
               <p>Information block</p>
             </Column>
             <Column>
+              <label>Colour</label>
               <FlexContainer>
-                <h3>Select a color</h3>
-                {isColorPickerVisible && (
-                  <ColorPickerContainer>
-                    <SketchPicker
-                      color={colorPicker}
-                      onChange={(newColor: ColorResult) =>
-                        setColorPicker(newColor.hex)
-                      }
-                    />
-                  </ColorPickerContainer>
-                )}
-                <ColorPickerPreview
-                  onClick={toggleColorPicker}
-                  style={{ backgroundColor: colorPicker }}
-                ></ColorPickerPreview>
+                <InputSelect>
+                  <label>Select a colour...</label>
+                  <ColorPickerPreview
+                    onClick={toggleColorPicker}
+                    style={{ backgroundColor: colorPicker }}
+                  ></ColorPickerPreview>
+                  {isColorPickerVisible && (
+                    <ColorPickerContainer>
+                      <SketchPicker
+                        color={colorPicker}
+                        onChange={(newColor: ColorResult) =>
+                          setColorPicker(newColor.hex)
+                        }
+                      />
+                    </ColorPickerContainer>
+                  )}
+                </InputSelect>
               </FlexContainer>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
                 facilis deserunt maiores aspernatur magni placeat cupiditate
               </p>
+              <label>Request</label>
               <FlexContainer>
-                <input type="text" />
+                <input type="text" placeholder="Your personalized request..." />
               </FlexContainer>
-              <button>Send request</button>
+              <button onClick={sendRequest}>Send request</button>
             </Column>
           </FlexBox>
         </FlexContainer>
@@ -60,11 +68,27 @@ function BespokeDetailsPage({}: BespokeDetailsPageProps) {
 
 const FlexBox = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 const Column = styled.div`
+  flex: 1;
   flex-direction: column;
   margin: 1rem;
+  width: 50%;
+`;
+
+const InputSelect = styled.div`
+  transition: 'all 0.30s linear';
+  border-radius: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  padding: 0.5rem;
+  border-radius: 3px;
+  color: gray;
+  width: 100%;
 `;
 
 const ColorPickerContainer = styled.div`
@@ -79,7 +103,7 @@ const ColorPickerPreview = styled.div`
   height: 25px;
   border-radius: 3px;
   margin-left: 10px;
-  border: 1px solid black;
+  border: 1px solid gray;
   cursor: pointer;
 `;
 
@@ -87,6 +111,11 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%; /* Set the width to 100% to occupy the entire space */
+
+  label {
+    display: block;
+  }
 
   p {
     display: block;
@@ -95,6 +124,10 @@ const FlexContainer = styled.div`
   input {
     height: 100px;
     width: 100%;
+    border: 1px solid black;
+    padding: 0.5rem;
+    border-radius: 3px;
+    color: gray;
   }
 
   h1 {
@@ -106,6 +139,7 @@ const FlexContainer = styled.div`
     margin-top: 20px;
     cursor: pointer;
     float: right;
+    width: 100%;
   }
 `;
 
