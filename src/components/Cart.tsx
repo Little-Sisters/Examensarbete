@@ -7,44 +7,50 @@ import Logo from './Logo';
 import { useState } from 'react';
 import NewSelect from './select/newSelect';
 import { flavourOptions, FlavourOption } from './select/data';
-import { Product} from '../../data/productdata';
+import { Product } from '../../data/productdata';
 
 export interface CartItem extends Product {
   quantity: number;
   editedFlavour?: string;
-
 }
 
-
 export function Cart() {
-  const { addToCart, removeFromCart, cartList, clearCart, updateCartItem } = useCart();
+  const { addToCart, removeFromCart, cartList, clearCart, updateCartItem } =
+    useCart();
   const [editingItemId, setEditingItemId] = useState<string | null>(null);
   const [editFlavour, setEditFlavour] = useState<FlavourOption | null>(null);
-  
+
   const handleEditClick = (cartItem: CartItem) => {
     setEditingItemId(cartItem.id);
-    const flavourOption = flavourOptions.find(option => option.value === cartItem.flavour);
+    const flavourOption = flavourOptions.find(
+      (option) => option.value === cartItem.flavour,
+    );
     setEditFlavour(flavourOption || null);
     // Similarly handle other editable properties
   };
-  
-  
+
   const handleSaveEdit = () => {
-    if (editingItemId) {
-      const itemIndex = cartList.findIndex(item => item.id === editingItemId);
-      if (itemIndex !== -1) {
-        const updatedItem = {
-          ...cartList[itemIndex],
-          flavour: editFlavour?.value ?? cartList[itemIndex].flavour,
-          // other properties...
-        };
-        updateCartItem(editingItemId, updatedItem);
-        setEditingItemId(null);
-      }
-    }
+    if (!editingItemId) return;
+
+    // Find the cart item to be updated
+    const cartItemToUpdate = cartList.find((item) => item.id === editingItemId);
+    if (!cartItemToUpdate) return;
+
+    // Create an updated item with new values
+    const updatedCartItem = {
+      ...cartItemToUpdate,
+      flavour: editFlavour ? editFlavour.value : cartItemToUpdate.flavour,
+      // Include other properties if they are editable
+    };
+
+    // Update the cart
+    updateCartItem(editingItemId, updatedCartItem);
+
+    // Reset the editing state
+    setEditingItemId(null);
+    setEditFlavour(null);
+    // Reset other states if needed
   };
-  
-    
 
   const totalPrice = cartList.reduce((total, cartItem) => {
     return total + cartItem.quantity * cartItem.price;
@@ -68,10 +74,16 @@ export function Cart() {
                         alt={cartItem.imageAlt}
                       />
                       <FlexRow>
-                      <h3>{cartItem.title}</h3>
-                      <button onClick={() => handleEditClick(cartItem)}>edit</button>
+                        <h3>{cartItem.title}</h3>
+                        {editingItemId === cartItem.id ? (
+                          <div></div>
+                        ) : (
+                          <button onClick={() => handleEditClick(cartItem)}>
+                            Edit
+                          </button>
+                        )}
                       </FlexRow>
-                      
+
                       <StyledButtons>
                         <StyledButton
                           onClick={() => removeFromCart(cartItem.id)}
@@ -93,17 +105,21 @@ export function Cart() {
                       <StyledItem>{cartItem.colour}</StyledItem>
                     </FlexRow>
                     {editingItemId === cartItem.id ? (
-      <NewSelect
-      placeholder='select a flavour'
-        label="Flavour"
-        options={flavourOptions}
-        selectedOption={editFlavour}
-        setSelectedOption={(option: FlavourOption | null) => setEditFlavour(option)}
-      />
-    ) : (
-      <FlexRow><StyledItem>Flavour:</StyledItem><StyledItem>{cartItem.flavour}</StyledItem></FlexRow>
-      
-    )}
+                      <NewSelect
+                        placeholder="select a flavour"
+                        label="Flavour"
+                        options={flavourOptions}
+                        selectedOption={editFlavour}
+                        setSelectedOption={(option: FlavourOption | null) =>
+                          setEditFlavour(option)
+                        }
+                      />
+                    ) : (
+                      <FlexRow>
+                        <StyledItem>Flavour:</StyledItem>
+                        <StyledItem>{cartItem.flavour}</StyledItem>
+                      </FlexRow>
+                    )}
 
                     <FlexRow>
                       <StyledItem>Frosting:</StyledItem>
@@ -123,6 +139,10 @@ export function Cart() {
                         ${cartItem.quantity * cartItem.price}
                       </StyledItem>
                     </FlexRight>
+                    {editingItemId === cartItem.id && (
+                      <StyledCenter>
+                      <button onClick={() => handleSaveEdit()}>Save</button></StyledCenter>
+                    )}
                   </StyledCartItem>
                 </li>
               ))}
@@ -188,6 +208,13 @@ const StyledImage = styled.img`
 `;
 
 const StyledButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledCenter = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
