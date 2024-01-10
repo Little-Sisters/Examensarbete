@@ -1,4 +1,5 @@
 import isPropValid from '@emotion/is-prop-valid';
+import { ReactLenis } from '@studio-freight/react-lenis';
 import { AnimatePresence } from 'framer-motion';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { StyleSheetManager, ThemeProvider } from 'styled-components';
@@ -12,6 +13,7 @@ import { ProductProvider } from './contexts/ProductContext';
 import { useLocalStorageState } from './hooks/useLocalStorage';
 import './index.css';
 import AboutUsPage from './pages/AboutUsPage';
+import BespokeDetailsPage from './pages/BespokeDetailsPage';
 import CartPage from './pages/CartPage';
 import ConfirmationPage from './pages/ConfirmationPage';
 import DetailsPage from './pages/DetailsPage';
@@ -20,7 +22,6 @@ import GalleryPage from './pages/GalleryPage';
 import HomePage from './pages/HomePage';
 import { Page } from './pages/Page';
 import ProductPage from './pages/ProductPage';
-import { ReactLenis } from '@studio-freight/react-lenis';
 
 export function App() {
   const location = useLocation();
@@ -93,6 +94,14 @@ export function App() {
                           element={
                             <Page>
                               <DetailsPage />
+                            </Page>
+                          }
+                        />
+                        <Route
+                          path="/product/bespoke"
+                          element={
+                            <Page>
+                              <BespokeDetailsPage />
                             </Page>
                           }
                         />
