@@ -74,6 +74,7 @@ function DetailsPage() {
       }
 
       const extrasPrice = extraPrice;
+      console.log('extrasPrice', extrasPrice);
       const basePrice = product?.price;
 
       const updatedProduct = {
@@ -120,12 +121,10 @@ function DetailsPage() {
   // Sets the different options
   const handleTierChange = (selectedTier: TierOption | null) => {
     setSelectedTier(selectedTier);
-    console.log(`Selected Tier: ${selectedTier?.value}`);
   };
 
   const handleSelectChange = (selectedFlavour: FlavourOption | null) => {
     setSelectedFlavour(selectedFlavour);
-    console.log(`Selected Flavour: ${selectedFlavour?.value}`, selectedFlavour);
     calculateTotalPrice();
   };
 

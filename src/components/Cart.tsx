@@ -84,12 +84,12 @@ export function Cart() {
     if (!cartItemToUpdate) return;
 
     let extraPrice = 0;
-    extraPrice += (editFlavour?.price || 0);
-  extraPrice += (editTiers?.price || 0);
-  extraPrice += (editColour?.price || 0);
-  extraPrice += (editFrosting?.price || 0);
-  extraPrice += (editDecorations?.price || 0);
-  extraPrice += (editTopper?.price || 0);
+    extraPrice += editFlavour?.price || 0;
+    extraPrice += editTiers?.price || 0;
+    extraPrice += editColour?.price || 0;
+    extraPrice += editFrosting?.price || 0;
+    extraPrice += editDecorations?.price || 0;
+    extraPrice += editTopper?.price || 0;
 
     // Create an updated item with new values
     const updatedCartItem = {
@@ -106,8 +106,6 @@ export function Cart() {
       totalPrice: cartItemToUpdate.basePrice + extraPrice,
     };
 
-    console.log('Updated Cart Item:', updatedCartItem);
-
     // Update the cart
     updateCartItem(editingItemId, updatedCartItem);
 
@@ -123,52 +121,40 @@ export function Cart() {
   };
 
   const calculateItemPrice = (cartItem: CartItem) => {
-    console.log('Calculating price for item:', cartItem);
     let extraPrice = 0;
-
-    if (typeof cartItem.basePrice !== "number") {
-      console.error('Base price is not a number for item:', cartItem);
-      return NaN; // This will help identify if any item's base price is not a number
-    }
-
 
     const flavourExtra =
       flavourOptions.find((option) => option.value === cartItem.flavour)
         ?.price || 0;
-        console.log('Flavour Extra:', flavourExtra);
+
     extraPrice += flavourExtra;
 
     const tierExtra =
       tierOptions.find((option) => option.value === cartItem.tiers)?.price || 0;
-      console.log('Tier Extra:', tierExtra);
+
     extraPrice += tierExtra;
 
     const colorExtra =
       colourOptions.find((option) => option.value === cartItem.colour)?.price ||
       0;
-      console.log('Color Extra:', colorExtra);
+
     extraPrice += colorExtra;
 
     const frostingExtra =
       frostingOptions.find((option) => option.value === cartItem.frosting)
         ?.price || 0;
-        console.log('Frosting Extra:', frostingExtra);
+
     extraPrice += frostingExtra;
 
     const decorationsExtra =
       decorationsOptions.find((option) => option.value === cartItem.decorations)
         ?.price || 0;
-        console.log('Decorations Extra:', decorationsExtra);
     extraPrice += decorationsExtra;
 
     const topperExtra =
       topperOptions.find((option) => option.value === cartItem.topper)?.price ||
       0;
-      console.log('Topper Extra:', topperExtra);
     extraPrice += topperExtra;
-
-    const calculatedPrice = cartItem.basePrice + extraPrice;
-    console.log('Calculated Price:', calculatedPrice);
 
     return cartItem.basePrice + extraPrice;
   };
@@ -183,6 +169,7 @@ export function Cart() {
   useEffect(() => {
     console.log('Cart List Updated:', cartList);
     updateTotalPrice();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartList]);
 
   return (
