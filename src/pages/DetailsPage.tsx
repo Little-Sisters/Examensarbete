@@ -29,8 +29,10 @@ function DetailsPage() {
   const product = productList.find((p) => p.id === id);
 
   const [errorMessage, setErrorMessage] = useState('');
-  const [currentTotalPrice, setCurrentTotalPrice] = useState(product?.price || 0);
-  
+  const [currentTotalPrice, setCurrentTotalPrice] = useState(
+    product?.price || 0,
+  );
+
   const handleAddToCart = () => {
     if (product && product.id) {
       if (
@@ -49,27 +51,32 @@ function DetailsPage() {
 
       let extraPrice = 0;
 
-    if (selectedFlavour && selectedFlavour.price) {
-      extraPrice += selectedFlavour.price;
-    }
+      if (selectedFlavour && selectedFlavour.price) {
+        extraPrice += selectedFlavour.price;
+      }
 
-    if (selectedTier && selectedTier.price) {
-      extraPrice += selectedTier.price;
-    }
+      if (selectedTier && selectedTier.price) {
+        extraPrice += selectedTier.price;
+      }
 
-    if (selectedColour && selectedColour.price) {
-      extraPrice += selectedColour.price;
-    }
+      if (selectedColour && selectedColour.price) {
+        extraPrice += selectedColour.price;
+      }
 
-    if (selectedFrosting && selectedFrosting.price) {
-      extraPrice += selectedFrosting.price;
-    }
-    if (selectedDecorations && selectedDecorations.price) {
-      extraPrice += selectedDecorations.price;
-    }
-    if (selectedTopper && selectedTopper.price) {
-      extraPrice += selectedTopper.price;
-    }
+      if (selectedFrosting && selectedFrosting.price) {
+        extraPrice += selectedFrosting.price;
+      }
+      if (selectedDecorations && selectedDecorations.price) {
+        extraPrice += selectedDecorations.price;
+      }
+      if (selectedTopper && selectedTopper.price) {
+        extraPrice += selectedTopper.price;
+      }
+
+      const extrasPrice = extraPrice;
+      console.log('extrasPrice', extrasPrice);
+      const basePrice = product?.price;
+
       const updatedProduct = {
         ...product,
         flavour: selectedFlavour?.value ?? null,
@@ -78,7 +85,9 @@ function DetailsPage() {
         frosting: selectedFrosting?.value ?? '',
         decorations: selectedDecorations?.value ?? '',
         topper: selectedTopper?.value ?? '',
-        price: product.price + extraPrice,
+        basePrice: product.price,
+        extrasPrice: extraPrice,
+        totalPrice: basePrice + extraPrice,
       };
       addToCart(updatedProduct, 1);
       setErrorMessage('');
@@ -112,13 +121,10 @@ function DetailsPage() {
   // Sets the different options
   const handleTierChange = (selectedTier: TierOption | null) => {
     setSelectedTier(selectedTier);
-    console.log(`Selected Tier: ${selectedTier?.value}`);
   };
 
   const handleSelectChange = (selectedFlavour: FlavourOption | null) => {
-
     setSelectedFlavour(selectedFlavour);
-    console.log(`Selected Flavour: ${selectedFlavour?.value}`, selectedFlavour);
     calculateTotalPrice();
   };
 
@@ -140,15 +146,13 @@ function DetailsPage() {
     setSelectedTopper(selectedTopper);
   };
 
-
-
   // Calculates the total price
   const calculateTotalPrice = useCallback(() => {
     let extraPrice = 0;
     if (selectedFlavour && selectedFlavour.price) {
       extraPrice += selectedFlavour.price;
     }
-  
+
     if (selectedTier && selectedTier.price) {
       extraPrice += selectedTier.price;
     }
@@ -167,17 +171,21 @@ function DetailsPage() {
     if (selectedTopper && selectedTopper.price) {
       extraPrice += selectedTopper.price;
     }
-    
+
     setCurrentTotalPrice((product?.price || 0) + extraPrice);
-  }, [selectedFlavour, selectedTier, selectedColour, selectedFrosting, selectedDecorations, selectedTopper, product?.price]);
-  
+  }, [
+    selectedFlavour,
+    selectedTier,
+    selectedColour,
+    selectedFrosting,
+    selectedDecorations,
+    selectedTopper,
+    product?.price,
+  ]);
 
   useEffect(() => {
     calculateTotalPrice();
   }, [calculateTotalPrice]);
-  
-
-  
 
   if (!product) {
     return (

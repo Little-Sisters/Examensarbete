@@ -37,10 +37,11 @@ const OptionContainer = styled.div`
 const CustomOption = ({ innerProps, label, data }: any) => (
   <OptionContainer {...innerProps}>
     {label}
-    {data.price !== undefined && data.price !== null && <Dot>+ ${data.price}</Dot>}
+    {data.price !== undefined && data.price !== null && (
+      <Dot>+ ${data.price}</Dot>
+    )}
   </OptionContainer>
 );
-
 
 const NewSelect: React.FC<NewSelectProps> = ({
   label,

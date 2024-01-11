@@ -10,6 +10,7 @@ type CartContextType = {
   removeFromCart: (itemId: string) => void;
   clearCart: (cart: CartItem[]) => void;
   totalItems: number;
+  updateCartItem: (itemId: string, updatedItem: CartItem) => void;
 };
 
 const CartContext = createContext<CartContextType>({
@@ -18,6 +19,7 @@ const CartContext = createContext<CartContextType>({
   removeFromCart: () => {},
   clearCart: () => {},
   totalItems: 0,
+  updateCartItem: () => {},
 });
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -65,8 +67,16 @@ export function CartProvider({ children }: Props) {
       });
     } else {
       // If the item is new, add it to the cart with the unique ID
-      setCartList([...cartList, { ...item, id: cartItemId, quantity }]);
+      setCartList([...cartList, { ...item, id: cartItemId, quantity, basePrice: item.price }]);
     }
+  };
+
+  const updateCartItem = (itemId: string, updatedItem: Partial<CartItem>) => {
+    setCartList((prevCartList) =>
+      prevCartList.map((item) =>
+        item.id === itemId ? { ...item, ...updatedItem } : item,
+      ),
+    );
   };
 
   const removeFromCart = (itemId: string) => {
@@ -98,7 +108,14 @@ export function CartProvider({ children }: Props) {
 
   return (
     <CartContext.Provider
-      value={{ cartList, addToCart, removeFromCart, totalItems, clearCart }}
+      value={{
+        cartList,
+        addToCart,
+        removeFromCart,
+        totalItems,
+        clearCart,
+        updateCartItem,
+      }}
     >
       {children}
     </CartContext.Provider>

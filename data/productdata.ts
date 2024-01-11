@@ -15,6 +15,8 @@ export interface Product {
 
 export interface CartItem extends Product {
   quantity: number;
+  basePrice: number;
+  totalPrice?: number;
 }
 
 export const products: Product[] = [
