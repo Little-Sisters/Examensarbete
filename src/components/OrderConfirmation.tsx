@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useCart } from '../contexts/CartContext';
 import { useOrder } from '../contexts/OrderContext';
+import Envelope from './Envelope';
+import Letter from './Letter';
 /* eslint-disable react-refresh/only-export-components */
 
 // Generates unique number
@@ -29,12 +31,17 @@ export function OrderConfirmation() {
 
   return (
     <StyledCard>
+      <StyledVH>
+          <Envelope>
+            <Letter />
+          </Envelope>
+          </StyledVH>
       <StyledFlex>
         <StyledCardHeader>
           <StyledHeading>
             Thank you {lastOrder?.contactInformation.name} for your order! Your
             order id is: #{lastOrder?.orderId}
-          </StyledHeading>
+          </StyledHeading>  
         </StyledCardHeader>
         <StyledCardBody>
           <StyledUnorderedList>
@@ -54,19 +61,17 @@ export function OrderConfirmation() {
         </StyledCardBody>
         <StyledCardFooter>
           <StyledCenter>
-            <StyledText>
-              Your order will be delivered as soon as possible!
-            </StyledText>
           </StyledCenter>
-          <StyledFlex>
-            <StyledImage src="/transparent-cake.jpg" alt="Logo" />
             <StyledText>Total: ${lastOrder?.totalPrice}</StyledText>
-          </StyledFlex>
         </StyledCardFooter>
       </StyledFlex>
     </StyledCard>
   );
 }
+
+const StyledVH = styled.div`
+height: 200vh;
+`
 
 // Styled components
 const StyledCard = styled.div`
@@ -121,7 +126,3 @@ const StyledText = styled.p`
 //   justify-content: space-between;
 //   align-items: center;
 // `;
-
-const StyledImage = styled.img`
-  height: 5rem;
-`;
