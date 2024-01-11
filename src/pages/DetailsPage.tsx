@@ -200,7 +200,7 @@ function DetailsPage() {
     <MarginTopContainer>
       <PageContentWrapper>
         <ProductLayout>
-          <MovelView3d></MovelView3d>
+          <MovelView3d selectedTier={selectedTier}></MovelView3d>
           <InputContainer>
             <InputFlexWrapper>
               <SelectAndInformation>
