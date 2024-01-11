@@ -18,7 +18,7 @@ import {
   decorationsOptions,
   DecorationsOption,
   topperOptions,
-  TopperOption
+  TopperOption,
 } from './select/data';
 import { Product } from '../../data/productdata';
 import { CiEdit } from 'react-icons/ci';
@@ -26,6 +26,8 @@ import { CiEdit } from 'react-icons/ci';
 export interface CartItem extends Product {
   quantity: number;
   editedFlavour?: string;
+  basePrice: number;
+  totalPrice?: number;
 }
 
 export function Cart() {
@@ -36,7 +38,8 @@ export function Cart() {
   const [editTiers, setEditTiers] = useState<TierOption | null>(null);
   const [editColour, setEditColour] = useState<ColourOption | null>(null);
   const [editFrosting, setEditFrosting] = useState<FrostingOption | null>(null);
-  const [editDecorations, setEditDecorations] = useState<DecorationsOption | null>(null);
+  const [editDecorations, setEditDecorations] =
+    useState<DecorationsOption | null>(null);
   const [editTopper, setEditTopper] = useState<TopperOption | null>(null);
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -80,6 +83,14 @@ export function Cart() {
     const cartItemToUpdate = cartList.find((item) => item.id === editingItemId);
     if (!cartItemToUpdate) return;
 
+    let extraPrice = 0;
+    extraPrice += (editFlavour?.price || 0);
+  extraPrice += (editTiers?.price || 0);
+  extraPrice += (editColour?.price || 0);
+  extraPrice += (editFrosting?.price || 0);
+  extraPrice += (editDecorations?.price || 0);
+  extraPrice += (editTopper?.price || 0);
+
     // Create an updated item with new values
     const updatedCartItem = {
       ...cartItemToUpdate,
@@ -87,9 +98,15 @@ export function Cart() {
       tiers: editTiers ? editTiers.value : cartItemToUpdate.tiers,
       colour: editColour ? editColour.value : cartItemToUpdate.colour,
       frosting: editFrosting ? editFrosting.value : cartItemToUpdate.frosting,
-      decorations: editDecorations ? editDecorations.value : cartItemToUpdate.decorations,
+      decorations: editDecorations
+        ? editDecorations.value
+        : cartItemToUpdate.decorations,
       topper: editTopper ? editTopper.value : cartItemToUpdate.topper,
+      extrasPrice: extraPrice,
+      totalPrice: cartItemToUpdate.basePrice + extraPrice,
     };
+
+    console.log('Updated Cart Item:', updatedCartItem);
 
     // Update the cart
     updateCartItem(editingItemId, updatedCartItem);
@@ -106,12 +123,54 @@ export function Cart() {
   };
 
   const calculateItemPrice = (cartItem: CartItem) => {
+    console.log('Calculating price for item:', cartItem);
     let extraPrice = 0;
+
+    if (typeof cartItem.basePrice !== "number") {
+      console.error('Base price is not a number for item:', cartItem);
+      return NaN; // This will help identify if any item's base price is not a number
+    }
+
+
     const flavourExtra =
       flavourOptions.find((option) => option.value === cartItem.flavour)
         ?.price || 0;
+        console.log('Flavour Extra:', flavourExtra);
     extraPrice += flavourExtra;
-    return cartItem.price + extraPrice;
+
+    const tierExtra =
+      tierOptions.find((option) => option.value === cartItem.tiers)?.price || 0;
+      console.log('Tier Extra:', tierExtra);
+    extraPrice += tierExtra;
+
+    const colorExtra =
+      colourOptions.find((option) => option.value === cartItem.colour)?.price ||
+      0;
+      console.log('Color Extra:', colorExtra);
+    extraPrice += colorExtra;
+
+    const frostingExtra =
+      frostingOptions.find((option) => option.value === cartItem.frosting)
+        ?.price || 0;
+        console.log('Frosting Extra:', frostingExtra);
+    extraPrice += frostingExtra;
+
+    const decorationsExtra =
+      decorationsOptions.find((option) => option.value === cartItem.decorations)
+        ?.price || 0;
+        console.log('Decorations Extra:', decorationsExtra);
+    extraPrice += decorationsExtra;
+
+    const topperExtra =
+      topperOptions.find((option) => option.value === cartItem.topper)?.price ||
+      0;
+      console.log('Topper Extra:', topperExtra);
+    extraPrice += topperExtra;
+
+    const calculatedPrice = cartItem.basePrice + extraPrice;
+    console.log('Calculated Price:', calculatedPrice);
+
+    return cartItem.basePrice + extraPrice;
   };
 
   const updateTotalPrice = () => {
@@ -122,6 +181,7 @@ export function Cart() {
   };
 
   useEffect(() => {
+    console.log('Cart List Updated:', cartList);
     updateTotalPrice();
   }, [cartList]);
 
@@ -168,7 +228,7 @@ export function Cart() {
                     {editingItemId === cartItem.id ? (
                       <NewSelect
                         placeholder="select number of tiers"
-                        label="Tier"
+                        label="Tiers"
                         options={tierOptions}
                         selectedOption={editTiers}
                         setSelectedOption={(option: TierOption | null) =>
@@ -184,7 +244,7 @@ export function Cart() {
                     {editingItemId === cartItem.id ? (
                       <NewSelect
                         placeholder="select colour"
-                        label="Colour"
+                        label="Color"
                         options={colourOptions}
                         selectedOption={editColour}
                         setSelectedOption={(option: ColourOption | null) =>
@@ -200,7 +260,7 @@ export function Cart() {
                     {editingItemId === cartItem.id ? (
                       <NewSelect
                         placeholder="select a flavour"
-                        label="Flavour"
+                        label="Flavor"
                         options={flavourOptions}
                         selectedOption={editFlavour}
                         setSelectedOption={(option: FlavourOption | null) =>

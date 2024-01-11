@@ -72,12 +72,12 @@ export function CartProvider({ children }: Props) {
   };
 
   const updateCartItem = (itemId: string, updatedItem: Partial<CartItem>) => {
-    setCartList(prevCartList =>
-      prevCartList.map(item =>
-        item.id === itemId ? { ...item, ...updatedItem } : item
-      )
+    setCartList((prevCartList) =>
+      prevCartList.map((item) =>
+        item.id === itemId ? { ...item, ...updatedItem } : item,
+      ),
     );
-  };  
+  };
 
   const removeFromCart = (itemId: string) => {
     setCartList((prevCartList) => {
@@ -108,7 +108,14 @@ export function CartProvider({ children }: Props) {
 
   return (
     <CartContext.Provider
-      value={{ cartList, addToCart, removeFromCart, totalItems, clearCart, updateCartItem}}
+      value={{
+        cartList,
+        addToCart,
+        removeFromCart,
+        totalItems,
+        clearCart,
+        updateCartItem,
+      }}
     >
       {children}
     </CartContext.Provider>
