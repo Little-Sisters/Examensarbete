@@ -34,12 +34,15 @@ function RadioButton({ text, name, formik }: RadioButtonProps) {
     formik.setFieldTouched(name, true, false);
   };
 
+  const dummyOnChange = () => {};
+
   return (
     <RadioButtonContainer onClick={handleCheck}>
       <HiddenCheckBox
         name={name}
         checked={formik.values[name]}
         onBlur={formik.handleBlur}
+        onChange={dummyOnChange}
       />
       <StyledRadioButton isChecked={formik.values[name]} />
       <Label>{text}</Label>
