@@ -7,6 +7,9 @@ import PageContentWrapper from '../components/PageContentWrapper';
 interface BespokeDetailsPageProps {}
 
 function BespokeDetailsPage({}: BespokeDetailsPageProps) {
+  const [emailAddress, setEmailAddress] = useState<string>('');
+  const [personalizedRequest, setPersonalizedRequest] = useState<string>('');
+
   // Default value for color picker
   const [colorPicker, setColorPicker] = useState<string>('#ffffff');
 
@@ -28,16 +31,21 @@ function BespokeDetailsPage({}: BespokeDetailsPageProps) {
   };
 
   const sendRequest = () => {
-    console.log('Sending request...');
+    setColorPicker('#ffffff');
+    setEmailAddress('');
+    setPersonalizedRequest('');
   };
 
   return (
     <MarginTopContainer>
       <PageContentWrapper>
         <FlexContainer>
+          {/******************LEFT COLUMN*************************/}
           <Column>
             <img src="/cake1.jpg" alt="placeholder" />
           </Column>
+
+          {/******************RIGHT COLUMN*************************/}
           <Column>
             <h1>Bespoke Cake</h1>
             <p>Product description</p>
@@ -46,26 +54,23 @@ function BespokeDetailsPage({}: BespokeDetailsPageProps) {
               <br />
               Price discussed during consultation
             </p>
+
+            {/******************COLOR SELECTOR*************************/}
             <label>Colour</label>
             <FlexContainer>
-              <ColorPickerInput
-                onClick={toggleColorPicker}
-                onBlur={closeColorPicker}
-                // Makes it so that the user can close the color picker by clicking outside of it
-                tabIndex={0}
-                style={{
-                  border: isColorPickerActive
-                    ? '2px solid #000000'
-                    : '1px solid #706f6f',
-                }}
-              >
-                <label>Select a colour...</label>
-                {/* Color picker preview box */}
+              <ColorPickerContainer>
+                <ColorPickerInput
+                  readOnly
+                  onBlur={closeColorPicker}
+                  onClick={toggleColorPicker}
+                  tabIndex={0}
+                  type="text"
+                  placeholder="Select a color..."
+                />
                 <ColorPickerPreview
+                  onClick={toggleColorPicker}
                   style={{ backgroundColor: colorPicker }}
                 ></ColorPickerPreview>
-                {/* Color picker / Sketch picker wrapper
-                if statement for toggle */}
                 {isColorPickerVisible && (
                   <ColorPicker>
                     <SketchPicker
@@ -76,40 +81,47 @@ function BespokeDetailsPage({}: BespokeDetailsPageProps) {
                     />
                   </ColorPicker>
                 )}
-              </ColorPickerInput>
+              </ColorPickerContainer>
             </FlexContainer>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
-              facilis deserunt maiores aspernatur magni placeat cupiditate
-            </p>
+
+            <p>Explanation of how the request works</p>
+
+            {/******************REQUEST*************************/}
             <label>Request</label>
-            <input type="text" placeholder="Your email address" />
+            <input
+              onChange={(e) => setEmailAddress(e.target.value)}
+              value={emailAddress}
+              type="text"
+              placeholder="Your email address"
+            />
             <FlexContainer>
               <RequestInput
-                type="text"
+                value={personalizedRequest}
                 placeholder="Your personalized request..."
+                onChange={(e) => setPersonalizedRequest(e.target.value)}
               />
             </FlexContainer>
-            {/*  */}
             <button onClick={sendRequest}>Send request</button>
           </Column>
         </FlexContainer>
+
+        {/******************RECOMMENDED CONTENT*************************/}
         <p>Container for more content</p>
         <FlexContainer>
           <ShortCuts>
             <Shortcut>
               <img src="/cake1.jpg" alt="" />
-              <p>Hej</p>
+              <p>Flavors</p>
               <button>Test</button>
             </Shortcut>
             <Shortcut>
               <img src="/cake1.jpg" alt="" />
-              <p>Hej</p>
+              <p>Gallery</p>
               <button>Test</button>
             </Shortcut>
             <Shortcut>
               <img src="/cake1.jpg" alt="" />
-              <p>Hej</p>
+              <p>About</p>
               <button>Test</button>
             </Shortcut>
           </ShortCuts>
@@ -167,6 +179,34 @@ const Column = styled.div`
   }
 `;
 
+const ColorPickerContainer = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+const ColorPickerInput = styled.input`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const ColorPicker = styled.div`
+  z-index: 1000;
+  position: absolute;
+  top: 300px;
+`;
+
+const ColorPickerPreview = styled.div`
+  width: 60px;
+  height: 25px;
+  border-radius: 3px;
+  border: 1px solid #706f6f;
+  cursor: pointer;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.35rem;
+`;
+
 const ShortCuts = styled.div`
   display: flex;
   width: 100%;
@@ -180,50 +220,17 @@ const Shortcut = styled.div`
   flex-direction: column;
 
   img {
-    width: 100%;
     height: 200px;
+    object-fit: cover;
   }
 `;
 
-const ColorPickerInput = styled.div`
-  transition: 'all 0.30s linear';
-  border-radius: 3;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid #706f6f;
-  padding: 0.4rem;
-  border-radius: 3px;
-  color: gray;
-  width: 100%;
-  transition: all 0.3s linear;
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
-const ColorPicker = styled.div`
-  margin-top: 20px;
-  z-index: 1000;
-  position: absolute;
-  top: 50px;
-`;
-
-const ColorPickerPreview = styled.div`
-  width: 60px;
-  height: 25px;
-  border-radius: 3px;
-  margin-left: 10px;
-  border: 1px solid #706f6f;
-  cursor: pointer;
-`;
-
-const RequestInput = styled.input`
+const RequestInput = styled.textarea`
   width: 100%;
   height: 100px;
   padding: 0.5rem;
   border-radius: 3px;
+  background-color: transparent;
   color: gray;
 `;
 
