@@ -7,12 +7,24 @@ import PageContentWrapper from '../components/PageContentWrapper';
 interface BespokeDetailsPageProps {}
 
 function BespokeDetailsPage({}: BespokeDetailsPageProps) {
+  // Default value for color picker
   const [colorPicker, setColorPicker] = useState<string>('#ffffff');
+
+  // State for color picker toggle
   const [isColorPickerVisible, setIsColorPickerVisible] =
+    useState<boolean>(false);
+
+  const [isColorPickerActive, setIsColorPickerActive] =
     useState<boolean>(false);
 
   const toggleColorPicker = () => {
     setIsColorPickerVisible((prevState) => !prevState);
+    setIsColorPickerActive(true);
+  };
+
+  const closeColorPicker = () => {
+    setIsColorPickerVisible(false);
+    setIsColorPickerActive(false);
   };
 
   const sendRequest = () => {
@@ -36,11 +48,20 @@ function BespokeDetailsPage({}: BespokeDetailsPageProps) {
             </p>
             <label>Colour</label>
             <FlexContainer>
-              <ColorPickerInput>
+              <ColorPickerInput
+                onClick={toggleColorPicker}
+                onBlur={closeColorPicker}
+                // Makes it so that the user can close the color picker by clicking outside of it
+                tabIndex={0}
+                style={{
+                  border: isColorPickerActive
+                    ? '2px solid #000000'
+                    : '1px solid #706f6f',
+                }}
+              >
                 <label>Select a colour...</label>
                 {/* Color picker preview box */}
                 <ColorPickerPreview
-                  onClick={toggleColorPicker}
                   style={{ backgroundColor: colorPicker }}
                 ></ColorPickerPreview>
                 {/* Color picker / Sketch picker wrapper
@@ -73,8 +94,25 @@ function BespokeDetailsPage({}: BespokeDetailsPageProps) {
             <button onClick={sendRequest}>Send request</button>
           </Column>
         </FlexContainer>
+        <p>Container for more content</p>
         <FlexContainer>
-          <p>Container for more content</p>
+          <ShortCuts>
+            <Shortcut>
+              <img src="/cake1.jpg" alt="" />
+              <p>Hej</p>
+              <button>Test</button>
+            </Shortcut>
+            <Shortcut>
+              <img src="/cake1.jpg" alt="" />
+              <p>Hej</p>
+              <button>Test</button>
+            </Shortcut>
+            <Shortcut>
+              <img src="/cake1.jpg" alt="" />
+              <p>Hej</p>
+              <button>Test</button>
+            </Shortcut>
+          </ShortCuts>
         </FlexContainer>
       </PageContentWrapper>
     </MarginTopContainer>
@@ -82,9 +120,9 @@ function BespokeDetailsPage({}: BespokeDetailsPageProps) {
 }
 
 const FlexContainer = styled.div`
+  gap: 4rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
 
   label {
@@ -93,12 +131,13 @@ const FlexContainer = styled.div`
 
   p {
     display: block;
+    margin-bottom: 1.5rem;
   }
 
   input {
     margin-bottom: 0.5rem;
     width: 100%;
-    border: 1px solid black;
+    border: 1px solid #706f6f;
     padding: 0.5rem;
     border-radius: 3px;
     color: gray;
@@ -120,12 +159,29 @@ const FlexContainer = styled.div`
 const Column = styled.div`
   flex: 1;
   flex-direction: column;
-  margin: 1rem;
   width: 50%;
 
   img {
     width: 100%;
     height: 500px;
+  }
+`;
+
+const ShortCuts = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 2rem;
+`;
+
+const Shortcut = styled.div`
+  display: flex;
+  width: 100%;
+  margin-bottom: 2rem;
+  flex-direction: column;
+
+  img {
+    width: 100%;
+    height: 200px;
   }
 `;
 
@@ -135,11 +191,16 @@ const ColorPickerInput = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid #706f6f;
   padding: 0.4rem;
   border-radius: 3px;
   color: gray;
   width: 100%;
+  transition: all 0.3s linear;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const ColorPicker = styled.div`
@@ -154,7 +215,7 @@ const ColorPickerPreview = styled.div`
   height: 25px;
   border-radius: 3px;
   margin-left: 10px;
-  border: 1px solid gray;
+  border: 1px solid #706f6f;
   cursor: pointer;
 `;
 
