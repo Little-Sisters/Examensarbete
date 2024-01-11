@@ -77,5 +77,6 @@ export interface TopperOption {
 
 export const topperOptions: TopperOption[] = [
   { value: 'ring', label: 'Ring', price: 10 },
+   { value: 'mrms', label: 'Mr & Mrs', price: 10 },
   { value: 'none', label: 'No Topper', price: 0 },
 ];
