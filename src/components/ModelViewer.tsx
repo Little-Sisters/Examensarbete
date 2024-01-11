@@ -1,30 +1,48 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
-import { TierOption } from './select/data';
+import { ColourOption, TierOption } from './select/data';
 
 interface MovelView3dProps {
-  selectedTier: TierOption | null; // Assuming TierOption is the type for your tiers
+  selectedTier: TierOption | null;
+  selectedColor: ColourOption | null;
 }
 
-function MovelView3d({ selectedTier }: MovelView3dProps) {
+function getModelSrc(
+  selectedTier: TierOption | null,
+  selectedColor: ColourOption | null,
+): string {
+  // Adjust this logic based on your actual file structure and naming conventions
+  if (selectedTier && selectedColor) {
+    const tierNumber = selectedTier.value;
+    const colorName = selectedColor.value.toLowerCase(); // Assuming color values are lowercase in the file names
 
-  console.log(selectedTier)
+    // Example: '3-tier-blue.glb'
+    return `/models/${tierNumber}-tier-${colorName}.glb`;
+  } else {
+    // Default model if either tier or color is not selected
+    return '/models/3-tier-white.glb';
+  }
+}
 
-  const getModelSrc = () => {
-    console.log(selectedTier)
-    if (selectedTier) {
-      // Assuming your model files follow a naming convention like '1-tier.glb', '2-tier.glb', etc.
-      return `/models/${selectedTier.value}-tier.glb`;
-    } else {
-      // Default model if no tier is selected
-      return '/models/3-tier.glb';
+function MovelView3d({ selectedTier, selectedColor }: MovelView3dProps) {
+
+  useEffect(() => {
+    // The effect to run when selectedTier or selectedColor changes
+    const modelSrc = getModelSrc(selectedTier, selectedColor);
+
+    // Update the model-viewer src
+    const modelViewer = document.querySelector('.model-viewer');
+    if (modelViewer) {
+      modelViewer.setAttribute('src', modelSrc);
+      modelViewer.setAttribute('preload', 'auto');
     }
-  };
+  }, [selectedTier, selectedColor]);
 
   return (
     <Cake>
       <model-viewer
         className="model-viewer"
-        src={getModelSrc()}
+        src={getModelSrc(selectedTier, selectedColor)}
         shadow-intensity="1"
         shadow-softness="1"
         alt="cake"
