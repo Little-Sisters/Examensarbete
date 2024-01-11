@@ -40,10 +40,10 @@ export interface ColourOption {
 }
 
 export const colourOptions: ColourOption[] = [
-  { value: 'vanilla-bean', label: 'Vanilla Bean', price: 10 },
+  { value: 'black', label: 'Black', price: 10 },
   { value: 'white', label: 'White', price: 20 },
-  { value: 'black', label: 'Black', price: 30 },
-  { value: 'pink', label: 'Pink', price: 40 },
+  { value: 'blush', label: 'Blush', price: 30 },
+  { value: 'pistage', label: 'Pistage', price: 40 },
 ];
 
 export interface FrostingOption {
@@ -64,9 +64,9 @@ export interface DecorationsOption {
 }
 
 export const decorationsOptions: DecorationsOption[] = [
-  { value: 'flowers', label: 'Flowers', price: 10 },
-  { value: 'sprinkles', label: 'Sprinkles', price: 20 },
-  { value: 'no-decorations', label: 'No Decorations', price: 0 },
+  { value: 'roses', label: 'Roses', price: 10 },
+  { value: 'ganache', label: 'Ganache', price: 20 },
+  { value: 'none', label: 'No Decorations', price: 0 },
 ];
 
 export interface TopperOption {
@@ -77,7 +77,5 @@ export interface TopperOption {
 
 export const topperOptions: TopperOption[] = [
   { value: 'ring', label: 'Ring', price: 10 },
-  { value: 'rose', label: 'Rose', price: 20 },
-  { value: 'bride-groom', label: 'Bride and Groom', price: 30 },
-  { value: 'no-topper', label: 'No Topper', price: 0 },
+  { value: 'none', label: 'No Topper', price: 0 },
 ];

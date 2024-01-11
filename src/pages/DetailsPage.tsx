@@ -205,7 +205,7 @@ function DetailsPage() {
     <MarginTopContainer>
       <PageContentWrapper>
         <ProductLayout>
-          <MovelView3d selectedTier={selectedTier} selectedColor={selectedColour}></MovelView3d>
+          <MovelView3d selectedTier={selectedTier} selectedColor={selectedColour} selectedDecorations={selectedDecorations} selectedTopper={selectedTopper}></MovelView3d>
           <InputContainer>
             <InputFlexWrapper>
               <SelectAndInformation>

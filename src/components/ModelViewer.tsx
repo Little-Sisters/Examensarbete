@@ -1,34 +1,41 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import { ColourOption, TierOption } from './select/data';
+import { ColourOption, DecorationsOption, TierOption, TopperOption } from './select/data';
 
 interface MovelView3dProps {
   selectedTier: TierOption | null;
   selectedColor: ColourOption | null;
+  selectedDecorations: DecorationsOption | null;
+  selectedTopper: TopperOption | null;
+  
 }
 
 function getModelSrc(
   selectedTier: TierOption | null,
   selectedColor: ColourOption | null,
+  selectedDecorations: DecorationsOption | null,
+  selectedTopper: TopperOption | null,
 ): string {
   // Adjust this logic based on your actual file structure and naming conventions
-  if (selectedTier && selectedColor) {
+  if (selectedTier && selectedColor && selectedDecorations && selectedTopper) {
     const tierNumber = selectedTier.value;
+    const decoration = selectedDecorations.value.toLowerCase();
+    const topper = selectedTopper.value.toLowerCase();
     const colorName = selectedColor.value.toLowerCase(); // Assuming color values are lowercase in the file names
 
     // Example: '3-tier-blue.glb'
-    return `/models/${tierNumber}-tier-${colorName}.glb`;
+    return `/models/${tierNumber}-tier-${colorName}-${decoration}-${topper}.glb`;
   } else {
     // Default model if either tier or color is not selected
     return '/models/3-tier-white.glb';
   }
 }
 
-function MovelView3d({ selectedTier, selectedColor }: MovelView3dProps) {
+function MovelView3d({ selectedTier, selectedColor, selectedDecorations, selectedTopper }: MovelView3dProps) {
 
   useEffect(() => {
     // The effect to run when selectedTier or selectedColor changes
-    const modelSrc = getModelSrc(selectedTier, selectedColor);
+    const modelSrc = getModelSrc(selectedTier, selectedColor,selectedDecorations,selectedTopper);
 
     // Update the model-viewer src
     const modelViewer = document.querySelector('.model-viewer');
@@ -36,13 +43,13 @@ function MovelView3d({ selectedTier, selectedColor }: MovelView3dProps) {
       modelViewer.setAttribute('src', modelSrc);
       modelViewer.setAttribute('preload', 'auto');
     }
-  }, [selectedTier, selectedColor]);
+  }, [selectedTier, selectedColor,selectedDecorations,selectedTopper]);
 
   return (
     <Cake>
       <model-viewer
         className="model-viewer"
-        src={getModelSrc(selectedTier, selectedColor)}
+        src={getModelSrc(selectedTier, selectedColor,selectedDecorations,selectedTopper)}
         shadow-intensity="1"
         shadow-softness="1"
         alt="cake"
