@@ -46,6 +46,7 @@ function MovelView3d({ selectedTier, selectedColor }: MovelView3dProps) {
         shadow-intensity="1"
         shadow-softness="1"
         alt="cake"
+        poster="poster.webp"
         auto-rotate
         camera-controls
         touch-action="pan-y"
