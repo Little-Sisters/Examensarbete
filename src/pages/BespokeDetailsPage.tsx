@@ -8,22 +8,11 @@ function BespokeDetailsPage() {
   const [emailAddress, setEmailAddress] = useState<string>('');
   const [personalizedRequest, setPersonalizedRequest] = useState<string>('');
   const [colorPicker, setColorPicker] = useState<string>('#ffffff');
-
-  // State for color picker toggle
   const [isColorPickerVisible, setIsColorPickerVisible] =
-    useState<boolean>(false);
-
-  const [isColorPickerActive, setIsColorPickerActive] =
     useState<boolean>(false);
 
   const toggleColorPicker = () => {
     setIsColorPickerVisible((prevState) => !prevState);
-    setIsColorPickerActive(true);
-  };
-
-  const closeColorPicker = () => {
-    setIsColorPickerVisible(false);
-    setIsColorPickerActive(false);
   };
 
   const sendRequest = () => {
@@ -53,7 +42,6 @@ function BespokeDetailsPage() {
                     <ColorPickerContainer>
                       <ColorPickerInput
                         readOnly
-                        onBlur={closeColorPicker}
                         onClick={toggleColorPicker}
                         tabIndex={0}
                         type="text"
@@ -96,21 +84,21 @@ function BespokeDetailsPage() {
             </InputFlexWrapper>
           </InputContainer>
         </ProductLayout>
-        <p>Container for more content</p>
+        <ShortCutTitle>Want to know more?</ShortCutTitle>
         <FlexContainer>
           <ShortCuts>
             <Shortcut>
-              <img src="/cake1.jpg" alt="" />
+              <img src="/assets/flavors.jpg" alt="" />
               <p>Flavors</p>
               <button>Test</button>
             </Shortcut>
             <Shortcut>
-              <img src="/cake1.jpg" alt="" />
+              <img src="/assets/aboutus.jpg" alt="" />
               <p>Gallery</p>
               <button>Test</button>
             </Shortcut>
             <Shortcut>
-              <img src="/cake1.jpg" alt="" />
+              <img src="/assets/aboutus2.jpg" alt="" />
               <p>About</p>
               <button>Test</button>
             </Shortcut>
@@ -142,7 +130,8 @@ const ColorPickerInput = styled.input`
 const ColorPicker = styled.div`
   z-index: 1000;
   position: absolute;
-  top: 300px;
+  right: 0.5rem;
+  top: 2rem;
 `;
 
 const ColorPickerPreview = styled.div`
@@ -161,16 +150,52 @@ const ShortCuts = styled.div`
   display: flex;
   width: 100%;
   gap: 2rem;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    padding: 0rem 5rem 5rem 5rem;
+  }
 `;
 
 const Shortcut = styled.div`
+  position: relative;
   display: flex;
   width: 100%;
   flex-direction: column;
 
+  @media (max-width: 900px) {
+    margin-bottom: 2rem;
+  }
+
   img {
-    height: 200px;
+    width: 100%;
+    height: 400px;
     object-fit: cover;
+    border-radius: 3px;
+
+    @media (max-width: 900px) {
+      height: 400px;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    z-index: 1;
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    &::after {
+      background-color: ${({ theme }) => theme.overlay};
+    }
   }
 `;
 
@@ -271,6 +296,11 @@ const InputFlexWrapper = styled.div`
     width: 100%;
     padding: 0rem;
   }
+`;
+
+const ShortCutTitle = styled.h2`
+  text-align: center;
+  margin-top: 4rem;
 `;
 
 const ProductLayout = styled.div`
