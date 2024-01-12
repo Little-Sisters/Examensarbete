@@ -55,7 +55,7 @@ const Envelope: React.FC<EnvelopeProps> = ({ children }) => {
 
 // Styled components
 const StyledTitle = styled.p`
-  font-size: 36px;
+  font-size: 40px;
   font-family: 'Monsieur La Doulaise', cursive;
   margin: 1rem;
 `;
@@ -71,7 +71,7 @@ const FlexContainer = styled.div`
 `;
 
 const StyledText = styled.p`
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   margin: 0.3rem;
   padding: 0;
@@ -84,7 +84,7 @@ const StyledEnvelope = styled(motion.div)`
   position: fixed;
   top: 10rem;
   left: calc(50% - 14rem);
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 150px 10px;
+  border: 1px solid ${({ theme }) => theme.text};
 `;
 
 const Frontface = styled.div`

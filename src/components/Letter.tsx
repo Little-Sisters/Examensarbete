@@ -29,7 +29,6 @@ const Letter: React.FC = () => {
   const totalPrice = lastOrder?.itemList.reduce((total, cartItem) => {
     return total + cartItem.quantity * calculateItemPrice(cartItem);
   }, 0) || 0; 
-  console.log(totalPrice);
 
   return (
     <StyledLetter
@@ -106,13 +105,13 @@ const FlexCenter = styled.div`
 `;
 
 const StyledItem = styled.p`
-  font-size: 10px;
+  font-size: 12px;
   padding: 0;
   margin: 0;
 `;
 
 const StyledProduct = styled.p`
-  font-size: 10px;
+  font-size: 12px;
   padding: 0;
   margin: 0;
   margin-right: 0.2rem;
@@ -128,6 +127,7 @@ const StyledLetter = styled(motion.div)`
   padding: 1rem;
   box-sizing: border-box;
   position: absolute;
+  border: 1px solid ${({ theme }) => theme.text};
 `;
 
 const StyledUnorderedList = styled.ul`
