@@ -29,8 +29,7 @@ export const tierOptions: TierOption[] = [
   { value: 1, label: 1, price: 10 },
   { value: 2, label: 2, price: 20 },
   { value: 3, label: 3, price: 30 },
-  { value: 4, label: 4, price: 40 },
-  { value: 5, label: 5, price: 50 },
+  { value: 4, label: 4, price: 40 }
 ];
 
 export interface ColourOption {
@@ -77,6 +76,7 @@ export interface TopperOption {
 
 export const topperOptions: TopperOption[] = [
   { value: 'ring', label: 'Ring', price: 10 },
+  { value: 'bridegroom', label: 'Bride & Groom', price: 10 },
    { value: 'mrms', label: 'Mr & Mrs', price: 10 },
   { value: 'none', label: 'No Topper', price: 0 },
 ];
