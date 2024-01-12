@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
@@ -29,8 +29,10 @@ function DetailsPage() {
   const product = productList.find((p) => p.id === id);
 
   const [errorMessage, setErrorMessage] = useState('');
-  const [currentTotalPrice, setCurrentTotalPrice] = useState(product?.price || 0);
-  
+  const [currentTotalPrice, setCurrentTotalPrice] = useState(
+    product?.price || 0,
+  );
+
   const handleAddToCart = () => {
     if (product && product.id) {
       if (
@@ -49,27 +51,27 @@ function DetailsPage() {
 
       let extraPrice = 0;
 
-    if (selectedFlavour && selectedFlavour.price) {
-      extraPrice += selectedFlavour.price;
-    }
+      if (selectedFlavour && selectedFlavour.price) {
+        extraPrice += selectedFlavour.price;
+      }
 
-    if (selectedTier && selectedTier.price) {
-      extraPrice += selectedTier.price;
-    }
+      if (selectedTier && selectedTier.price) {
+        extraPrice += selectedTier.price;
+      }
 
-    if (selectedColour && selectedColour.price) {
-      extraPrice += selectedColour.price;
-    }
+      if (selectedColour && selectedColour.price) {
+        extraPrice += selectedColour.price;
+      }
 
-    if (selectedFrosting && selectedFrosting.price) {
-      extraPrice += selectedFrosting.price;
-    }
-    if (selectedDecorations && selectedDecorations.price) {
-      extraPrice += selectedDecorations.price;
-    }
-    if (selectedTopper && selectedTopper.price) {
-      extraPrice += selectedTopper.price;
-    }
+      if (selectedFrosting && selectedFrosting.price) {
+        extraPrice += selectedFrosting.price;
+      }
+      if (selectedDecorations && selectedDecorations.price) {
+        extraPrice += selectedDecorations.price;
+      }
+      if (selectedTopper && selectedTopper.price) {
+        extraPrice += selectedTopper.price;
+      }
       const updatedProduct = {
         ...product,
         flavour: selectedFlavour?.value ?? null,
@@ -116,7 +118,6 @@ function DetailsPage() {
   };
 
   const handleSelectChange = (selectedFlavour: FlavourOption | null) => {
-
     setSelectedFlavour(selectedFlavour);
     console.log(`Selected Flavour: ${selectedFlavour?.value}`, selectedFlavour);
     calculateTotalPrice();
@@ -140,15 +141,13 @@ function DetailsPage() {
     setSelectedTopper(selectedTopper);
   };
 
-
-
   // Calculates the total price
   const calculateTotalPrice = useCallback(() => {
     let extraPrice = 0;
     if (selectedFlavour && selectedFlavour.price) {
       extraPrice += selectedFlavour.price;
     }
-  
+
     if (selectedTier && selectedTier.price) {
       extraPrice += selectedTier.price;
     }
@@ -167,17 +166,21 @@ function DetailsPage() {
     if (selectedTopper && selectedTopper.price) {
       extraPrice += selectedTopper.price;
     }
-    
+
     setCurrentTotalPrice((product?.price || 0) + extraPrice);
-  }, [selectedFlavour, selectedTier, selectedColour, selectedFrosting, selectedDecorations, selectedTopper, product?.price]);
-  
+  }, [
+    selectedFlavour,
+    selectedTier,
+    selectedColour,
+    selectedFrosting,
+    selectedDecorations,
+    selectedTopper,
+    product?.price,
+  ]);
 
   useEffect(() => {
     calculateTotalPrice();
   }, [calculateTotalPrice]);
-  
-
-  
 
   if (!product) {
     return (
@@ -325,7 +328,7 @@ const InputFlexWrapper = styled.div`
   flex-direction: column;
   gap: 1rem;
   justify-content: space-between;
-  padding-left: 2rem;
+
   @media (max-width: 1024px) {
     padding: 0rem;
   }
@@ -338,7 +341,7 @@ const InputFlexWrapper = styled.div`
 const ProductLayout = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 4rem;
   width: 100%;
   min-height: 85vh; /* Default height for desktop */
   height: 40rem;

@@ -4,6 +4,7 @@ import styled, { ThemeContext } from 'styled-components';
 import { Option } from './data';
 
 interface NewSelectProps {
+  readonly?: boolean;
   label: string;
   placeholder: string;
   options: Option[];
@@ -37,10 +38,11 @@ const OptionContainer = styled.div`
 const CustomOption = ({ innerProps, label, data }: any) => (
   <OptionContainer {...innerProps}>
     {label}
-    {data.price !== undefined && data.price !== null && <Dot>+ ${data.price}</Dot>}
+    {data.price !== undefined && data.price !== null && (
+      <Dot>+ ${data.price}</Dot>
+    )}
   </OptionContainer>
 );
-
 
 const NewSelect: React.FC<NewSelectProps> = ({
   label,

@@ -4,13 +4,9 @@ import styled from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
 
-interface BespokeDetailsPageProps {}
-
-function BespokeDetailsPage({}: BespokeDetailsPageProps) {
+function BespokeDetailsPage() {
   const [emailAddress, setEmailAddress] = useState<string>('');
   const [personalizedRequest, setPersonalizedRequest] = useState<string>('');
-
-  // Default value for color picker
   const [colorPicker, setColorPicker] = useState<string>('#ffffff');
 
   // State for color picker toggle
@@ -39,73 +35,67 @@ function BespokeDetailsPage({}: BespokeDetailsPageProps) {
   return (
     <MarginTopContainer>
       <PageContentWrapper>
-        <FlexContainer>
-          {/******************LEFT COLUMN*************************/}
-          <Column>
-            <img src="/cake1.jpg" alt="placeholder" />
-          </Column>
-
-          {/******************RIGHT COLUMN*************************/}
-          <Column>
-            <h1>Bespoke Cake</h1>
-            <p>Product description</p>
-            <p>
-              Service fee $50
-              <br />
-              Price discussed during consultation
-            </p>
-
-            {/******************COLOR SELECTOR*************************/}
-            <label>Colour</label>
-            <FlexContainer>
-              <ColorPickerContainer>
-                <ColorPickerInput
-                  readOnly
-                  onBlur={closeColorPicker}
-                  onClick={toggleColorPicker}
-                  tabIndex={0}
-                  type="text"
-                  placeholder="Select a color..."
-                />
-                <ColorPickerPreview
-                  onClick={toggleColorPicker}
-                  style={{ backgroundColor: colorPicker }}
-                ></ColorPickerPreview>
-                {isColorPickerVisible && (
-                  <ColorPicker>
-                    <SketchPicker
-                      color={colorPicker}
-                      onChange={(newColor: ColorResult) =>
-                        setColorPicker(newColor.hex)
-                      }
+        <ProductLayout>
+          <Cake>
+            <img src="/transparent-cake.png" alt="" />
+          </Cake>
+          <InputContainer>
+            <InputFlexWrapper>
+              <SelectAndInformation>
+                <Information>
+                  <h1>Bespoke Cake</h1>
+                  <p>Product description</p>
+                  <p>Price</p>
+                </Information>
+                <Selections>
+                  <label>Colour</label>
+                  <FlexContainer>
+                    <ColorPickerContainer>
+                      <ColorPickerInput
+                        readOnly
+                        onBlur={closeColorPicker}
+                        onClick={toggleColorPicker}
+                        tabIndex={0}
+                        type="text"
+                        placeholder="Select a color..."
+                      />
+                      <ColorPickerPreview
+                        onClick={toggleColorPicker}
+                        style={{ backgroundColor: colorPicker }}
+                      ></ColorPickerPreview>
+                      {isColorPickerVisible && (
+                        <ColorPicker>
+                          <SketchPicker
+                            color={colorPicker}
+                            onChange={(newColor: ColorResult) =>
+                              setColorPicker(newColor.hex)
+                            }
+                          />
+                        </ColorPicker>
+                      )}
+                    </ColorPickerContainer>
+                  </FlexContainer>
+                  <p>Explanation of how the request works</p>
+                  <label>Request</label>
+                  <input
+                    onChange={(e) => setEmailAddress(e.target.value)}
+                    value={emailAddress}
+                    type="text"
+                    placeholder="Your email address"
+                  />
+                  <FlexContainer>
+                    <RequestInput
+                      value={personalizedRequest}
+                      placeholder="Your personalized request..."
+                      onChange={(e) => setPersonalizedRequest(e.target.value)}
                     />
-                  </ColorPicker>
-                )}
-              </ColorPickerContainer>
-            </FlexContainer>
-
-            <p>Explanation of how the request works</p>
-
-            {/******************REQUEST*************************/}
-            <label>Request</label>
-            <input
-              onChange={(e) => setEmailAddress(e.target.value)}
-              value={emailAddress}
-              type="text"
-              placeholder="Your email address"
-            />
-            <FlexContainer>
-              <RequestInput
-                value={personalizedRequest}
-                placeholder="Your personalized request..."
-                onChange={(e) => setPersonalizedRequest(e.target.value)}
-              />
-            </FlexContainer>
-            <button onClick={sendRequest}>Send request</button>
-          </Column>
-        </FlexContainer>
-
-        {/******************RECOMMENDED CONTENT*************************/}
+                  </FlexContainer>
+                </Selections>
+              </SelectAndInformation>
+              <button onClick={sendRequest}>Send request</button>
+            </InputFlexWrapper>
+          </InputContainer>
+        </ProductLayout>
         <p>Container for more content</p>
         <FlexContainer>
           <ShortCuts>
@@ -136,47 +126,6 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-
-  label {
-    display: block;
-  }
-
-  p {
-    display: block;
-    margin-bottom: 1.5rem;
-  }
-
-  input {
-    margin-bottom: 0.5rem;
-    width: 100%;
-    border: 1px solid #706f6f;
-    padding: 0.5rem;
-    border-radius: 3px;
-    color: gray;
-  }
-
-  h1 {
-    margin: 0;
-    padding: 0;
-  }
-
-  button {
-    margin-top: 20px;
-    cursor: pointer;
-    float: right;
-    width: 100%;
-  }
-`;
-
-const Column = styled.div`
-  flex: 1;
-  flex-direction: column;
-  width: 50%;
-
-  img {
-    width: 100%;
-    height: 500px;
-  }
 `;
 
 const ColorPickerContainer = styled.div`
@@ -200,11 +149,12 @@ const ColorPickerPreview = styled.div`
   width: 60px;
   height: 25px;
   border-radius: 3px;
-  border: 1px solid #706f6f;
-  cursor: pointer;
+  border: 1px solid;
+  border-color: ${({ theme }) => theme.input};
   position: absolute;
   right: 0.5rem;
   top: 0.35rem;
+  cursor: pointer;
 `;
 
 const ShortCuts = styled.div`
@@ -216,7 +166,6 @@ const ShortCuts = styled.div`
 const Shortcut = styled.div`
   display: flex;
   width: 100%;
-  margin-bottom: 2rem;
   flex-direction: column;
 
   img {
@@ -226,12 +175,141 @@ const Shortcut = styled.div`
 `;
 
 const RequestInput = styled.textarea`
-  width: 100%;
-  height: 100px;
   padding: 0.5rem;
+  height: 200px;
   border-radius: 3px;
   background-color: transparent;
-  color: gray;
+  transition: border-color 0.3s ease-in;
+  width: 100%;
+  border: 1px solid #706f6f;
+  border-color: ${({ theme }) => theme.input};
+  color: ${({ theme }) => theme.text};
+
+  &:focus {
+    outline: none;
+    border: 1px solid #857452;
+    box-shadow: 0 0 0 1px #857452;
+  }
+
+  &::placeholder {
+    color: #c7c7c7;
+  }
+`;
+
+const SelectAndInformation = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  input {
+    width: 100%;
+  }
+`;
+
+const Information = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  h1 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+    @media (max-width: 1024px) {
+      font-size: 0.9rem;
+    }
+  }
+`;
+
+const Selections = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Cake = styled.div`
+  background: ${({ theme }) => theme.card};
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 700px) {
+    width: 100%;
+    height: 35rem;
+  }
+
+  img {
+    height: 80%;
+    @media (max-width: 700px) {
+      width: auto;
+      height: 30rem;
+    }
+  }
+`;
+const InputContainer = styled.div`
+  width: 50%;
+  @media (max-width: 700px) {
+    width: 100%;
+  }
+`;
+
+const InputFlexWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+
+  button {
+    width: 100%;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 0rem;
+  }
+  @media (max-width: 700px) {
+    width: 100%;
+    padding: 0rem;
+  }
+`;
+
+const ProductLayout = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  width: 100%;
+  min-height: 85vh; /* Default height for desktop */
+  height: 40rem;
+  transition: background-color 0.3s ease-in;
+
+  input {
+    margin-bottom: 0.5rem;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 3px;
+    border: 1px solid #706f6f;
+    border-style: solid;
+    border-color: ${({ theme }) => theme.input};
+
+    &:focus {
+      outline: none;
+      border: 1px solid #857452;
+      box-shadow: 0 0 0 1px #857452;
+    }
+
+    &::placeholder {
+      color: #c7c7c7;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    min-height: calc(80vh - 9rem); /* Default height for desktop */
+  }
+  @media (max-width: 700px) {
+    flex-direction: column;
+    height: auto;
+    min-height: auto; /* Adjust the height for smaller screens */
+  }
 `;
 
 export default BespokeDetailsPage;
