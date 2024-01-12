@@ -77,7 +77,7 @@ const StyledEnvelope = styled(motion.div)`
 const Frontface = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #debda1;
+  background: ${({ theme }) => theme.card};
   position: absolute;
   left: 0;
   top: 0;
