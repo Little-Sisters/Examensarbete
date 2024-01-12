@@ -67,7 +67,10 @@ export function CartProvider({ children }: Props) {
       });
     } else {
       // If the item is new, add it to the cart with the unique ID
-      setCartList([...cartList, { ...item, id: cartItemId, quantity, basePrice: item.price }]);
+      setCartList([
+        ...cartList,
+        { ...item, id: cartItemId, quantity, basePrice: item.price },
+      ]);
     }
   };
 

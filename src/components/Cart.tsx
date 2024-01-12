@@ -350,15 +350,18 @@ export function Cart() {
 const StyledCard = styled.div`
   background: ${({ theme }) => theme.card};
   color: ${({ theme }) => theme.text};
-  width: 20rem;
   border-radius: 3px;
+  width: 35%;
+
+  @media (max-width: 900px) {
+    width: 90%;
+  }
 `;
 
 const StyledLogo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 20rem;
   border-radius: 3px;
   padding: 1rem;
 `;
