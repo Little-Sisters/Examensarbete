@@ -85,6 +85,11 @@ const StyledEnvelope = styled(motion.div)`
   top: 10rem;
   left: calc(50% - 14rem);
   border: 1px solid ${({ theme }) => theme.text};
+
+  @media (max-width: 500px) {
+    width: 20rem;
+    left: calc(50% - 10rem);
+  }
 `;
 
 const Frontface = styled.div`
