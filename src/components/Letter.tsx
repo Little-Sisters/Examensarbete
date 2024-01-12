@@ -52,24 +52,22 @@ const Letter: React.FC = () => {
                 <StyledItem>${cartItem.quantity * cartItem.price}</StyledItem>
               </FlexRow>
               <FlexItems>
-                <StyledItem>{cartItem.tiers},</StyledItem>
-                <StyledItem>{cartItem.colour},</StyledItem>
-                <StyledItem>{cartItem.flavour},</StyledItem>
-                <StyledItem>{cartItem.frosting},</StyledItem>
-                <StyledItem>{cartItem.decorations},</StyledItem>
-                <StyledItem>{cartItem.topper}</StyledItem>
+                <StyledProduct>{cartItem.tiers} Tier, </StyledProduct>
+                <StyledProduct>{cartItem.colour}, </StyledProduct>
+                <StyledProduct>{cartItem.flavour}, </StyledProduct>
+                <StyledProduct>{cartItem.frosting}, </StyledProduct>
+                <StyledProduct>{cartItem.decorations}, </StyledProduct>
+                <StyledProduct>{cartItem.topper}</StyledProduct>
               </FlexItems>
             </Margin>
           </li>
         ))}
       </StyledUnorderedList>
-      <FlexCenter><StyledItem>Total: ${lastOrder?.totalPrice}</StyledItem></FlexCenter>
-      
-      <StyledFlexCenter>
-        <StyledLink href="/">
-          <StyledButton type="button">Place another order</StyledButton>
-        </StyledLink>
-      </StyledFlexCenter>
+      <FlexCenter>
+        <Margin>
+        <StyledItem>Total: ${lastOrder?.totalPrice}</StyledItem>
+        </Margin>
+      </FlexCenter>
     </StyledLetter>
   );
 };
@@ -96,11 +94,10 @@ const FlexItems = styled.div`
   margin: 0.5rem;
 `;
 
-
 const Margin = styled.div`
-margin-top: 1rem;
-margin-bottom: 1rem;
-`
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+`;
 
 const FlexCenter = styled.div`
   display: flex;
@@ -113,6 +110,13 @@ const StyledItem = styled.p`
   font-size: 10px;
   padding: 0;
   margin: 0;
+`;
+
+const StyledProduct = styled.p`
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+  margin-right: 0.2rem;
 `;
 
 const StyledLetter = styled(motion.div)`
@@ -133,12 +137,6 @@ const StyledUnorderedList = styled.ul`
   font-size: 12px;
 `;
 
-const StyledFlexCenter = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const StyledLink = styled.a`
   margin: auto;
   text-decoration: none;
@@ -149,9 +147,9 @@ const StyledLink = styled.a`
 
 const StyledButton = styled.button`
   width: 8rem;
-  height: 2rem;
+  height: 1.5rem;
   border: none;
-  font-size: 12px;
+  font-size: 10px;
   cursor: pointer;
   &:hover {
   }
