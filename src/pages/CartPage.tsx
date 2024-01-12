@@ -24,7 +24,8 @@ function CartPage() {
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 10rem;
 
   h1 {
     margin: 0;

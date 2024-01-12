@@ -255,8 +255,12 @@ const StyledInput = styled.input`
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.text};
   margin-bottom: 1rem;
-  width: 100%;
+  width: 25rem;
   outline: none;
+
+  @media (max-width: 500px) {
+    width: 20rem;
+  }
 `;
 
 const StyledLabel = styled.label`

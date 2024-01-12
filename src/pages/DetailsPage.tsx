@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
+import MovelView3d from '../components/ModelViewer';
 import PageContentWrapper from '../components/PageContentWrapper';
 import {
   ColourOption,
@@ -72,6 +73,11 @@ function DetailsPage() {
       if (selectedTopper && selectedTopper.price) {
         extraPrice += selectedTopper.price;
       }
+
+      const extrasPrice = extraPrice;
+      console.log('extrasPrice', extrasPrice);
+      const basePrice = product?.price;
+
       const updatedProduct = {
         ...product,
         flavour: selectedFlavour?.value ?? null,
@@ -80,7 +86,9 @@ function DetailsPage() {
         frosting: selectedFrosting?.value ?? '',
         decorations: selectedDecorations?.value ?? '',
         topper: selectedTopper?.value ?? '',
-        price: product.price + extraPrice,
+        basePrice: product.price,
+        extrasPrice: extraPrice,
+        totalPrice: basePrice + extraPrice,
       };
       addToCart(updatedProduct, 1);
       setErrorMessage('');
@@ -114,12 +122,10 @@ function DetailsPage() {
   // Sets the different options
   const handleTierChange = (selectedTier: TierOption | null) => {
     setSelectedTier(selectedTier);
-    console.log(`Selected Tier: ${selectedTier?.value}`);
   };
 
   const handleSelectChange = (selectedFlavour: FlavourOption | null) => {
     setSelectedFlavour(selectedFlavour);
-    console.log(`Selected Flavour: ${selectedFlavour?.value}`, selectedFlavour);
     calculateTotalPrice();
   };
 
@@ -199,9 +205,12 @@ function DetailsPage() {
     <MarginTopContainer>
       <PageContentWrapper>
         <ProductLayout>
-          <Cake>
-            <img src="/transparent-cake.png" alt="" />
-          </Cake>
+          <MovelView3d
+            selectedTier={selectedTier}
+            selectedColor={selectedColour}
+            selectedDecorations={selectedDecorations}
+            selectedTopper={selectedTopper}
+          ></MovelView3d>
           <InputContainer>
             <InputFlexWrapper>
               <SelectAndInformation>
@@ -211,13 +220,6 @@ function DetailsPage() {
                   <p>${currentTotalPrice}</p>
                 </Information>
                 <Selections>
-                  <NewSelect
-                    label="Flavours"
-                    placeholder="Select your flavour..."
-                    options={flavourOptions}
-                    selectedOption={selectedFlavour}
-                    setSelectedOption={handleSelectChange}
-                  />
                   <NewSelect
                     label="Tiers"
                     placeholder="Select number of tiers..."
@@ -232,13 +234,7 @@ function DetailsPage() {
                     selectedOption={selectedColour}
                     setSelectedOption={handleColourChange}
                   />
-                  <NewSelect
-                    label="Frosting"
-                    placeholder="Select your frosting..."
-                    options={frostingOptions}
-                    selectedOption={selectedFrosting}
-                    setSelectedOption={handleFrostingChange}
-                  />
+
                   <NewSelect
                     label="Decorations"
                     placeholder="Select your decorations..."
@@ -252,6 +248,20 @@ function DetailsPage() {
                     options={topperOptions}
                     selectedOption={selectedTopper}
                     setSelectedOption={handleTopperChange}
+                  />
+                  <NewSelect
+                    label="Flavours"
+                    placeholder="Select your flavour..."
+                    options={flavourOptions}
+                    selectedOption={selectedFlavour}
+                    setSelectedOption={handleSelectChange}
+                  />
+                  <NewSelect
+                    label="Frosting"
+                    placeholder="Select your frosting..."
+                    options={frostingOptions}
+                    selectedOption={selectedFrosting}
+                    setSelectedOption={handleFrostingChange}
                   />
                 </Selections>
               </SelectAndInformation>
@@ -296,24 +306,6 @@ const Selections = styled.div`
   gap: 1rem;
 `;
 
-const Cake = styled.div`
-  background: ${({ theme }) => theme.card};
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @media (max-width: 700px) {
-    width: 100%;
-    height: 35rem;
-  }
-  img {
-    height: 80%;
-    @media (max-width: 700px) {
-      width: auto;
-      height: 30rem;
-    }
-  }
-`;
 const InputContainer = styled.div`
   width: 50%;
   @media (max-width: 700px) {

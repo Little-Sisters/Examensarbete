@@ -1,8 +1,10 @@
 import isPropValid from '@emotion/is-prop-valid';
+import '@google/model-viewer/dist/model-viewer';
 import { ReactLenis } from '@studio-freight/react-lenis';
 import { AnimatePresence } from 'framer-motion';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { StyleSheetManager, ThemeProvider } from 'styled-components';
+import '../src/components/ModelViewer.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import { darkMode, lightMode } from './components/Themes';
