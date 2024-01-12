@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
+import { IoMdClose } from 'react-icons/io';
 import styled from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
@@ -10,6 +11,8 @@ function BespokeDetailsPage() {
   const [colorPicker, setColorPicker] = useState<string>('#ffffff');
   const [isColorPickerVisible, setIsColorPickerVisible] =
     useState<boolean>(false);
+  const [isConfirmationModalVisible, setIsConfirmationModalVisible] =
+    useState<boolean>(false);
 
   const toggleColorPicker = () => {
     setIsColorPickerVisible((prevState) => !prevState);
@@ -19,11 +22,27 @@ function BespokeDetailsPage() {
     setColorPicker('#ffffff');
     setEmailAddress('');
     setPersonalizedRequest('');
+    setIsConfirmationModalVisible(true);
+  };
+
+  const closeConfirmationModal = () => {
+    setIsConfirmationModalVisible(false);
   };
 
   return (
     <MarginTopContainer>
       <PageContentWrapper>
+        {isConfirmationModalVisible && (
+          <ConfirmationModal>
+            <p>Thank you for your request!</p>
+            <br />
+            <span>We will get back to you as soon as possible</span>
+            <CloseIconWrapper>
+              <IoMdClose onClick={closeConfirmationModal} />
+            </CloseIconWrapper>
+          </ConfirmationModal>
+        )}
+
         <ProductLayout>
           <Cake>
             <img src="/transparent-cake.png" alt="" />
@@ -108,6 +127,34 @@ function BespokeDetailsPage() {
     </MarginTopContainer>
   );
 }
+
+const ConfirmationModal = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border-radius: 3px;
+  background-color: ${({ theme }) => theme.card};
+  color: ${({ theme }) => theme.text};
+  z-index: 1000;
+  transition: background-color 0.3s ease-in;
+
+  &.active {
+    display: flex;
+  }
+
+  @media (max-width: 700px) {
+    width: 90%;
+  }
+`;
+
+const CloseIconWrapper = styled.div`
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+`;
 
 const FlexContainer = styled.div`
   gap: 4rem;
