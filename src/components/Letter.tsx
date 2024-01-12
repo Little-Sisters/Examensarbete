@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import { useOrder } from '../contexts/OrderContext';
-import { useCart } from '../contexts/CartContext';
+import { calculateItemPrice } from './calculateItemPrice';
 
 // Generates unique number
 // Checks if the number is already in use in Local Storage
@@ -24,12 +24,11 @@ const Letter: React.FC = () => {
   const yPosAnim = useTransform(scrollYProgress, [0, 0.4, 1], [0, -250, -100]);
 
   const { getLastOrder } = useOrder();
-  const { cartList } = useCart();
   const { lastOrder } = getLastOrder();
 
-  const totalPrice = cartList.reduce((total, cartItem) => {
-    return total + cartItem.quantity * cartItem.price;
-  }, 0);
+  const totalPrice = lastOrder?.itemList.reduce((total, cartItem) => {
+    return total + cartItem.quantity * calculateItemPrice(cartItem);
+  }, 0) || 0; 
   console.log(totalPrice);
 
   return (
@@ -40,7 +39,7 @@ const Letter: React.FC = () => {
       }}
     >
       <FlexCenter>
-        <StyledText>Thank you,</StyledText>
+        <StyledTitle>Thank you,</StyledTitle>
         <StyledItem>For your order #{lastOrder?.orderId}</StyledItem>
       </FlexCenter>
       <StyledUnorderedList>
@@ -49,10 +48,10 @@ const Letter: React.FC = () => {
             <Margin>
               <FlexRow>
                 <StyledItem>{cartItem.title}</StyledItem>
-                <StyledItem>${cartItem.quantity * cartItem.price}</StyledItem>
+                <StyledItem>${cartItem.quantity * calculateItemPrice(cartItem)}</StyledItem>
               </FlexRow>
               <FlexItems>
-                <StyledProduct>{cartItem.tiers} Tier, </StyledProduct>
+                <StyledProduct>{cartItem.tiers} tier, </StyledProduct>
                 <StyledProduct>{cartItem.colour}, </StyledProduct>
                 <StyledProduct>{cartItem.flavour}, </StyledProduct>
                 <StyledProduct>{cartItem.frosting}, </StyledProduct>
@@ -65,7 +64,7 @@ const Letter: React.FC = () => {
       </StyledUnorderedList>
       <FlexCenter>
         <Margin>
-        <StyledItem>Total: ${lastOrder?.totalPrice}</StyledItem>
+        <StyledItem>Total: ${totalPrice}</StyledItem>
         </Margin>
       </FlexCenter>
     </StyledLetter>
@@ -73,7 +72,7 @@ const Letter: React.FC = () => {
 };
 
 // Styled components
-const StyledText = styled.p`
+const StyledTitle = styled.p`
   font-size: 36px;
   font-family: 'Monsieur La Doulaise', cursive;
   margin: 1rem;
@@ -135,24 +134,6 @@ const StyledUnorderedList = styled.ul`
   list-style-type: none;
   margin-inline-start: 0;
   font-size: 12px;
-`;
-
-const StyledLink = styled.a`
-  margin: auto;
-  text-decoration: none;
-  &:hover {
-    text-decoration: none;
-  }
-`;
-
-const StyledButton = styled.button`
-  width: 8rem;
-  height: 1.5rem;
-  border: none;
-  font-size: 10px;
-  cursor: pointer;
-  &:hover {
-  }
 `;
 
 export default Letter;

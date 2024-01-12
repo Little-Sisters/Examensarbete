@@ -31,7 +31,7 @@ const Envelope: React.FC<EnvelopeProps> = ({ children }) => {
       {children}
       <Frontface style={{ zIndex: ffLayer }}>
         <FlexContainer>
-          <h2>To</h2>
+          <StyledTitle>To</StyledTitle>
           <div>
             {lastOrder ? (
               <div>
@@ -46,7 +46,7 @@ const Envelope: React.FC<EnvelopeProps> = ({ children }) => {
               <p>No stored values found.</p>
             )}
           </div>
-          <button onClick={() => window.scrollTo(0, 1500)}>Open Me</button>
+          <StyledButton onClick={() => window.scrollTo(0, 1500)}>Open</StyledButton>
         </FlexContainer>
       </Frontface>
     </StyledEnvelope>
@@ -54,6 +54,16 @@ const Envelope: React.FC<EnvelopeProps> = ({ children }) => {
 };
 
 // Styled components
+const StyledTitle = styled.p`
+  font-size: 36px;
+  font-family: 'Monsieur La Doulaise', cursive;
+  margin: 1rem;
+`;
+
+const StyledButton = styled.button`
+margin-top: 1rem;
+`
+
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -62,6 +72,9 @@ const FlexContainer = styled.div`
 
 const StyledText = styled.p`
   font-size: 12px;
+  text-align: center;
+  margin: 0.3rem;
+  padding: 0;
 `;
 
 const StyledEnvelope = styled(motion.div)`
