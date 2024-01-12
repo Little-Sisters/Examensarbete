@@ -13,6 +13,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@google/model-viewer": "^3.3.0",
     "@studio-freight/lenis": "^1.0.33",
     "@studio-freight/react-lenis": "^0.0.40",
     "formik": "^2.4.5",
