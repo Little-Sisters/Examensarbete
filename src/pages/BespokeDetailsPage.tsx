@@ -34,9 +34,11 @@ function BespokeDetailsPage() {
       <PageContentWrapper>
         {isConfirmationModalVisible && (
           <ConfirmationModal>
-            <p>Thank you for your request!</p>
-            <br />
-            <span>We will get back to you as soon as possible</span>
+            <p>
+              Thank you for your request!
+              <br />
+              We will get back to you as soon as possible
+            </p>
             <CloseIconWrapper>
               <IoMdClose onClick={closeConfirmationModal} />
             </CloseIconWrapper>
@@ -56,14 +58,16 @@ function BespokeDetailsPage() {
                   <p>Price</p>
                 </Information>
                 <Selections>
+                  <label>Images</label>
+                  <FlexContainer>
+                    <ColorPickerInput readOnly placeholder="Upload image..." />
+                  </FlexContainer>
                   <label>Colour</label>
                   <FlexContainer>
                     <ColorPickerContainer>
                       <ColorPickerInput
                         readOnly
                         onClick={toggleColorPicker}
-                        tabIndex={0}
-                        type="text"
                         placeholder="Select a color..."
                       />
                       <ColorPickerPreview
