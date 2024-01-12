@@ -52,7 +52,7 @@ const Envelope: React.FC<EnvelopeProps> = ({ children }) => {
             )}
           </div>
           <StyledButton onClick={() => window.scrollTo(0, 1500)}>
-            <StyledImage src="wax.png" alt="wax seal" />
+            <StyledImage src="seal.png" alt="wax seal" />
           </StyledButton>
         </FlexContainer>
       </Frontface>
