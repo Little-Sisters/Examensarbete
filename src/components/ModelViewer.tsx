@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import { ColourOption, DecorationsOption, TierOption, TopperOption } from './select/data';
+import {
+  ColourOption,
+  DecorationsOption,
+  TierOption,
+  TopperOption,
+} from './select/data';
 import { getModelSrc } from './getModelSrc';
 
 interface MovelView3dProps {
@@ -8,15 +13,22 @@ interface MovelView3dProps {
   selectedColor: ColourOption | null;
   selectedDecorations: DecorationsOption | null;
   selectedTopper: TopperOption | null;
-  
 }
 
-function MovelView3d({ selectedTier, selectedColor, selectedDecorations, selectedTopper }: MovelView3dProps) {
-
-
+function MovelView3d({
+  selectedTier,
+  selectedColor,
+  selectedDecorations,
+  selectedTopper,
+}: MovelView3dProps) {
   useEffect(() => {
     // The effect to run when selectedTier or selectedColor changes
-    const modelSrc = getModelSrc(selectedTier, selectedColor,selectedDecorations,selectedTopper);
+    const modelSrc = getModelSrc(
+      selectedTier,
+      selectedColor,
+      selectedDecorations,
+      selectedTopper,
+    );
 
     // Update the model-viewer src
     const modelViewer = document.querySelector('.model-viewer');
@@ -24,13 +36,18 @@ function MovelView3d({ selectedTier, selectedColor, selectedDecorations, selecte
       modelViewer.setAttribute('src', modelSrc);
       modelViewer.setAttribute('preload', 'auto');
     }
-  }, [selectedTier, selectedColor,selectedDecorations,selectedTopper]);
+  }, [selectedTier, selectedColor, selectedDecorations, selectedTopper]);
 
   return (
     <Cake>
       <model-viewer
         className="model-viewer"
-        src={getModelSrc(selectedTier, selectedColor,selectedDecorations,selectedTopper)}
+        src={getModelSrc(
+          selectedTier,
+          selectedColor,
+          selectedDecorations,
+          selectedTopper,
+        )}
         shadow-intensity="1"
         shadow-softness="1"
         alt="cake"

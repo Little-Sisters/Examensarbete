@@ -3,7 +3,7 @@
 export declare global {
   namespace JSX {
     interface IntrinsicElements {
-      "model-viewer": React.DetailedHTMLProps<
+      'model-viewer': React.DetailedHTMLProps<
         React.AllHTMLAttributes<
           Partial<globalThis.HTMLElementTagNameMap['model-viewer']>
         >,
@@ -13,4 +13,12 @@ export declare global {
   }
 }
 
-type ModelViewer = AnnotationInterface & SceneGraphInterface & StagingInterface & EnvironmentInterface &  ControlsInterface & ARInterface & LoadingInterface & AnimationInterface & ModelViewerElementBase;
+type ModelViewer = AnnotationInterface &
+  SceneGraphInterface &
+  StagingInterface &
+  EnvironmentInterface &
+  ControlsInterface &
+  ARInterface &
+  LoadingInterface &
+  AnimationInterface &
+  ModelViewerElementBase;

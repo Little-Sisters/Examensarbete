@@ -1,4 +1,9 @@
-import { ColourOption, DecorationsOption, TierOption, TopperOption } from "./select/data";
+import {
+  ColourOption,
+  DecorationsOption,
+  TierOption,
+  TopperOption,
+} from './select/data';
 
 export function getModelSrc(
   selectedTier: TierOption | null,

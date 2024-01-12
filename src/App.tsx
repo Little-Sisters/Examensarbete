@@ -24,8 +24,6 @@ import ProductPage from './pages/ProductPage';
 import { ReactLenis } from '@studio-freight/react-lenis';
 import '@google/model-viewer/dist/model-viewer';
 
-
-
 export function App() {
   const location = useLocation();
   const locationArr = location.pathname?.split('/') ?? [];
