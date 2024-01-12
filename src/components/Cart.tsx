@@ -120,7 +120,7 @@ export function Cart() {
     updateTotalPrice();
   };
 
- const calculateItemPrice = (cartItem: CartItem) => {
+  const calculateItemPrice = (cartItem: CartItem) => {
     let extraPrice = 0;
 
     const flavourExtra =

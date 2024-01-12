@@ -3,7 +3,6 @@ import { useOrder } from '../contexts/OrderContext';
 import Letter from '../components/Letter';
 import Envelope from '../components/Envelope';
 
-
 function ConfirmationPage() {
   const { getLastOrder } = useOrder();
   const { lastOrder } = getLastOrder();

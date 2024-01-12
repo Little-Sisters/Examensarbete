@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import { useOrder } from '../contexts/OrderContext';
 import { calculateItemPrice } from './calculateItemPrice';
+/* eslint-disable react-refresh/only-export-components */
 
 // Generates unique number
 // Checks if the number is already in use in Local Storage
@@ -26,9 +27,10 @@ const Letter: React.FC = () => {
   const { getLastOrder } = useOrder();
   const { lastOrder } = getLastOrder();
 
-  const totalPrice = lastOrder?.itemList.reduce((total, cartItem) => {
-    return total + cartItem.quantity * calculateItemPrice(cartItem);
-  }, 0) || 0; 
+  const totalPrice =
+    lastOrder?.itemList.reduce((total, cartItem) => {
+      return total + cartItem.quantity * calculateItemPrice(cartItem);
+    }, 0) || 0;
 
   return (
     <StyledLetter
@@ -47,7 +49,9 @@ const Letter: React.FC = () => {
             <Margin>
               <FlexRow>
                 <StyledItem>{cartItem.title}</StyledItem>
-                <StyledItem>${cartItem.quantity * calculateItemPrice(cartItem)}</StyledItem>
+                <StyledItem>
+                  ${cartItem.quantity * calculateItemPrice(cartItem)}
+                </StyledItem>
               </FlexRow>
               <FlexItems>
                 <StyledProduct>{cartItem.tiers} tier, </StyledProduct>
@@ -63,7 +67,7 @@ const Letter: React.FC = () => {
       </StyledUnorderedList>
       <FlexCenter>
         <Margin>
-        <StyledItem>Total: ${totalPrice}</StyledItem>
+          <StyledItem>Total: ${totalPrice}</StyledItem>
         </Margin>
       </FlexCenter>
     </StyledLetter>
@@ -82,14 +86,12 @@ const FlexRow = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 0.5rem;
 `;
 
 const FlexItems = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0.5rem;
 `;
 
 const Margin = styled.div`

@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { motion, useTransform, useScroll, useMotionValueEvent } from 'framer-motion';
+import {
+  motion,
+  useTransform,
+  useScroll,
+  useMotionValueEvent,
+} from 'framer-motion';
 import { useOrder } from '../contexts/OrderContext';
 
 interface EnvelopeProps {
@@ -46,13 +51,19 @@ const Envelope: React.FC<EnvelopeProps> = ({ children }) => {
               <p>No stored values found.</p>
             )}
           </div>
-          <StyledButton onClick={() => window.scrollTo(0, 1500)}>Open</StyledButton>
+          <StyledButton onClick={() => window.scrollTo(0, 1500)}>
+            <StyledImage src="wax.png" alt="wax seal" />
+          </StyledButton>
         </FlexContainer>
       </Frontface>
     </StyledEnvelope>
   );
 };
 
+const StyledImage = styled.img`
+  width: 3rem;
+  height: 3rem;
+`;
 // Styled components
 const StyledTitle = styled.p`
   font-size: 40px;
@@ -61,8 +72,12 @@ const StyledTitle = styled.p`
 `;
 
 const StyledButton = styled.button`
-margin-top: 1rem;
-`
+  margin-top: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+`;
 
 const FlexContainer = styled.div`
   display: flex;
