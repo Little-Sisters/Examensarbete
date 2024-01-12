@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import { ColourOption, DecorationsOption, TierOption, TopperOption } from './select/data';
+import { getModelSrc } from './getModelSrc';
 
 interface MovelView3dProps {
   selectedTier: TierOption | null;
@@ -10,28 +11,8 @@ interface MovelView3dProps {
   
 }
 
-function getModelSrc(
-  selectedTier: TierOption | null,
-  selectedColor: ColourOption | null,
-  selectedDecorations: DecorationsOption | null,
-  selectedTopper: TopperOption | null,
-): string {
-  // Adjust this logic based on your actual file structure and naming conventions
-  if (selectedTier && selectedColor && selectedDecorations && selectedTopper) {
-    const tierNumber = selectedTier.value;
-    const decoration = selectedDecorations.value.toLowerCase();
-    const topper = selectedTopper.value.toLowerCase();
-    const colorName = selectedColor.value.toLowerCase(); // Assuming color values are lowercase in the file names
-
-    // Example: '3-tier-blue.glb'
-    return `/models/${tierNumber}-tier-${colorName}-${decoration}-${topper}.glb`;
-  } else {
-    // Default model if either tier or color is not selected
-    return '/models/3-tier-white.glb';
-  }
-}
-
 function MovelView3d({ selectedTier, selectedColor, selectedDecorations, selectedTopper }: MovelView3dProps) {
+
 
   useEffect(() => {
     // The effect to run when selectedTier or selectedColor changes

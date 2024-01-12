@@ -205,7 +205,12 @@ function DetailsPage() {
     <MarginTopContainer>
       <PageContentWrapper>
         <ProductLayout>
-          <MovelView3d selectedTier={selectedTier} selectedColor={selectedColour} selectedDecorations={selectedDecorations} selectedTopper={selectedTopper}></MovelView3d>
+          <MovelView3d
+            selectedTier={selectedTier}
+            selectedColor={selectedColour}
+            selectedDecorations={selectedDecorations}
+            selectedTopper={selectedTopper}
+          ></MovelView3d>
           <InputContainer>
             <InputFlexWrapper>
               <SelectAndInformation>
@@ -215,13 +220,6 @@ function DetailsPage() {
                   <p>${currentTotalPrice}</p>
                 </Information>
                 <Selections>
-                  <NewSelect
-                    label="Flavours"
-                    placeholder="Select your flavour..."
-                    options={flavourOptions}
-                    selectedOption={selectedFlavour}
-                    setSelectedOption={handleSelectChange}
-                  />
                   <NewSelect
                     label="Tiers"
                     placeholder="Select number of tiers..."
@@ -236,13 +234,7 @@ function DetailsPage() {
                     selectedOption={selectedColour}
                     setSelectedOption={handleColourChange}
                   />
-                  <NewSelect
-                    label="Frosting"
-                    placeholder="Select your frosting..."
-                    options={frostingOptions}
-                    selectedOption={selectedFrosting}
-                    setSelectedOption={handleFrostingChange}
-                  />
+
                   <NewSelect
                     label="Decorations"
                     placeholder="Select your decorations..."
@@ -256,6 +248,20 @@ function DetailsPage() {
                     options={topperOptions}
                     selectedOption={selectedTopper}
                     setSelectedOption={handleTopperChange}
+                  />
+                  <NewSelect
+                    label="Flavours"
+                    placeholder="Select your flavour..."
+                    options={flavourOptions}
+                    selectedOption={selectedFlavour}
+                    setSelectedOption={handleSelectChange}
+                  />
+                  <NewSelect
+                    label="Frosting"
+                    placeholder="Select your frosting..."
+                    options={frostingOptions}
+                    selectedOption={selectedFrosting}
+                    setSelectedOption={handleFrostingChange}
                   />
                 </Selections>
               </SelectAndInformation>
