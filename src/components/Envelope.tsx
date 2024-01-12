@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { motion, useTransform, useScroll } from 'framer-motion';
+import { motion, useTransform, useScroll, useMotionValueEvent } from 'framer-motion';
 import { useOrder } from '../contexts/OrderContext';
 
 interface EnvelopeProps {
@@ -11,13 +11,13 @@ const Envelope: React.FC<EnvelopeProps> = ({ children }) => {
   const [ffLayer, setFfLayer] = useState<number>(0);
   const { scrollYProgress } = useScroll();
   const scaleAnim = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.2, 0.8]);
-  const yPosAnim = useTransform(scrollYProgress, [0, 0.5, 1], [0, 100, 200]);
+  const yPosAnim = useTransform(scrollYProgress, [0, 0.5, 1], [0, 30, 60]);
   const zRotAnim = useTransform(scrollYProgress, [0, 0.5, 1], [0, 3, 0]);
   const { getLastOrder } = useOrder();
   const { lastOrder } = getLastOrder();
 
-  scrollYProgress.onChange((x) => {
-    setFfLayer(x > 0.4 ? -1 : 0);
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    setFfLayer(latest > 0.4 ? -1 : 0);
   });
 
   return (
