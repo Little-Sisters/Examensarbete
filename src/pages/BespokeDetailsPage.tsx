@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
 import { IoMdClose } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
@@ -34,6 +35,7 @@ function BespokeDetailsPage() {
     setEmailAddress('');
     setPersonalizedRequest('');
     setIsConfirmationModalVisible(true);
+    setFile(undefined);
   };
 
   const closeConfirmationModal = () => {
@@ -131,16 +133,19 @@ function BespokeDetailsPage() {
         <FlexContainer>
           <ShortCuts>
             <Shortcut>
+              <Link to={`/flavors`}></Link>
               <img src="/assets/flavors.jpg" alt="" />
               <p>Flavors</p>
               <button>Test</button>
             </Shortcut>
             <Shortcut>
+              <Link to={`/gallery`}></Link>
               <img src="/assets/aboutus.jpg" alt="" />
               <p>Gallery</p>
               <button>Test</button>
             </Shortcut>
             <Shortcut>
+              <Link to={`/about`}></Link>
               <img src="/assets/aboutus2.jpg" alt="" />
               <p>About</p>
               <button>Test</button>
