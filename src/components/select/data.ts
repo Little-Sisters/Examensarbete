@@ -39,8 +39,9 @@ export interface ColourOption {
 }
 
 export const colourOptions: ColourOption[] = [
-  { value: 'black', label: 'Black', price: 10 },
-  { value: 'white', label: 'White', price: 20 },
+  { value: 'black', label: 'Midnight Black', price: 10 },
+  { value: 'white', label: 'Snow', price: 20 },
+  { value: 'caramel', label: 'Light Caramel', price: 40 },
   { value: 'blush', label: 'Blush', price: 30 },
   { value: 'pistage', label: 'Pistage', price: 40 },
 ];
