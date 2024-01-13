@@ -100,7 +100,7 @@ export function App() {
                           }
                         />
                         <Route
-                          path="/product/bespoke"
+                          path="/product/2"
                           element={
                             <Page>
                               <BespokeDetailsPage />

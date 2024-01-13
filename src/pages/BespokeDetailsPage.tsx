@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
 import { IoMdClose } from 'react-icons/io';
 import styled from 'styled-components';
@@ -14,8 +14,19 @@ function BespokeDetailsPage() {
   const [isConfirmationModalVisible, setIsConfirmationModalVisible] =
     useState<boolean>(false);
 
+  const [file, setFile] = useState<string | undefined>();
+
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    if (e.target.files && e.target.files.length > 0) {
+      setFile(URL.createObjectURL(e.target.files[0]));
+    }
+  }
   const toggleColorPicker = () => {
     setIsColorPickerVisible((prevState) => !prevState);
+  };
+
+  const openImage = () => {
+    window.open(file);
   };
 
   const sendRequest = () => {
@@ -58,9 +69,18 @@ function BespokeDetailsPage() {
                   <p>Price</p>
                 </Information>
                 <Selections>
-                  <label>Images</label>
+                  <label>Image</label>
                   <FlexContainer>
-                    <ColorPickerInput readOnly placeholder="Upload image..." />
+                    <ImageUploaderContainer>
+                      <input type="file" onChange={handleChange} />
+                      {file && (
+                        <UploadedImage
+                          src={file}
+                          alt="Selected File"
+                          onClick={openImage}
+                        />
+                      )}
+                    </ImageUploaderContainer>
                   </FlexContainer>
                   <label>Colour</label>
                   <FlexContainer>
@@ -165,6 +185,26 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+`;
+
+const ImageUploaderContainer = styled.div`
+  width: 100%;
+  position: relative;
+
+  input {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
+const UploadedImage = styled.img`
+  height: 30px;
+  object-fit: contain;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.4rem;
+  cursor: pointer;
 `;
 
 const ColorPickerContainer = styled.div`
