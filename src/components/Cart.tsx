@@ -1,27 +1,27 @@
-import { useCart } from '../contexts/CartContext';
-import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 import { BsTrash3 } from 'react-icons/bs';
-import { CiCirclePlus } from 'react-icons/ci';
-import { CiCircleMinus } from 'react-icons/ci';
-import Logo from './Logo';
-import { useState, useEffect } from 'react';
-import NewSelect from './select/newSelect';
-import {
-  flavourOptions,
-  FlavourOption,
-  tierOptions,
-  TierOption,
-  ColourOption,
-  colourOptions,
-  frostingOptions,
-  FrostingOption,
-  decorationsOptions,
-  DecorationsOption,
-  topperOptions,
-  TopperOption,
-} from './select/data';
+import { CiCircleMinus, CiCirclePlus, CiEdit } from 'react-icons/ci';
+import styled from 'styled-components';
 import { Product } from '../../data/productdata';
-import { CiEdit } from 'react-icons/ci';
+import { useCart } from '../contexts/CartContext';
+import CartModelViewer from './CartModelViewer';
+import Logo from './Logo';
+import {
+  ColourOption,
+  DecorationsOption,
+  FlavourOption,
+  FrostingOption,
+  TierOption,
+  TopperOption,
+  colourOptions,
+  decorationsOptions,
+  flavourOptions,
+  frostingOptions,
+  tierOptions,
+  topperOptions,
+} from './select/data';
+import NewSelect from './select/newSelect';
+import CartModelEditViewer from './CartModelEditViewer';
 
 export interface CartItem extends Product {
   quantity: number;
@@ -185,10 +185,23 @@ export function Cart() {
                 <li key={cartItem.id}>
                   <StyledCartItem>
                     <FlexCenter>
-                      <StyledImage
-                        src={cartItem.image}
-                        alt={cartItem.imageAlt}
-                      />
+                      <StyledImage>
+                        {editingItemId === cartItem.id ? (
+                          <CartModelEditViewer
+                            selectedTier={editTiers}
+                            selectedColor={editColour}
+                            selectedDecorations={editDecorations}
+                            selectedTopper={editTopper}
+                          />
+                        ) : (
+                          <CartModelViewer
+                            selectedTier={cartItem.tiers}
+                            selectedColor={cartItem.colour}
+                            selectedDecorations={cartItem.decorations}
+                            selectedTopper={cartItem.topper}
+                          />
+                        )}
+                      </StyledImage>
                       <FlexRow>
                         <h3>{cartItem.title}</h3>
                         {editingItemId === cartItem.id ? (
@@ -199,7 +212,6 @@ export function Cart() {
                           </StyledEdit>
                         )}
                       </FlexRow>
-
                       <StyledButtons>
                         <StyledButton
                           onClick={() => removeFromCart(cartItem.id)}
@@ -320,17 +332,20 @@ export function Cart() {
                       </StyledCenter>
                     )}
                   </StyledCartItem>
+                  <StyledDivider></StyledDivider>
                 </li>
               ))}
             </StyledUnorderedList>
           ) : (
-            <FlexCenter>
-              <h3>Your cart is empty!</h3>
-            </FlexCenter>
+            <EmptyCart>
+              <FlexCenter>
+                <h3>Your cart is empty!</h3>
+              </FlexCenter>
+              <StyledDivider></StyledDivider>
+            </EmptyCart>
           )}
         </div>
         <StyledCardFooter>
-          <StyledDivider></StyledDivider>
           <StyledFlexFooter>
             <StyledTrash onClick={() => clearCart(cartList)}>
               <BsTrash3 />
@@ -379,11 +394,12 @@ const StyledUnorderedList = styled.ul`
   padding: 1rem;
 `;
 
-const StyledCartItem = styled.div``;
+const StyledCartItem = styled.div`
+padding-bottom:1rem;`;
 
-const StyledImage = styled.img`
-  height: 10rem;
-  width: 7rem;
+const StyledImage = styled.div`
+  height: 12rem;
+  width: 100%;
 `;
 
 const StyledButtons = styled.div`
@@ -481,6 +497,7 @@ const FlexGap = styled.div`
 
 const StyledCardFooter = styled.div`
   padding: 1rem;
+  padding-top: 0rem;
   margin-right: 0.3rem;
   margin-left: 0.3rem;
 `;
@@ -489,4 +506,8 @@ const StyledFlexFooter = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`;
+
+const EmptyCart = styled.div`
+  padding: 1rem;
 `;

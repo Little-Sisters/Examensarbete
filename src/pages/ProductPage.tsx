@@ -16,7 +16,7 @@ function ProductPage() {
 
   return (
     <PageContentWrapper>
-      <MarginTopContainer>
+      <MarginTop>
         <FlexContainerCentered>
           <h1>Our Cakes</h1>
           <p>
@@ -40,7 +40,7 @@ function ProductPage() {
             />
           </StyledProduct>
         </FlexContainer>
-      </MarginTopContainer>
+      </MarginTop>
     </PageContentWrapper>
   );
 }
@@ -56,6 +56,10 @@ const FlexContainerCentered = styled.div`
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+
+  h1 {
+    margin: 0;
+  }
 `;
 
 const FlexContainer = styled.div`
@@ -67,6 +71,10 @@ const FlexContainer = styled.div`
     flex-direction: column;
     align-items: center;
   }
+`;
+const MarginTop = styled.div`
+  margin-top: 6rem;
+  margin-bottom: 2rem;
 `;
 
 const StyledProduct = styled.div`
