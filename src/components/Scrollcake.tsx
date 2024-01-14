@@ -137,7 +137,7 @@ const ScrollSectionComponent = () => {
     </ScrollSection>
   );
 };
-const Title = styled.h1`
+const Title = styled.h2`
   position: absolute;
   border-bottom: 1px solid ${({ theme }) => theme.text};
   top: 0;
@@ -218,7 +218,7 @@ const FlexBox = styled(motion.div)`
 
 const ScrollSection = styled.div`
   position: relative;
-  height: 400vh;
+  height: 300vh;
 `;
 
 const MyBox = styled.section`
