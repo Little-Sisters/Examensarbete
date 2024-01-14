@@ -395,7 +395,8 @@ const StyledUnorderedList = styled.ul`
 `;
 
 const StyledCartItem = styled.div`
-padding-bottom:1rem;`;
+  padding-bottom: 1rem;
+`;
 
 const StyledImage = styled.div`
   height: 12rem;

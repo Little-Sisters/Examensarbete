@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
 import ProductCard from '../components/ProductCard';
 import { useProduct } from '../contexts/ProductContext';

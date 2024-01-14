@@ -34,7 +34,7 @@ const FlexContainer = styled.div`
     padding: 0;
   }
   @media (max-width: 1200px) {
-    gap:5rem;
+    gap: 5rem;
   }
 
   @media (max-width: 900px) {
@@ -63,7 +63,7 @@ const FlexBox = styled.div`
 `;
 
 const MobileTitle = styled.h1`
-text-align: center;
+  text-align: center;
   @media (min-width: 900px) {
     display: none;
   }

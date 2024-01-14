@@ -27,13 +27,12 @@ const Button = styled.button<ButtonProps>`
 `;
 
 const Color = styled(Button)<ButtonProps>`
-  background-color: ${({ theme }) =>
-    theme.button};
+  background-color: ${({ theme }) => theme.button};
   border: none;
-  color: ${({ theme }) => theme.text}; 
+  color: ${({ theme }) => theme.text};
   &:hover {
     background-color: ${({ theme }) => theme.buttonHover};
-    color: ${({ theme }) => theme.text}; 
+    color: ${({ theme }) => theme.text};
   }
 `;
 

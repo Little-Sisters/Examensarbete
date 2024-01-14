@@ -37,7 +37,7 @@ export function getCartModelSrc(
   selectedTopper: string | null,
 ): string {
   const tierNumber = selectedTier || 1;
-  const colorName = (selectedColor|| 'white').toLowerCase();
+  const colorName = (selectedColor || 'white').toLowerCase();
   const decoration = (selectedDecorations || 'none').toLowerCase();
   const topper = (selectedTopper || 'none').toLowerCase();
 
@@ -54,4 +54,3 @@ export function getCartModelSrc(
   // Return the final model source
   return modelSrc;
 }
-

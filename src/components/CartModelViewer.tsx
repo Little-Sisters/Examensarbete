@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
-import { getCartModelSrc} from './getModelSrc';
-
+import { getCartModelSrc } from './getModelSrc';
 
 interface CartMovelView3dProps {
   selectedTier: number | null;
-  selectedColor: string  | null;
-  selectedDecorations: string  | null;
-  selectedTopper: string  | null;
+  selectedColor: string | null;
+  selectedDecorations: string | null;
+  selectedTopper: string | null;
 }
 
 function CartModelViewer({
