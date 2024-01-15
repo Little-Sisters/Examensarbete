@@ -1,12 +1,13 @@
 import {
   motion,
+  useMotionValueEvent,
   useScroll,
   useTransform,
 } from 'framer-motion';
 import React from 'react';
 import styled from 'styled-components';
 
-const ScrollSectionComponent = () => {
+const ScrollSectionComponentMobile = () => {
   const targetRef = React.useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -71,6 +72,9 @@ const ScrollSectionComponent = () => {
     [0, 1],
   );
 
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    console.log(latest);
+  });
 
   return (
     <ScrollSection ref={targetRef}>
@@ -80,7 +84,8 @@ const ScrollSectionComponent = () => {
             <h2>Create your dream cake</h2>
             <p>
               <p>
-                In our specialiced customized cake you can build your dream cake and see a 3d vizualisation of your cake in real time!
+                In our specialiced customized cake you can build your dream cake
+                and see a 3d vizualisation of your cake in real time!
               </p>
             </p>
           </Title>
@@ -138,11 +143,21 @@ const Title = styled.div`
   max-width: 66rem;
   border-bottom: 1px solid ${({ theme }) => theme.text};
   top: 0;
+  h2 {
+    margin: 0.5rem 0rem;
+  }
+  p {
+    margin: 0.5rem 0rem;
+    font-size: .9rem;
+  }
 `;
 const Box = styled.div`
-  width: 29rem;
+  width: 100%;
   position: relative;
-  height: 100%;
+  background: red;
+  opacity: .5 ;
+  height: 50%;
+;
 `;
 
 const Piece = styled(motion.div)`
@@ -154,7 +169,7 @@ const Piece = styled(motion.div)`
   width: 21rem;
   height: 6rem;
   @media (max-width: 1000px) {
-    left: 1rem;
+
   }
 `;
 
@@ -168,7 +183,7 @@ const Decorations = styled(motion.div)`
   width: 21rem;
   height: 25rem;
   @media (max-width: 1000px) {
-    left: 1rem;
+
   }
 `;
 const Topper = styled(motion.div)`
@@ -180,7 +195,6 @@ const Topper = styled(motion.div)`
   width: 2rem;
   height: 7rem;
   @media (max-width: 1000px) {
-    left: 10rem;
   }
 `;
 
@@ -193,7 +207,7 @@ const TextBox = styled(motion.div)`
   right: 5%;
   height: 5rem;
   @media (max-width: 1000px) {
-    right: 1rem;
+
   }
 `;
 
@@ -203,27 +217,37 @@ const FlexBox = styled(motion.div)`
   width: 100%;
   justify-content: center;
   position: relative;
-  gap: 15rem;
+  gap: 1rem;
+flex-direction: column;
   @media (max-width: 1000px) {
-    gap: 3rem;
+
   }
   @media (max-width: 800px) {
-    gap: 1rem;
+
   }
 `;
 
 const ScrollSection = styled.div`
   position: relative;
-  height: 350vh;
+  height: 300vh;
 `;
 
 const MyBox = styled.section`
-  height: 90vh;
+  height: 36rem;
+  background: lightgreen;
   position: sticky;
-  top: 4rem;
+  top: 5rem;
   display: flex;
   align-items: center;
   overflow: hidden;
+  @media screen and (min-height: 700px) {
+    /* Adjust the top property for viewport heights greater than or equal to 600px */
+    top: 10rem;
+  }
+  @media screen and (min-height: 900px) {
+    /* Adjust the top property for viewport heights greater than or equal to 600px */
+    top: 12rem;
+  }
 `;
 
-export default ScrollSectionComponent;
+export default ScrollSectionComponentMobile;
