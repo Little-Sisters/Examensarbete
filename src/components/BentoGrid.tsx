@@ -28,15 +28,14 @@ const renderCells = (cellData: CellData[]) => {
         key={index}
         className={`${item.span} image-cell`}
         imageUrl={item.imageUrl}
-        data-title={item.title}
       >
         <ChoicesOverlay className="choices-overlay">
-          <p>{item.tier}</p>
-          <p>{item.color}</p>
-          <p>{item.decorations}</p>
-          <p>{item.topper}</p>
-          <p>{item.flavor}</p>
-          <p>{item.frosting}</p>
+          <StyledItem>{item.tier}</StyledItem>
+          <StyledItem>{item.color}</StyledItem>
+          <StyledItem>{item.decorations}</StyledItem>
+          <StyledItem>{item.topper}</StyledItem>
+          <StyledItem>{item.flavor}</StyledItem>
+          <StyledItem>{item.frosting}</StyledItem>
         </ChoicesOverlay>
       </Cell>
     ));
@@ -49,6 +48,11 @@ const renderCells = (cellData: CellData[]) => {
       </BentoGrid>
     );
   };
+
+  const StyledItem = styled.p`
+  margin: 0.3rem;
+  padding: 0;
+  `
 
 // Styled component for the Bento grid container
 const ChoicesOverlay = styled.div`
@@ -90,18 +94,6 @@ const Cell = styled.div<{ imageUrl: string }>`
   background-size: cover;
   background-position: center;
   position: relative;
-
-  &::after {
-    content: attr(data-title);
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    font-size: 1em;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 5px;
-    border-radius: 3px;
-  }
 
   &:hover .choices-overlay {
     opacity: 1; // Show the overlay on hover
