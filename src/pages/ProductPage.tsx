@@ -3,6 +3,7 @@ import styled, { ThemeContext } from 'styled-components';
 import PageContentWrapper from '../components/PageContentWrapper';
 import ProductCard from '../components/ProductCard';
 import { useProduct } from '../contexts/ProductContext';
+import PageDescription from '../components/PageDescription';
 
 function ProductPage() {
   const { productList } = useProduct();
@@ -16,15 +17,13 @@ function ProductPage() {
   return (
     <PageContentWrapper>
       <MarginTop>
-        <FlexContainerCentered>
-          <h1>Our Cakes</h1>
-          <p>
-            Hej Description Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Amet et neque obcaecati placeat cum ab id quam provident
-            maiores quaerat, dicta incidunt recusandae minus quod quae in libero
-            quia enim!
-          </p>
-        </FlexContainerCentered>
+        <PageDescription
+          title="Our Cakes"
+          description="Hej Description Lorem ipsum dolor sit amet consectetur adipisicing
+elit. Amet et neque obcaecati placeat cum ab id quam provident
+maiores quaerat, dicta incidunt recusandae minus quod quae in libero
+quia enim!"
+        />
         <FlexContainer>
           <StyledProduct>
             <ProductCard
@@ -43,23 +42,6 @@ function ProductPage() {
     </PageContentWrapper>
   );
 }
-
-const FlexContainerCentered = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  border-bottom: 1px solid ${({ theme }) => theme.text};
-  margin-bottom: 2rem;
-  width: 100%;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-
-  h1 {
-    margin: 0;
-  }
-`;
 
 const FlexContainer = styled.div`
   display: flex;
