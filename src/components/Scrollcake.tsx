@@ -219,6 +219,7 @@ const ScrollSection = styled.div`
 
 const MyBox = styled.section`
   height: 90vh;
+  min-height: 55rem;
   position: sticky;
   top: 4rem;
   display: flex;

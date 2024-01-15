@@ -14,34 +14,34 @@ const ScrollSectionComponentMobile = () => {
   });
 
   // Define the y-transformations and opacity for each piece based on scroll progress
-  const translateYPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 460]);
+  const translateYPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 200]);
   const opacityPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 1]);
 
   const translateYPiece2 = useTransform(
     scrollYProgress,
     [0.08, 0.16],
-    [0, 360],
+    [0, 155],
   );
   const opacityPiece2 = useTransform(scrollYProgress, [0.08, 0.16], [0, 1]);
 
   const translateYPiece3 = useTransform(
     scrollYProgress,
     [0.16, 0.24],
-    [0, 260],
+    [0, 110],
   );
   const opacityPiece3 = useTransform(scrollYProgress, [0.16, 0.24], [0, 1]);
 
   const translateYPiece4 = useTransform(
     scrollYProgress,
     [0.24, 0.32],
-    [0, 160],
+    [0, 65],
   );
   const opacityPiece4 = useTransform(scrollYProgress, [0.24, 0.32], [0, 1]);
 
   const translateYDecorations = useTransform(
     scrollYProgress,
     [0.35, 0.64],
-    [0, 160],
+    [0, 64],
   );
   const OpacityDecorations = useTransform(
     scrollYProgress,
@@ -49,23 +49,23 @@ const ScrollSectionComponentMobile = () => {
     [0, 0.75],
   );
 
-  const translateTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 48]);
+  const translateTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 15]);
   const OpacityTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 1]);
 
-  const translateYText1 = useTransform(scrollYProgress, [0, 0.32], [0, 160]);
+  const translateYText1 = useTransform(scrollYProgress, [0, 0.32], [0, 30]);
   const translateOpacityText1 = useTransform(
     scrollYProgress,
     [0, 0.32],
     [0, 1],
   );
 
-  const translateYText2 = useTransform(scrollYProgress, [0.35, 0.64], [0, 260]);
+  const translateYText2 = useTransform(scrollYProgress, [0.35, 0.64], [0, 90]);
   const translateOpacityText2 = useTransform(
     scrollYProgress,
     [0.35, 0.64],
     [0, 1],
   );
-  const translateYText3 = useTransform(scrollYProgress, [0.69, 0.84], [0, 360]);
+  const translateYText3 = useTransform(scrollYProgress, [0.69, 0.84], [0, 150]);
   const translateOpacityText3 = useTransform(
     scrollYProgress,
     [0.69, 0.84],
@@ -111,7 +111,7 @@ const ScrollSectionComponentMobile = () => {
               toppper
             </Topper>
           </Box>
-          <Box>
+          <Box2>
             <TextBox
               style={{ y: translateYText1, opacity: translateOpacityText1 }}
             >
@@ -130,7 +130,7 @@ const ScrollSectionComponentMobile = () => {
             >
               Pick the perfect topper
             </TextBox>
-          </Box>
+          </Box2>
         </FlexBox>
       </MyBox>
     </ScrollSection>
@@ -145,10 +145,16 @@ const Title = styled.div`
   top: 0;
   h2 {
     margin: 0.5rem 0rem;
+    @media (max-width: 471px) {
+      font-size:1rem;
+    }
   }
   p {
     margin: 0.5rem 0rem;
-    font-size: .9rem;
+    font-size: 0.9rem;
+    @media (max-width: 471px) {
+      font-size: 0.8rem;
+    }
   }
 `;
 const Box = styled.div`
@@ -156,20 +162,27 @@ const Box = styled.div`
   position: relative;
   background: red;
   opacity: .5 ;
+  margin-top: 5rem;
   height: 50%;
-;
+`;
+const Box2 = styled.div`
+  width: 100%;
+  position: relative;
+  background: red;
+  opacity: 0.5;
+  height: 50%;
 `;
 
 const Piece = styled(motion.div)`
   background: pink;
   transition: all 0.3s ease-out;
   position: absolute;
-  top: 10rem;
-  left: 4rem;
-  width: 21rem;
-  height: 6rem;
-  @media (max-width: 1000px) {
-
+  top: 0rem;
+  left: 33%;
+  width: 10rem;
+  height: 2.5rem;
+  @media (max-width: 420px) {
+    left:28%;
   }
 `;
 
@@ -178,23 +191,24 @@ const Decorations = styled(motion.div)`
   transition: all 0.3s ease-out;
   opacity: 0.5;
   position: absolute;
-  top: 10rem;
-  left: 4rem;
-  width: 21rem;
-  height: 25rem;
-  @media (max-width: 1000px) {
-
+  top: 0rem;
+  left: 33%;
+  width: 10rem;
+  height: 11rem;
+  @media (max-width: 420px) {
+    left:28%;
   }
 `;
 const Topper = styled(motion.div)`
   background: #ff00bf;
   transition: all 0.3s ease-out;
   position: absolute;
-  top: 10rem;
-  left: 13rem;
-  width: 2rem;
-  height: 7rem;
-  @media (max-width: 1000px) {
+  top: 0rem;
+  left: 46%;
+  width: 1rem;
+  height: 3rem;
+  @media (max-width: 460px) {
+    left: 49%;
   }
 `;
 
@@ -202,12 +216,13 @@ const TextBox = styled(motion.div)`
   background: lightcoral;
   transition: all 0.3s ease-out;
   position: absolute;
-  top: 10rem;
+  top: 0rem;
   width: 90%;
   right: 5%;
-  height: 5rem;
-  @media (max-width: 1000px) {
-
+  height: 2.5rem;
+  @media (max-width: 420px) {
+    width: 100%;
+    right: 0%;
   }
 `;
 
@@ -229,7 +244,7 @@ flex-direction: column;
 
 const ScrollSection = styled.div`
   position: relative;
-  height: 300vh;
+  height: 250vh;
 `;
 
 const MyBox = styled.section`
@@ -240,9 +255,9 @@ const MyBox = styled.section`
   display: flex;
   align-items: center;
   overflow: hidden;
-  @media screen and (min-height: 700px) {
+  @media screen and (min-height: 730px) {
     /* Adjust the top property for viewport heights greater than or equal to 600px */
-    top: 10rem;
+    top: 9rem;
   }
   @media screen and (min-height: 900px) {
     /* Adjust the top property for viewport heights greater than or equal to 600px */
