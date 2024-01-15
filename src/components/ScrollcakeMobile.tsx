@@ -5,6 +5,7 @@ import {
   useTransform,
 } from 'framer-motion';
 import React from 'react';
+import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import styled from 'styled-components';
 
 const ScrollSectionComponentMobile = () => {
@@ -24,11 +25,7 @@ const ScrollSectionComponentMobile = () => {
   );
   const opacityPiece2 = useTransform(scrollYProgress, [0.08, 0.16], [0, 1]);
 
-  const translateYPiece3 = useTransform(
-    scrollYProgress,
-    [0.16, 0.24],
-    [0, 63],
-  );
+  const translateYPiece3 = useTransform(scrollYProgress, [0.16, 0.24], [0, 63]);
   const opacityPiece3 = useTransform(scrollYProgress, [0.16, 0.24], [0, 1]);
 
   const translateYDecorations = useTransform(
@@ -39,7 +36,7 @@ const ScrollSectionComponentMobile = () => {
   const OpacityDecorations = useTransform(
     scrollYProgress,
     [0.35, 0.64],
-    [0, 0.75],
+    [0, 1],
   );
 
   const translateTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 15]);
@@ -52,13 +49,17 @@ const ScrollSectionComponentMobile = () => {
     [0, 1],
   );
 
-  const translateYText2 = useTransform(scrollYProgress, [0.35, 0.64], [0, 90]);
+  const translateYText2 = useTransform(scrollYProgress, [0.35, 0.64], [30, 90]);
   const translateOpacityText2 = useTransform(
     scrollYProgress,
     [0.35, 0.64],
     [0, 1],
   );
-  const translateYText3 = useTransform(scrollYProgress, [0.69, 0.84], [0, 150]);
+  const translateYText3 = useTransform(
+    scrollYProgress,
+    [0.69, 0.84],
+    [90, 150],
+  );
   const translateOpacityText3 = useTransform(
     scrollYProgress,
     [0.69, 0.84],
@@ -83,29 +84,33 @@ const ScrollSectionComponentMobile = () => {
             </p>
           </Title>
           <Box>
-            <Piece style={{ y: translateYPiece1, opacity: opacityPiece1 }}>
-              1
-            </Piece>
-            <Piece style={{ y: translateYPiece2, opacity: opacityPiece2 }}>
-              2
-            </Piece>
-            <Piece style={{ y: translateYPiece3, opacity: opacityPiece3 }}>
-              3
-            </Piece>
+            <Piece
+              src="/base1-pink.png"
+              style={{ y: translateYPiece1, opacity: opacityPiece1 }}
+            ></Piece>
+            <Middle
+              src="/base2-pink.png"
+              style={{ y: translateYPiece2, opacity: opacityPiece2 }}
+            ></Middle>
+            <Top
+              src="/base3-pink.png"
+              style={{ y: translateYPiece3, opacity: opacityPiece3 }}
+            ></Top>
             <Decorations
+              src="/decorations.png"
               style={{ y: translateYDecorations, opacity: OpacityDecorations }}
-            >
-              decorations
-            </Decorations>
-            <Topper style={{ y: translateTopper, opacity: OpacityTopper }}>
-              toppper
-            </Topper>
+            ></Decorations>
+            <Topper
+              src="/topper.png"
+              style={{ y: translateTopper, opacity: OpacityTopper }}
+            ></Topper>
           </Box>
           <Box2>
             <TextBox
               style={{ y: translateYText1, opacity: translateOpacityText1 }}
             >
-              Add your wished tiers
+              <IoIosCheckmarkCircleOutline />
+              <p> Add your wished tiers</p>
             </TextBox>
             <TextBox
               style={{ y: translateYText2, opacity: translateOpacityText2 }}
@@ -113,12 +118,14 @@ const ScrollSectionComponentMobile = () => {
             <TextBox
               style={{ y: translateYText2, opacity: translateOpacityText2 }}
             >
-              Choose your decorations
+              <IoIosCheckmarkCircleOutline />
+              <p> Choose your decorations</p>
             </TextBox>
             <TextBox
               style={{ y: translateYText3, opacity: translateOpacityText3 }}
             >
-              Pick the perfect topper
+              <IoIosCheckmarkCircleOutline />
+              <p> Pick the perfect topper </p>
             </TextBox>
           </Box2>
         </FlexBox>
@@ -136,7 +143,7 @@ const Title = styled.div`
   h2 {
     margin: 0.5rem 0rem;
     @media (max-width: 471px) {
-      font-size:1rem;
+      font-size: 1rem;
     }
   }
   p {
@@ -150,52 +157,51 @@ const Title = styled.div`
 const Box = styled.div`
   width: 100%;
   position: relative;
-  background: red;
-  opacity: .5 ;
-  margin-top: 5rem;
+
+  margin-top: 6rem;
   height: 50%;
 `;
 const Box2 = styled.div`
   width: 100%;
   position: relative;
-  background: red;
-  opacity: 0.5;
   height: 50%;
 `;
 
-const Piece = styled(motion.div)`
-  background: pink;
+const Piece = styled(motion.img)`
   transition: all 0.3s ease-out;
   position: absolute;
   top: 0rem;
-  left: calc(50% - 5.5rem);
-  width: 11rem;
-  height: 3.5rem;
-  @media (max-width: 420px) {
-    left: calc(50% - 5.5rem);
-  }
+  left: calc(50% - 4.7rem);
+  width: 9.5rem;
+  height: 6.7rem;
 `;
 
-const Decorations = styled(motion.div)`
-  background: black;
+const Middle = styled(Piece)`
+  left: calc(50% - 3.5rem);
+  width: 7rem;
+  height: 4.7rem;
+`;
+
+const Top = styled(Piece)`
+  top: 0rem;
+  left: calc(50% - 2.25rem);
+  width: 4.5rem;
+  height: 4rem;
+`;
+
+const Decorations = styled(motion.img)`
   transition: all 0.3s ease-out;
-  opacity: 0.5;
   position: absolute;
   top: 0rem;
-  left: calc(50% - 5.5rem);
+  left: calc(50% - 6rem);
   width: 11rem;
-  height: 11rem;
-  @media (max-width: 420px) {
-    left: calc(50% - 5.5rem);
-  }
+  height: 14.2rem;
 `;
-const Topper = styled(motion.div)`
-  background: #ff00bf;
+const Topper = styled(motion.img)`
   transition: all 0.3s ease-out;
   position: absolute;
   top: 0rem;
   left: calc(50% - 1rem);
-  width: 1rem;
   height: 3rem;
   @media (max-width: 460px) {
     left: calc(50% - 1rem);
@@ -203,9 +209,12 @@ const Topper = styled(motion.div)`
 `;
 
 const TextBox = styled(motion.div)`
-  background: lightcoral;
   transition: all 0.3s ease-out;
   position: absolute;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
   top: 0rem;
   width: 90%;
   right: 5%;
@@ -213,6 +222,12 @@ const TextBox = styled(motion.div)`
   @media (max-width: 420px) {
     width: 100%;
     right: 0%;
+  }
+  p {
+    font-size: 1rem;
+  }
+  svg {
+    font-size: 1rem;
   }
 `;
 
@@ -222,14 +237,8 @@ const FlexBox = styled(motion.div)`
   width: 100%;
   justify-content: center;
   position: relative;
-  gap: 1rem;
-flex-direction: column;
-  @media (max-width: 1000px) {
-
-  }
-  @media (max-width: 800px) {
-
-  }
+  gap: 4rem;
+  flex-direction: column;
 `;
 
 const ScrollSection = styled.div`
@@ -239,7 +248,6 @@ const ScrollSection = styled.div`
 
 const MyBox = styled.section`
   height: 36rem;
-  background: lightgreen;
   position: sticky;
   top: 5rem;
   display: flex;
