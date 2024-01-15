@@ -43,7 +43,6 @@ export function CartProvider({ children }: Props) {
   const [totalItems, setTotalItems] = useState(calculateTotalItems(cartList));
   const [isCartEmpty, setIsCartEmpty] = useState(cartList.length === 0);
 
-
   useEffect(() => {
     setTotalItems(calculateTotalItems(cartList));
     setIsCartEmpty(cartList.length === 0);
