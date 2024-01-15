@@ -11,6 +11,7 @@ function GalleryPage() {
           title="Gallery Page"
           description="This is the gallery page."
         />
+        <BentoGrid />
       </PageContentWrapper>
     </MarginTopContainer>
   );
