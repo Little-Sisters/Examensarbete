@@ -11,6 +11,7 @@ type CartContextType = {
   clearCart: (cart: CartItem[]) => void;
   totalItems: number;
   updateCartItem: (itemId: string, updatedItem: CartItem) => void;
+  isCartEmpty: boolean;
 };
 
 const CartContext = createContext<CartContextType>({
@@ -20,6 +21,7 @@ const CartContext = createContext<CartContextType>({
   clearCart: () => {},
   totalItems: 0,
   updateCartItem: () => {},
+  isCartEmpty: true,
 });
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -39,9 +41,11 @@ export function CartProvider({ children }: Props) {
   const [cartList, setCartList] = useLocalStorageState<CartItem[]>([], 'cart');
 
   const [totalItems, setTotalItems] = useState(calculateTotalItems(cartList));
+  const [isCartEmpty, setIsCartEmpty] = useState(cartList.length === 0);
 
   useEffect(() => {
     setTotalItems(calculateTotalItems(cartList));
+    setIsCartEmpty(cartList.length === 0);
   }, [cartList]);
 
   const addToCart = (item: Product, quantity: number) => {
@@ -118,6 +122,7 @@ export function CartProvider({ children }: Props) {
         totalItems,
         clearCart,
         updateCartItem,
+        isCartEmpty,
       }}
     >
       {children}
