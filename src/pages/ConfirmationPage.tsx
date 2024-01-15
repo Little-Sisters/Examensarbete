@@ -16,7 +16,7 @@ function ConfirmationPage() {
   return (
     <MarginTopContainer>
       <PageContentWrapper>
-      {isMobile ? (
+        {isMobile ? (
           <MobileConfirmation />
         ) : (
           <StyledContainer>

@@ -14,26 +14,26 @@ function MobileConfirmation() {
   return (
     <StyledCard>
       <FlexCenter>
-      <StyledTitle>To</StyledTitle>
-          <div>
-            {lastOrder ? (
-              <div>
-                <StyledText>{lastOrder?.contactInformation.name}</StyledText>
-                <StyledText>{lastOrder?.contactInformation.street}</StyledText>
-                <StyledText>{lastOrder?.contactInformation.zipCode}</StyledText>
-                <StyledText>{lastOrder?.contactInformation.city}</StyledText>
-                <StyledText>{lastOrder?.contactInformation.email}</StyledText>
-                <StyledText>{lastOrder?.contactInformation.phone}</StyledText>
-              </div>
-            ) : (
-              <p>No stored values found.</p>
-            )}
-          </div>
+        <StyledTitle>To</StyledTitle>
+        <div>
+          {lastOrder ? (
+            <div>
+              <StyledText>{lastOrder?.contactInformation.name}</StyledText>
+              <StyledText>{lastOrder?.contactInformation.street}</StyledText>
+              <StyledText>{lastOrder?.contactInformation.zipCode}</StyledText>
+              <StyledText>{lastOrder?.contactInformation.city}</StyledText>
+              <StyledText>{lastOrder?.contactInformation.email}</StyledText>
+              <StyledText>{lastOrder?.contactInformation.phone}</StyledText>
+            </div>
+          ) : (
+            <p>No stored values found.</p>
+          )}
+        </div>
         <StyledTitle>Thank you,</StyledTitle>
         <StyledItem>For your order #{lastOrder?.orderId}</StyledItem>
       </FlexCenter>
       <StyledUnorderedList>
-      {lastOrder?.itemList.map((cartItem) => (
+        {lastOrder?.itemList.map((cartItem) => (
           <li key={cartItem.id}>
             <Margin>
               <FlexRow>
@@ -53,10 +53,10 @@ function MobileConfirmation() {
             </Margin>
           </li>
         ))}
-        </StyledUnorderedList>
-        <FlexCenter>
+      </StyledUnorderedList>
+      <FlexCenter>
         <StyledTotal>Total: ${totalPrice}</StyledTotal>
-        </FlexCenter>
+      </FlexCenter>
     </StyledCard>
   );
 }
