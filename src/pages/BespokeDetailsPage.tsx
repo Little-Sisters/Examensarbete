@@ -16,7 +16,7 @@ const bespokeSchema = Yup.object({
   email: Yup.string().email('invalid email').required('email required'),
   personalizedRequest: Yup.string()
     .required('Personalized request required')
-    .min(2, 'Personalized request is too short'),
+    .min(10, 'Personalized request is too short'),
 });
 
 function BespokeDetailsPage() {
@@ -132,7 +132,6 @@ function BespokeDetailsPage() {
                       )}
                     </ColorPickerContainer>
                   </FlexContainer>
-
                   <Formik
                     initialValues={{
                       email: '',
@@ -151,7 +150,11 @@ function BespokeDetailsPage() {
                       <form onSubmit={formik.handleSubmit}>
                         <StyledFormControl
                           error={
-                            !!(formik.touched.email && formik.errors.email)
+                            !!(formik.touched.email && formik.errors.email) ||
+                            !!(
+                              formik.touched.personalizedRequest &&
+                              formik.errors.personalizedRequest
+                            )
                           }
                         >
                           <label htmlFor="email">
@@ -169,10 +172,14 @@ function BespokeDetailsPage() {
                             onBlur={formik.handleBlur}
                             value={formik.values.email}
                           />
-
                           <label htmlFor="personalizedRequest">
                             Request<Required>*</Required>
                           </label>
+
+                          {formik.touched.personalizedRequest &&
+                            formik.errors.personalizedRequest && (
+                              <p>{formik.errors.personalizedRequest}</p>
+                            )}
                           <Field
                             as={RequestInput}
                             placeholder="Your personalized request..."
@@ -180,10 +187,6 @@ function BespokeDetailsPage() {
                             name="personalizedRequest"
                             autoComplete="off"
                           />
-                          {formik.touched.personalizedRequest &&
-                            formik.errors.personalizedRequest && (
-                              <p>{formik.errors.personalizedRequest}</p>
-                            )}
                         </StyledFormControl>
                         <button type="submit">Send request</button>
                       </form>
