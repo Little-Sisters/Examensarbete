@@ -20,6 +20,7 @@ const bespokeSchema = Yup.object({
 });
 
 function BespokeDetailsPage() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_emailAddress, setEmailAddress] = useState<string>('');
   const [colorPicker, setColorPicker] = useState<string>('#ffffff');
   const colorPickerRef = useRef<HTMLDivElement>(null);
