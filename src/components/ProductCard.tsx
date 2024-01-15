@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
 import { Product } from '../../data/productdata';
 import { useCart } from '../contexts/CartContext';
-import TransparentButton from './TransparentButton';
+
+import { TransparentButton } from './TransparentButton';
 import flowerOverlay from '/flowerOverlay.png';
 import flowerOverlayDarkmode from '/flowerOverlayDarkmode.png';
 
@@ -28,6 +29,7 @@ function ProductCard({ product, background }: ProductProps) {
           <h5>{product.description}</h5>
         </Link>
         <TransparentButton
+          fullWidth
           title="Create"
           onPress={() => addToCart(product, 1)}
         />

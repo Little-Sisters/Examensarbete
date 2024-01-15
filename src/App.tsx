@@ -11,6 +11,7 @@ import { OrderProvider } from './contexts/OrderContext';
 import { ProductProvider } from './contexts/ProductContext';
 import { useLocalStorageState } from './hooks/useLocalStorage';
 import './index.css';
+import '../src/components/ModelViewer.css';
 import AboutUsPage from './pages/AboutUsPage';
 import CartPage from './pages/CartPage';
 import ConfirmationPage from './pages/ConfirmationPage';
@@ -21,6 +22,7 @@ import HomePage from './pages/HomePage';
 import { Page } from './pages/Page';
 import ProductPage from './pages/ProductPage';
 import { ReactLenis } from '@studio-freight/react-lenis';
+import '@google/model-viewer/dist/model-viewer';
 
 export function App() {
   const location = useLocation();
