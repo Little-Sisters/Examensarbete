@@ -325,7 +325,7 @@ const InputFlexWrapper = styled.div`
   flex-direction: column;
   gap: 1rem;
   justify-content: space-between;
-  padding-left: 2rem;
+
   @media (max-width: 1024px) {
     padding: 0rem;
   }
@@ -338,7 +338,7 @@ const InputFlexWrapper = styled.div`
 const ProductLayout = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 4rem;
   width: 100%;
   min-height: 85vh; /* Default height for desktop */
   height: 40rem;

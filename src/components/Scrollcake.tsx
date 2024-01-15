@@ -41,6 +41,7 @@ const ScrollSectionComponent = () => {
   const translateTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 57]);
   const OpacityTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 1]);
 
+
   const translateYText1 = useTransform(scrollYProgress, [0, 0.32], [0, 100]);
   const translateOpacityText1 = useTransform(
     scrollYProgress,
@@ -58,6 +59,7 @@ const ScrollSectionComponent = () => {
   const translateOpacityText3 = useTransform(
     scrollYProgress,
     [0.69, 0.84],
+
     [0, 1],
   );
 
