@@ -1,3 +1,4 @@
+import BentoGrid from '../components/BentoGrid';
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
 
@@ -5,7 +6,7 @@ function GalleryPage() {
   return (
     <MarginTopContainer>
       <PageContentWrapper>
-        <h1> Gallery Page</h1>
+        <BentoGrid />
       </PageContentWrapper>
     </MarginTopContainer>
   );
