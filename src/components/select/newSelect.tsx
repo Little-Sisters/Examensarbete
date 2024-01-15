@@ -4,7 +4,6 @@ import styled, { ThemeContext } from 'styled-components';
 import { Option } from './data';
 
 interface NewSelectProps {
-  readonly?: boolean;
   label: string;
   placeholder: string;
   options: Option[];
