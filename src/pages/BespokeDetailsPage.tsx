@@ -20,7 +20,7 @@ const bespokeSchema = Yup.object({
 });
 
 function BespokeDetailsPage() {
-  const [emailAddress, setEmailAddress] = useState<string>('');
+  const [_emailAddress, setEmailAddress] = useState<string>('');
   const [colorPicker, setColorPicker] = useState<string>('#ffffff');
   const colorPickerRef = useRef<HTMLDivElement>(null);
   const [file, setFile] = useState<string | undefined>();
@@ -138,7 +138,7 @@ function BespokeDetailsPage() {
                       personalizedRequest: '',
                     }}
                     validationSchema={bespokeSchema}
-                    onSubmit={(values, { resetForm }) => {
+                    onSubmit={(_values, { resetForm }) => {
                       setEmailAddress('');
                       setColorPicker('#ffffff');
                       setFile(undefined);
