@@ -19,28 +19,21 @@ const ScrollSectionComponent = () => {
   const translateYPiece2 = useTransform(
     scrollYProgress,
     [0.08, 0.16],
-    [0, 368],
+    [0, 335],
   );
   const opacityPiece2 = useTransform(scrollYProgress, [0.08, 0.16], [0, 1]);
 
   const translateYPiece3 = useTransform(
     scrollYProgress,
     [0.16, 0.24],
-    [0, 268],
+    [0, 200],
   );
   const opacityPiece3 = useTransform(scrollYProgress, [0.16, 0.24], [0, 1]);
-
-  const translateYPiece4 = useTransform(
-    scrollYProgress,
-    [0.24, 0.32],
-    [0, 168],
-  );
-  const opacityPiece4 = useTransform(scrollYProgress, [0.24, 0.32], [0, 1]);
 
   const translateYDecorations = useTransform(
     scrollYProgress,
     [0.35, 0.64],
-    [0, 168],
+    [0, 200],
   );
   const OpacityDecorations = useTransform(
     scrollYProgress,
@@ -48,23 +41,23 @@ const ScrollSectionComponent = () => {
     [0, 0.75],
   );
 
-  const translateTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 58]);
+  const translateTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 88]);
   const OpacityTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 1]);
 
-  const translateYText1 = useTransform(scrollYProgress, [0, 0.32], [0, 165]);
+  const translateYText1 = useTransform(scrollYProgress, [0, 0.32], [0, 200]);
   const translateOpacityText1 = useTransform(
     scrollYProgress,
     [0, 0.32],
     [0, 1],
   );
 
-  const translateYText2 = useTransform(scrollYProgress, [0.35, 0.64], [0, 265]);
+  const translateYText2 = useTransform(scrollYProgress, [0.35, 0.64], [0, 300]);
   const translateOpacityText2 = useTransform(
     scrollYProgress,
     [0.35, 0.64],
     [0, 1],
   );
-  const translateYText3 = useTransform(scrollYProgress, [0.69, 0.84], [0, 365]);
+  const translateYText3 = useTransform(scrollYProgress, [0.69, 0.84], [0, 400]);
   const translateOpacityText3 = useTransform(
     scrollYProgress,
     [0.69, 0.84],
@@ -93,9 +86,6 @@ const ScrollSectionComponent = () => {
             </Piece>
             <Piece style={{ y: translateYPiece3, opacity: opacityPiece3 }}>
               3
-            </Piece>
-            <Piece style={{ y: translateYPiece4, opacity: opacityPiece4 }}>
-              4
             </Piece>
             <Decorations
               style={{ y: translateYDecorations, opacity: OpacityDecorations }}
@@ -152,7 +142,7 @@ const Piece = styled(motion.div)`
   top: 10rem;
   left: 4rem;
   width: 22rem;
-  height: 6rem;
+  height: 8rem;
   @media (max-width: 1000px) {
     left: 0rem;
   }
@@ -176,7 +166,7 @@ const Topper = styled(motion.div)`
   transition: all 0.3s ease-out;
   position: absolute;
   top: 10rem;
-  left: 13rem;
+  left: 14rem;
   width: 2rem;
   height: 7rem;
   @media (max-width: 1000px) {
@@ -189,11 +179,11 @@ const TextBox = styled(motion.div)`
   transition: all 0.3s ease-out;
   position: absolute;
   top: 10rem;
-  width: 90%;
-  right: 5%;
+  width: 95%;
+  right: 2.5%;
   height: 5rem;
   @media (max-width: 1000px) {
-    right: 1rem;
+    right: 1%;
   }
 `;
 

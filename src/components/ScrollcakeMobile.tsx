@@ -14,34 +14,27 @@ const ScrollSectionComponentMobile = () => {
   });
 
   // Define the y-transformations and opacity for each piece based on scroll progress
-  const translateYPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 200]);
+  const translateYPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 183]);
   const opacityPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 1]);
 
   const translateYPiece2 = useTransform(
     scrollYProgress,
     [0.08, 0.16],
-    [0, 155],
+    [0, 123],
   );
   const opacityPiece2 = useTransform(scrollYProgress, [0.08, 0.16], [0, 1]);
 
   const translateYPiece3 = useTransform(
     scrollYProgress,
     [0.16, 0.24],
-    [0, 110],
+    [0, 63],
   );
   const opacityPiece3 = useTransform(scrollYProgress, [0.16, 0.24], [0, 1]);
-
-  const translateYPiece4 = useTransform(
-    scrollYProgress,
-    [0.24, 0.32],
-    [0, 65],
-  );
-  const opacityPiece4 = useTransform(scrollYProgress, [0.24, 0.32], [0, 1]);
 
   const translateYDecorations = useTransform(
     scrollYProgress,
     [0.35, 0.64],
-    [0, 64],
+    [0, 63],
   );
   const OpacityDecorations = useTransform(
     scrollYProgress,
@@ -98,9 +91,6 @@ const ScrollSectionComponentMobile = () => {
             </Piece>
             <Piece style={{ y: translateYPiece3, opacity: opacityPiece3 }}>
               3
-            </Piece>
-            <Piece style={{ y: translateYPiece4, opacity: opacityPiece4 }}>
-              4
             </Piece>
             <Decorations
               style={{ y: translateYDecorations, opacity: OpacityDecorations }}
@@ -180,7 +170,7 @@ const Piece = styled(motion.div)`
   top: 0rem;
   left: calc(50% - 5.5rem);
   width: 11rem;
-  height: 2.5rem;
+  height: 3.5rem;
   @media (max-width: 420px) {
     left: calc(50% - 5.5rem);
   }
