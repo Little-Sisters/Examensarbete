@@ -1,13 +1,27 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
+import cake1White from '/scrollcake/base1-white.png';
+import cake2White from '/scrollcake/base2-white.png';
+import cake3White from '/scrollcake/base3-white.png';
+import cake1Pink from '/scrollcake/base1-pink.png';
+import cake2Pink from '/scrollcake/base2-pink.png';
+import cake3Pink from '/scrollcake/base3-pink.png';
+import decorations from '/scrollcake/decorations.png';
+import topper from '/scrollcake/topper.png';
+
 
 const ScrollSectionComponent = () => {
   const targetRef = React.useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
+
+   const themeContext = useContext(ThemeContext);
+   const theme = themeContext?.mode;
+
+  
 
   // Define the y-transformations and opacity for each piece based on scroll progress
   const translateYPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 390]);
@@ -75,7 +89,7 @@ const ScrollSectionComponent = () => {
       <MyBox>
         <FlexBox>
           <Title>
-            <h2>Create your dream cake</h2>
+            <h2>Create your dream wedding cake</h2>
             <p>
               <p>
                 In our specialiced customized cake you can build your dream cake
@@ -85,23 +99,23 @@ const ScrollSectionComponent = () => {
           </Title>
           <Box>
             <Piece
-              src="/base1-pink.png"
+              src={theme === 'dark' ? cake1White : cake1Pink}
               style={{ y: translateYPiece1, opacity: opacityPiece1 }}
             ></Piece>
             <Middle
-              src="/base2-pink.png"
+              src={theme === 'dark' ? cake2White : cake2Pink}
               style={{ y: translateYPiece2, opacity: opacityPiece2 }}
             ></Middle>
             <Top
-              src="/base3-pink.png"
+              src={theme === 'dark' ? cake3White : cake3Pink}
               style={{ y: translateYPiece3, opacity: opacityPiece3 }}
             ></Top>
             <Decorations
-              src="/decorations.png"
+              src={decorations}
               style={{ y: translateYDecorations, opacity: OpacityDecorations }}
             ></Decorations>
             <Topper
-              src="/topper.png"
+              src={topper}
               style={{ y: translateTopper, opacity: OpacityTopper }}
             ></Topper>
           </Box>
@@ -214,7 +228,8 @@ const TextBox = styled(motion.div)`
   }
 
   p {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
   }
   svg {
     font-size: 1.5rem;

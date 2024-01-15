@@ -8,8 +8,8 @@
 
 #menu-toggle {
     transition: 0.25s ease-in-out;
-    width: 33px;
-    height: 33px;
+    width: 35px;
+    height: 35px;
     position: relative;
     position: relative;
     cursor: pointer;
@@ -52,7 +52,7 @@
                 height: 0%;
                 width: 2px;
                 position: absolute;
-                top: 12%;
+                top: 10%;
                 left: 16px;
                 transition-delay: 0s;
             }
@@ -61,7 +61,7 @@
                 width: 0%;
                 height: 2px;
                 position: absolute;
-                left: 12%;
+                left: 10%;
                 top: 16px;
                 transition-delay: .15s;
             }
