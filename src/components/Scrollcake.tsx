@@ -13,34 +13,34 @@ const ScrollSectionComponent = () => {
   });
 
   // Define the y-transformations and opacity for each piece based on scroll progress
-  const translateYPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 460]);
+  const translateYPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 470]);
   const opacityPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 1]);
 
   const translateYPiece2 = useTransform(
     scrollYProgress,
     [0.08, 0.16],
-    [0, 360],
+    [0, 368],
   );
   const opacityPiece2 = useTransform(scrollYProgress, [0.08, 0.16], [0, 1]);
 
   const translateYPiece3 = useTransform(
     scrollYProgress,
     [0.16, 0.24],
-    [0, 260],
+    [0, 268],
   );
   const opacityPiece3 = useTransform(scrollYProgress, [0.16, 0.24], [0, 1]);
 
   const translateYPiece4 = useTransform(
     scrollYProgress,
     [0.24, 0.32],
-    [0, 160],
+    [0, 168],
   );
   const opacityPiece4 = useTransform(scrollYProgress, [0.24, 0.32], [0, 1]);
 
   const translateYDecorations = useTransform(
     scrollYProgress,
     [0.35, 0.64],
-    [0, 160],
+    [0, 168],
   );
   const OpacityDecorations = useTransform(
     scrollYProgress,
@@ -48,23 +48,23 @@ const ScrollSectionComponent = () => {
     [0, 0.75],
   );
 
-  const translateTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 48]);
+  const translateTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 58]);
   const OpacityTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 1]);
 
-  const translateYText1 = useTransform(scrollYProgress, [0, 0.32], [0, 160]);
+  const translateYText1 = useTransform(scrollYProgress, [0, 0.32], [0, 165]);
   const translateOpacityText1 = useTransform(
     scrollYProgress,
     [0, 0.32],
     [0, 1],
   );
 
-  const translateYText2 = useTransform(scrollYProgress, [0.35, 0.64], [0, 260]);
+  const translateYText2 = useTransform(scrollYProgress, [0.35, 0.64], [0, 265]);
   const translateOpacityText2 = useTransform(
     scrollYProgress,
     [0.35, 0.64],
     [0, 1],
   );
-  const translateYText3 = useTransform(scrollYProgress, [0.69, 0.84], [0, 360]);
+  const translateYText3 = useTransform(scrollYProgress, [0.69, 0.84], [0, 365]);
   const translateOpacityText3 = useTransform(
     scrollYProgress,
     [0.69, 0.84],
@@ -151,10 +151,10 @@ const Piece = styled(motion.div)`
   position: absolute;
   top: 10rem;
   left: 4rem;
-  width: 21rem;
+  width: 22rem;
   height: 6rem;
   @media (max-width: 1000px) {
-    left: 1rem;
+    left: 0rem;
   }
 `;
 
@@ -165,10 +165,10 @@ const Decorations = styled(motion.div)`
   position: absolute;
   top: 10rem;
   left: 4rem;
-  width: 21rem;
+  width: 22rem;
   height: 25rem;
   @media (max-width: 1000px) {
-    left: 1rem;
+    left: 0rem;
   }
 `;
 const Topper = styled(motion.div)`

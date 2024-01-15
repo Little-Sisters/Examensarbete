@@ -178,11 +178,11 @@ const Piece = styled(motion.div)`
   transition: all 0.3s ease-out;
   position: absolute;
   top: 0rem;
-  left: 33%;
-  width: 10rem;
+  left: calc(50% - 5.5rem);
+  width: 11rem;
   height: 2.5rem;
   @media (max-width: 420px) {
-    left:28%;
+    left: calc(50% - 5.5rem);
   }
 `;
 
@@ -192,11 +192,11 @@ const Decorations = styled(motion.div)`
   opacity: 0.5;
   position: absolute;
   top: 0rem;
-  left: 33%;
-  width: 10rem;
+  left: calc(50% - 5.5rem);
+  width: 11rem;
   height: 11rem;
   @media (max-width: 420px) {
-    left:28%;
+    left: calc(50% - 5.5rem);
   }
 `;
 const Topper = styled(motion.div)`
@@ -204,11 +204,11 @@ const Topper = styled(motion.div)`
   transition: all 0.3s ease-out;
   position: absolute;
   top: 0rem;
-  left: 46%;
+  left: calc(50% - 1rem);
   width: 1rem;
   height: 3rem;
   @media (max-width: 460px) {
-    left: 49%;
+    left: calc(50% - 1rem);
   }
 `;
 
