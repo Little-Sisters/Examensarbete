@@ -13,7 +13,7 @@ interface StyledFormControlProps {
 }
 
 const bespokeSchema = Yup.object({
-  email: Yup.string().email('invalid email').required('email required'),
+  email: Yup.string().email('invalid email').required('Email required'),
   personalizedRequest: Yup.string()
     .required('Personalized request required')
     .min(10, 'Personalized request is too short'),
@@ -165,6 +165,7 @@ function BespokeDetailsPage() {
                           ) : null}
                           <input
                             id="email"
+                            placeholder="Your email address..."
                             name="email"
                             type="email"
                             autoComplete="email"
@@ -200,24 +201,30 @@ function BespokeDetailsPage() {
         <ShortCutTitle>Want to know more?</ShortCutTitle>
         <FlexContainer>
           <ShortCuts>
-            <Shortcut>
-              <Link to={`/flavors`}></Link>
+            <LinkWrapper to={`/flavors`}>
               <img src="/assets/flavors.jpg" alt="" />
-              <p>Flavors</p>
-              <button>Test</button>
-            </Shortcut>
-            <Shortcut>
-              <Link to={`/gallery`}></Link>
+              <h3>Flavors</h3>
+              <span>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
+                quae quasi rerum, nam voluptates{' '}
+              </span>
+            </LinkWrapper>
+            <LinkWrapper to={`/gallery`}>
               <img src="/assets/aboutus.jpg" alt="" />
-              <p>Gallery</p>
-              <button>Test</button>
-            </Shortcut>
-            <Shortcut>
-              <Link to={`/about`}></Link>
+              <h3>Gallery</h3>
+              <span>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
+                quae quasi rerum, nam voluptates{' '}
+              </span>
+            </LinkWrapper>
+            <LinkWrapper to={`/about`}>
               <img src="/assets/aboutus2.jpg" alt="" />
-              <p>About</p>
-              <button>Test</button>
-            </Shortcut>
+              <h3>About</h3>
+              <span>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
+                quae quasi rerum, nam voluptates{' '}
+              </span>
+            </LinkWrapper>
           </ShortCuts>
         </FlexContainer>
       </PageContentWrapper>
@@ -334,7 +341,7 @@ const ShortCuts = styled.div`
   }
 `;
 
-const Shortcut = styled.div`
+const LinkWrapper = styled(Link)`
   position: relative;
   display: flex;
   width: 100%;
@@ -346,7 +353,7 @@ const Shortcut = styled.div`
 
   img {
     width: 100%;
-    height: 400px;
+    height: 500px;
     object-fit: cover;
     border-radius: 3px;
 
@@ -405,6 +412,10 @@ const SelectAndInformation = styled.div`
   gap: 1.5rem;
   input {
     width: 100%;
+  }
+
+  button {
+    margin-top: 2rem;
   }
 `;
 
@@ -477,7 +488,7 @@ const InputFlexWrapper = styled.div`
 
 const ShortCutTitle = styled.h2`
   text-align: center;
-  margin-top: 4rem;
+  margin: 4rem 0rem 3rem 0rem;
 `;
 
 const ProductLayout = styled.div`
