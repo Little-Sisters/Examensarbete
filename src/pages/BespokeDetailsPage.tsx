@@ -1,21 +1,54 @@
+import { Field, Formik } from 'formik';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
 import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import * as Yup from 'yup';
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
 
+interface StyledFormControlProps {
+  error?: boolean | string;
+}
+
+const bespokeSchema = Yup.object({
+  email: Yup.string().email('invalid email').required('email required'),
+  personalizedRequest: Yup.string()
+    .required('Personalized request required')
+    .min(2, 'Personalized request is too short'),
+});
+
 function BespokeDetailsPage() {
   const [emailAddress, setEmailAddress] = useState<string>('');
-  const [personalizedRequest, setPersonalizedRequest] = useState<string>('');
   const [colorPicker, setColorPicker] = useState<string>('#ffffff');
+  const colorPickerRef = useRef<HTMLDivElement>(null);
+  const [file, setFile] = useState<string | undefined>();
   const [isColorPickerVisible, setIsColorPickerVisible] =
     useState<boolean>(false);
   const [isConfirmationModalVisible, setIsConfirmationModalVisible] =
     useState<boolean>(false);
 
-  const colorPickerRef = useRef<HTMLDivElement>(null);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFile(URL.createObjectURL(e.target.files[0]));
+    }
+  };
+
+  const toggleColorPicker = (
+    e: React.MouseEvent<HTMLInputElement, MouseEvent>,
+  ) => {
+    e.stopPropagation();
+    setIsColorPickerVisible((prevState) => !prevState);
+  };
+
+  const openImage = () => {
+    window.open(file);
+  };
+
+  const closeConfirmationModal = () => {
+    setIsConfirmationModalVisible(false);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -24,48 +57,14 @@ function BespokeDetailsPage() {
         !colorPickerRef.current.contains(event.target as Node) &&
         !event.defaultPrevented
       ) {
-        // Hide color picker when clicking outside of it
         setIsColorPickerVisible(false);
       }
     };
-
     document.addEventListener('click', handleClickOutside);
-
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
   }, [colorPickerRef]);
-
-  const [file, setFile] = useState<string | undefined>();
-
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    if (e.target.files && e.target.files.length > 0) {
-      setFile(URL.createObjectURL(e.target.files[0]));
-    }
-  }
-
-  const toggleColorPicker = (
-    e: React.MouseEvent<HTMLInputElement, MouseEvent>,
-  ) => {
-    e.stopPropagation(); // Prevent the click event from propagating to document
-    setIsColorPickerVisible((prevState) => !prevState);
-  };
-
-  const openImage = () => {
-    window.open(file);
-  };
-
-  const sendRequest = () => {
-    setColorPicker('#ffffff');
-    setEmailAddress('');
-    setPersonalizedRequest('');
-    setIsConfirmationModalVisible(true);
-    setFile(undefined);
-  };
-
-  const closeConfirmationModal = () => {
-    setIsConfirmationModalVisible(false);
-  };
 
   return (
     <MarginTopContainer>
@@ -133,24 +132,65 @@ function BespokeDetailsPage() {
                       )}
                     </ColorPickerContainer>
                   </FlexContainer>
-                  <p>Explanation of how the request works</p>
-                  <label>Request</label>
-                  <input
-                    onChange={(e) => setEmailAddress(e.target.value)}
-                    value={emailAddress}
-                    type="text"
-                    placeholder="Your email address"
-                  />
-                  <FlexContainer>
-                    <RequestInput
-                      value={personalizedRequest}
-                      placeholder="Your personalized request..."
-                      onChange={(e) => setPersonalizedRequest(e.target.value)}
-                    />
-                  </FlexContainer>
+
+                  <Formik
+                    initialValues={{
+                      email: '',
+                      personalizedRequest: '',
+                    }}
+                    validationSchema={bespokeSchema}
+                    onSubmit={(values, { resetForm }) => {
+                      setEmailAddress('');
+                      setColorPicker('#ffffff');
+                      setFile(undefined);
+                      setIsConfirmationModalVisible(true);
+                      resetForm();
+                    }}
+                  >
+                    {(formik) => (
+                      <form onSubmit={formik.handleSubmit}>
+                        <StyledFormControl
+                          error={
+                            !!(formik.touched.email && formik.errors.email)
+                          }
+                        >
+                          <label htmlFor="email">
+                            Email<Required>*</Required>
+                          </label>
+                          {formik.touched.email && formik.errors.email ? (
+                            <p>{formik.errors.email}</p>
+                          ) : null}
+                          <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            autoComplete="email"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.email}
+                          />
+
+                          <label htmlFor="personalizedRequest">
+                            Request<Required>*</Required>
+                          </label>
+                          <Field
+                            as={RequestInput}
+                            placeholder="Your personalized request..."
+                            id="personalizedRequest"
+                            name="personalizedRequest"
+                            autoComplete="off"
+                          />
+                          {formik.touched.personalizedRequest &&
+                            formik.errors.personalizedRequest && (
+                              <p>{formik.errors.personalizedRequest}</p>
+                            )}
+                        </StyledFormControl>
+                        <button type="submit">Send request</button>
+                      </form>
+                    )}
+                  </Formik>
                 </Selections>
               </SelectAndInformation>
-              <button onClick={sendRequest}>Send request</button>
             </InputFlexWrapper>
           </InputContainer>
         </ProductLayout>
@@ -181,6 +221,19 @@ function BespokeDetailsPage() {
     </MarginTopContainer>
   );
 }
+
+const StyledFormControl = styled.div<StyledFormControlProps>`
+  color: ${(props) => (props.error ? 'red' : 'black')};
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 0.5;
+`;
+
+const Required = styled.span`
+  color: red;
+  margin-left: 0.2rem;
+`;
 
 const ConfirmationModal = styled.div`
   position: fixed;
