@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import MarginTopContainer from '../components/MarginTopContainer';
 import MovelView3d from '../components/ModelViewer';
 import PageContentWrapper from '../components/PageContentWrapper';
+import { FilledButton } from '../components/TransparentButton';
 import {
   ColourOption,
   DecorationsOption,
@@ -267,7 +268,11 @@ function DetailsPage() {
               </SelectAndInformation>
               <ButtonBox>
                 {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-                <CartButton onClick={handleAddToCart}>Add to cart</CartButton>
+                <FilledButton
+                  onPress={handleAddToCart}
+                  title="Add to Cart"
+                  fullWidth
+                ></FilledButton>
               </ButtonBox>
             </InputFlexWrapper>
           </InputContainer>
@@ -351,9 +356,6 @@ const ProductLayout = styled.div`
 const ErrorMessage = styled.div`
   color: red;
   padding: 1rem 0rem;
-`;
-const CartButton = styled.button`
-  width: 100%;
 `;
 const ButtonBox = styled.div`
   width: 100%;

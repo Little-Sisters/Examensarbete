@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import styled from 'styled-components';
 import {
   ColourOption,
   DecorationsOption,
@@ -15,7 +14,7 @@ interface MovelView3dProps {
   selectedTopper: TopperOption | null;
 }
 
-function MovelView3d({
+function CartModelEditViewer({
   selectedTier,
   selectedColor,
   selectedDecorations,
@@ -39,46 +38,22 @@ function MovelView3d({
   }, [selectedTier, selectedColor, selectedDecorations, selectedTopper]);
 
   return (
-    <Cake>
-      <model-viewer
-        className="model-viewer"
-        src={getModelSrc(
-          selectedTier,
-          selectedColor,
-          selectedDecorations,
-          selectedTopper,
-        )}
-        shadow-intensity="1"
-        shadow-softness="1"
-        alt="cake"
-        auto-rotate
-        camera-controls
-        touch-action="pan-y"
-        style={{ width: '100%', height: '100%' }}
-      >
-        <div id="progress-bar-d" slot="progress-bar"></div>
-      </model-viewer>
-    </Cake>
+    <model-viewer
+      className="model-viewer"
+      src={getModelSrc(
+        selectedTier,
+        selectedColor,
+        selectedDecorations,
+        selectedTopper,
+      )}
+      shadow-intensity="1"
+      shadow-softness="1"
+      alt="cake"
+      touch-action="pan-y"
+      style={{ width: '100%', height: '100%' }}
+    >
+      <div id="progress-bar-d" slot="progress-bar"></div>
+    </model-viewer>
   );
 }
-
-const Cake = styled.div`
-  background: ${({ theme }) => theme.card};
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  @media (max-width: 700px) {
-    width: 100%;
-    height: 35rem;
-  }
-  img {
-    height: 80%;
-    @media (max-width: 700px) {
-      width: auto;
-      height: 30rem;
-    }
-  }
-`;
-
-export default MovelView3d;
+export default CartModelEditViewer;
