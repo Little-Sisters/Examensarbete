@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
 import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
@@ -15,6 +15,27 @@ function BespokeDetailsPage() {
   const [isConfirmationModalVisible, setIsConfirmationModalVisible] =
     useState<boolean>(false);
 
+  const colorPickerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        colorPickerRef.current &&
+        !colorPickerRef.current.contains(event.target as Node) &&
+        !event.defaultPrevented
+      ) {
+        // Hide color picker when clicking outside of it
+        setIsColorPickerVisible(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [colorPickerRef]);
+
   const [file, setFile] = useState<string | undefined>();
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
@@ -22,7 +43,11 @@ function BespokeDetailsPage() {
       setFile(URL.createObjectURL(e.target.files[0]));
     }
   }
-  const toggleColorPicker = () => {
+
+  const toggleColorPicker = (
+    e: React.MouseEvent<HTMLInputElement, MouseEvent>,
+  ) => {
+    e.stopPropagation(); // Prevent the click event from propagating to document
     setIsColorPickerVisible((prevState) => !prevState);
   };
 
@@ -97,7 +122,7 @@ function BespokeDetailsPage() {
                         style={{ backgroundColor: colorPicker }}
                       ></ColorPickerPreview>
                       {isColorPickerVisible && (
-                        <ColorPicker>
+                        <ColorPicker ref={colorPickerRef}>
                           <SketchPicker
                             color={colorPicker}
                             onChange={(newColor: ColorResult) =>
