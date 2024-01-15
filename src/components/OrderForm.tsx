@@ -1,8 +1,8 @@
 import { Formik, FormikHelpers } from 'formik';
-import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import { useOrder } from '../contexts/OrderContext';
 import styled from 'styled-components';
+import * as Yup from 'yup';
+import { useOrder } from '../contexts/OrderContext';
 import RadioButton from './RadioButton';
 
 interface StyledFormControlProps {
@@ -85,6 +85,10 @@ export function OrderForm() {
     >
       {(formik) => (
         <StyledForm onSubmit={formik.handleSubmit}>
+          <p>
+            Hello! We will create your cake and deliver on your prefered date.
+            Please tell us more below.
+          </p>
           <div>
             <FlexContainer>
               <StyledFormControl>
@@ -239,7 +243,7 @@ const StyledForm = styled.form`
   border-radius: 3px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   justify-content: center;
 `;
 
@@ -255,11 +259,11 @@ const StyledInput = styled.input`
   border: none;
   border-bottom: 1px solid ${({ theme }) => theme.text};
   margin-bottom: 1rem;
-  width: 25rem;
+  width: 100%;
   outline: none;
 
   @media (max-width: 500px) {
-    width: 20rem;
+    width: 100%;
   }
 `;
 
@@ -270,8 +274,18 @@ const StyledLabel = styled.label`
 `;
 
 const StyledButton = styled.button`
-  margin: auto;
+  padding: 0.5rem 1rem;
   border: none;
+  border-radius: 3px;
+  width: 50%;
+  transition: all 0.3 ease;
+  background-color: ${({ theme }) => theme.button};
+  &:hover {
+    background-color: ${({ theme }) => theme.buttonHover};
+  }
+  &:active {
+    transform: scale(0.98);
+  }
 `;
 
 const StyledText = styled.p`

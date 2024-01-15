@@ -25,17 +25,21 @@ const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 10rem;
+  gap: 11rem;
+  min-height: 80vh;
+  width: 100%;
 
   h1 {
     margin: 0;
     padding: 0;
   }
+  @media (max-width: 1200px) {
+    gap: 5rem;
+  }
 
   @media (max-width: 900px) {
     flex-direction: column-reverse;
     align-items: center;
-
     h1 {
       display: none;
     }
@@ -45,18 +49,22 @@ const FlexContainer = styled.div`
 const FlexBox = styled.div`
   display: flex;
   flex-direction: column;
+  width: 26rem;
 
   h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   @media (max-width: 900px) {
-    margin: 1rem;
+    width: 90%;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
 const MobileTitle = styled.h1`
-  @media (min-width: 901px) {
+  text-align: center;
+  @media (min-width: 900px) {
     display: none;
   }
 `;

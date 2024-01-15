@@ -1,29 +1,63 @@
 import styled from 'styled-components';
 
-interface TransparentButtonProps {
+interface ButtonProps {
+  fullWidth?: boolean;
+  type?: string;
+}
+
+interface TransparentButtonProps extends ButtonProps {
   title: string;
   onPress: () => void;
 }
 
-const TransparentButton: React.FC<TransparentButtonProps> = ({
-  title,
-  onPress,
-}: TransparentButtonProps) => {
-  return <Button onClick={onPress}>{title}</Button>;
-};
-
-const Button = styled.button`
+const Button = styled.button<ButtonProps>`
   padding: 0.5rem 1rem;
   border: 1px solid;
+  border-radius: 3px;
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
   background-color: transparent;
   border-color: ${({ theme }) => theme.grey};
-  margin-left: -1px;
-  width: 100%;
-  border-radius: 3px;
   &:hover {
     background-color: ${({ theme }) => theme.grey};
     color: ${({ theme }) => theme.paper};
   }
+  &:active {
+    transform: scale(0.98);
+  }
 `;
 
-export default TransparentButton;
+const Color = styled(Button)<ButtonProps>`
+  background-color: ${({ theme }) => theme.button};
+  border: none;
+  color: ${({ theme }) => theme.text};
+  &:hover {
+    background-color: ${({ theme }) => theme.buttonHover};
+    color: ${({ theme }) => theme.text};
+  }
+`;
+
+const TransparentButton: React.FC<TransparentButtonProps> = ({
+  title,
+  onPress,
+  fullWidth,
+}: TransparentButtonProps) => {
+  return (
+    <Button onClick={onPress} fullWidth={fullWidth}>
+      {title}
+    </Button>
+  );
+};
+
+const FilledButton: React.FC<TransparentButtonProps> = ({
+  title,
+  onPress,
+  fullWidth,
+}: TransparentButtonProps) => {
+  return (
+    <Color onClick={onPress} fullWidth={fullWidth}>
+      {title}
+    </Color>
+  );
+};
+
+export { TransparentButton, FilledButton };

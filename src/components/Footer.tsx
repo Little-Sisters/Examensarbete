@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import styled from 'styled-components';
 import PageContentWrapper from './PageContentWrapper';
-import TransparentButton from './TransparentButton';
+import { TransparentButton } from './TransparentButton';
 
 function Footer() {
   return (
@@ -101,7 +101,7 @@ function Footer() {
 const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
-  padding: 3rem 6.5rem;
+  padding: 3rem 0rem;
   background: ${({ theme }) => theme.footerBackground};
 `;
 
