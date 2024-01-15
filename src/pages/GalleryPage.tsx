@@ -1,11 +1,15 @@
 import MarginTopContainer from '../components/MarginTopContainer';
 import PageContentWrapper from '../components/PageContentWrapper';
+import PageDescription from '../components/PageDescription';
 
 function GalleryPage() {
   return (
     <MarginTopContainer>
       <PageContentWrapper>
-        <h1> Gallery Page</h1>
+        <PageDescription
+          title="Gallery Page"
+          description="This is the gallery page."
+        />
       </PageContentWrapper>
     </MarginTopContainer>
   );

@@ -38,7 +38,6 @@ const ScrollSectionComponent = () => {
   );
   const opacityPiece4 = useTransform(scrollYProgress, [0.24, 0.32], [0, 1]);
 
-
   const translateYDecorations = useTransform(
     scrollYProgress,
     [0.32, 0.64],
@@ -50,16 +49,8 @@ const ScrollSectionComponent = () => {
     [0, 0.75],
   );
 
-   const translateTopper = useTransform(
-     scrollYProgress,
-     [0.64, 0.84],
-     [0, 190],
-   );
-   const OpacityTopper = useTransform(
-     scrollYProgress,
-     [0.64, 0.84],
-     [0, 1],
-   );
+  const translateTopper = useTransform(scrollYProgress, [0.64, 0.84], [0, 190]);
+  const OpacityTopper = useTransform(scrollYProgress, [0.64, 0.84], [0, 1]);
 
   const translateYText1 = useTransform(scrollYProgress, [0, 0.32], [0, 130]);
   const translateOpacityText1 = useTransform(
@@ -72,7 +63,7 @@ const ScrollSectionComponent = () => {
   const translateOpacityText2 = useTransform(
     scrollYProgress,
     [0.32, 0.64],
-    [0,1],
+    [0, 1],
   );
   const translateYText3 = useTransform(scrollYProgress, [0.64, 0.84], [0, 330]);
   const translateOpacityText3 = useTransform(
@@ -141,7 +132,6 @@ const Title = styled.h2`
   position: absolute;
   border-bottom: 1px solid ${({ theme }) => theme.text};
   top: 0;
-
 `;
 const Box = styled.div`
   width: 29rem;

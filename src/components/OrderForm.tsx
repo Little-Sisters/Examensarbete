@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import * as Yup from 'yup';
 import { useOrder } from '../contexts/OrderContext';
 import RadioButton from './RadioButton';
+import { useCart } from '../contexts/CartContext';
 
 interface StyledFormControlProps {
   error?: boolean | string;
@@ -36,8 +37,8 @@ export type Customer = Yup.InferType<typeof customerSchema>;
 
 export function OrderForm() {
   const navigate = useNavigate();
-
   const { createOrder } = useOrder();
+  const { isCartEmpty } = useCart();
 
   // form values are validated against the customerSchema
   // if validation passes, customer data is extracted from form values
@@ -223,7 +224,7 @@ export function OrderForm() {
                 <StyledButton>Shop more</StyledButton>
                 <StyledButton
                   type="submit"
-                  disabled={!formik.values.termsAccepted}
+                  disabled={!formik.values.termsAccepted || isCartEmpty}
                 >
                   Place Order
                 </StyledButton>
