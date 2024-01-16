@@ -12,8 +12,8 @@ const Tabs: React.FC<TabsProps> = ({ scrollYProgress }) => {
       <TabTitleFlavoursFlex>
         <h1>Our Flavours</h1>
         <FlavourTextBox>
-          {flavoursData.map((flavour, index) => (
-            <span key={index}>{flavour.flavourTitle}</span>
+          {flavoursData.map((flavour) => (
+            <span key={flavour.id}>{flavour.flavourTitle}</span>
           ))}
         </FlavourTextBox>
       </TabTitleFlavoursFlex>
@@ -73,7 +73,7 @@ const ProgressBarBox = styled.div`
   position: relative;
   width: 100%;
   height: 3px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
 `;
 
 const FlavourTextBox = styled.div`
@@ -93,7 +93,7 @@ const ProgressBar = styled(motion.div)`
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 4px;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.text};
   transform-origin: 0%;

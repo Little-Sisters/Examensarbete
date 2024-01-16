@@ -10,6 +10,7 @@ type FlavourSlideProps = {
   filledButtonTitle: string;
   transparentButtonTitle: string;
   model: string;
+  angle?: string;
   backgroundColor: string;
 };
 
@@ -20,16 +21,19 @@ const FlavourSlide: React.FC<FlavourSlideProps> = ({
   filledButtonTitle,
   transparentButtonTitle,
   model,
+  angle,
   backgroundColor,
 }) => {
   const handleClick = () => {
     console.log('Button clicked!');
   };
 
+  if (!angle) {
+    angle = '100deg 90deg 10m';
+  }
+
   return (
-    <Container
-      lightBackgroundColor={backgroundColor}
-    >
+    <Container lightBackgroundColor={backgroundColor}>
       <FlexBox>
         <TextBox>
           <TextFlex>
@@ -51,7 +55,7 @@ const FlavourSlide: React.FC<FlavourSlideProps> = ({
           </TextFlex>
         </TextBox>
         <ModelBox>
-          <Chocolate model={model}></Chocolate>
+          <Chocolate model={model} angle={angle}></Chocolate>
         </ModelBox>
       </FlexBox>
     </Container>
@@ -104,7 +108,6 @@ const ModelBox = styled(Box)`
     height: 55%;
     margin-top: 9rem;
   }
-
 `;
 
 const TextFlex = styled.div`

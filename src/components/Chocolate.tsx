@@ -1,13 +1,14 @@
 type ChocolateProps = {
   model: string;
+  angle: string;
 };
 
-const Chocolate: React.FC<ChocolateProps> = ({ model }) => {
+const Chocolate: React.FC<ChocolateProps> = ({ model, angle }) => {
   return (
     <model-viewer
       src={model}
       shadow-intensity="1.5"
-      camera-orbit="100deg 90deg 10m"
+      camera-orbit={angle}
       shadow-softness="1.1"
       alt="flavour-model"
       auto-rotate

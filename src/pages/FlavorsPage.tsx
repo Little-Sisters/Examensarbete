@@ -2,10 +2,7 @@ import HorizontalCarousel from '../components/HorizontalCarousel';
 function FlavorsPage() {
   return (
     <>
-      <HorizontalCarousel>
-        
-
-      </HorizontalCarousel>
+      <HorizontalCarousel></HorizontalCarousel>
     </>
   );
 }
