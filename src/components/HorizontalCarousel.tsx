@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import styled from 'styled-components';
-import CardList from './CardLisst';
+import FlavourSlide from './FlavourSlide';
 
 const HorizontalCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -15,7 +15,8 @@ const HorizontalCarousel = () => {
     <MySection ref={targetRef}>
       <MyBox>
         <FlexBox style={{ x }}>
-          <CardList></CardList>
+          <FlavourSlide></FlavourSlide>
+          <FlavourSlide></FlavourSlide>
         </FlexBox>
       </MyBox>
     </MySection>
