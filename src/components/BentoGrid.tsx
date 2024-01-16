@@ -179,27 +179,25 @@ const data: CellData[] = [
 // Function to render cells
 const BentoGrid: React.FC = () => {
   return (
-
-      <Grid>
-        {data.map((item) => (
-          <Cell
-            key={item.id}
-            className={`${item.span} ${item.rowSpan} image-cell`}
-            imageUrl={item.imageUrl}
-          >
-            <ChoicesOverlay className="choices-overlay">
-              <StyledItem>{item.title}</StyledItem>
-              <StyledItem>{item.tier}</StyledItem>
-              <StyledItem>{item.color}</StyledItem>
-              <StyledItem>{item.decorations}</StyledItem>
-              <StyledItem>{item.topper}</StyledItem>
-              <StyledItem>{item.flavor}</StyledItem>
-              <StyledItem>{item.frosting}</StyledItem>
-            </ChoicesOverlay>
-          </Cell>
-        ))}
-      </Grid>
-
+    <Grid>
+      {data.map((item) => (
+        <Cell
+          key={item.id}
+          className={`${item.span} ${item.rowSpan} image-cell`}
+          imageUrl={item.imageUrl}
+        >
+          <ChoicesOverlay className="choices-overlay">
+            <StyledItem>{item.title}</StyledItem>
+            <StyledItem>{item.tier}</StyledItem>
+            <StyledItem>{item.color}</StyledItem>
+            <StyledItem>{item.decorations}</StyledItem>
+            <StyledItem>{item.topper}</StyledItem>
+            <StyledItem>{item.flavor}</StyledItem>
+            <StyledItem>{item.frosting}</StyledItem>
+          </ChoicesOverlay>
+        </Cell>
+      ))}
+    </Grid>
   );
 };
 
@@ -237,77 +235,76 @@ const Cell = styled.div<{ imageUrl: string }>`
 
   @media (min-width: 1355px) {
     &.span-2 {
-    grid-column: span 2;
-  }
-  &.span-3 {
-    grid-column: span 3;
-  }
-  &.span-4 {
-    grid-column: span 4;
-  }
-  &.span-5 {
-    grid-column: span 5;
-  }
-  &.span-6 {
-    grid-column: span 6;
-  }
-  &.span-7 {
-    grid-column: span 7;
-  }
-  &.span-8 {
-    grid-column: span 8;
-  }
-  &.span-9 {
-    grid-column: span 9;
-  }
-  &.span-10 {
-    grid-column: span 10;
-  }
-  &.span-11 {
-    grid-column: span 11;
-  }
-  &.span-12 {
-    grid-column: span 12;
-  }
+      grid-column: span 2;
+    }
+    &.span-3 {
+      grid-column: span 3;
+    }
+    &.span-4 {
+      grid-column: span 4;
+    }
+    &.span-5 {
+      grid-column: span 5;
+    }
+    &.span-6 {
+      grid-column: span 6;
+    }
+    &.span-7 {
+      grid-column: span 7;
+    }
+    &.span-8 {
+      grid-column: span 8;
+    }
+    &.span-9 {
+      grid-column: span 9;
+    }
+    &.span-10 {
+      grid-column: span 10;
+    }
+    &.span-11 {
+      grid-column: span 11;
+    }
+    &.span-12 {
+      grid-column: span 12;
+    }
 
-  &.row-span-1 {
-    grid-row: span 1;
+    &.row-span-1 {
+      grid-row: span 1;
+    }
+    &.row-span-2 {
+      grid-row: span 2;
+    }
+    &.row-span-3 {
+      grid-row: span 3;
+    }
+    &.row-span-4 {
+      grid-row: span 4;
+    }
+    &.row-span-5 {
+      grid-row: span 5;
+    }
+    &.row-span-6 {
+      grid-row: span 6;
+    }
+    &.row-span-7 {
+      grid-row: span 7;
+    }
+    &.row-span-8 {
+      grid-row: span 8;
+    }
+    &.row-span-9 {
+      grid-row: span 9;
+    }
+    &.row-span-10 {
+      grid-row: span 10;
+    }
+    &.row-span-11 {
+      grid-row: span 11;
+    }
+    &.row-span-12 {
+      grid-row: span 12;
+    }
   }
-  &.row-span-2 {
-    grid-row: span 2;
-  }
-  &.row-span-3 {
-    grid-row: span 3;
-  }
-  &.row-span-4 {
-    grid-row: span 4;
-  }
-  &.row-span-5 {
-    grid-row: span 5;
-  }
-  &.row-span-6 {
-    grid-row: span 6;
-  }
-  &.row-span-7 {
-    grid-row: span 7;
-  }
-  &.row-span-8 {
-    grid-row: span 8;
-  }
-  &.row-span-9 {
-    grid-row: span 9;
-  }
-  &.row-span-10 {
-    grid-row: span 10;
-  }
-  &.row-span-11 {
-    grid-row: span 11;
-  }
-  &.row-span-12 {
-    grid-row: span 12;
-  }
-  }
-
 `;
 
 // Styled components for the overlay
