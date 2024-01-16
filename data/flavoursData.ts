@@ -9,7 +9,8 @@ type Flavour = {
   transparentButtonTitle: string;
   model: string;
   angle?: string;
-  backgroundColor: string;
+  lightmodeBackgroundColor: string;
+  darkmodeBackgroundColor: string;
 };
 
 const flavoursData: Flavour[] = [
@@ -22,7 +23,9 @@ const flavoursData: Flavour[] = [
     filledButtonTitle: 'Create your chocolate cake',
     transparentButtonTitle: 'Check our Gallery',
     model: '/chocolate-bar.glb',
-    backgroundColor: '#684f4b',
+    //angle: '90deg 90deg 12m',
+    lightmodeBackgroundColor: '#815C54',
+    darkmodeBackgroundColor: '#30211E',
   },
   {
     id: 343225,
@@ -33,7 +36,8 @@ const flavoursData: Flavour[] = [
     filledButtonTitle: 'Create your strawberry cake',
     transparentButtonTitle: 'Explore strawberry delights',
     model: '/strawberry.glb',
-    backgroundColor: '#BF3C44',
+    lightmodeBackgroundColor: '#BC373F',
+    darkmodeBackgroundColor: '#932D33',
   },
   {
     id: 1234,
@@ -45,7 +49,21 @@ const flavoursData: Flavour[] = [
     transparentButtonTitle: 'Explore vanilla delights',
     model: '/vanilla.glb',
     angle: '90deg 60deg 10m',
-    backgroundColor: '#B8B496',
+    lightmodeBackgroundColor: '#D9D0B0',
+    darkmodeBackgroundColor: '#88816A',
+  },
+  {
+    id: 12333334,
+    flavourTitle: 'Lemon',
+    subtitle: 'Sour and fresh lemon and citrus',
+    spanDescription:
+      'Indulge in the sweetness of our vanilla cake, made with the finest and juiciest strawberries. Perfect for those who love a fruity delight.',
+    filledButtonTitle: 'Create your citrus cake',
+    transparentButtonTitle: 'Explore Lemon delights',
+    model: '/lemon.glb',
+    angle: '90deg 60deg 10m',
+    lightmodeBackgroundColor: '#E7E277',
+    darkmodeBackgroundColor: '#A39942',
   },
   // Add more flavors as needed
 ];

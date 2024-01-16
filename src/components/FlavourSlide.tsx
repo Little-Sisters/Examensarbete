@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import Chocolate from './Chocolate';
 import { FilledButton, TransparentButton } from './reusable components/Button';
 
@@ -11,7 +11,8 @@ type FlavourSlideProps = {
   transparentButtonTitle: string;
   model: string;
   angle?: string;
-  backgroundColor: string;
+  lightmodeBackgroundColor: string;
+  darkmodeBackgroundColor: string;
 };
 
 const FlavourSlide: React.FC<FlavourSlideProps> = ({
@@ -22,7 +23,8 @@ const FlavourSlide: React.FC<FlavourSlideProps> = ({
   transparentButtonTitle,
   model,
   angle,
-  backgroundColor,
+  lightmodeBackgroundColor,
+  darkmodeBackgroundColor,
 }) => {
   const handleClick = () => {
     console.log('Button clicked!');
@@ -31,9 +33,15 @@ const FlavourSlide: React.FC<FlavourSlideProps> = ({
   if (!angle) {
     angle = '100deg 90deg 10m';
   }
+  const themeContext = useContext(ThemeContext);
+  const theme = themeContext?.mode;
 
   return (
-    <Container lightBackgroundColor={backgroundColor}>
+    <Container
+      backgroundColor={
+        theme === 'dark' ? darkmodeBackgroundColor : lightmodeBackgroundColor
+      }
+    >
       <FlexBox>
         <TextBox>
           <TextFlex>
@@ -62,10 +70,11 @@ const FlavourSlide: React.FC<FlavourSlideProps> = ({
   );
 };
 
-const Container = styled.div<{ lightBackgroundColor: string }>`
+const Container = styled.div<{ backgroundColor: string }>`
   height: 100%;
   width: 100vw;
-  background: ${(props) => props.lightBackgroundColor};
+  background: ${(props) => props.backgroundColor};
+  transition: all 0.3s linear;
 `;
 
 const FlexBox = styled.div`

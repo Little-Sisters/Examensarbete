@@ -2,6 +2,8 @@ import herocake from '/herocake.jpg';
 import styled from 'styled-components';
 
 function Hero() {
+
+  
   return (
     <>
       <HeroContainer>
@@ -37,8 +39,6 @@ const Overlay = styled.div`
   height: 100%;
   background: linear-gradient(
     to top,
-    ${({ theme }) => `${theme.black}10`},
-    ${({ theme }) => theme.black}
   );
 `;
 
