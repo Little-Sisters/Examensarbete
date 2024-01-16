@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { useOrder } from '../contexts/OrderContext';
 import RadioButton from './RadioButton';
 import { useCart } from '../contexts/CartContext';
+import { toast } from 'react-toastify';
 
 interface StyledFormControlProps {
   error?: boolean | string;
@@ -64,6 +65,7 @@ export function OrderForm() {
       const order = createOrder(customer);
       console.log('created order:', order);
       actions.resetForm();
+      toast.success('Your order has been placed');
       navigate('/confirmation');
     } catch (err) {
       console.log(err);

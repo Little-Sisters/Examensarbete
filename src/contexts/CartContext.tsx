@@ -3,6 +3,7 @@ import { useLocalStorageState } from '../hooks/useLocalStorage';
 import { Product } from '../../data/productdata';
 import { CartItem } from '../../data/productdata';
 import { generateUniqueId } from './OrderContext';
+import { toast } from 'react-toastify';
 
 type CartContextType = {
   cartList: CartItem[];
@@ -75,6 +76,7 @@ export function CartProvider({ children }: Props) {
         ...cartList,
         { ...item, id: cartItemId, quantity, basePrice: item.price },
       ]);
+      toast.success(`${item.title} added to cart`);
     }
   };
 

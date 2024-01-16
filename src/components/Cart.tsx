@@ -23,6 +23,7 @@ import {
 import NewSelect from './select/newSelect';
 import CartModelEditViewer from './CartModelEditViewer';
 import { calculateItemPrice } from '../functions/calculateItemPrice';
+import { toast } from 'react-toastify';
 
 export interface CartItem extends Product {
   quantity: number;
@@ -77,6 +78,11 @@ export function Cart() {
     setEditTopper(topperOption || null);
   };
 
+  const handleClearCart = () => {
+    clearCart(cartList);
+    toast.success('Cart emptied');
+  };
+
   const handleSaveEdit = () => {
     if (!editingItemId) return;
 
@@ -119,6 +125,7 @@ export function Cart() {
     setEditDecorations(null);
     setEditTopper(null);
     updateTotalPrice();
+    toast.success(`${cartItemToUpdate.title} updated`);
   };
 
   const updateTotalPrice = () => {
@@ -309,9 +316,10 @@ export function Cart() {
         </div>
         <StyledCardFooter>
           <StyledFlexFooter>
-            <StyledTrash onClick={() => clearCart(cartList)}>
+            <StyledTrash onClick={() => handleClearCart()}>
               <BsTrash3 />
             </StyledTrash>
+
             <FlexGap>
               <p>Total:</p>
               <p>${totalPrice}</p>
