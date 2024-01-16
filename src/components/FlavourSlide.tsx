@@ -91,7 +91,7 @@ const ModelBox = styled(Box)`
 const TextFlex = styled.div`
   height: 100%;
   width: 100%;
-  max-width: 35rem;
+  max-width: 37rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import styled from 'styled-components';
 import FlavourSlide from './FlavourSlide';
+import Tabs from './Tabs';
 
 const HorizontalCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -14,6 +15,7 @@ const HorizontalCarousel = () => {
   return (
     <MySection ref={targetRef}>
       <MyBox>
+        <Tabs scrollYProgress={scrollYProgress} />
         <FlexBox style={{ x }}>
           <FlavourSlide></FlavourSlide>
           <FlavourSlide></FlavourSlide>
