@@ -27,7 +27,6 @@ import ProductPage from './pages/ProductPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 export function App() {
   const location = useLocation();
   const locationArr = location.pathname?.split('/') ?? [];
@@ -44,9 +43,10 @@ export function App() {
           <ProductProvider>
             <OrderProvider>
               <>
-              <ToastContainer
-              position='bottom-center'
-              />
+                <ToastContainer
+                  position="bottom-center"
+                  hideProgressBar={true}
+                />
                 <GlobalStyles />
                 <StyleSheetManager shouldForwardProp={shouldForwardProp}>
                   <Header

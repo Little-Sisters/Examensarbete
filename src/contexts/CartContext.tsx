@@ -77,7 +77,6 @@ export function CartProvider({ children }: Props) {
         { ...item, id: cartItemId, quantity, basePrice: item.price },
       ]);
       toast.success(`${item.title} added to cart`);
-      
     }
   };
 
