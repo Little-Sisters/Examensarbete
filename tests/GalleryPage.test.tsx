@@ -5,7 +5,7 @@ describe('GalleryPage', () => {
   test('renders GalleryPage component', () => {
     render(<GalleryPage />);
     const headingElement = screen.getByRole('heading', {
-      name: 'Gallery Page',
+      name: 'Gallery',
     });
     expect(headingElement).toBeInTheDocument();
   });
