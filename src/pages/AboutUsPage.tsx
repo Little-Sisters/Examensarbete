@@ -4,7 +4,9 @@ import PageContentWrapper from '../components/reusable components/PageContentWra
 function AboutUsPage() {
   return (
     <PageContentWrapper>
-      <MarginTopContainer></MarginTopContainer>
+      <MarginTopContainer>
+        <h1>Hej</h1>
+      </MarginTopContainer>
     </PageContentWrapper>
   );
 }
