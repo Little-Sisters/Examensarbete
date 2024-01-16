@@ -178,7 +178,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                   <DesktopNavLink to="../flavors">Flavors</DesktopNavLink>
                   <DesktopNavLink to="/gallery">Gallery</DesktopNavLink>
                 </DesktopLinkWrapper>
-                <Logo width="5rem" mobileWidth="4rem" />
+                <Logo width="4rem" mobileWidth="4rem" />
                 <RightDesktopLinkWrapper>
                   <DesktopNavLink to="/about">About</DesktopNavLink>
                   <DesktopNavLink to="/products">Products</DesktopNavLink>
