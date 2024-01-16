@@ -179,7 +179,7 @@ const data: CellData[] = [
 // Function to render cells
 const BentoGrid: React.FC = () => {
   return (
-    <FlexContainer>
+
       <Grid>
         {data.map((item) => (
           <Cell
@@ -199,15 +199,9 @@ const BentoGrid: React.FC = () => {
           </Cell>
         ))}
       </Grid>
-    </FlexContainer>
+
   );
 };
-
-const FlexContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 // Styled component for the Bento grid container
 // grid template comlumns and auto rows create a grid with 200px columns and rows
@@ -218,7 +212,6 @@ const Grid = styled.div`
   gap: 1rem;
   padding: 1rem;
   color: #fff;
-  max-width: 1400px;
 `;
 
 // Styled components for the individual cells
@@ -241,7 +234,9 @@ const Cell = styled.div<{ imageUrl: string }>`
 
   // Modifier classes for different cell spans
   // These are applied in the data list to set the width and height of each cell
-  &.span-2 {
+
+  @media (min-width: 768px) {
+    &.span-2 {
     grid-column: span 2;
   }
   &.span-3 {
@@ -311,6 +306,8 @@ const Cell = styled.div<{ imageUrl: string }>`
   &.row-span-12 {
     grid-row: span 12;
   }
+  }
+
 `;
 
 // Styled components for the overlay
