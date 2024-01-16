@@ -26,8 +26,8 @@ const data: CellData[] = [
     flavor: 'Strawberry',
     decorations: 'Flowers',
     frosting: 'Buttercream',
-    span: 'auto',
-    rowSpan: 'row-span-2',
+    span: 'span-2',
+    rowSpan: 'row-span-1',
   },
   {
     id: 2,
@@ -51,7 +51,7 @@ const data: CellData[] = [
     decorations: 'Flowers',
     frosting: 'Buttercream',
     span: 'span-1',
-    rowSpan: 'row-span-1',
+    rowSpan: 'row-span-2',
   },
   {
     id: 4,
@@ -63,7 +63,7 @@ const data: CellData[] = [
     decorations: 'Flowers',
     frosting: 'Buttercream',
     span: 'span-1',
-    rowSpan: 'row-span-1',
+    rowSpan: 'row-span-2',
   },
   {
     id: 5,
@@ -86,8 +86,8 @@ const data: CellData[] = [
     flavor: 'Chocolate',
     decorations: 'Flowers',
     frosting: 'Buttercream',
-    span: 'span-1',
-    rowSpan: 'row-span-1',
+    span: 'span-3',
+    rowSpan: 'row-span-2',
   },
   {
     id: 7,
@@ -122,7 +122,7 @@ const data: CellData[] = [
     flavor: 'Chocolate',
     decorations: 'Flowers',
     frosting: 'Buttercream',
-    span: 'span-1',
+    span: 'span-2',
     rowSpan: 'row-span-1',
   },
   {
@@ -134,8 +134,8 @@ const data: CellData[] = [
     flavor: 'Chocolate',
     decorations: 'Flowers',
     frosting: 'Buttercream',
-    span: 'span-1',
-    rowSpan: 'row-span-1',
+    span: 'span-2',
+    rowSpan: 'row-span-2',
   },
   {
     id: 11,
@@ -146,8 +146,8 @@ const data: CellData[] = [
     flavor: 'Chocolate',
     decorations: 'Flowers',
     frosting: 'Buttercream',
-    span: 'span-1',
-    rowSpan: 'row-span-1',
+    span: 'span-2',
+    rowSpan: 'row-span-2',
   },
   {
     id: 12,
@@ -158,50 +158,59 @@ const data: CellData[] = [
     flavor: 'Chocolate',
     decorations: 'Flowers',
     frosting: 'Buttercream',
-    span: 'span-1',
-    rowSpan: 'row-span-1',
+    span: 'span-2',
+    rowSpan: 'row-span-2',
   },
 ];
 
 // Function to render cells
-const BentoComponent: React.FC = () => {
+const BentoGrid: React.FC = () => {
   return (
-    <BentoGrid>
-      {data.map((item) => (
-        <Cell
-          key={item.id}
-          className={`${item.span} ${item.rowSpan} image-cell`}
-          imageUrl={item.imageUrl}
-        >
-          <ChoicesOverlay className="choices-overlay">
-            <StyledItem>{item.tier}</StyledItem>
-            <StyledItem>{item.color}</StyledItem>
-            <StyledItem>{item.decorations}</StyledItem>
-            <StyledItem>{item.topper}</StyledItem>
-            <StyledItem>{item.flavor}</StyledItem>
-            <StyledItem>{item.frosting}</StyledItem>
-          </ChoicesOverlay>
-        </Cell>
-      ))}
-    </BentoGrid>
+    <FlexContainer>
+      <Grid>
+        {data.map((item) => (
+          <Cell
+            key={item.id}
+            className={`${item.span} ${item.rowSpan} image-cell`}
+            imageUrl={item.imageUrl}
+          >
+            <ChoicesOverlay className="choices-overlay">
+              <StyledItem>{item.tier}</StyledItem>
+              <StyledItem>{item.color}</StyledItem>
+              <StyledItem>{item.decorations}</StyledItem>
+              <StyledItem>{item.topper}</StyledItem>
+              <StyledItem>{item.flavor}</StyledItem>
+              <StyledItem>{item.frosting}</StyledItem>
+            </ChoicesOverlay>
+          </Cell>
+        ))}
+      </Grid>
+    </FlexContainer>
   );
 };
 
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 // Styled component for the Bento grid container
-const BentoGrid = styled.div`
+// grid template comlumns and auto rows create a grid with 200px columns and rows
+const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-auto-rows: 200px;
   gap: 1rem;
-  padding: 16px;
+  padding: 1rem;
   color: #fff;
+  max-width: 1400px;
 `;
 
 // Styled components for the individual cells
 const Cell = styled.div<{ imageUrl: string }>`
   background-color: #333;
   border-radius: 3px;
-  /* padding: 20px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -217,6 +226,7 @@ const Cell = styled.div<{ imageUrl: string }>`
   }
 
   // Modifier classes for different cell spans
+  // These are applied in the data list to set the width and height of each cell
   &.span-2 {
     grid-column: span 2;
   }
@@ -311,4 +321,4 @@ const StyledItem = styled.p`
   padding: 0;
 `;
 
-export default BentoComponent;
+export default BentoGrid;

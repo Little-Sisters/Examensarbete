@@ -11,17 +11,14 @@ import cake3Pink from '/scrollcake/base3-pink.png';
 import decorations from '/scrollcake/decorations.png';
 import topper from '/scrollcake/topper.png';
 
-
 const ScrollSectionComponent = () => {
   const targetRef = React.useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
 
-   const themeContext = useContext(ThemeContext);
-   const theme = themeContext?.mode;
-
-  
+  const themeContext = useContext(ThemeContext);
+  const theme = themeContext?.mode;
 
   // Define the y-transformations and opacity for each piece based on scroll progress
   const translateYPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 390]);
