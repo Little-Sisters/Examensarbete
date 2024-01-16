@@ -7,6 +7,7 @@ type TabsProps = {
 };
 
 const Tabs: React.FC<TabsProps> = ({ scrollYProgress }) => {
+
   return (
     <Tab>
       <TabTitleFlavoursFlex>
@@ -73,7 +74,7 @@ const ProgressBarBox = styled.div`
   position: relative;
   width: 100%;
   height: 3px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.4);
 `;
 
 const FlavourTextBox = styled.div`
@@ -91,9 +92,8 @@ const FlavourTextBox = styled.div`
 
 const ProgressBar = styled(motion.div)`
   top: 0;
-  left: 0;
   right: 0;
-  height: 4px;
+  height: 3px;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.text};
   transform-origin: 0%;
