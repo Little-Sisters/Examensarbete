@@ -1,12 +1,12 @@
 import { Field, Formik } from 'formik';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
-import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import * as Yup from 'yup';
 import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
+import { toast } from 'react-toastify';
 
 interface StyledFormControlProps {
   error?: boolean | string;
@@ -27,8 +27,6 @@ function BespokeDetailsPage() {
   const [file, setFile] = useState<string | undefined>();
   const [isColorPickerVisible, setIsColorPickerVisible] =
     useState<boolean>(false);
-  const [isConfirmationModalVisible, setIsConfirmationModalVisible] =
-    useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -45,10 +43,6 @@ function BespokeDetailsPage() {
 
   const openImage = () => {
     window.open(file);
-  };
-
-  const closeConfirmationModal = () => {
-    setIsConfirmationModalVisible(false);
   };
 
   useEffect(() => {
@@ -70,19 +64,6 @@ function BespokeDetailsPage() {
   return (
     <MarginTopContainer>
       <PageContentWrapper>
-        {isConfirmationModalVisible && (
-          <ConfirmationModal>
-            <p>
-              Thank you for your request!
-              <br />
-              We will get back to you as soon as possible
-            </p>
-            <CloseIconWrapper>
-              <IoMdClose onClick={closeConfirmationModal} />
-            </CloseIconWrapper>
-          </ConfirmationModal>
-        )}
-
         <ProductLayout>
           <Cake>
             <img src="/transparent-cake.png" alt="" />
@@ -143,8 +124,8 @@ function BespokeDetailsPage() {
                       setEmailAddress('');
                       setColorPicker('#ffffff');
                       setFile(undefined);
-                      setIsConfirmationModalVisible(true);
                       resetForm();
+                      toast.success('Request successfully sent');
                     }}
                   >
                     {(formik) => (
@@ -244,34 +225,6 @@ const StyledFormControl = styled.div<StyledFormControlProps>`
 const Required = styled.span`
   color: red;
   margin-left: 0.2rem;
-`;
-
-const ConfirmationModal = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 2rem;
-  border-radius: 3px;
-  background-color: ${({ theme }) => theme.card};
-  color: ${({ theme }) => theme.text};
-  z-index: 1000;
-  transition: background-color 0.3s ease-in;
-
-  &.active {
-    display: flex;
-  }
-
-  @media (max-width: 700px) {
-    width: 90%;
-  }
-`;
-
-const CloseIconWrapper = styled.div`
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  cursor: pointer;
 `;
 
 const FlexContainer = styled.div`
