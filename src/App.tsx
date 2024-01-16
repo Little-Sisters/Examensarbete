@@ -46,6 +46,7 @@ export function App() {
                 <ToastContainer
                   position="bottom-center"
                   hideProgressBar={true}
+                  theme={theme === 'light' ? 'light' : 'dark'}
                 />
                 <GlobalStyles />
                 <StyleSheetManager shouldForwardProp={shouldForwardProp}>
