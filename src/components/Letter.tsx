@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import { useOrder } from '../contexts/OrderContext';
-import { calculateItemPrice } from './calculateItemPrice';
+import { calculateItemPrice } from '../functions/calculateItemPrice';
 /* eslint-disable react-refresh/only-export-components */
 
 // Generates unique number

@@ -3,7 +3,7 @@ import {
   DecorationsOption,
   TierOption,
   TopperOption,
-} from './select/data';
+} from '../components/select/data';
 
 export function getModelSrc(
   selectedTier: TierOption | null,

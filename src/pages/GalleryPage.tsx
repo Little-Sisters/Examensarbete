@@ -1,7 +1,7 @@
 import BentoGrid from '../components/BentoGrid';
-import MarginTopContainer from '../components/MarginTopContainer';
-import PageContentWrapper from '../components/PageContentWrapper';
-import PageDescription from '../components/PageDescription';
+import MarginTopContainer from '../components/reusable components/MarginTopContainer';
+import PageContentWrapper from '../components/reusable components/PageContentWrapper';
+import PageDescription from '../components/reusable components/PageDescription';
 
 function GalleryPage() {
   return (

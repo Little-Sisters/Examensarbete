@@ -5,8 +5,8 @@ import {
   frostingOptions,
   decorationsOptions,
   topperOptions,
-} from './select/data';
-import { CartItem } from './Cart';
+} from '../components/select/data';
+import { CartItem } from '../components/Cart';
 
 export const calculateItemPrice = (cartItem: CartItem) => {
   let extraPrice = 0;

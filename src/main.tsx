@@ -7,7 +7,6 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import { App } from './App';
-import './index.css';
 import './components/burger-menu/hej.scss';
 
 const container = document.getElementById('root');

@@ -1,7 +1,7 @@
 import { Cart } from '../components/Cart';
-import MarginTopContainer from '../components/MarginTopContainer';
+import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import { OrderForm } from '../components/OrderForm';
-import PageContentWrapper from '../components/PageContentWrapper';
+import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import styled from 'styled-components';
 
 function CartPage() {

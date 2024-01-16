@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Product } from '../../data/productdata';
 import { useCart } from '../contexts/CartContext';
 import CartModelViewer from './CartModelViewer';
-import Logo from './Logo';
+import Logo from './reusable components/Logo';
 import {
   ColourOption,
   DecorationsOption,
@@ -22,7 +22,7 @@ import {
 } from './select/data';
 import NewSelect from './select/newSelect';
 import CartModelEditViewer from './CartModelEditViewer';
-import { calculateItemPrice } from './calculateItemPrice';
+import { calculateItemPrice } from '../functions/calculateItemPrice';
 
 export interface CartItem extends Product {
   quantity: number;
