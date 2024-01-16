@@ -1,5 +1,6 @@
 import { MotionValue, motion } from 'framer-motion';
 import styled from 'styled-components';
+import flavoursData from '../../data/flavoursData';
 
 type TabsProps = {
   scrollYProgress: MotionValue<number>;
@@ -11,9 +12,9 @@ const Tabs: React.FC<TabsProps> = ({ scrollYProgress }) => {
       <TabTitleFlavoursFlex>
         <h1>Our Flavours</h1>
         <FlavourTextBox>
-          <span>Chocolate</span>
-          <span>Strawberry</span>
-          <span>Chocolate</span>
+          {flavoursData.map((flavour, index) => (
+            <span key={index}>{flavour.flavourTitle}</span>
+          ))}
         </FlavourTextBox>
       </TabTitleFlavoursFlex>
       <ProgressBarBox>
@@ -31,7 +32,7 @@ const TabTitleFlavoursFlex = styled.div`
   flex-direction: row;
   @media (max-width: 830px) {
     flex-direction: column;
-    gap: .4rem;
+    gap: 0.4rem;
   }
 `;
 
@@ -72,7 +73,7 @@ const ProgressBarBox = styled.div`
   position: relative;
   width: 100%;
   height: 3px;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 const FlavourTextBox = styled.div`

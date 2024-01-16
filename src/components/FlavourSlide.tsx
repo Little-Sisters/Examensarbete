@@ -1,32 +1,49 @@
+import React from 'react';
 import styled from 'styled-components';
 import Chocolate from './Chocolate';
 import { FilledButton, TransparentButton } from './reusable components/Button';
 
-const FlavourSlide = () => {
+type FlavourSlideProps = {
+  flavourTitle: string;
+  subtitle: string;
+  spanDescription: string;
+  filledButtonTitle: string;
+  transparentButtonTitle: string;
+  model: string;
+  backgroundColor: string;
+};
+
+const FlavourSlide: React.FC<FlavourSlideProps> = ({
+  flavourTitle,
+  subtitle,
+  spanDescription,
+  filledButtonTitle,
+  transparentButtonTitle,
+  model,
+  backgroundColor,
+}) => {
   const handleClick = () => {
-    console.log('Button clicked!'); // Replace this with the message you want to log
+    console.log('Button clicked!');
   };
+
   return (
-    <Container>
+    <Container
+      lightBackgroundColor={backgroundColor}
+    >
       <FlexBox>
         <TextBox>
           <TextFlex>
-            <FlavourTitle>Chocolate</FlavourTitle>
+            <FlavourTitle>{flavourTitle}</FlavourTitle>
             <PaddedBox>
-              <p>Smaller text with some additional information.</p>
-              <span>
-                I accept the terms and conditions We ship to multiple countries
-                and areas ansd stuff. Design your own dream cake and preview it
-                immediatly areas ansd stuff. Design your own dream cake and
-                preview it immediatly
-              </span>
+              <p>{subtitle}</p>
+              <span>{spanDescription}</span>
               <ButtonBox>
                 <FilledButton
-                  title="Create a Chocolate cake"
+                  title={filledButtonTitle}
                   onPress={handleClick}
                 ></FilledButton>
                 <TransparentButton
-                  title="Check out our gallery"
+                  title={transparentButtonTitle}
                   onPress={handleClick}
                 ></TransparentButton>
               </ButtonBox>
@@ -34,25 +51,25 @@ const FlavourSlide = () => {
           </TextFlex>
         </TextBox>
         <ModelBox>
-          <Chocolate></Chocolate>
+          <Chocolate model={model}></Chocolate>
         </ModelBox>
       </FlexBox>
     </Container>
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ lightBackgroundColor: string }>`
   height: 100%;
   width: 100vw;
-  background: #684f4b;
+  background: ${(props) => props.lightBackgroundColor};
 `;
 
 const FlexBox = styled.div`
   width: 100%;
   height: 100%;
-  margin: 0 auto; /* Center the content */
-  max-width: 1440px; /* Set a maximum width for desktop */
-  padding: 0 0.5rem; /* Side margins for small screens */
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 0 0.5rem;
   display: flex;
   position: relative;
   gap: 1rem;
@@ -64,18 +81,19 @@ const FlexBox = styled.div`
 const Box = styled.div`
   position: relative;
   width: 50%;
-  height: calc(100% - 10rem);
-  margin-top: 10rem;
+  height: calc(100% - 9rem);
+  margin-top: 9rem;
   @media (max-width: 830px) {
     width: 100%;
+
     height: 50%;
     height: 100%;
     margin-top: 0rem;
   }
 `;
+
 const TextBox = styled(Box)`
   padding: 1rem;
-
   @media (max-width: 830px) {
     height: 45%;
   }
@@ -84,8 +102,9 @@ const TextBox = styled(Box)`
 const ModelBox = styled(Box)`
   @media (max-width: 830px) {
     height: 55%;
-    margin-top: 8rem;
+    margin-top: 9rem;
   }
+
 `;
 
 const TextFlex = styled.div`

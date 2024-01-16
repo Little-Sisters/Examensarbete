@@ -1,3 +1,4 @@
+import flavoursData from '../../data/flavoursData';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import styled from 'styled-components';
@@ -17,8 +18,9 @@ const HorizontalCarousel = () => {
       <MyBox>
         <Tabs scrollYProgress={scrollYProgress} />
         <FlexBox style={{ x }}>
-          <FlavourSlide></FlavourSlide>
-          <FlavourSlide></FlavourSlide>
+          {flavoursData.map((flavour) => (
+            <FlavourSlide key={flavour.id} {...flavour} />
+          ))}
         </FlexBox>
       </MyBox>
     </MySection>
