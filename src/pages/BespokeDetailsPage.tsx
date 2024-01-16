@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import * as Yup from 'yup';
 import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
+import { toast } from 'react-toastify';
 
 interface StyledFormControlProps {
   error?: boolean | string;
@@ -81,6 +82,7 @@ function BespokeDetailsPage() {
               <IoMdClose onClick={closeConfirmationModal} />
             </CloseIconWrapper>
           </ConfirmationModal>
+          
         )}
 
         <ProductLayout>
