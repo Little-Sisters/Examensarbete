@@ -25,6 +25,7 @@ const Burger: React.FC<BurgerProps> = ({ isOpen, handleToggle }) => {
   );
 };
 
-const StyledSpan = styled.span``;
+const StyledSpan = styled.span`
+`;
 
 export default Burger;
