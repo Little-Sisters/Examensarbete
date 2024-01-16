@@ -5,8 +5,8 @@ import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import * as Yup from 'yup';
-import MarginTopContainer from '../components/MarginTopContainer';
-import PageContentWrapper from '../components/PageContentWrapper';
+import MarginTopContainer from '../components/reusable components/MarginTopContainer';
+import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 
 interface StyledFormControlProps {
   error?: boolean | string;

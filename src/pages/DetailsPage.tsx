@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import MarginTopContainer from '../components/MarginTopContainer';
+import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import MovelView3d from '../components/ModelViewer';
-import PageContentWrapper from '../components/PageContentWrapper';
-import { FilledButton } from '../components/TransparentButton';
+import PageContentWrapper from '../components/reusable components/PageContentWrapper';
+import { FilledButton } from '../components/reusable components/Button';
 import {
   ColourOption,
   DecorationsOption,

@@ -4,7 +4,7 @@ import styled, { ThemeContext } from 'styled-components';
 import { Product } from '../../data/productdata';
 import { useCart } from '../contexts/CartContext';
 
-import { TransparentButton } from './TransparentButton';
+import { TransparentButton } from './reusable components/Button';
 import flowerOverlay from '/flowerOverlay.png';
 import flowerOverlayDarkmode from '/flowerOverlayDarkmode.png';
 

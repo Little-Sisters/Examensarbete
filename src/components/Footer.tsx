@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import styled from 'styled-components';
-import PageContentWrapper from './PageContentWrapper';
-import { TransparentButton } from './TransparentButton';
+import PageContentWrapper from './reusable components/PageContentWrapper';
+import { TransparentButton } from './reusable components/Button';
 
 function Footer() {
   return (

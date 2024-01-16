@@ -9,11 +9,11 @@ import { Link, NavLink } from 'react-router-dom';
 import styled, { useTheme } from 'styled-components';
 import { useCart } from '../contexts/CartContext';
 import useMobile from '../hooks/UseMobile';
-import Logo from './Logo';
-import PageContentWrapper from './PageContentWrapper';
+import Logo from './reusable components/Logo';
+import PageContentWrapper from './reusable components/PageContentWrapper';
 import Toggle from './Toggle';
 import Burger from './burger-menu/Burger';
-import headerLinks from './data';
+import headerLinks from '../../data/headerData';
 
 interface HeaderProps {
   themeToggler: () => void;

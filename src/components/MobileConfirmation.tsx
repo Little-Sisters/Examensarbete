@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useOrder } from '../contexts/OrderContext';
-import { calculateItemPrice } from './calculateItemPrice';
+import { calculateItemPrice } from '../functions/calculateItemPrice';
 
 function MobileConfirmation() {
   const { getLastOrder } = useOrder();

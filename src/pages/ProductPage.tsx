@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import PageContentWrapper from '../components/PageContentWrapper';
+import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import ProductCard from '../components/ProductCard';
 import { useProduct } from '../contexts/ProductContext';
-import PageDescription from '../components/PageDescription';
+import PageDescription from '../components/reusable components/PageDescription';
 
 function ProductPage() {
   const { productList } = useProduct();

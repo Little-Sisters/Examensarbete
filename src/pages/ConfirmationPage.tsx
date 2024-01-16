@@ -1,7 +1,7 @@
 import { useOrder } from '../contexts/OrderContext';
 import MobileConfirmation from '../components/MobileConfirmation';
-import MarginTopContainer from '../components/MarginTopContainer';
-import PageContentWrapper from '../components/PageContentWrapper';
+import MarginTopContainer from '../components/reusable components/MarginTopContainer';
+import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import useMobile from '../hooks/UseMobile';
 import ConfirmOrder from '../components/ConfirmOrder';
 

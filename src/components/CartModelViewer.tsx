@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getCartModelSrc } from './getModelSrc';
+import { getCartModelSrc } from '../functions/getModelSrc';
 
 interface CartMovelView3dProps {
   selectedTier: number | null;

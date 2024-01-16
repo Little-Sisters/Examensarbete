@@ -5,7 +5,7 @@ import {
   TierOption,
   TopperOption,
 } from './select/data';
-import { getModelSrc } from './getModelSrc';
+import { getModelSrc } from '../functions/getModelSrc';
 
 interface MovelView3dProps {
   selectedTier: TierOption | null;
