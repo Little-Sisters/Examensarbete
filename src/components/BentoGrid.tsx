@@ -4,6 +4,7 @@ import styled from 'styled-components';
 // Define the types for the cell data
 type CellData = {
   id: number;
+  title: string;
   imageUrl: string;
   tier: string;
   color: string;
@@ -19,35 +20,38 @@ type CellData = {
 const data: CellData[] = [
   {
     id: 1,
-    imageUrl: 'pinkcake.jpg',
-    tier: '3 tiers',
-    color: 'Pink',
-    topper: 'No topper',
-    flavor: 'Strawberry',
-    decorations: 'Flowers',
-    frosting: 'Buttercream',
+    title: 'Bespoke Cake',
+    imageUrl: 'rosescake.jpg',
+    tier: '1 tier',
+    color: 'Snow',
+    topper: 'Roses',
+    flavor: 'Vanilla',
+    decorations: 'Bow',
+    frosting: 'Fondant',
     span: 'span-2',
     rowSpan: 'row-span-1',
   },
   {
     id: 2,
-    imageUrl: 'flowercake.jpg',
-    tier: '3 tiers',
-    color: 'White',
+    title: 'Customized Cake',
+    imageUrl: 'ganachepink.jpg',
+    tier: '1 tier',
+    color: 'Pink',
     topper: 'No topper',
-    flavor: 'Vanilla',
-    decorations: 'Flowers',
-    frosting: 'Fondant',
+    flavor: 'Strawberry',
+    decorations: 'Ganache',
+    frosting: 'Buttercream',
     span: 'span-1',
     rowSpan: 'row-span-1',
   },
   {
     id: 3,
-    imageUrl: 'threetiercake.jpg',
-    tier: '3 tiers',
+    title: 'Customized Cake',
+    imageUrl: 'mrmrs.jpg',
+    tier: '2 tiers',
     color: 'White',
-    topper: 'No topper',
-    flavor: 'Salted caramel',
+    topper: 'Mr & Mrs',
+    flavor: 'Strawberry',
     decorations: 'Flowers',
     frosting: 'Buttercream',
     span: 'span-1',
@@ -55,9 +59,10 @@ const data: CellData[] = [
   },
   {
     id: 4,
-    imageUrl: 'twotiercake.jpg',
-    tier: '2 tiers',
-    color: 'White',
+    title: 'Customized Cake',
+    imageUrl: 'pinkcake.jpg',
+    tier: '4 tiers',
+    color: 'Pink',
     topper: 'No topper',
     flavor: 'Strawberry',
     decorations: 'Flowers',
@@ -67,6 +72,7 @@ const data: CellData[] = [
   },
   {
     id: 5,
+    title: 'Customized Cake',
     imageUrl: 'whitecake.jpg',
     tier: '4 tiers',
     color: 'White',
@@ -79,84 +85,91 @@ const data: CellData[] = [
   },
   {
     id: 6,
-    imageUrl: 'whitecake.jpg',
-    tier: '6',
-    color: '6',
-    topper: 'No topper',
+    title: 'Bespoke Cake',
+    imageUrl: 'velvetcake.jpg',
+    tier: '1 tier',
+    color: 'Snow',
+    topper: 'Crumbs and Cream',
     flavor: 'Chocolate',
-    decorations: 'Flowers',
-    frosting: 'Buttercream',
+    decorations: 'Crumb Coating',
+    frosting: 'Cream Cheese',
     span: 'span-3',
     rowSpan: 'row-span-2',
   },
   {
     id: 7,
-    imageUrl: 'whitecake.jpg',
-    tier: '7',
-    color: '7',
+    title: 'Customized Cake',
+    imageUrl: 'midnightcake.jpg',
+    tier: '2 tiers',
+    color: 'Midnight Black',
     topper: 'No topper',
     flavor: 'Chocolate',
     decorations: 'Flowers',
-    frosting: 'Buttercream',
+    frosting: 'Fondant',
     span: 'span-1',
     rowSpan: 'row-span-1',
   },
   {
     id: 8,
-    imageUrl: 'whitecake.jpg',
-    tier: '8',
-    color: '8',
+    title: 'Bespoke Cake',
+    imageUrl: 'buttercreamcake.jpg',
+    tier: '2 tiers',
+    color: 'Snow',
     topper: 'No topper',
     flavor: 'Chocolate',
-    decorations: 'Flowers',
-    frosting: 'Buttercream',
+    decorations: 'Berries',
+    frosting: 'Rippled Buttercream',
     span: 'span-1',
     rowSpan: 'row-span-1',
   },
   {
     id: 9,
-    imageUrl: 'whitecake.jpg',
-    tier: '9',
-    color: '9',
-    topper: 'No topper',
+    title: 'Bespoke Cake',
+    imageUrl: 'gothcake.jpg',
+    tier: '1 tier',
+    color: 'Ombré Red',
+    topper: 'Berries',
     flavor: 'Chocolate',
-    decorations: 'Flowers',
-    frosting: 'Buttercream',
+    decorations: 'Ganache',
+    frosting: 'Fondant',
     span: 'span-2',
     rowSpan: 'row-span-1',
   },
   {
     id: 10,
-    imageUrl: 'whitecake.jpg',
-    tier: '10',
-    color: '10',
+    title: 'Customized Cake',
+    imageUrl: 'flowercake.jpg',
+    tier: '3',
+    color: 'Snow',
     topper: 'No topper',
-    flavor: 'Chocolate',
+    flavor: 'Salted Caramel',
     decorations: 'Flowers',
-    frosting: 'Buttercream',
+    frosting: 'Fondant',
     span: 'span-2',
     rowSpan: 'row-span-2',
   },
   {
     id: 11,
-    imageUrl: 'whitecake.jpg',
-    tier: '11',
-    color: '11',
-    topper: 'No topper',
-    flavor: 'Chocolate',
-    decorations: 'Flowers',
-    frosting: 'Buttercream',
+    title: 'Bespoke Cake',
+    imageUrl: 'herocake.jpg',
+    tier: '4 tiers',
+    color: 'Snow',
+    topper: 'Flowers',
+    flavor: 'Vanilla',
+    decorations: 'Fruit',
+    frosting: 'Rippled Buttercream',
     span: 'span-2',
     rowSpan: 'row-span-2',
   },
   {
     id: 12,
-    imageUrl: 'whitecake.jpg',
-    tier: '12',
-    color: '12',
-    topper: '12',
+    title: 'Bespoke Cake',
+    imageUrl: 'adventurecake.jpg',
+    tier: '3 tiers',
+    color: 'Snow',
+    topper: 'The Adventure Begins',
     flavor: 'Chocolate',
-    decorations: 'Flowers',
+    decorations: 'Flowers and beads',
     frosting: 'Buttercream',
     span: 'span-2',
     rowSpan: 'row-span-2',
@@ -166,34 +179,27 @@ const data: CellData[] = [
 // Function to render cells
 const BentoGrid: React.FC = () => {
   return (
-    <FlexContainer>
-      <Grid>
-        {data.map((item) => (
-          <Cell
-            key={item.id}
-            className={`${item.span} ${item.rowSpan} image-cell`}
-            imageUrl={item.imageUrl}
-          >
-            <ChoicesOverlay className="choices-overlay">
-              <StyledItem>{item.tier}</StyledItem>
-              <StyledItem>{item.color}</StyledItem>
-              <StyledItem>{item.decorations}</StyledItem>
-              <StyledItem>{item.topper}</StyledItem>
-              <StyledItem>{item.flavor}</StyledItem>
-              <StyledItem>{item.frosting}</StyledItem>
-            </ChoicesOverlay>
-          </Cell>
-        ))}
-      </Grid>
-    </FlexContainer>
+    <Grid>
+      {data.map((item) => (
+        <Cell
+          key={item.id}
+          className={`${item.span} ${item.rowSpan} image-cell`}
+          imageUrl={item.imageUrl}
+        >
+          <ChoicesOverlay className="choices-overlay">
+            <StyledItem>{item.title}</StyledItem>
+            <StyledItem>{item.tier}</StyledItem>
+            <StyledItem>{item.color}</StyledItem>
+            <StyledItem>{item.decorations}</StyledItem>
+            <StyledItem>{item.topper}</StyledItem>
+            <StyledItem>{item.flavor}</StyledItem>
+            <StyledItem>{item.frosting}</StyledItem>
+          </ChoicesOverlay>
+        </Cell>
+      ))}
+    </Grid>
   );
 };
-
-const FlexContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 // Styled component for the Bento grid container
 // grid template comlumns and auto rows create a grid with 200px columns and rows
@@ -204,7 +210,6 @@ const Grid = styled.div`
   gap: 1rem;
   padding: 1rem;
   color: #fff;
-  max-width: 1400px;
 `;
 
 // Styled components for the individual cells
@@ -227,75 +232,78 @@ const Cell = styled.div<{ imageUrl: string }>`
 
   // Modifier classes for different cell spans
   // These are applied in the data list to set the width and height of each cell
-  &.span-2 {
-    grid-column: span 2;
-  }
-  &.span-3 {
-    grid-column: span 3;
-  }
-  &.span-4 {
-    grid-column: span 4;
-  }
-  &.span-5 {
-    grid-column: span 5;
-  }
-  &.span-6 {
-    grid-column: span 6;
-  }
-  &.span-7 {
-    grid-column: span 7;
-  }
-  &.span-8 {
-    grid-column: span 8;
-  }
-  &.span-9 {
-    grid-column: span 9;
-  }
-  &.span-10 {
-    grid-column: span 10;
-  }
-  &.span-11 {
-    grid-column: span 11;
-  }
-  &.span-12 {
-    grid-column: span 12;
-  }
 
-  &.row-span-1 {
-    grid-row: span 1;
-  }
-  &.row-span-2 {
-    grid-row: span 2;
-  }
-  &.row-span-3 {
-    grid-row: span 3;
-  }
-  &.row-span-4 {
-    grid-row: span 4;
-  }
-  &.row-span-5 {
-    grid-row: span 5;
-  }
-  &.row-span-6 {
-    grid-row: span 6;
-  }
-  &.row-span-7 {
-    grid-row: span 7;
-  }
-  &.row-span-8 {
-    grid-row: span 8;
-  }
-  &.row-span-9 {
-    grid-row: span 9;
-  }
-  &.row-span-10 {
-    grid-row: span 10;
-  }
-  &.row-span-11 {
-    grid-row: span 11;
-  }
-  &.row-span-12 {
-    grid-row: span 12;
+  @media (min-width: 1355px) {
+    &.span-2 {
+      grid-column: span 2;
+    }
+    &.span-3 {
+      grid-column: span 3;
+    }
+    &.span-4 {
+      grid-column: span 4;
+    }
+    &.span-5 {
+      grid-column: span 5;
+    }
+    &.span-6 {
+      grid-column: span 6;
+    }
+    &.span-7 {
+      grid-column: span 7;
+    }
+    &.span-8 {
+      grid-column: span 8;
+    }
+    &.span-9 {
+      grid-column: span 9;
+    }
+    &.span-10 {
+      grid-column: span 10;
+    }
+    &.span-11 {
+      grid-column: span 11;
+    }
+    &.span-12 {
+      grid-column: span 12;
+    }
+
+    &.row-span-1 {
+      grid-row: span 1;
+    }
+    &.row-span-2 {
+      grid-row: span 2;
+    }
+    &.row-span-3 {
+      grid-row: span 3;
+    }
+    &.row-span-4 {
+      grid-row: span 4;
+    }
+    &.row-span-5 {
+      grid-row: span 5;
+    }
+    &.row-span-6 {
+      grid-row: span 6;
+    }
+    &.row-span-7 {
+      grid-row: span 7;
+    }
+    &.row-span-8 {
+      grid-row: span 8;
+    }
+    &.row-span-9 {
+      grid-row: span 9;
+    }
+    &.row-span-10 {
+      grid-row: span 10;
+    }
+    &.row-span-11 {
+      grid-row: span 11;
+    }
+    &.row-span-12 {
+      grid-row: span 12;
+    }
   }
 `;
 

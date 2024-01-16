@@ -8,8 +8,8 @@ function GalleryPage() {
     <MarginTopContainer>
       <PageContentWrapper>
         <PageDescription
-          title="Gallery Page"
-          description="This is the gallery page."
+          title="Gallery"
+          description="Welcome to our gallery, where you'll find a showcase of both customized and bespoke cakes, accompanied by a curated selection of choices for each cake. Find your dream cake or draw inspiration to create your own!"
         />
         <BentoGrid />
       </PageContentWrapper>
