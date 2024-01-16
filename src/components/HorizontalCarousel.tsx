@@ -27,7 +27,6 @@ const FlexBox = styled(motion.div)`
   display: flex;
   height: 100%;
   align-items: flex-start;
-  gap: 16px;
 `;
 
 const MySection = styled.div`
