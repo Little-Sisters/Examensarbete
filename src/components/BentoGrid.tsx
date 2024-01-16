@@ -235,7 +235,7 @@ const Cell = styled.div<{ imageUrl: string }>`
   // Modifier classes for different cell spans
   // These are applied in the data list to set the width and height of each cell
 
-  @media (min-width: 768px) {
+  @media (min-width: 1355px) {
     &.span-2 {
     grid-column: span 2;
   }
