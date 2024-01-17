@@ -23,7 +23,7 @@ export const lightMode = {
   productTwo: '#F5EDDD', // Product card background color
   gradient: '#F9F5F3', // Gradient color for the background
   overlay: 'rgba(255, 255, 255, 0.2)',
-  purple: '#E6E4F1',
+  purple: '#e6d5eb',
 };
 
 export const darkMode = {
@@ -46,5 +46,5 @@ export const darkMode = {
   gradient: '#262524', // Gradient color for the background
   black: '#FFFFFF',
   overlay: 'rgb(38,37,36, 0.2)',
-  purple: '#E6E4F1',
+  purple: '#e6d5eb',
 };

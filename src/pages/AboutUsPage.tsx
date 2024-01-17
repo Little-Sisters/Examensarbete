@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import PageDescription from '../components/reusable components/PageDescription';
 
 function AboutUsPage() {
+  useEffect(() => {
+    document.title = 'About';
+  }, []);
+
   return (
     <>
       <PageContentWrapper>
@@ -23,6 +28,7 @@ quia enim!"
         <FlexContainer>
           <Quote>
             <img src="/assets/smallflowers.png" alt="" />
+            <Gradient></Gradient>
             <h4>
               "Every cake we create is a labor of love because we understand
               that behind each slice, there's a piece of your most cherished
@@ -32,21 +38,28 @@ quia enim!"
           </Quote>
         </FlexContainer>
         <FlexContainer>
-          <WeddingCake src="/assets/aboutweddingcake.jpg" alt="" />
-          <span>
-            "Every cake we create is a labor of love because we understand that
-            behind each slice, there's a piece of your most cherished moments"
-          </span>
+          <WeddingCakeWrapper>
+            <img src="/assets/aboutweddingcake.jpg" alt="" />
+            <span>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Consectetur quo, deserunt molestias veritatis quam, voluptatum,
+              architecto vitae aliquid magnam omnis mollitia culpa! Illo, non
+              enim repellendus mollitia voluptatibus ullam at? Lorem ipsum dolor
+              sit amet consectetur adipisicing elit. Consectetur quo, deserunt
+              molestias veritatis quam, voluptatum, architecto vitae aliquid
+              magnam omnis mollitia culpa! Illo, non enim repellendus mollitia
+              voluptatibus ullam at?
+            </span>
+          </WeddingCakeWrapper>
         </FlexContainer>
       </PageContentWrapper>
       <PurpleContainer>
         <PageContentWrapper>
-          <TeamDescription>
-            <h3>Our team</h3>
-            <hr />
-          </TeamDescription>
-          <Team>
-            <div>
+          <TeamWrapper>
+            <TeamDescription>
+              <h3>Our team</h3>
+            </TeamDescription>
+            <Team>
               <span>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
                 eligendi modi dicta enim asperiores aliquid atque, adipisci rem
@@ -57,53 +70,43 @@ quia enim!"
                 Magnam, fugiat! Aut voluptas tempora vel, quisquam veritatis
                 sequi.
               </span>
-            </div>
-            <TeamImagesContainer>
-              <TeamImage src="/assets/person.jpg" alt="" />
-              <TeamImage src="/assets/person.jpg" alt="" />
-              <TeamImage src="/assets/person.jpg" alt="Image 3" />
-            </TeamImagesContainer>
-            <BigFlower src="/assets/bigflower.png" alt="" />
-          </Team>
+              <TeamImagesContainer>
+                <img src="/assets/person.jpg" alt="" />
+                <img src="/assets/person.jpg" alt="" />
+                <img src="/assets/person.jpg" alt="" />
+              </TeamImagesContainer>
+            </Team>
+          </TeamWrapper>
+          <BigFlower src="/assets/bigflower.png" alt="" />
         </PageContentWrapper>
       </PurpleContainer>
     </>
   );
 }
 
-const SegwayImage = styled.img`
-  width: 100%;
-  object-fit: cover;
-`;
-
+// General
 const FlexContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
   text-align: center;
-
-  @media (max-width: 800px) {
-    flex-direction: column;
-    align-items: center;
-  }
+  margin: 4rem 0rem 4rem 0rem;
 `;
 
+const SegwayImage = styled.img`
+  width: 100%;
+  object-fit: cover;
+  height: 65vh;
+`;
+
+// Quote section //////////////////////////////////////////////////////////
 const Quote = styled.div`
-  background: radial-gradient(
-    ellipse at center,
-    ${({ theme }) => theme.purple},
-    rgba(0, 0, 0, 0) 70%
-  );
   width: 50%;
-  padding: 3rem;
+  padding: 1rem;
   border-radius: 50rem;
 
   h4 {
-    font-family: 'Ephesis', cursive;
     font-style: italic;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 1.5;
   }
 
@@ -111,55 +114,94 @@ const Quote = styled.div`
     width: 13%;
     object-fit: cover;
     position: absolute;
-    left: 13%;
+    left: 11%;
+    top: 4%;
   }
 
   span {
+    text-align: left;
     display: block;
-    margin-top: 1rem;
     font-size: 1rem;
-    font-weight: bold;
     font-family: 'Lora', sans-serif;
+    margin-left: 1rem;
+    color: ${({ theme }) => theme.grey};
   }
 `;
 
-const WeddingCake = styled.img`
-  width: 60%;
+const Gradient = styled.div`
+  background: radial-gradient(
+    ellipse at center,
+    ${({ theme }) => theme.purple},
+    rgba(0, 0, 0, 0) 60%
+  );
+  border-radius: 50rem;
+  position: absolute;
+  width: 100rem;
+  height: 20rem;
   object-fit: cover;
-  border-radius: 5px;
+  z-index: -1;
+  top: 11%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
+// Wedding cake section //////////////////////////////////////////////////////////
+const WeddingCakeWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 60%;
+    object-fit: cover;
+    border-radius: 5px;
+    padding: 0rem 6rem 0rem 0rem;
+  }
+
+  span {
+    font-size: 1rem;
+    font-family: 'Lora', sans-serif;
+    text-align: left;
+  }
+`;
+
+// Team section //////////////////////////////////////////////////////////
 const PurpleContainer = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.purple};
 `;
 
 const Team = styled.div`
-  padding: 2rem;
+  padding: 2rem 0rem 2rem 2rem;
   display: flex;
-
-  hr {
-    margin: 0 auto;
-    margin-bottom: 1rem;
-  }
-
-  span {
-    display: block;
-    margin-bottom: 1rem;
-  }
 `;
 
 const BigFlower = styled.img`
   position: absolute;
-  right: 0;
-  width: 15%;
+  right: 20px;
+  width: 13%;
   top: 0;
 `;
 
 const TeamImagesContainer = styled.div`
-  img:nth-child(2) {
-    align-self: flex;
-    border: 2px solid red;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  img {
+    width: 20%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+`;
+
+const TeamDescription = styled.div`
+  margin-left: 2rem;
+  padding: 2rem 0rem 2rem 0rem;
+  border-bottom: 1px solid ${({ theme }) => theme.text};
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -167,16 +209,12 @@ const TeamImage = styled.img`
   object-fit: cover;
   border-radius: 5px;
   margin-right: 1rem;
-  width: 30%;
+  justify-content: center;
 `;
 
-const TeamDescription = styled.div`
-  padding: 2rem;
-
-  h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
+const TeamWrapper = styled.div`
+  position: relative;
+  width: 80%;
 `;
 
 export default AboutUsPage;
