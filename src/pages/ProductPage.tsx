@@ -15,8 +15,8 @@ function ProductPage() {
   const gradient1 = themeContext?.gradient;
   const gradient2 = themeContext?.gradient;
   useEffect(() => {
-    document.title = 'Products'
-  }, [])
+    document.title = 'Products';
+  }, []);
 
   return (
     <PageContentWrapper>

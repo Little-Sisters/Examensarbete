@@ -28,9 +28,9 @@ function BespokeDetailsPage() {
   const [isColorPickerVisible, setIsColorPickerVisible] =
     useState<boolean>(false);
 
-    useEffect(() => {
-      document.title = 'Bespoke Cake'
-    }, [])
+  useEffect(() => {
+    document.title = 'Bespoke Cake';
+  }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {

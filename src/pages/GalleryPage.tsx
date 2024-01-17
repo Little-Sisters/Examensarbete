@@ -6,8 +6,8 @@ import { useEffect } from 'react';
 
 function GalleryPage() {
   useEffect(() => {
-    document.title = 'Gallery'
-  }, [])
+    document.title = 'Gallery';
+  }, []);
   return (
     <MarginTopContainer>
       <PageContentWrapper>

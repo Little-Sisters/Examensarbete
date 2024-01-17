@@ -7,8 +7,8 @@ import { useEffect } from 'react';
 function HomePage() {
   const isMobile = useMobile(730);
   useEffect(() => {
-    document.title = 'Home'
-  }, [])
+    document.title = 'Home';
+  }, []);
   return (
     <>
       <Hero />

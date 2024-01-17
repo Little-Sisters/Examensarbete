@@ -7,8 +7,8 @@ import { useEffect } from 'react';
 
 function CartPage() {
   useEffect(() => {
-    document.title = 'Cart'
-  }, [])
+    document.title = 'Cart';
+  }, []);
   return (
     <MarginTopContainer>
       <PageContentWrapper>

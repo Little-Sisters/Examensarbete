@@ -36,8 +36,8 @@ function DetailsPage() {
   );
 
   useEffect(() => {
-    document.title = 'Customized Cake'
-  }, [])
+    document.title = 'Customized Cake';
+  }, []);
 
   const handleAddToCart = () => {
     if (product && product.id) {
