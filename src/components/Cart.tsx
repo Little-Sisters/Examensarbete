@@ -25,6 +25,7 @@ import CartModelEditViewer from './CartModelEditViewer';
 import { calculateItemPrice } from '../functions/calculateItemPrice';
 import { toast } from 'react-toastify';
 
+// Cart item interface
 export interface CartItem extends Product {
   quantity: number;
   editedFlavour?: string;
@@ -45,8 +46,12 @@ export function Cart() {
   const [editTopper, setEditTopper] = useState<TopperOption | null>(null);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  //  Handles the click event when editing a cart item.
+  //  Sets the editing item ID and updates the edit options for flavour, tiers, colour, frosting, decorations, and topper.
   const handleEditClick = (cartItem: CartItem) => {
     setEditingItemId(cartItem.id);
+
+    // Set the edit options for flavour, tiers, colour, frosting, decorations, and topper based on the cart item values
     const flavourOption = flavourOptions.find(
       (option) => option.value === cartItem.flavour,
     );
@@ -78,11 +83,17 @@ export function Cart() {
     setEditTopper(topperOption || null);
   };
 
+  // Clears the cart and displays a toast message
   const handleClearCart = () => {
     clearCart(cartList);
     toast.success('Cart emptied');
   };
 
+  // Handles the save edit functionality when updating a cart item.
+  // Calculates the extra price based on the selected edit options for flavour, tiers, colour, frosting, decorations, and topper.
+  // Creates an updated cart item with the new values and updates the cart with the updated item.
+  // Resets the editing state and updates the total price.
+  // Displays a success toast message with the updated cart item's title.
   const handleSaveEdit = () => {
     if (!editingItemId) return;
 
@@ -128,6 +139,7 @@ export function Cart() {
     toast.success(`${cartItemToUpdate.title} updated`);
   };
 
+  //  Updates the total price of the cart based on the quantity and price of each cart item.
   const updateTotalPrice = () => {
     const newTotalPrice = cartList.reduce((total, cartItem) => {
       return total + cartItem.quantity * calculateItemPrice(cartItem);
@@ -135,6 +147,7 @@ export function Cart() {
     setTotalPrice(newTotalPrice);
   };
 
+  // Updates the total price when the cart list is updated.
   useEffect(() => {
     console.log('Cart List Updated:', cartList);
     updateTotalPrice();

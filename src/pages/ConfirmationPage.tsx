@@ -11,10 +11,13 @@ function ConfirmationPage() {
   const { lastOrder } = getLastOrder();
   const isMobile = useMobile(700);
   console.log('Last order:', lastOrder);
+
+  // Sets the page title
   useEffect(() => {
     document.title = 'Confirmation';
   }, []);
 
+  // Renders the ConfirmOrder component if on desktop and renders MobileConfirmation component if on mobile
   return (
     <MarginTopContainer>
       <PageContentWrapper>

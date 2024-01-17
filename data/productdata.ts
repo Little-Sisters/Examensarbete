@@ -1,3 +1,5 @@
+// This file contains the product data for the application
+
 export interface Product {
   id: string;
   image: string;
