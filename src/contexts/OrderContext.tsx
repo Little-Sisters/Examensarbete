@@ -43,6 +43,7 @@ const OrderContext = createContext<OrderContextType>({
 });
 
 // Custom hook to use OrderContext
+// eslint-disable-next-line react-refresh/only-export-components
 export function useOrder() {
   return useContext(OrderContext);
 }
