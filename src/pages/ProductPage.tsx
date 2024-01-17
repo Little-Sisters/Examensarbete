@@ -4,6 +4,7 @@ import PageContentWrapper from '../components/reusable components/PageContentWra
 import ProductCard from '../components/ProductCard';
 import { useProduct } from '../contexts/ProductContext';
 import PageDescription from '../components/reusable components/PageDescription';
+import { useEffect } from 'react';
 
 function ProductPage() {
   const { productList } = useProduct();
@@ -13,6 +14,9 @@ function ProductPage() {
   const card2 = themeContext?.productTwo;
   const gradient1 = themeContext?.gradient;
   const gradient2 = themeContext?.gradient;
+  useEffect(() => {
+    document.title = 'Products'
+  }, [])
 
   return (
     <PageContentWrapper>

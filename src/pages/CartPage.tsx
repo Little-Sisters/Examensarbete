@@ -3,8 +3,12 @@ import MarginTopContainer from '../components/reusable components/MarginTopConta
 import { OrderForm } from '../components/OrderForm';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 function CartPage() {
+  useEffect(() => {
+    document.title = 'Cart'
+  }, [])
   return (
     <MarginTopContainer>
       <PageContentWrapper>
