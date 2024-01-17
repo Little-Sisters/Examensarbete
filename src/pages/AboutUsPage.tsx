@@ -41,21 +41,30 @@ quia enim!"
       </PageContentWrapper>
       <PurpleContainer>
         <PageContentWrapper>
-          <FlexContainer>
-            <Team>
-              <h3>Our team</h3>
-              <hr />
+          <TeamDescription>
+            <h3>Our team</h3>
+            <hr />
+          </TeamDescription>
+          <Team>
+            <div>
               <span>
-                "Every cake we create is a labor of love because we understand
-                that behind each slice, there's a piece of your most cherished
-                moments"
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
+                eligendi modi dicta enim asperiores aliquid atque, adipisci rem
+                minus, numquam nostrum. Magnam, fugiat! Aut voluptas tempora
+                vel, quisquam veritatis sequi. Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Beatae eligendi modi dicta enim
+                asperiores aliquid atque, adipisci rem minus, numquam nostrum.
+                Magnam, fugiat! Aut voluptas tempora vel, quisquam veritatis
+                sequi.
               </span>
+            </div>
+            <TeamImagesContainer>
               <TeamImage src="/assets/person.jpg" alt="" />
               <TeamImage src="/assets/person.jpg" alt="" />
-              <TeamImage src="/assets/person.jpg" alt="" />
-              <BigFlower src="/assets/bigflower.png" alt="" />
-            </Team>
-          </FlexContainer>
+              <TeamImage src="/assets/person.jpg" alt="Image 3" />
+            </TeamImagesContainer>
+            <BigFlower src="/assets/bigflower.png" alt="" />
+          </Team>
         </PageContentWrapper>
       </PurpleContainer>
     </>
@@ -122,17 +131,12 @@ const WeddingCake = styled.img`
 
 const PurpleContainer = styled.div`
   width: 100%;
-  height: 500px;
   background: ${({ theme }) => theme.purple};
 `;
 
 const Team = styled.div`
   padding: 2rem;
-
-  h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
+  display: flex;
 
   hr {
     margin: 0 auto;
@@ -152,11 +156,27 @@ const BigFlower = styled.img`
   top: 0;
 `;
 
+const TeamImagesContainer = styled.div`
+  img:nth-child(2) {
+    align-self: flex;
+    border: 2px solid red;
+  }
+`;
+
 const TeamImage = styled.img`
   object-fit: cover;
   border-radius: 5px;
   margin-right: 1rem;
-  width: 20%;
+  width: 30%;
+`;
+
+const TeamDescription = styled.div`
+  padding: 2rem;
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 export default AboutUsPage;
