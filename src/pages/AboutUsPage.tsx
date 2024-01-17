@@ -22,11 +22,14 @@ quia enim!"
           />
         </MarginTopContainer>
       </PageContentWrapper>
-      <SegwayImage src="/assets/weddingtable.jpeg" alt="" />
+      <Hero
+        src="/assets/weddingtable.jpeg"
+        alt="Decorated wedding table from bird's eye view"
+      />
 
       <PageContentWrapper>
         <FlexContainer>
-          <Quote>
+          <QuoteContainer>
             <img src="/assets/smallflowers.png" alt="" />
             <Gradient></Gradient>
             <h4>
@@ -35,32 +38,37 @@ quia enim!"
               moments"
             </h4>
             <span>- Name, Role</span>
-          </Quote>
+          </QuoteContainer>
         </FlexContainer>
         <FlexContainer>
-          <WeddingCakeWrapper>
-            <img src="/assets/aboutweddingcake.jpg" alt="" />
-            <span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consectetur quo, deserunt molestias veritatis quam, voluptatum,
-              architecto vitae aliquid magnam omnis mollitia culpa! Illo, non
-              enim repellendus mollitia voluptatibus ullam at? Lorem ipsum dolor
-              sit amet consectetur adipisicing elit. Consectetur quo, deserunt
-              molestias veritatis quam, voluptatum, architecto vitae aliquid
-              magnam omnis mollitia culpa! Illo, non enim repellendus mollitia
-              voluptatibus ullam at?
-            </span>
-          </WeddingCakeWrapper>
+          <OurVisionContainer>
+            <img src="/assets/weddingcake2.jpg" alt="" />
+            <div>
+              <div>
+                <h1>Our vision</h1>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Consectetur quo, deserunt molestias veritatis quam, voluptatum,
+                architecto vitae aliquid magnam omnis mollitia culpa! Illo, non
+                enim repellendus mollitia voluptatibus ullam at? Lorem ipsum
+                dolor sit amet consectetur adipisicing elit. Consectetur quo,
+                deserunt molestias veritatis quam, voluptatum, architecto vitae
+                aliquid magnam omnis mollitia culpa! Illo, non enim repellendus
+                mollitia voluptatibus ullam at?
+              </p>
+            </div>
+          </OurVisionContainer>
         </FlexContainer>
       </PageContentWrapper>
       <PurpleContainer>
         <PageContentWrapper>
           <TeamWrapper>
             <TeamDescription>
-              <h3>Our team</h3>
+              <h1>Our team</h1>
             </TeamDescription>
             <Team>
-              <span>
+              <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
                 eligendi modi dicta enim asperiores aliquid atque, adipisci rem
                 minus, numquam nostrum. Magnam, fugiat! Aut voluptas tempora
@@ -69,18 +77,33 @@ quia enim!"
                 asperiores aliquid atque, adipisci rem minus, numquam nostrum.
                 Magnam, fugiat! Aut voluptas tempora vel, quisquam veritatis
                 sequi.
-              </span>
-              <TeamImagesContainer>
-                <FirstContainer>
-                  <img src="/assets/person.jpg" alt="" />
-                  <img src="/assets/person.jpg" alt="" />
-                </FirstContainer>
-                <SecondContainer>
-                  <img src="/assets/person.jpg" alt="" />
-                </SecondContainer>
-              </TeamImagesContainer>
+              </p>
+              <div>
+                <TeamImageWrapper>
+                  <Column>
+                    <img src="/assets/person.jpg" alt="" />
+                    <TeamMemberDesc>
+                      <span>Name</span>
+                      <span>Role name</span>
+                    </TeamMemberDesc>
+                    <img src="/assets/person.jpg" alt="" />
+                    <TeamMemberDesc>
+                      <span>Name</span>
+                      <span>Role name</span>
+                    </TeamMemberDesc>
+                  </Column>
+                  <MarginTop>
+                    <img src="/assets/person.jpg" alt="" />
+                    <TeamMemberDesc>
+                      <span>Name</span>
+                      <span>Role name</span>
+                    </TeamMemberDesc>
+                  </MarginTop>
+                </TeamImageWrapper>
+              </div>
             </Team>
           </TeamWrapper>
+
           <BigFlower src="/assets/bigflower.png" alt="" />
         </PageContentWrapper>
       </PurpleContainer>
@@ -94,24 +117,31 @@ const FlexContainer = styled.div`
   justify-content: center;
   text-align: center;
   margin: 4rem 0rem 4rem 0rem;
+
+  h1 {
+    margin: 0;
+    padding: 0 0 2rem 0;
+    border-bottom: 1px solid ${({ theme }) => theme.text};
+  }
 `;
 
-const SegwayImage = styled.img`
+const Hero = styled.img`
   width: 100%;
   object-fit: cover;
-  height: 65vh;
+  height: 75vh;
 `;
 
 // Quote section //////////////////////////////////////////////////////////
-const Quote = styled.div`
+const QuoteContainer = styled.div`
   width: 50%;
   padding: 1rem;
   border-radius: 50rem;
 
   h4 {
     font-style: italic;
-    font-size: 1.2rem;
+    font-size: 1.9rem;
     line-height: 1.5;
+    font-family: 'Ephesis', sans-serif;
   }
 
   img {
@@ -126,8 +156,7 @@ const Quote = styled.div`
     text-align: left;
     display: block;
     font-size: 1rem;
-    font-family: 'Lora', sans-serif;
-    margin-left: 1rem;
+    margin-left: 2rem;
     color: ${({ theme }) => theme.grey};
   }
 `;
@@ -149,8 +178,8 @@ const Gradient = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-// Wedding cake section //////////////////////////////////////////////////////////
-const WeddingCakeWrapper = styled.div`
+// Our vision  //////////////////////////////////////////////////////////
+const OurVisionContainer = styled.div`
   display: flex;
   justify-content: center;
 
@@ -158,51 +187,28 @@ const WeddingCakeWrapper = styled.div`
     width: 60%;
     object-fit: cover;
     border-radius: 5px;
-    padding: 0rem 6rem 0rem 0rem;
+    margin: 0rem 6rem 0rem 0rem;
   }
 
-  span {
-    font-size: 1rem;
-    font-family: 'Lora', sans-serif;
+  div {
     text-align: left;
+    align-items: center;
   }
 `;
 
 // Team section //////////////////////////////////////////////////////////
 const PurpleContainer = styled.div`
-  width: 100%;
   background: ${({ theme }) => theme.purple};
 `;
 
 const Team = styled.div`
   padding: 2rem 0rem 2rem 2rem;
   display: flex;
-`;
-
-const BigFlower = styled.img`
-  position: absolute;
-  right: 20px;
-  width: 13%;
-  top: 0;
-`;
-
-const TeamDescription = styled.div`
-  margin-left: 2rem;
-  padding: 2rem 0rem 2rem 0rem;
-  border-bottom: 1px solid ${({ theme }) => theme.text};
-
-  h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-`;
-
-const TeamImagesContainer = styled.div`
-  grid-template-columns: 195px 50px 160px;
-  display: grid;
+  gap: 5rem;
 
   img {
-    width: 60%;
+    width: 250px;
+    height: 350px;
     object-fit: cover;
     border-radius: 5px;
   }
@@ -213,10 +219,46 @@ const TeamWrapper = styled.div`
   width: 80%;
 `;
 
-const FirstContainer = styled.div``;
+const TeamImageWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
 
-const SecondContainer = styled.div`
-  margin-top: 70px;
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+`;
+
+const MarginTop = styled.div`
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+`;
+
+const TeamDescription = styled.div`
+  margin-left: 2rem;
+  padding: 2rem 0rem 0rem 0rem;
+  border-bottom: 1px solid ${({ theme }) => theme.text};
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+`;
+
+const BigFlower = styled.img`
+  position: absolute;
+  right: 20px;
+  width: 13%;
+  top: 10%;
+`;
+
+const TeamMemberDesc = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
 `;
 
 export default AboutUsPage;
