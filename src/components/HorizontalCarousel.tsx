@@ -1,7 +1,9 @@
+import flavoursData from '../../data/flavoursData';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import styled from 'styled-components';
-import CardList from './CardLisst';
+import FlavourSlide from './FlavourSlide';
+import Tabs from './Tabs';
 
 const HorizontalCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -14,8 +16,11 @@ const HorizontalCarousel = () => {
   return (
     <MySection ref={targetRef}>
       <MyBox>
+        <Tabs scrollYProgress={scrollYProgress} />
         <FlexBox style={{ x }}>
-          <CardList></CardList>
+          {flavoursData.map((flavour) => (
+            <FlavourSlide key={flavour.id} {...flavour} />
+          ))}
         </FlexBox>
       </MyBox>
     </MySection>
@@ -26,7 +31,6 @@ const FlexBox = styled(motion.div)`
   display: flex;
   height: 100%;
   align-items: flex-start;
-  gap: 16px;
 `;
 
 const MySection = styled.div`

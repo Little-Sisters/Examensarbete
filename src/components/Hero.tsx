@@ -35,11 +35,7 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to top,
-    ${({ theme }) => `${theme.black}10`},
-    ${({ theme }) => theme.black}
-  );
+  background: linear-gradient(to top);
 `;
 
 const HeroText = styled.h1`
