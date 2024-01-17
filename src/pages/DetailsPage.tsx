@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import MovelView3d from '../components/ModelViewer';
-import PageContentWrapper from '../components/reusable components/PageContentWrapper';
+import { AllergyCard } from '../components/Product-allergies';
 import { FilledButton } from '../components/reusable components/Button';
+import MarginTopContainer from '../components/reusable components/MarginTopContainer';
+import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import {
   ColourOption,
   DecorationsOption,
@@ -277,6 +278,7 @@ function DetailsPage() {
             </InputFlexWrapper>
           </InputContainer>
         </ProductLayout>
+        <AllergyCard></AllergyCard>
       </PageContentWrapper>
     </MarginTopContainer>
   );
