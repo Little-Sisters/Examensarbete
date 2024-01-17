@@ -6,6 +6,8 @@ type TabsProps = {
   scrollYProgress: MotionValue<number>;
 };
 
+//"Tabs" in the flavours page, visual only. It takes the motion value of scroll position and fills the progrssion bar.
+
 const Tabs: React.FC<TabsProps> = ({ scrollYProgress }) => {
   return (
     <Tab>

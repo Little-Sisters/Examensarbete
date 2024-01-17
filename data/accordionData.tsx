@@ -57,6 +57,9 @@ const StyledList = styled.ul`
   }
 `;
 
+// This is the component content that renders in the accordion of the details page. Create more accordion
+// data here if you want to use more accordions.
+
 export const accordionItemsData = [
   {
     title: (

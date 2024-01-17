@@ -3,6 +3,10 @@ import React from 'react';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 import styled from 'styled-components';
 
+/* 
+  This accordion is reusable and accesible in the "Accordionwrapper."
+*/
+
 type AccordionContextType = {
   isActive: boolean;
   index: number;
@@ -24,7 +28,7 @@ const useAccordion = () => {
 type AccordionProps = {
   children: React.ReactNode;
   multiple?: boolean;
-  defaultIndex?: number | number[];
+  defaultIndex?: number | number[] | null;
 };
 
 const Accordion: React.FC<AccordionProps> = ({
@@ -32,18 +36,20 @@ const Accordion: React.FC<AccordionProps> = ({
   multiple,
   defaultIndex,
 }) => {
-  const [activeIndex, setActiveIndex] = React.useState<number | number[]>(
+  const [activeIndex, setActiveIndex] = React.useState<
+    number | number[] | null
+  >(
     multiple
       ? Array.isArray(defaultIndex)
         ? defaultIndex
-        : [defaultIndex || 0]
-      : defaultIndex || 0,
+        : [] // Set to an empty array if defaultIndex is not provided or is not an array
+      : defaultIndex || null, // Set to null if defaultIndex is not provided
   );
 
   function onChangeIndex(index: number) {
     setActiveIndex((currentActiveIndex) => {
       if (!multiple) {
-        return index === activeIndex ? -1 : index;
+        return index === activeIndex ? null : index; // Set to null if it's the same index
       }
 
       if (
@@ -120,7 +126,7 @@ function AccordionPanel({ children }: AccordionPanelProps) {
           initial={{ height: '2px' }}
           animate={{ height: 'auto' }}
           exit={{ height: '2px' }}
-          transition={{ type: 'spring', duration: 0.5, bounce: 0 }}
+          transition={{ type: 'spring', duration: 0.4, bounce: 0 }}
         >
           <AccordionPanelContainer className="AccordionPanel">
             {children}
