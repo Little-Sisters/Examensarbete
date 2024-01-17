@@ -1,4 +1,5 @@
 import { Field, Formik } from 'formik';
+import { motion } from 'framer-motion';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
 import { Link } from 'react-router-dom';
@@ -178,7 +179,6 @@ function BespokeDetailsPage() {
                             autoComplete="off"
                           />
                         </StyledFormControl>
-
                         <FilledButton
                           onPress={() => {}}
                           type="submit"
@@ -194,33 +194,53 @@ function BespokeDetailsPage() {
           </InputContainer>
         </ProductLayout>
         <AllergyCard></AllergyCard>
+
         <ShortCutTitle>Want to know more?</ShortCutTitle>
         <FlexContainer>
           <ShortCuts>
-            <LinkWrapper to={`/flavors`}>
-              <img src="/assets/flavors.jpg" alt="" />
-              <h3>Flavors</h3>
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
-                quae quasi rerum, nam voluptates{' '}
-              </span>
-            </LinkWrapper>
-            <LinkWrapper to={`/gallery`}>
-              <img src="/assets/aboutus.jpg" alt="" />
-              <h3>Gallery</h3>
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
-                quae quasi rerum, nam voluptates{' '}
-              </span>
-            </LinkWrapper>
-            <LinkWrapper to={`/about`}>
-              <img src="/assets/aboutus2.jpg" alt="" />
-              <h3>About</h3>
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
-                quae quasi rerum, nam voluptates{' '}
-              </span>
-            </LinkWrapper>
+            <motion.div
+              className="box"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+            >
+              <LinkWrapper to={`/flavors`}>
+                <img src="/assets/flavors.jpg" alt="" />
+                <h3>Flavors</h3>
+                <span>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
+                  quae quasi rerum, nam voluptates{' '}
+                </span>
+              </LinkWrapper>
+            </motion.div>
+
+            <motion.div
+              className="box"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+            >
+              <LinkWrapper to={`/gallery`}>
+                <img src="/assets/aboutus.jpg" alt="" />
+                <h3>Gallery</h3>
+                <span>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
+                  quae quasi rerum, nam voluptates{' '}
+                </span>
+              </LinkWrapper>
+            </motion.div>
+            <motion.div
+              className="box"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+            >
+              <LinkWrapper to={`/about`}>
+                <img src="/assets/aboutus2.jpg" alt="" />
+                <h3>About</h3>
+                <span>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
+                  quae quasi rerum, nam voluptates{' '}
+                </span>
+              </LinkWrapper>
+            </motion.div>
           </ShortCuts>
         </FlexContainer>
       </PageContentWrapper>
@@ -320,10 +340,10 @@ const LinkWrapper = styled(Link)`
   }
 
   img {
-    width: 100%;
-    height: 500px;
+    width: inherit;
+    height: 400px;
     object-fit: cover;
-    border-radius: 3px;
+    border-radius: 5px;
 
     @media (max-width: 900px) {
       height: 400px;
