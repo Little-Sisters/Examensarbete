@@ -5,7 +5,9 @@ import useMobile from '../hooks/UseMobile';
 import { useEffect } from 'react';
 
 function HomePage() {
+  // Checks if the screen is mobile and sets the state and breakpoint
   const isMobile = useMobile(730);
+  // Sets the page title
   useEffect(() => {
     document.title = 'Home';
   }, []);

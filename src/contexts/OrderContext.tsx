@@ -42,17 +42,18 @@ const OrderContext = createContext<OrderContextType>({
   getLastOrder: () => ({ lastOrder: undefined, ordersCopy: [] }),
 });
 
+// Custom hook to use OrderContext
 export function useOrder() {
   return useContext(OrderContext);
 }
 
+// Defines the props for the provider
 type Props = {
   children: React.ReactNode;
 };
 
 export function OrderProvider({ children }: Props) {
   const { cartList, clearCart } = useCart();
-
   const [orderList, setOrderList] = useLocalStorageState<Order[]>(
     [],
     'orderList',

@@ -5,6 +5,7 @@ import PageDescription from '../components/reusable components/PageDescription';
 import { useEffect } from 'react';
 
 function GalleryPage() {
+  // Sets the page title
   useEffect(() => {
     document.title = 'Gallery';
   }, []);

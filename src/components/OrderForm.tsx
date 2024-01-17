@@ -7,13 +7,18 @@ import RadioButton from './RadioButton';
 import { useCart } from '../contexts/CartContext';
 import { toast } from 'react-toastify';
 
+// Interface for props
+// error is used to display error messages
 interface StyledFormControlProps {
   error?: boolean | string;
 }
 
+// Pattern for validating phone numbers
 const phoneRegExp = /^[0-9]{10}$/;
 
 // Validation schema for customer information
+// The validation is done with Yup and used in the Formik component
+// The validation is done on the form values
 const customerSchema = Yup.object({
   name: Yup.string()
     .required('First name required')
@@ -42,8 +47,7 @@ export function OrderForm() {
   const { isCartEmpty } = useCart();
 
   // form values are validated against the customerSchema
-  // if validation passes, customer data is extracted from form values
-  // and an order is created
+  // if validation passes, customer data is extracted from form values and an order is created
   // the form is reset
   // the user is navigated to the confirmation page
   const handleSubmit = async (
@@ -234,12 +238,12 @@ export function OrderForm() {
             </FlexContainer>
           </div>
         </StyledForm>
-        // </form>
       )}
     </Formik>
   );
 }
 
+// Styled components
 const StyledForm = styled.form`
   background: transparent;
   margin-top: 1rem;

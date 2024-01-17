@@ -14,6 +14,7 @@ function ProductPage() {
   const card2 = themeContext?.productTwo;
   const gradient1 = themeContext?.gradient;
   const gradient2 = themeContext?.gradient;
+  //Sets the page title
   useEffect(() => {
     document.title = 'Products';
   }, []);

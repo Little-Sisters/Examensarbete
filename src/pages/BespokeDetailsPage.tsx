@@ -28,6 +28,7 @@ function BespokeDetailsPage() {
   const [isColorPickerVisible, setIsColorPickerVisible] =
     useState<boolean>(false);
 
+  // Sets the page title
   useEffect(() => {
     document.title = 'Bespoke Cake';
   }, []);
