@@ -181,8 +181,8 @@ const AccordionHeaderContainer = styled(motion.div)<{ hasBorderTop: boolean }>`
 `;
 
 export const AccordionPanelContainer = styled(motion.div)`
-  padding: .8rem 1.5rem;
+  padding: 0.8rem 1.5rem;
   @media (max-width: 1000px) {
-    padding: .8rem 1.3rem;
+    padding: 0.8rem 1.3rem;
   }
 `;
