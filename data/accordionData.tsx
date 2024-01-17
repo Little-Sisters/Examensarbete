@@ -3,11 +3,25 @@ import { LuCake, LuEgg, LuMilk } from 'react-icons/lu';
 import styled from 'styled-components';
 
 const StyledParagraph = styled.p`
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1.5rem;
   margin: 0;
   @media (max-width: 1000px) {
     font-size: 1.2rem;
+  }
+`;
+const ContentP = styled.p`
+  font-weight: 600;
+  font-size: 1.1rem;
+  @media (max-width: 1000px) {
+    font-size: 1rem;
+  }
+`;
+const ContentSpan = styled.span`
+  display: block;
+  margin: 1rem 0rem;
+  font-weight: 400;
+  @media (max-width: 1000px) {
   }
 `;
 
@@ -25,21 +39,21 @@ const HeaderContainer = styled.div`
 const StyledList = styled.ul`
   margin: 0;
   p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 0;
-    margin: .5rem 0;
+    margin: 0.8rem 0;
     @media (max-width: 1000px) {
       font-size: 1rem;
     }
   }
-`;
-
-const StyledListItem = styled.li`
-  padding: 0;
-  font-size: 1.1rem;
-  margin: 0.5rem 0;
-  @media (max-width: 1000px) {
-    font-size: 1rem;
+  li {
+    padding: 0;
+    font-weight: 400;
+    font-size: 1.1rem;
+    margin: 0.8rem 0;
+    @media (max-width: 1000px) {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -52,21 +66,22 @@ export const accordionItemsData = [
       </HeaderContainer>
     ),
     content: (
-      <StyledList>
-        <StyledListItem>
-          <p>
-            Celebrate your special day with a luxurious, customized wedding
-            cake. Our skilled bakers and decorators will craft a masterpiece
-            that reflects your unique style and taste.
-          </p>
-        </StyledListItem>
-        <StyledListItem>
-          <p>
-            Our skilled bakers and decorators will craft a masterpiece
-            that reflects your unique style and taste.
-          </p>
-        </StyledListItem>
-      </StyledList>
+      <>
+        <ContentP>Our Cakes</ContentP>
+        <ContentSpan>
+          Celebrate your special day with a luxurious, customized wedding cake.
+          Our skilled bakers and decorators will craft a masterpiece that
+          reflects your unique style and taste. Our skilled bakers and
+          decorators will craft a masterpiece that reflects your unique style
+          and taste.
+        </ContentSpan>
+        <ContentSpan>
+          Celebrate your special day with a luxurious, customized wedding cake.
+          Our skilled bakers and decorators will craft a masterpiece that
+          reflects your unique style and taste. Our skilled bakers and
+          decorators.
+        </ContentSpan>
+      </>
     ),
   },
   {
@@ -77,17 +92,15 @@ export const accordionItemsData = [
       </HeaderContainer>
     ),
     content: (
-      <StyledList>
-        <StyledListItem>
-          <p>Our ingredients are carefully selected for quality:</p>
-          <ul>
-            <StyledListItem>High-quality flour</StyledListItem>
-            <StyledListItem>Fresh eggs</StyledListItem>
-            <StyledListItem>Pure vanilla extract</StyledListItem>
-            {/* Add more ingredients as needed */}
-          </ul>
-        </StyledListItem>
-      </StyledList>
+      <>
+        <ContentP>Our ingredients are carefully selected for quality:</ContentP>
+        <StyledList>
+          <li>High-quality flour</li>
+          <li>Fresh eggs</li>
+          <li>Pure vanilla extract</li>
+          {/* Add more ingredients as needed */}
+        </StyledList>
+      </>
     ),
   },
   {
@@ -98,17 +111,17 @@ export const accordionItemsData = [
       </HeaderContainer>
     ),
     content: (
-      <StyledList>
-        <StyledListItem>
-          <p>Our wedding cake may contain the following allergens:</p>
-          <ul>
-            <StyledListItem>Gluten</StyledListItem>
-            <StyledListItem>Dairy</StyledListItem>
-            <StyledListItem>Eggs</StyledListItem>
-            {/* Add more allergens as needed */}
-          </ul>
-        </StyledListItem>
-      </StyledList>
+      <>
+        <ContentP>
+          Our wedding cake may contain the following allergens:
+        </ContentP>
+        <StyledList>
+          <li>Gluten</li>
+          <li>Dairy</li>
+          <li>Eggs</li>
+          {/* Add more allergens as needed */}
+        </StyledList>
+      </>
     ),
   },
 ];
