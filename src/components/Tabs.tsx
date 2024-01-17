@@ -7,7 +7,6 @@ type TabsProps = {
 };
 
 const Tabs: React.FC<TabsProps> = ({ scrollYProgress }) => {
-
   return (
     <Tab>
       <TabTitleFlavoursFlex>
