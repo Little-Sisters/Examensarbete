@@ -2,11 +2,13 @@ import { Field, Formik } from 'formik';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import * as Yup from 'yup';
+import { AllergyCard } from '../components/Product-allergies';
+import { FilledButton } from '../components/reusable components/Button';
 import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
-import { toast } from 'react-toastify';
 
 interface StyledFormControlProps {
   error?: boolean | string;
@@ -176,7 +178,13 @@ function BespokeDetailsPage() {
                             autoComplete="off"
                           />
                         </StyledFormControl>
-                        <button type="submit">Send request</button>
+
+                        <FilledButton
+                          onPress={() => {}}
+                          type="submit"
+                          title="Send request"
+                          fullWidth
+                        ></FilledButton>
                       </form>
                     )}
                   </Formik>
@@ -185,6 +193,7 @@ function BespokeDetailsPage() {
             </InputFlexWrapper>
           </InputContainer>
         </ProductLayout>
+        <AllergyCard></AllergyCard>
         <ShortCutTitle>Want to know more?</ShortCutTitle>
         <FlexContainer>
           <ShortCuts>
@@ -447,7 +456,7 @@ const InputFlexWrapper = styled.div`
 
 const ShortCutTitle = styled.h2`
   text-align: center;
-  margin: 4rem 0rem 3rem 0rem;
+  margin: 3rem 0rem 3rem 0rem;
 `;
 
 const ProductLayout = styled.div`
@@ -458,6 +467,7 @@ const ProductLayout = styled.div`
   min-height: 85vh; /* Default height for desktop */
   height: 40rem;
   transition: background-color 0.3s ease-in;
+  margin-bottom: 2rem;
 
   input {
     margin-bottom: 0.5rem;
