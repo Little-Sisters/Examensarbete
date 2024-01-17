@@ -1,3 +1,5 @@
+//This data file contains the data for the cells in the Bento Grid
+
 // Define the types for the cell data
 export type CellData = {
   id: number;

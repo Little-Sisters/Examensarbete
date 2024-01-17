@@ -3,6 +3,7 @@ import GalleryPage from '../src/pages/GalleryPage';
 import BentoGrid from '../src/components/BentoGrid';
 import { CellData, data } from '../data/cellData';
 
+// Tests for Gallery Page
 describe('GalleryPage', () => {
   test('renders GalleryPage component', () => {
     render(<GalleryPage />);
@@ -13,6 +14,7 @@ describe('GalleryPage', () => {
   });
 });
 
+// Tests for Bento Grid, rendered on Gallery Page
 describe('BentoGrid Component', () => {
   it('renders component', () => {
     render(<BentoGrid />);
