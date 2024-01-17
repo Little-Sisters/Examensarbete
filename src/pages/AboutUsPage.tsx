@@ -71,9 +71,13 @@ quia enim!"
                 sequi.
               </span>
               <TeamImagesContainer>
-                <img src="/assets/person.jpg" alt="" />
-                <img src="/assets/person.jpg" alt="" />
-                <img src="/assets/person.jpg" alt="" />
+                <FirstContainer>
+                  <img src="/assets/person.jpg" alt="" />
+                  <img src="/assets/person.jpg" alt="" />
+                </FirstContainer>
+                <SecondContainer>
+                  <img src="/assets/person.jpg" alt="" />
+                </SecondContainer>
               </TeamImagesContainer>
             </Team>
           </TeamWrapper>
@@ -182,18 +186,6 @@ const BigFlower = styled.img`
   top: 0;
 `;
 
-const TeamImagesContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-
-  img {
-    width: 20%;
-    object-fit: cover;
-    border-radius: 5px;
-  }
-`;
-
 const TeamDescription = styled.div`
   margin-left: 2rem;
   padding: 2rem 0rem 2rem 0rem;
@@ -205,16 +197,26 @@ const TeamDescription = styled.div`
   }
 `;
 
-const TeamImage = styled.img`
-  object-fit: cover;
-  border-radius: 5px;
-  margin-right: 1rem;
-  justify-content: center;
+const TeamImagesContainer = styled.div`
+  grid-template-columns: 195px 50px 160px;
+  display: grid;
+
+  img {
+    width: 60%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
 `;
 
 const TeamWrapper = styled.div`
   position: relative;
   width: 80%;
+`;
+
+const FirstContainer = styled.div``;
+
+const SecondContainer = styled.div`
+  margin-top: 70px;
 `;
 
 export default AboutUsPage;
