@@ -3,8 +3,7 @@ import { CartItem } from '../../data/productdata';
 import { useCart } from './CartContext';
 import { Customer } from '../components/OrderForm';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
-
-/* eslint-disable react-refresh/only-export-components */
+import { generateUniqueId } from '../functions/generateUniqueId';
 
 // Type definitions for OrderContext - individual order
 type Order = {
@@ -50,13 +49,6 @@ export function useOrder() {
 type Props = {
   children: React.ReactNode;
 };
-
-// Generates a unique id string for each order
-export function generateUniqueId(): string {
-  const timestamp = new Date().getTime();
-  const randomValue = Math.floor(Math.random() * 1000000);
-  return `${timestamp}-${randomValue}`;
-}
 
 export function OrderProvider({ children }: Props) {
   const { cartList, clearCart } = useCart();

@@ -2,8 +2,8 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 import { Product } from '../../data/productdata';
 import { CartItem } from '../../data/productdata';
-import { generateUniqueId } from './OrderContext';
 import { toast } from 'react-toastify';
+import { generateUniqueId } from '../functions/generateUniqueId';
 
 type CartContextType = {
   cartList: CartItem[];

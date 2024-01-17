@@ -8,6 +8,7 @@ import {
 } from 'framer-motion';
 import { useOrder } from '../contexts/OrderContext';
 
+// Interface for props
 interface EnvelopeProps {
   children: React.ReactNode;
 }
@@ -15,6 +16,9 @@ interface EnvelopeProps {
 const Envelope: React.FC<EnvelopeProps> = ({ children }) => {
   const [ffLayer, setFfLayer] = useState<number>(0);
   const { scrollYProgress } = useScroll();
+  // Animations
+  // The scale animation is used to make the envelope open and close
+  // The values determine when the animation should start and end
   const scaleAnim = useTransform(scrollYProgress, [0, 0.5, 0.6], [1, 1.2, 0.8]);
   const yPosAnim = useTransform(scrollYProgress, [0, 0.5, 0.6], [0, 30, 60]);
   const zRotAnim = useTransform(scrollYProgress, [0, 0.5, 0.6], [0, 3, 0]);

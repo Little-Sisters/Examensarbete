@@ -3,21 +3,6 @@ import styled from 'styled-components';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import { useOrder } from '../contexts/OrderContext';
 import { calculateItemPrice } from '../functions/calculateItemPrice';
-/* eslint-disable react-refresh/only-export-components */
-
-// Generates unique number
-// Checks if the number is already in use in Local Storage
-// If it is, generate a new number
-// If it isn't, store the number in Local Storage and return it
-export function generateUniqueNumber(): number {
-  const number = Math.floor(Math.random() * 90000) + 10000;
-  if (localStorage.getItem(number.toString())) {
-    return generateUniqueNumber();
-  } else {
-    localStorage.setItem(number.toString(), 'true');
-    return number;
-  }
-}
 
 const Letter: React.FC = () => {
   const { scrollYProgress } = useScroll();
