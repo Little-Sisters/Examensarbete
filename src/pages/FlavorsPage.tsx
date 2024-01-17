@@ -1,6 +1,10 @@
 import HorizontalCarousel from '../components/HorizontalCarousel';
 function FlavorsPage() {
-  return <HorizontalCarousel></HorizontalCarousel>;
+  return (
+    <>
+      <HorizontalCarousel></HorizontalCarousel>
+    </>
+  );
 }
 
 export default FlavorsPage;

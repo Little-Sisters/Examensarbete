@@ -1,6 +1,7 @@
 /* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;400;500;600&family=Lora:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Monsieur+La+Doulaise&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -53,3 +54,4 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
     pointer-events: none;
 }
+

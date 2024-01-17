@@ -24,6 +24,8 @@ import GalleryPage from './pages/GalleryPage';
 import HomePage from './pages/HomePage';
 import { Page } from './pages/Page';
 import ProductPage from './pages/ProductPage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function App() {
   const location = useLocation();
@@ -41,6 +43,11 @@ export function App() {
           <ProductProvider>
             <OrderProvider>
               <>
+                <ToastContainer
+                  position="bottom-center"
+                  hideProgressBar={true}
+                  theme={theme === 'light' ? 'light' : 'dark'}
+                />
                 <GlobalStyles />
                 <StyleSheetManager shouldForwardProp={shouldForwardProp}>
                   <Header
