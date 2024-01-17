@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaRegMoon, FaRegSun } from 'react-icons/fa';
 
+// Interface for toggle component
+// isOn: boolean to check if the toggle is on or off
+// toggleTheme: function to toggle the theme
 interface ToggleProps {
   isOn: boolean;
   toggleTheme: () => void;
@@ -46,7 +49,7 @@ const Container = styled.div<{ isOn: boolean }>`
   border: 1px solid ${({ theme }) => theme.text};
 `;
 
-// Handle is the dot that moves
+// Handle the dot that moves
 const Handle = styled(motion.div)`
   height: 1rem;
   width: 1rem;

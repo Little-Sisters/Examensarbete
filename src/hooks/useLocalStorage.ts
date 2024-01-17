@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+// Function to save state to local storage
 export function useLocalStorageState<State>(initialState: State, key: string) {
   const [state, setState] = useState(() => {
     // Load from local storage

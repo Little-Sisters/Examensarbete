@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { FormikProps } from 'formik';
 
+// Interface for the form values
 interface FormValues {
   name: string;
   email: string;
@@ -16,10 +17,12 @@ type StyledRadioButtonProps = {
   isChecked: boolean;
 };
 
+// Define a type for the keys of the boolean values in the form
 type BooleanKeys = {
   [K in keyof FormValues]: FormValues[K] extends boolean ? K : never;
 }[keyof FormValues];
 
+// Define a type for the props
 type RadioButtonProps = {
   text: string;
   name: BooleanKeys;
@@ -28,12 +31,17 @@ type RadioButtonProps = {
 
 function RadioButton({ text, name, formik }: RadioButtonProps) {
   const handleCheck = (event: React.MouseEvent<HTMLLabelElement>) => {
+    // Prevent the default behaviour of the click event so that the checkbox doesn't get checked twice
     event.preventDefault();
+    // Toggle the value of the checkbox
     const newValue = !formik.values[name];
+    // Set the new value of the checkbox
     formik.setFieldValue(name, newValue);
+    // Set the field as touched
     formik.setFieldTouched(name, true, false);
   };
 
+  // It needs an onChange handler but the code works without it so we just pass a dummy function.
   const dummyOnChange = () => {};
 
   return (
@@ -50,6 +58,7 @@ function RadioButton({ text, name, formik }: RadioButtonProps) {
   );
 }
 
+// Styled components
 const RadioButtonContainer = styled.label`
   display: flex;
   cursor: pointer;
@@ -77,6 +86,7 @@ const StyledRadioButton = styled.div<StyledRadioButtonProps>`
     background-color: ${({ theme }) => theme.text};
   }
 
+  // If the radio button is checked, show the inner circle
   ${({ isChecked }) =>
     isChecked &&
     `

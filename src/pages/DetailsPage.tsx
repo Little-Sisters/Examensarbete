@@ -36,6 +36,11 @@ function DetailsPage() {
     product?.price || 0,
   );
 
+  // Sets the page title
+  useEffect(() => {
+    document.title = 'Customized Cake';
+  }, []);
+
   const handleAddToCart = () => {
     if (product && product.id) {
       if (

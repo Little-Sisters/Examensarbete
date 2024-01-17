@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import Letter from './Letter';
 import Envelope from './Envelope';
 
+// This is the component that is displayed on the Confirmation Page
+// It is a container for Envelope and Letter, which are animated
+// That is why the height and position are set here
 function ConfirmOrder() {
   return (
     <ScrollSection>
