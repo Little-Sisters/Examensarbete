@@ -2,8 +2,13 @@ import BentoGrid from '../components/BentoGrid';
 import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import PageDescription from '../components/reusable components/PageDescription';
+import { useEffect } from 'react';
 
 function GalleryPage() {
+  // Sets the page title
+  useEffect(() => {
+    document.title = 'Gallery';
+  }, []);
   return (
     <MarginTopContainer>
       <PageContentWrapper>

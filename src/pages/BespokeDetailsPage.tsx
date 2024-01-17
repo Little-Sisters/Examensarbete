@@ -28,6 +28,11 @@ function BespokeDetailsPage() {
   const [isColorPickerVisible, setIsColorPickerVisible] =
     useState<boolean>(false);
 
+  // Sets the page title
+  useEffect(() => {
+    document.title = 'Bespoke Cake';
+  }, []);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       setFile(URL.createObjectURL(e.target.files[0]));

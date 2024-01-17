@@ -3,22 +3,8 @@ import styled from 'styled-components';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import { useOrder } from '../contexts/OrderContext';
 import { calculateItemPrice } from '../functions/calculateItemPrice';
-/* eslint-disable react-refresh/only-export-components */
 
-// Generates unique number
-// Checks if the number is already in use in Local Storage
-// If it is, generate a new number
-// If it isn't, store the number in Local Storage and return it
-export function generateUniqueNumber(): number {
-  const number = Math.floor(Math.random() * 90000) + 10000;
-  if (localStorage.getItem(number.toString())) {
-    return generateUniqueNumber();
-  } else {
-    localStorage.setItem(number.toString(), 'true');
-    return number;
-  }
-}
-
+// Renders a letter component that displays the order details.
 const Letter: React.FC = () => {
   const { scrollYProgress } = useScroll();
   const scaleAnim = useTransform(scrollYProgress, [0, 0.5, 0.6], [1, 1, 1.5]);
@@ -28,9 +14,12 @@ const Letter: React.FC = () => {
     [0, -250, -101],
   );
 
+  // This uses the getLastOrder function from the OrderContext to retrieve the last order details.
   const { getLastOrder } = useOrder();
   const { lastOrder } = getLastOrder();
 
+  // The total price of the order is calculated by reducing the itemList array and multiplying the quantity
+  // of each item with its price.
   const totalPrice =
     lastOrder?.itemList.reduce((total, cartItem) => {
       return total + cartItem.quantity * calculateItemPrice(cartItem);

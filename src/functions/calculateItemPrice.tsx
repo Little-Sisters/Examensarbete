@@ -8,6 +8,9 @@ import {
 } from '../components/select/data';
 import { CartItem } from '../components/Cart';
 
+// Calculates the price of a cart item
+// Based on the base price of the product and the selected options
+// Is used in cart and cart context
 export const calculateItemPrice = (cartItem: CartItem) => {
   let extraPrice = 0;
 

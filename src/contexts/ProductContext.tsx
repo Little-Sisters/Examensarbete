@@ -2,12 +2,14 @@ import { createContext, PropsWithChildren, useContext } from 'react';
 import { Product, products } from '../../data/productdata';
 import { useLocalStorageState } from '../hooks/useLocalStorage';
 
+// Defines the type for the context
 type ProductContextType = {
   productList: Product[];
   addProduct: (product: Product) => void;
   removeProduct: (id: string) => void;
 };
 
+// Creates the context
 const ProductContext = createContext<ProductContextType>({
   productList: [],
   addProduct: () => {},
@@ -19,12 +21,14 @@ export function useProduct() {
   return useContext(ProductContext);
 }
 
+// Defines the props for the provider
 export function ProductProvider({ children }: PropsWithChildren) {
   const [productList, setProductList] = useLocalStorageState<Product[]>(
     products,
     'products',
   );
 
+  // Adds a product to the product list
   const addProduct = (product: Product) => {
     setProductList((prevProductList) => {
       const updatedProductList = [...prevProductList, product];
@@ -32,6 +36,7 @@ export function ProductProvider({ children }: PropsWithChildren) {
     });
   };
 
+  // Removes a product from the product list
   const removeProduct = (id: string) => {
     setProductList((prevProductList) => {
       const itemIndex = prevProductList.findIndex(

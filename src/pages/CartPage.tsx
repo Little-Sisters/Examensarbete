@@ -3,8 +3,14 @@ import MarginTopContainer from '../components/reusable components/MarginTopConta
 import { OrderForm } from '../components/OrderForm';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 function CartPage() {
+  // Sets the page title
+  useEffect(() => {
+    document.title = 'Cart';
+  }, []);
+
   return (
     <MarginTopContainer>
       <PageContentWrapper>
@@ -21,6 +27,7 @@ function CartPage() {
   );
 }
 
+// Styled Components
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
