@@ -284,6 +284,9 @@ function DetailsPage() {
   );
 }
 
+const LayoutFlex = styled.div`
+display:flex;`
+
 const SelectAndInformation = styled.div`
   width: 100%;
   display: flex;

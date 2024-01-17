@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
+import { FaMinus, FaPlus } from 'react-icons/fa';
 import styled from 'styled-components';
 
 type AccordionContextType = {
@@ -74,17 +75,25 @@ const Accordion: React.FC<AccordionProps> = ({
 };
 type AccordionHeaderProps = {
   children: React.ReactNode;
+  index: number;
 };
 
-const AccordionHeader: React.FC<AccordionHeaderProps> = ({ children }) => {
-  const { isActive, index, onChangeIndex } = useAccordion();
+const AccordionHeader: React.FC<AccordionHeaderProps> = ({
+  children,
+  index,
+}) => {
+  const { isActive, onChangeIndex } = useAccordion();
 
   return (
     <AccordionHeaderContainer
       className={`AccordionHeader ${isActive ? 'active' : ''}`}
       onClick={() => onChangeIndex(index)}
+      hasBorderTop={index !== 0} // Check if it's the first index
     >
-      {children}
+      <ChildrenFlexBox>
+        {children}
+        {isActive ? <FaMinus /> : <FaPlus />}
+      </ChildrenFlexBox>
     </AccordionHeaderContainer>
   );
 };
@@ -108,9 +117,9 @@ function AccordionPanel({ children }: AccordionPanelProps) {
     <AnimatePresence initial={false}>
       {isActive && (
         <motion.div
-          initial={{ height: 0 }}
+          initial={{ height: '2px' }}
           animate={{ height: 'auto' }}
-          exit={{ height: 0 }}
+          exit={{ height: '2px' }}
           transition={{ type: 'spring', duration: 0.5, bounce: 0 }}
         >
           <AccordionPanelContainer className="AccordionPanel">
@@ -122,9 +131,8 @@ function AccordionPanel({ children }: AccordionPanelProps) {
   );
 }
 
-
 type AccordionItemWrapperProps = {
-  items: { title: string; content: string }[];
+  items: { title: React.ReactNode; content: React.ReactNode }[];
   multiple?: boolean;
 };
 
@@ -135,33 +143,46 @@ export const AccordionItemWrapper: React.FC<AccordionItemWrapperProps> = ({
   <Accordion multiple={multiple}>
     {items.map((item, index) => (
       <AccordionItem key={index}>
-        <AccordionHeader>{item.title}</AccordionHeader>
+        <AccordionHeader index={index}>{item.title}</AccordionHeader>
         <AccordionPanel>{item.content}</AccordionPanel>
       </AccordionItem>
     ))}
   </Accordion>
 );
 
-// Styled components (you can keep them in the same file or move them to a separate styles file)
+const ChildrenFlexBox = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const AccordionItemContainer = styled.div`
   border-radius: 3px;
   overflow: hidden;
 `;
 
-const AccordionHeaderContainer = styled(motion.div)`
-  padding: 20px;
+const AccordionHeaderContainer = styled(motion.div)<{ hasBorderTop: boolean }>`
+  padding: 1.5rem;
   cursor: pointer;
+  border-color: ${({ theme }) => theme.input};
+  border-top: ${(props) => (props.hasBorderTop ? '1px solid' : 'none')};
   transition: background-color 0.15s ease-in-out;
-
   &:hover {
-    background-color: #0000ff;
+    // Add additional styling here for hover if we want to
   }
-
   &.active {
-    background-color: #0015ff;
+    // Add additional styling here for active if we want to
+  }
+  @media (max-width: 1000px) {
+    padding: 1.3rem;
   }
 `;
 
 export const AccordionPanelContainer = styled(motion.div)`
-  padding: 20px;
+  padding: 1rem;
+  @media (max-width: 1000px) {
+    padding: 1rem;
+  }
 `;
