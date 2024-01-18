@@ -16,7 +16,7 @@ import cake3Pink from '/scrollcake/base3-pink.png';
 import decorations from '/scrollcake/flowers.png';
 import topper from '/scrollcake/topper.png';
 
-// This scroll animation renders on small devices. 
+// This scroll animation renders on small devices.
 //The values of "translate y controls where the animation will end up and how quickly compared to the scroll position."
 
 const ScrollSectionComponentMobile = () => {

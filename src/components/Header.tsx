@@ -95,7 +95,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
       setBackdropFilter('blur(6px)');
     }
   });
-  
+
   // Closes the drawer when you click outside of if.
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {

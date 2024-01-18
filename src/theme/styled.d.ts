@@ -9,6 +9,7 @@ export interface DefaultTheme {
   mode: string;
   body: string;
   bodyOpacity: string;
+  heroOpacity: string;
   text: string;
   textHover: string;
   input: string;
