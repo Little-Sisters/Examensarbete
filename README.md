@@ -36,7 +36,7 @@ This project utilizes several dependencies to enhance its functionality. Here's 
 - **framer-motion**: [Documentation](https://www.framer.com/motion/)
 - **normalize.css**: [Documentation](https://github.com/necolas/normalize.css/)
 - **@google/model-viewer**: [Documentation](https://github.com/google/model-viewer)
-- **@studio-freight/lenis**: [Documentation](https://github.com/studio-freight/lenis)
+- **@studio-freight/react-lenis**: [Documentation](https://github.com/studio-freight/lenis/tree/main/packages/react-lenis)
 - **formik**: [Documentation](https://formik.org/)
 - **yup**: [Documentation](https://github.com/jquense/yup)
 
