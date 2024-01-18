@@ -6,7 +6,7 @@ import PageDescription from '../components/reusable components/PageDescription';
 
 function AboutUsPage() {
   useEffect(() => {
-    document.title = 'About';
+    document.title = 'About Us';
   }, []);
 
   return (
@@ -16,9 +16,9 @@ function AboutUsPage() {
           <PageDescription
             title="About us"
             description="Hej Description Lorem ipsum dolor sit amet consectetur adipisicing
-elit. Amet et neque obcaecati placeat cum ab id quam provident
-maiores quaerat, dicta incidunt recusandae minus quod quae in libero
-quia enim!"
+            elit. Amet et neque obcaecati placeat cum ab id quam provident
+            maiores quaerat, dicta incidunt recusandae minus quod quae in libero
+            quia enim!"
           />
         </MarginTopSmall>
       </PageContentWrapper>
@@ -44,9 +44,7 @@ quia enim!"
           <OurVisionContainer>
             <img src="/assets/weddingcake2.jpg" alt="" />
             <div>
-              <div>
-                <h1>Our vision</h1>
-              </div>
+              <h2>Our vision</h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Consectetur quo, deserunt molestias veritatis quam, voluptatum,
@@ -64,49 +62,49 @@ quia enim!"
       <PurpleContainer>
         <PageContentWrapper>
           <TeamWrapper>
-            <TeamDescription>
-              <h1>Our team</h1>
-            </TeamDescription>
             <Team>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-                eligendi modi dicta enim asperiores aliquid atque, adipisci rem
-                minus, numquam nostrum. Magnam, fugiat! Aut voluptas tempora
-                vel, quisquam veritatis sequi. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Beatae eligendi modi dicta enim
-                asperiores aliquid atque, adipisci rem minus, numquam nostrum.
-                Magnam, fugiat! Aut voluptas tempora vel, quisquam veritatis
-                sequi.
-              </p>
-              <div>
-                <TeamImageWrapper>
-                  <Column>
-                    <ProfileWrapper>
-                      <img src="/assets/person.jpg" alt="" />
-                      <TeamMemberDesc>
-                        <span>Name</span>
-                        <span>Role name</span>
-                      </TeamMemberDesc>
-                    </ProfileWrapper>
-                    <ProfileWrapper>
-                      <img src="/assets/person.jpg" alt="" />
-                      <TeamMemberDesc>
-                        <span>Name</span>
-                        <span>Role name</span>
-                      </TeamMemberDesc>
-                    </ProfileWrapper>
-                  </Column>
-                  <MarginTop>
-                    <ProfileWrapper>
-                      <img src="/assets/person.jpg" alt="" />
-                      <TeamMemberDesc>
-                        <span>Name</span>
-                        <span>Role name</span>
-                      </TeamMemberDesc>
-                    </ProfileWrapper>
-                  </MarginTop>
-                </TeamImageWrapper>
-              </div>
+              <StyledText>
+                <TeamDescription>
+                  <h2>Our team</h2>
+                </TeamDescription>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Beatae eligendi modi dicta enim asperiores aliquid atque,
+                  adipisci rem minus, numquam nostrum. Magnam, fugiat! Aut
+                  voluptas tempora vel, quisquam veritatis sequi. Lorem ipsum
+                  dolor sit amet consectetur adipisicing elit. Beatae eligendi
+                  modi dicta enim asperiores aliquid atque, adipisci rem minus,
+                  numquam nostrum. Magnam, fugiat! Aut voluptas tempora vel,
+                  quisquam veritatis sequi.
+                </p>
+              </StyledText>
+              <TeamImageWrapper>
+                <Column>
+                  <ProfileWrapper>
+                    <img src="/assets/person.jpg" alt="" />
+                    <TeamMemberDesc>
+                      <span>Name</span>
+                      <span>Role name</span>
+                    </TeamMemberDesc>
+                  </ProfileWrapper>
+                  <ProfileWrapper>
+                    <img src="/assets/person.jpg" alt="" />
+                    <TeamMemberDesc>
+                      <span>Name</span>
+                      <span>Role name</span>
+                    </TeamMemberDesc>
+                  </ProfileWrapper>
+                </Column>
+                <MarginTop>
+                  <ProfileWrapper>
+                    <img src="/assets/person.jpg" alt="" />
+                    <TeamMemberDesc>
+                      <span>Name</span>
+                      <span>Role name</span>
+                    </TeamMemberDesc>
+                  </ProfileWrapper>
+                </MarginTop>
+              </TeamImageWrapper>
             </Team>
           </TeamWrapper>
 
@@ -116,6 +114,15 @@ quia enim!"
     </>
   );
 }
+
+const StyledText = styled.div`
+  font-size: 18px;
+  width: 70%;
+  @media (max-width: 1000px) {
+    width: 100%;
+    font-size: 16px;
+  }
+`;
 
 const MarginTopSmall = styled.div`
   margin-top: 6rem; /* Center the content */
@@ -232,17 +239,22 @@ const Gradient = styled.div`
 // Our vision  //////////////////////////////////////////////////////////
 const OurVisionContainer = styled.div`
   display: flex;
-  justify-content: center;
-
+  justify-content: space-between;
+  gap: 1rem;
   @media (max-width: 1000px) {
     flex-direction: column;
   }
+  h2 {
+    margin-top: 0;
+    padding-bottom: 1rem;
+    width: 100%;
+    border-bottom: 1px solid ${({ theme }) => theme.text};
+  }
 
   img {
-    width: 60%;
+    width: 50%;
     object-fit: cover;
     border-radius: 5px;
-    margin: 0rem 6rem 0rem 0rem;
     @media (max-width: 1000px) {
       width: 100%;
     }
@@ -251,9 +263,10 @@ const OurVisionContainer = styled.div`
   div {
     text-align: left;
     align-items: center;
+    width: 50%;
 
     @media (max-width: 1000px) {
-      margin: 1rem 0rem;
+      width: 100%;
     }
   }
 `;
@@ -270,6 +283,7 @@ const PurpleContainer = styled.div`
 const Team = styled.div`
   padding: 2rem 0rem 2rem 2rem;
   display: flex;
+  justify-content: space-between;
   gap: 5rem;
 
   @media (max-width: 1000px) {
@@ -279,11 +293,12 @@ const Team = styled.div`
   }
 
   img {
-    width: 80%;
+    width: 100%;
     object-fit: cover;
     border-radius: 5px;
 
     @media (max-width: 1000px) {
+      width: 90%;
     }
   }
 `;
@@ -299,10 +314,12 @@ const TeamWrapper = styled.div`
 
 const TeamImageWrapper = styled.div`
   display: flex;
-  /* gap: 1rem; */
+  width: 50%;
+  gap: 1rem;
 
   @media (max-width: 1000px) {
-    gap: 0.5rem;
+    gap: 0rem;
+    width: 100%;
   }
   @media (max-width: 500px) {
     gap: 0rem;
@@ -330,9 +347,12 @@ const MarginTop = styled.div`
 `;
 
 const TeamDescription = styled.div`
-  margin-left: 2rem;
-  padding: 2rem 0rem 2rem 0rem;
+  padding: 0rem 0rem 0rem 0rem;
   border-bottom: 1px solid ${({ theme }) => theme.text};
+
+  h2 {
+    margin-top: 0;
+  }
 
   @media (max-width: 1000px) {
     margin-left: 0rem;
@@ -358,13 +378,7 @@ const BigFlower = styled.img`
   top: 10%;
 
   @media (max-width: 1000px) {
-    width: 16%;
-    top: 1%;
-  }
-  @media (max-width: 1000px) {
-    width: 16%;
-    top: -17%;
-    transform: rotate(-80deg);
+    display: none;
   }
 `;
 
