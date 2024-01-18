@@ -149,7 +149,11 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                           custom={i}
                           onClick={handleToggle}
                         >
-                          <Link to={link.to}>{link.title}</Link>
+                          <Link to={link.to}>
+                            {link.title === 'Cart'
+                              ? `Cart (${totalItems})`
+                              : link.title}
+                          </Link>
                         </LinkAnimation>
                       </LinkRotationBox>
                     ))}
