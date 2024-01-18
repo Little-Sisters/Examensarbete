@@ -13,7 +13,7 @@ import cake3White from '/scrollcake/base3-white.png';
 import cake1Pink from '/scrollcake/base1-pink.png';
 import cake2Pink from '/scrollcake/base2-pink.png';
 import cake3Pink from '/scrollcake/base3-pink.png';
-import decorations from '/scrollcake/decorations.png';
+import decorations from '/scrollcake/flowers.png';
 import topper from '/scrollcake/topper.png';
 
 const ScrollSectionComponentMobile = () => {
@@ -41,7 +41,7 @@ const ScrollSectionComponentMobile = () => {
   const translateYDecorations = useTransform(
     scrollYProgress,
     [0.35, 0.64],
-    [0, 63],
+    [0, 50],
   );
   const OpacityDecorations = useTransform(
     scrollYProgress,
@@ -206,9 +206,9 @@ const Decorations = styled(motion.img)`
   transition: all 0.3s ease-out;
   position: absolute;
   top: 0rem;
-  left: calc(50% - 6rem);
-  width: 11rem;
-  height: 14.2rem;
+  left: calc(50% - 7rem);
+  width: 14rem;
+  height: 16.2rem;
 `;
 const Topper = styled(motion.img)`
   transition: all 0.3s ease-out;
