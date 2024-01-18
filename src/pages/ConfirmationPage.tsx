@@ -5,12 +5,16 @@ import PageContentWrapper from '../components/reusable components/PageContentWra
 import useMobile from '../hooks/UseMobile';
 import ConfirmOrder from '../components/ConfirmOrder';
 import { useEffect } from 'react';
+import { useScrollToTop } from '../hooks/useScrollToTop';
+import Footer from '../components/Footer';
 
 function ConfirmationPage() {
   const { getLastOrder } = useOrder();
   const { lastOrder } = getLastOrder();
   const isMobile = useMobile(700);
   console.log('Last order:', lastOrder);
+
+  useScrollToTop();
 
   // Sets the page title
   useEffect(() => {
@@ -19,11 +23,14 @@ function ConfirmationPage() {
 
   // Renders the ConfirmOrder component if on desktop and renders MobileConfirmation component if on mobile
   return (
-    <MarginTopContainer>
-      <PageContentWrapper>
-        {isMobile ? <MobileConfirmation /> : <ConfirmOrder />}
-      </PageContentWrapper>
-    </MarginTopContainer>
+    <div>
+      <MarginTopContainer>
+        <PageContentWrapper>
+          {isMobile ? <MobileConfirmation /> : <ConfirmOrder />}
+        </PageContentWrapper>
+      </MarginTopContainer>
+      <Footer />
+    </div>
   );
 }
 

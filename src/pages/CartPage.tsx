@@ -4,6 +4,8 @@ import { OrderForm } from '../components/OrderForm';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import styled from 'styled-components';
 import { useEffect } from 'react';
+import { useScrollToTop } from '../hooks/useScrollToTop';
+import Footer from '../components/Footer';
 
 function CartPage() {
   // Sets the page title
@@ -11,19 +13,24 @@ function CartPage() {
     document.title = 'Cart';
   }, []);
 
+  useScrollToTop();
+
   return (
-    <MarginTopContainer>
-      <PageContentWrapper>
-        <MobileTitle>Cart</MobileTitle>
-        <FlexContainer>
-          <FlexBox>
-            <h1>Cart</h1>
-            <OrderForm />
-          </FlexBox>
-          <Cart />
-        </FlexContainer>
-      </PageContentWrapper>
-    </MarginTopContainer>
+    <div>
+      <MarginTopContainer>
+        <PageContentWrapper>
+          <MobileTitle>Cart</MobileTitle>
+          <FlexContainer>
+            <FlexBox>
+              <h1>Cart</h1>
+              <OrderForm />
+            </FlexBox>
+            <Cart />
+          </FlexContainer>
+        </PageContentWrapper>
+      </MarginTopContainer>
+      <Footer />
+    </div>
   );
 }
 
