@@ -317,7 +317,8 @@ const TeamWrapper = styled.div`
 
 const TeamImageWrapper = styled.div`
   display: flex;
-  /* gap: 1rem; */
+  width:30%;
+   gap: 1rem;
 
   @media (max-width: 1000px) {
     gap: 0rem;
@@ -338,9 +339,10 @@ const Column = styled.div`
 `;
 
 const MarginTop = styled.div`
-  /* margin-top: 10rem; */
+  margin-top: 9rem;
   display: flex;
   flex-direction: column;
+  
   gap: 0.3rem;
 
   @media (max-width: 1000px) {
