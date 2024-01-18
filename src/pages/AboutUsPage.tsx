@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
 
+import Footer from '../components/Footer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import PageDescription from '../components/reusable components/PageDescription';
 
@@ -113,6 +114,7 @@ quia enim!"
           <BigFlower src="/assets/bigflower.png" alt="" />
         </PageContentWrapper>
       </PurpleContainer>
+      <Footer />
     </>
   );
 }
@@ -133,7 +135,7 @@ const FlexContainer = styled.div`
   display: flex;
   justify-content: center;
   text-align: center;
-  margin: 4rem 0rem 4rem 0rem;
+  margin: 3rem 0rem 3rem 0rem;
 
   h1 {
     padding: 0 0 2rem 0;
@@ -149,7 +151,7 @@ const FlexContainer = styled.div`
 const Hero = styled.img`
   width: 100%;
   object-fit: cover;
-  height: 75vh;
+  height: 65vh;
 
   @media (max-width: 1000px) {
     height: auto;
@@ -242,7 +244,7 @@ const OurVisionContainer = styled.div`
     width: 60%;
     object-fit: cover;
     border-radius: 5px;
-    margin: 0rem 6rem 0rem 0rem;
+    margin: 0rem 1rem 0rem 0rem;
     @media (max-width: 1000px) {
       width: 100%;
     }
@@ -299,6 +301,7 @@ const TeamWrapper = styled.div`
 
 const TeamImageWrapper = styled.div`
   display: flex;
+  align-items: center;
   /* gap: 1rem; */
 
   @media (max-width: 1000px) {
@@ -319,7 +322,7 @@ const Column = styled.div`
 `;
 
 const MarginTop = styled.div`
-  margin-top: 10rem;
+  /* margin-top: 10rem; */
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
