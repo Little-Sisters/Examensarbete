@@ -38,14 +38,6 @@ const HeaderContainer = styled.div`
 
 const StyledList = styled.ul`
   margin: 0;
-  p {
-    font-size: 1rem;
-    padding: 0;
-    margin: 0.8rem 0;
-    @media (max-width: 1000px) {
-      font-size: 1rem;
-    }
-  }
   li {
     padding: 0;
     font-weight: 400;
