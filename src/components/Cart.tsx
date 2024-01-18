@@ -24,6 +24,7 @@ import NewSelect from './select/newSelect';
 import CartModelEditViewer from './CartModelEditViewer';
 import { calculateItemPrice } from '../functions/calculateItemPrice';
 import { toast } from 'react-toastify';
+import { FilledButton } from './reusable components/Button';
 
 // Cart item interface
 export interface CartItem extends Product {
@@ -207,15 +208,17 @@ export function Cart() {
                       </StyledButtons>
                     </FlexCenter>
                     {editingItemId === cartItem.id ? (
-                      <NewSelect
-                        placeholder="select number of tiers"
-                        label="Tiers"
-                        options={tierOptions}
-                        selectedOption={editTiers}
-                        setSelectedOption={(option: TierOption | null) =>
-                          setEditTiers(option)
-                        }
-                      />
+                      <MarginBottom>
+                        <NewSelect
+                          placeholder="select number of tiers"
+                          label="Tiers"
+                          options={tierOptions}
+                          selectedOption={editTiers}
+                          setSelectedOption={(option: TierOption | null) =>
+                            setEditTiers(option)
+                          }
+                        />
+                      </MarginBottom>
                     ) : (
                       <FlexRow>
                         <StyledItem>Tiers:</StyledItem>
@@ -223,15 +226,17 @@ export function Cart() {
                       </FlexRow>
                     )}
                     {editingItemId === cartItem.id ? (
-                      <NewSelect
-                        placeholder="select colour"
-                        label="Color"
-                        options={colourOptions}
-                        selectedOption={editColour}
-                        setSelectedOption={(option: ColourOption | null) =>
-                          setEditColour(option)
-                        }
-                      />
+                      <MarginBottom>
+                        <NewSelect
+                          placeholder="select colour"
+                          label="Color"
+                          options={colourOptions}
+                          selectedOption={editColour}
+                          setSelectedOption={(option: ColourOption | null) =>
+                            setEditColour(option)
+                          }
+                        />
+                      </MarginBottom>
                     ) : (
                       <FlexRow>
                         <StyledItem>Color:</StyledItem>
@@ -239,15 +244,17 @@ export function Cart() {
                       </FlexRow>
                     )}
                     {editingItemId === cartItem.id ? (
-                      <NewSelect
-                        placeholder="select a flavour"
-                        label="Flavor"
-                        options={flavourOptions}
-                        selectedOption={editFlavour}
-                        setSelectedOption={(option: FlavourOption | null) =>
-                          setEditFlavour(option)
-                        }
-                      />
+                      <MarginBottom>
+                        <NewSelect
+                          placeholder="select a flavour"
+                          label="Flavor"
+                          options={flavourOptions}
+                          selectedOption={editFlavour}
+                          setSelectedOption={(option: FlavourOption | null) =>
+                            setEditFlavour(option)
+                          }
+                        />
+                      </MarginBottom>
                     ) : (
                       <FlexRow>
                         <StyledItem>Flavor:</StyledItem>
@@ -255,15 +262,17 @@ export function Cart() {
                       </FlexRow>
                     )}
                     {editingItemId === cartItem.id ? (
-                      <NewSelect
-                        placeholder="select frosting"
-                        label="Frosting"
-                        options={frostingOptions}
-                        selectedOption={editFrosting}
-                        setSelectedOption={(option: FrostingOption | null) =>
-                          setEditFrosting(option)
-                        }
-                      />
+                      <MarginBottom>
+                        <NewSelect
+                          placeholder="select frosting"
+                          label="Frosting"
+                          options={frostingOptions}
+                          selectedOption={editFrosting}
+                          setSelectedOption={(option: FrostingOption | null) =>
+                            setEditFrosting(option)
+                          }
+                        />
+                      </MarginBottom>
                     ) : (
                       <FlexRow>
                         <StyledItem>Frosting:</StyledItem>
@@ -271,15 +280,17 @@ export function Cart() {
                       </FlexRow>
                     )}
                     {editingItemId === cartItem.id ? (
-                      <NewSelect
-                        placeholder="select decorations"
-                        label="Decorations"
-                        options={decorationsOptions}
-                        selectedOption={editDecorations}
-                        setSelectedOption={(option: DecorationsOption | null) =>
-                          setEditDecorations(option)
-                        }
-                      />
+                      <MarginBottom>
+                        <NewSelect
+                          placeholder="select decorations"
+                          label="Decorations"
+                          options={decorationsOptions}
+                          selectedOption={editDecorations}
+                          setSelectedOption={(
+                            option: DecorationsOption | null,
+                          ) => setEditDecorations(option)}
+                        />
+                      </MarginBottom>
                     ) : (
                       <FlexRow>
                         <StyledItem>Decorations:</StyledItem>
@@ -310,7 +321,11 @@ export function Cart() {
                     </FlexRight>
                     {editingItemId === cartItem.id && (
                       <StyledCenter>
-                        <button onClick={() => handleSaveEdit()}>Save</button>
+                        <FilledButton
+                          title="Save"
+                          onPress={() => handleSaveEdit()}
+                          fullWidth={false}
+                        />
                       </StyledCenter>
                     )}
                   </StyledCartItem>
@@ -354,6 +369,10 @@ const StyledCard = styled.div`
   @media (max-width: 900px) {
     width: 90%;
   }
+`;
+
+const MarginBottom = styled.div`
+  margin-bottom: 0.5rem;
 `;
 
 const StyledLogo = styled.div`
@@ -451,7 +470,7 @@ const StyledDivider = styled.div`
 `;
 
 const StyledItem = styled.p`
-  font-size: 12px;
+  font-size: 14px;
   margin: 0.3rem;
   padding: 0;
 `;
