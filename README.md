@@ -6,7 +6,7 @@ This project is a Wedding cake front-end web shop built with React, TypeScript, 
 - [Installation](#installation)
 - [Dependencies](#dependencies)
 - [Scripts](#scripts)
-- [GitHubActionsWorkflow](#gitHub actions workflow)
+- [GitHub Actions Workflow](#github-actions-workflow)
 - [Documentation](#documentation)
 
 ## Installation
