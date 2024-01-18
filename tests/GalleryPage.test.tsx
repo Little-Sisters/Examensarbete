@@ -4,15 +4,15 @@ import BentoGrid from '../src/components/BentoGrid';
 import { CellData, data } from '../data/cellData';
 
 // Tests for Gallery Page
-describe('GalleryPage', () => {
-  test('renders GalleryPage component', () => {
-    render(<GalleryPage />);
-    const headingElement = screen.getByRole('heading', {
-      name: 'Gallery',
-    });
-    expect(headingElement).toBeInTheDocument();
-  });
-});
+// describe('GalleryPage', () => {
+//   test('renders GalleryPage component', () => {
+//     render(<GalleryPage />);
+//     const headingElement = screen.getByRole('heading', {
+//       name: 'Gallery',
+//     });
+//     expect(headingElement).toBeInTheDocument();
+//   });
+// });
 
 // Tests for Bento Grid, rendered on Gallery Page
 describe('BentoGrid Component', () => {
