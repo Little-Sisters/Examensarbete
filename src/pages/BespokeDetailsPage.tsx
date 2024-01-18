@@ -9,6 +9,7 @@ import PageContentWrapper from '../components/reusable components/PageContentWra
 import { toast } from 'react-toastify';
 import { useScrollToTop } from '../hooks/useScrollToTop';
 import Footer from '../components/Footer';
+import { FilledButton } from '../components/reusable components/Button';
 
 interface StyledFormControlProps {
   error?: boolean | string;
@@ -70,6 +71,13 @@ function BespokeDetailsPage() {
     };
   }, [colorPickerRef]);
 
+  const handleFormSubmit = () => {
+    const form = document.getElementById('myForm') as HTMLFormElement | null;
+    if (form) {
+      form.submit();
+    }
+  };
+
   return (
     <div>
       <MarginTopContainer>
@@ -100,7 +108,7 @@ function BespokeDetailsPage() {
                         )}
                       </ImageUploaderContainer>
                     </FlexContainer>
-                    <label>Colour</label>
+                    <label>Color</label>
                     <FlexContainer>
                       <ColorPickerContainer>
                         <ColorPickerInput
@@ -181,7 +189,11 @@ function BespokeDetailsPage() {
                               autoComplete="off"
                             />
                           </StyledFormControl>
-                          <button type="submit">Send request</button>
+                          <FilledButton
+                            title="Send Request"
+                            onPress={handleFormSubmit}
+                            fullWidth={true}
+                          />
                         </form>
                       )}
                     </Formik>

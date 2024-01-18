@@ -227,9 +227,9 @@ export function OrderForm() {
               ) : null}
 
               <FlexRow>
-              <StyledLink to='/products'>
-                <StyledButton>Shop more</StyledButton>
-               </StyledLink>
+                <StyledLink to="/products">
+                  <StyledButton>Shop more</StyledButton>
+                </StyledLink>
                 <StyledButton
                   type="submit"
                   disabled={!formik.values.termsAccepted || isCartEmpty}
@@ -298,7 +298,7 @@ const StyledButton = styled.button`
 `;
 
 const StyledLink = styled(Link)`
-width: 100%;
+  width: 100%;
 `;
 
 const StyledText = styled.p`
