@@ -1,16 +1,16 @@
 // Import images at the beginning of the file
-import rosecakeImage from '/rosescake.jpg';
-import ganachepinkImage from '/ganachepink.jpg';
-import mrmrsImage from '/mrmrs.jpg';
-import pinkcakeImage from '/pinkcake.jpg';
-import whitecakeImage from '/whitecake.jpg';
-import velvetcakeImage from '/velvetcake.jpg';
-import midnightcakeImage from '/midnightcake.jpg';
-import buttercreamcakeImage from '/buttercreamcake.jpg';
-import gothcakeImage from '/gothcake.jpg';
-import flowercakeImage from '/flowercake.jpg';
-import herocakeImage from '/herocake.jpg';
-import adventurecakeImage from '/adventurecake.jpg';
+import rosecakeImage from '/gallery/rosescake.jpg';
+import ganachepinkImage from '/gallery/ganachepink.jpg';
+import mrmrsImage from '/gallery/mrmrs.jpg';
+import pinkcakeImage from '/gallery/pinkcake.jpg';
+import whitecakeImage from '/gallery/whitecake.jpg';
+import velvetcakeImage from '/gallery/velvetcake.jpg';
+import midnightcakeImage from '/gallery/midnightcake.jpg';
+import buttercreamcakeImage from '/gallery/buttercreamcake.jpg';
+import gothcakeImage from '/gallery/gothcake.jpg';
+import flowercakeImage from '/gallery/flowercake.jpg';
+import herocakeImage from '/gallery/herocake.jpg';
+import adventurecakeImage from '/gallery/adventurecake.jpg';
 
 // Define the types for the cell data
 export type CellData = {
