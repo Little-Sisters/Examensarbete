@@ -1,5 +1,5 @@
 import { Formik, FormikHelpers } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import * as Yup from 'yup';
 import { useOrder } from '../contexts/OrderContext';
@@ -227,7 +227,9 @@ export function OrderForm() {
               ) : null}
 
               <FlexRow>
-                <StyledButton>Shop more</StyledButton>
+                <StyledLink to="/products">
+                  <StyledButton>Shop more</StyledButton>
+                </StyledLink>
                 <StyledButton
                   type="submit"
                   disabled={!formik.values.termsAccepted || isCartEmpty}
@@ -283,8 +285,8 @@ const StyledLabel = styled.label`
 const StyledButton = styled.button`
   padding: 0.5rem 1rem;
   border: none;
+  width: 100%;
   border-radius: 3px;
-  width: 50%;
   transition: all 0.3 ease;
   background-color: ${({ theme }) => theme.button};
   &:hover {
@@ -293,6 +295,10 @@ const StyledButton = styled.button`
   &:active {
     transform: scale(0.98);
   }
+`;
+
+const StyledLink = styled(Link)`
+  width: 100%;
 `;
 
 const StyledText = styled.p`

@@ -1,4 +1,16 @@
-//This data file contains the data for the cells in the Bento Grid
+// Import images at the beginning of the file
+import rosecakeImage from '/gallery/rosescake.jpg';
+import ganachepinkImage from '/gallery/ganachepink.jpg';
+import mrmrsImage from '/gallery/mrmrs.jpg';
+import pinkcakeImage from '/gallery/pinkcake.jpg';
+import whitecakeImage from '/gallery/whitecake.jpg';
+import velvetcakeImage from '/gallery/velvetcake.jpg';
+import midnightcakeImage from '/gallery/midnightcake.jpg';
+import buttercreamcakeImage from '/gallery/buttercreamcake.jpg';
+import gothcakeImage from '/gallery/gothcake.jpg';
+import flowercakeImage from '/gallery/flowercake.jpg';
+import herocakeImage from '/gallery/herocake.jpg';
+import adventurecakeImage from '/gallery/adventurecake.jpg';
 
 // Define the types for the cell data
 export type CellData = {
@@ -20,7 +32,7 @@ export const data: CellData[] = [
   {
     id: 1,
     title: 'Bespoke Cake',
-    imageUrl: 'rosescake.jpg',
+    imageUrl: rosecakeImage,
     tier: '1 tier',
     color: 'Snow',
     topper: 'Roses',
@@ -33,7 +45,7 @@ export const data: CellData[] = [
   {
     id: 2,
     title: 'Customized Cake',
-    imageUrl: 'ganachepink.jpg',
+    imageUrl: ganachepinkImage,
     tier: '1 tier',
     color: 'Pink',
     topper: 'No topper',
@@ -46,7 +58,7 @@ export const data: CellData[] = [
   {
     id: 3,
     title: 'Customized Cake',
-    imageUrl: 'mrmrs.jpg',
+    imageUrl: mrmrsImage,
     tier: '2 tiers',
     color: 'White',
     topper: 'Mr & Mrs',
@@ -59,7 +71,7 @@ export const data: CellData[] = [
   {
     id: 4,
     title: 'Customized Cake',
-    imageUrl: 'pinkcake.jpg',
+    imageUrl: pinkcakeImage,
     tier: '4 tiers',
     color: 'Pink',
     topper: 'No topper',
@@ -72,7 +84,7 @@ export const data: CellData[] = [
   {
     id: 5,
     title: 'Customized Cake',
-    imageUrl: 'whitecake.jpg',
+    imageUrl: whitecakeImage,
     tier: '4 tiers',
     color: 'White',
     topper: 'No topper',
@@ -85,7 +97,7 @@ export const data: CellData[] = [
   {
     id: 6,
     title: 'Bespoke Cake',
-    imageUrl: 'velvetcake.jpg',
+    imageUrl: velvetcakeImage,
     tier: '1 tier',
     color: 'Snow',
     topper: 'Crumbs and Cream',
@@ -98,7 +110,7 @@ export const data: CellData[] = [
   {
     id: 7,
     title: 'Customized Cake',
-    imageUrl: 'midnightcake.jpg',
+    imageUrl: midnightcakeImage,
     tier: '2 tiers',
     color: 'Midnight Black',
     topper: 'No topper',
@@ -111,7 +123,7 @@ export const data: CellData[] = [
   {
     id: 8,
     title: 'Bespoke Cake',
-    imageUrl: 'buttercreamcake.jpg',
+    imageUrl: buttercreamcakeImage,
     tier: '2 tiers',
     color: 'Snow',
     topper: 'No topper',
@@ -124,7 +136,7 @@ export const data: CellData[] = [
   {
     id: 9,
     title: 'Bespoke Cake',
-    imageUrl: 'gothcake.jpg',
+    imageUrl: gothcakeImage,
     tier: '1 tier',
     color: 'Ombré Red',
     topper: 'Berries',
@@ -137,7 +149,7 @@ export const data: CellData[] = [
   {
     id: 10,
     title: 'Customized Cake',
-    imageUrl: 'flowercake.jpg',
+    imageUrl: flowercakeImage,
     tier: '3',
     color: 'Snow',
     topper: 'No topper',
@@ -150,7 +162,7 @@ export const data: CellData[] = [
   {
     id: 11,
     title: 'Bespoke Cake',
-    imageUrl: 'herocake.jpg',
+    imageUrl: herocakeImage,
     tier: '4 tiers',
     color: 'Snow',
     topper: 'Flowers',
@@ -163,7 +175,7 @@ export const data: CellData[] = [
   {
     id: 12,
     title: 'Bespoke Cake',
-    imageUrl: 'adventurecake.jpg',
+    imageUrl: adventurecakeImage,
     tier: '3 tiers',
     color: 'Snow',
     topper: 'The Adventure Begins',

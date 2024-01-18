@@ -2,11 +2,10 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
 import { Product } from '../../data/productdata';
-import { useCart } from '../contexts/CartContext';
-
 import { TransparentButton } from './reusable components/Button';
 import flowerOverlay from '/flowerOverlay.png';
 import flowerOverlayDarkmode from '/flowerOverlayDarkmode.png';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductProps {
   product: Product;
@@ -14,9 +13,13 @@ interface ProductProps {
 }
 
 function ProductCard({ product, background }: ProductProps) {
-  const { addToCart } = useCart();
   const themeContext = useContext(ThemeContext);
   const theme = themeContext?.mode;
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate(`/product/${product.id}`);
+  };
 
   return (
     <Card background={background} theme={theme}>
@@ -28,11 +31,7 @@ function ProductCard({ product, background }: ProductProps) {
           <p>From ${product.price}</p>
           <h5>{product.description}</h5>
         </Link>
-        <TransparentButton
-          fullWidth
-          title="Create"
-          onPress={() => addToCart(product, 1)}
-        />
+        <TransparentButton fullWidth title="Create" onPress={handleNavigate} />
       </ProductWrapper>
     </Card>
   );

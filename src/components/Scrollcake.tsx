@@ -8,7 +8,7 @@ import cake3White from '/scrollcake/base3-white.png';
 import cake1Pink from '/scrollcake/base1-pink.png';
 import cake2Pink from '/scrollcake/base2-pink.png';
 import cake3Pink from '/scrollcake/base3-pink.png';
-import decorations from '/scrollcake/decorations.png';
+import decorations from '/scrollcake/flowers.png';
 import topper from '/scrollcake/topper.png';
 
 const ScrollSectionComponent = () => {
@@ -21,27 +21,23 @@ const ScrollSectionComponent = () => {
   const theme = themeContext?.mode;
 
   // Define the y-transformations and opacity for each piece based on scroll progress
-  const translateYPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 390]);
+  const translateYPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 295]);
   const opacityPiece1 = useTransform(scrollYProgress, [0, 0.08], [0, 1]);
 
   const translateYPiece2 = useTransform(
     scrollYProgress,
     [0.08, 0.16],
-    [0, 260],
+    [0, 194],
   );
   const opacityPiece2 = useTransform(scrollYProgress, [0.08, 0.16], [0, 1]);
 
-  const translateYPiece3 = useTransform(
-    scrollYProgress,
-    [0.16, 0.24],
-    [0, 120],
-  );
+  const translateYPiece3 = useTransform(scrollYProgress, [0.16, 0.24], [0, 95]);
   const opacityPiece3 = useTransform(scrollYProgress, [0.16, 0.24], [0, 1]);
 
   const translateYDecorations = useTransform(
     scrollYProgress,
     [0.35, 0.64],
-    [0, 130],
+    [0, 55],
   );
   const OpacityDecorations = useTransform(
     scrollYProgress,
@@ -49,7 +45,7 @@ const ScrollSectionComponent = () => {
     [0, 1],
   );
 
-  const translateTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 57]);
+  const translateTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 63]);
   const OpacityTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 1]);
 
   const translateYText1 = useTransform(scrollYProgress, [0, 0.32], [0, 100]);
@@ -162,28 +158,28 @@ const Piece = styled(motion.img)`
   transition: all 0.3s ease-out;
   position: absolute;
   top: 10rem;
-  left: 4rem;
-  width: 22rem;
-  height: 16rem;
+  left: 5rem;
+  width: 17rem;
+  height: 13rem;
   @media (max-width: 1000px) {
-    left: 0rem;
+    left: 2rem;
   }
 `;
 
 const Middle = styled(Piece)`
-  width: 16rem;
-  height: 11rem;
+  width: 13rem;
+  height: 8rem;
   left: 7rem;
   @media (max-width: 1000px) {
-    left: 3rem;
+    left: 4rem;
   }
 `;
 const Top = styled(Piece)`
-  width: 10rem;
-  height: 9.5rem;
+  width: 7rem;
+  height: 6.5rem;
   left: 10rem;
   @media (max-width: 1000px) {
-    left: 6rem;
+    left: 7rem;
   }
 `;
 
@@ -192,21 +188,22 @@ const Decorations = styled(motion.img)`
   opacity: 0.5;
   position: absolute;
   top: 10rem;
-  left: 2rem;
-  width: 23rem;
-  height: 32rem;
+  left: -0.1rem;
+  width: 26rem;
+  height: 30rem;
   @media (max-width: 1000px) {
-    left: -1rem;
+    left: -2.8rem;
+    width: 25rem;
   }
 `;
 const Topper = styled(motion.img)`
   transition: all 0.3s ease-out;
   position: absolute;
   top: 6rem;
-  left: 12rem;
-  height: 8rem;
+  left: 11.2rem;
+  height: 6rem;
   @media (max-width: 1000px) {
-    left: 8rem;
+    left: 8.2rem;
   }
 `;
 
