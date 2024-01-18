@@ -23,6 +23,8 @@ import {
 import NewSelect from '../components/select/newSelect';
 import { useCart } from '../contexts/CartContext';
 import { useProduct } from '../contexts/ProductContext';
+import { useScrollToTop } from '../hooks/useScrollToTop';
+import Footer from '../components/Footer';
 
 function DetailsPage() {
   const { productList } = useProduct();
@@ -35,6 +37,8 @@ function DetailsPage() {
   const [currentTotalPrice, setCurrentTotalPrice] = useState(
     product?.price || 0,
   );
+
+  useScrollToTop();
 
   // Sets the page title
   useEffect(() => {
@@ -209,85 +213,90 @@ function DetailsPage() {
   }
 
   return (
-    <MarginTopContainer>
-      <PageContentWrapper>
-        <LayoutFlex>
-          <ProductLayout>
-            <MovelView3d
-              selectedTier={selectedTier}
-              selectedColor={selectedColour}
-              selectedDecorations={selectedDecorations}
-              selectedTopper={selectedTopper}
-            ></MovelView3d>
-            <InputContainer>
-              <InputFlexWrapper>
-                <SelectAndInformation>
-                  <Information>
-                    <h1>{product.title}</h1>
-                    <p>{product.description}</p>
-                    <p>${currentTotalPrice}</p>
-                  </Information>
-                  <Selections>
-                    <NewSelect
-                      label="Tiers"
-                      placeholder="Select number of tiers..."
-                      options={tierOptions}
-                      selectedOption={selectedTier}
-                      setSelectedOption={handleTierChange}
-                    />
-                    <NewSelect
-                      label="Colour"
-                      placeholder="Select your colour..."
-                      options={colourOptions}
-                      selectedOption={selectedColour}
-                      setSelectedOption={handleColourChange}
-                    />
+    <div>
+      <MarginTopContainer>
+        <PageContentWrapper>
+          <LayoutFlex>
+            <ProductLayout>
+              <MovelView3d
+                selectedTier={selectedTier}
+                selectedColor={selectedColour}
+                selectedDecorations={selectedDecorations}
+                selectedTopper={selectedTopper}
+              ></MovelView3d>
+              <InputContainer>
+                <InputFlexWrapper>
+                  <SelectAndInformation>
+                    <Information>
+                      <h1>{product.title}</h1>
+                      <p>{product.description}</p>
+                      <p>${currentTotalPrice}</p>
+                    </Information>
+                    <Selections>
+                      <NewSelect
+                        label="Tiers"
+                        placeholder="Select number of tiers..."
+                        options={tierOptions}
+                        selectedOption={selectedTier}
+                        setSelectedOption={handleTierChange}
+                      />
+                      <NewSelect
+                        label="Colour"
+                        placeholder="Select your colour..."
+                        options={colourOptions}
+                        selectedOption={selectedColour}
+                        setSelectedOption={handleColourChange}
+                      />
 
-                    <NewSelect
-                      label="Decorations"
-                      placeholder="Select your decorations..."
-                      options={decorationsOptions}
-                      selectedOption={selectedDecorations}
-                      setSelectedOption={handleDecorationsChange}
-                    />
-                    <NewSelect
-                      label="Topper"
-                      placeholder="Select your topper..."
-                      options={topperOptions}
-                      selectedOption={selectedTopper}
-                      setSelectedOption={handleTopperChange}
-                    />
-                    <NewSelect
-                      label="Flavours"
-                      placeholder="Select your flavour..."
-                      options={flavourOptions}
-                      selectedOption={selectedFlavour}
-                      setSelectedOption={handleSelectChange}
-                    />
-                    <NewSelect
-                      label="Frosting"
-                      placeholder="Select your frosting..."
-                      options={frostingOptions}
-                      selectedOption={selectedFrosting}
-                      setSelectedOption={handleFrostingChange}
-                    />
-                  </Selections>
-                </SelectAndInformation>
-                <ButtonBox>
-                  {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-                  <FilledButton
-                    onPress={handleAddToCart}
-                    title="Add to Cart"
-                    fullWidth
-                  ></FilledButton>
-                </ButtonBox>
-              </InputFlexWrapper>
-            </InputContainer>
-          </ProductLayout>
-          <AllergyCard></AllergyCard>
-        </LayoutFlex>
-      </PageContentWrapper>
-    </MarginTopContainer>
+                      <NewSelect
+                        label="Decorations"
+                        placeholder="Select your decorations..."
+                        options={decorationsOptions}
+                        selectedOption={selectedDecorations}
+                        setSelectedOption={handleDecorationsChange}
+                      />
+                      <NewSelect
+                        label="Topper"
+                        placeholder="Select your topper..."
+                        options={topperOptions}
+                        selectedOption={selectedTopper}
+                        setSelectedOption={handleTopperChange}
+                      />
+                      <NewSelect
+                        label="Flavours"
+                        placeholder="Select your flavour..."
+                        options={flavourOptions}
+                        selectedOption={selectedFlavour}
+                        setSelectedOption={handleSelectChange}
+                      />
+                      <NewSelect
+                        label="Frosting"
+                        placeholder="Select your frosting..."
+                        options={frostingOptions}
+                        selectedOption={selectedFrosting}
+                        setSelectedOption={handleFrostingChange}
+                      />
+                    </Selections>
+                  </SelectAndInformation>
+                  <ButtonBox>
+                    {errorMessage && (
+                      <ErrorMessage>{errorMessage}</ErrorMessage>
+                    )}
+                    <FilledButton
+                      onPress={handleAddToCart}
+                      title="Add to Cart"
+                      fullWidth
+                    ></FilledButton>
+                  </ButtonBox>
+                </InputFlexWrapper>
+              </InputContainer>
+            </ProductLayout>
+            <AllergyCard></AllergyCard>
+          </LayoutFlex>
+        </PageContentWrapper>
+      </MarginTopContainer>
+      <Footer />
+    </div>
   );
 }
 

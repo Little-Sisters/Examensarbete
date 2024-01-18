@@ -5,7 +5,6 @@ import { AnimatePresence } from 'framer-motion';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { StyleSheetManager, ThemeProvider } from 'styled-components';
 import './theme/ModelViewer.css';
-import Footer from './components/Footer';
 import Header from './components/Header';
 import { darkMode, lightMode } from './theme/Themes';
 import { GlobalStyles } from './theme/globalStyles';
@@ -26,14 +25,12 @@ import { Page } from './pages/Page';
 import ProductPage from './pages/ProductPage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useScrollToTop } from './hooks/useScrollToTop';
 
 if ('scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual';
 }
 
 export function App() {
-  useScrollToTop();
   const location = useLocation();
   const locationArr = location.pathname?.split('/') ?? [];
   const [theme, setTheme] = useLocalStorageState('light', 'theme');
@@ -139,7 +136,6 @@ export function App() {
                       </Routes>
                     </AnimatePresence>
                   </main>
-                  <Footer />
                 </StyleSheetManager>
               </>
             </OrderProvider>

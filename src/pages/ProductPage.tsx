@@ -5,6 +5,8 @@ import ProductCard from '../components/ProductCard';
 import { useProduct } from '../contexts/ProductContext';
 import PageDescription from '../components/reusable components/PageDescription';
 import { useEffect } from 'react';
+import { useScrollToTop } from '../hooks/useScrollToTop';
+import Footer from '../components/Footer';
 
 function ProductPage() {
   const { productList } = useProduct();
@@ -19,32 +21,37 @@ function ProductPage() {
     document.title = 'Products';
   }, []);
 
+  useScrollToTop();
+
   return (
-    <PageContentWrapper>
-      <MarginTop>
-        <PageDescription
-          title="Our Cakes"
-          description="Hej Description Lorem ipsum dolor sit amet consectetur adipisicing
+    <div>
+      <PageContentWrapper>
+        <MarginTop>
+          <PageDescription
+            title="Our Cakes"
+            description="Hej Description Lorem ipsum dolor sit amet consectetur adipisicing
 elit. Amet et neque obcaecati placeat cum ab id quam provident
 maiores quaerat, dicta incidunt recusandae minus quod quae in libero
 quia enim!"
-        />
-        <FlexContainer>
-          <StyledProduct>
-            <ProductCard
-              product={productList[0]}
-              background={`linear-gradient(to bottom, ${card1}, ${gradient1})`}
-            />
-          </StyledProduct>
-          <StyledProduct>
-            <ProductCard
-              product={productList[1]}
-              background={`linear-gradient(to bottom, ${card2}, ${gradient2})`}
-            />
-          </StyledProduct>
-        </FlexContainer>
-      </MarginTop>
-    </PageContentWrapper>
+          />
+          <FlexContainer>
+            <StyledProduct>
+              <ProductCard
+                product={productList[0]}
+                background={`linear-gradient(to bottom, ${card1}, ${gradient1})`}
+              />
+            </StyledProduct>
+            <StyledProduct>
+              <ProductCard
+                product={productList[1]}
+                background={`linear-gradient(to bottom, ${card2}, ${gradient2})`}
+              />
+            </StyledProduct>
+          </FlexContainer>
+        </MarginTop>
+      </PageContentWrapper>
+      <Footer />
+    </div>
   );
 }
 

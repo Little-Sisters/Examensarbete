@@ -31,11 +31,7 @@ const ScrollSectionComponent = () => {
   );
   const opacityPiece2 = useTransform(scrollYProgress, [0.08, 0.16], [0, 1]);
 
-  const translateYPiece3 = useTransform(
-    scrollYProgress,
-    [0.16, 0.24],
-    [0, 95],
-  );
+  const translateYPiece3 = useTransform(scrollYProgress, [0.16, 0.24], [0, 95]);
   const opacityPiece3 = useTransform(scrollYProgress, [0.16, 0.24], [0, 1]);
 
   const translateYDecorations = useTransform(

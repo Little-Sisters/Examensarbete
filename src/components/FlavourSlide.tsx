@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import Chocolate from './Chocolate';
 import { FilledButton, TransparentButton } from './reusable components/Button';
+import { Link, useNavigate } from 'react-router-dom';
 
 type FlavourSlideProps = {
   flavourTitle: string;
@@ -26,8 +27,14 @@ const FlavourSlide: React.FC<FlavourSlideProps> = ({
   lightmodeBackgroundColor,
   darkmodeBackgroundColor,
 }) => {
-  const handleClick = () => {
-    console.log('Button clicked!');
+  const navigate = useNavigate();
+
+  const handleProducts = () => {
+    navigate('/product/1');
+  };
+
+  const handleGallery = () => {
+    navigate('/gallery');
   };
 
   if (!angle) {
@@ -50,14 +57,18 @@ const FlavourSlide: React.FC<FlavourSlideProps> = ({
               <p>{subtitle}</p>
               <span>{spanDescription}</span>
               <ButtonBox>
-                <FilledButton
-                  title={filledButtonTitle}
-                  onPress={handleClick}
-                ></FilledButton>
-                <TransparentButton
-                  title={transparentButtonTitle}
-                  onPress={handleClick}
-                ></TransparentButton>
+                <Link to="/product/1">
+                  <FilledButton
+                    title={filledButtonTitle}
+                    onPress={handleProducts}
+                  ></FilledButton>
+                </Link>
+                <Link to="/gallery">
+                  <TransparentButton
+                    title={transparentButtonTitle}
+                    onPress={handleGallery}
+                  ></TransparentButton>
+                </Link>
               </ButtonBox>
             </PaddedBox>
           </TextFlex>

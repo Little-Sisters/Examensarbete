@@ -7,6 +7,10 @@ import * as Yup from 'yup';
 import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import { toast } from 'react-toastify';
+import { useScrollToTop } from '../hooks/useScrollToTop';
+import Footer from '../components/Footer';
+import { FilledButton } from '../components/reusable components/Button';
+import { BespokeCard } from '../components/Bespoke-allergies';
 
 interface StyledFormControlProps {
   error?: boolean | string;
@@ -27,6 +31,8 @@ function BespokeDetailsPage() {
   const [file, setFile] = useState<string | undefined>();
   const [isColorPickerVisible, setIsColorPickerVisible] =
     useState<boolean>(false);
+
+  useScrollToTop();
 
   // Sets the page title
   useEffect(() => {
@@ -66,158 +72,189 @@ function BespokeDetailsPage() {
     };
   }, [colorPickerRef]);
 
-  return (
-    <MarginTopContainer>
-      <PageContentWrapper>
-        <ProductLayout>
-          <Cake>
-            <img src="/transparent-cake.png" alt="" />
-          </Cake>
-          <InputContainer>
-            <InputFlexWrapper>
-              <SelectAndInformation>
-                <Information>
-                  <h1>Bespoke Cake</h1>
-                  <p>Product description</p>
-                  <p>Price</p>
-                </Information>
-                <Selections>
-                  <label>Image</label>
-                  <FlexContainer>
-                    <ImageUploaderContainer>
-                      <input type="file" onChange={handleChange} />
-                      {file && (
-                        <UploadedImage
-                          src={file}
-                          alt="Selected File"
-                          onClick={openImage}
-                        />
-                      )}
-                    </ImageUploaderContainer>
-                  </FlexContainer>
-                  <label>Colour</label>
-                  <FlexContainer>
-                    <ColorPickerContainer>
-                      <ColorPickerInput
-                        readOnly
-                        onClick={toggleColorPicker}
-                        placeholder="Select a color..."
-                      />
-                      <ColorPickerPreview
-                        onClick={toggleColorPicker}
-                        style={{ backgroundColor: colorPicker }}
-                      ></ColorPickerPreview>
-                      {isColorPickerVisible && (
-                        <ColorPicker ref={colorPickerRef}>
-                          <SketchPicker
-                            color={colorPicker}
-                            onChange={(newColor: ColorResult) =>
-                              setColorPicker(newColor.hex)
-                            }
-                          />
-                        </ColorPicker>
-                      )}
-                    </ColorPickerContainer>
-                  </FlexContainer>
-                  <Formik
-                    initialValues={{
-                      email: '',
-                      personalizedRequest: '',
-                    }}
-                    validationSchema={bespokeSchema}
-                    onSubmit={(_values, { resetForm }) => {
-                      setEmailAddress('');
-                      setColorPicker('#ffffff');
-                      setFile(undefined);
-                      resetForm();
-                      toast.success('Request successfully sent');
-                    }}
-                  >
-                    {(formik) => (
-                      <form onSubmit={formik.handleSubmit}>
-                        <StyledFormControl
-                          error={
-                            !!(formik.touched.email && formik.errors.email) ||
-                            !!(
-                              formik.touched.personalizedRequest &&
-                              formik.errors.personalizedRequest
-                            )
-                          }
-                        >
-                          <label htmlFor="email">
-                            Email<Required>*</Required>
-                          </label>
-                          {formik.touched.email && formik.errors.email ? (
-                            <p>{formik.errors.email}</p>
-                          ) : null}
-                          <input
-                            id="email"
-                            placeholder="Your email address..."
-                            name="email"
-                            type="email"
-                            autoComplete="email"
-                            onChange={formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            value={formik.values.email}
-                          />
-                          <label htmlFor="personalizedRequest">
-                            Request<Required>*</Required>
-                          </label>
+  const handleFormSubmit = () => {
+    const form = document.getElementById('myForm') as HTMLFormElement | null;
+    if (form) {
+      form.submit();
+    }
+  };
 
-                          {formik.touched.personalizedRequest &&
-                            formik.errors.personalizedRequest && (
-                              <p>{formik.errors.personalizedRequest}</p>
-                            )}
-                          <Field
-                            as={RequestInput}
-                            placeholder="Your personalized request..."
-                            id="personalizedRequest"
-                            name="personalizedRequest"
-                            autoComplete="off"
+  return (
+    <div>
+      <MarginTopContainer>
+        <PageContentWrapper>
+          <LayoutFlex>
+            <ProductLayout>
+              <Cake>
+                <img src="/transparent-cake.png" alt="" />
+              </Cake>
+              <InputContainer>
+                <InputFlexWrapper>
+                  <SelectAndInformation>
+                    <Information>
+                      <h1>Bespoke Cake</h1>
+                      <p>Product description</p>
+                      <p>Price</p>
+                    </Information>
+                    <Selections>
+                      <label>Image</label>
+                      <FlexContainer>
+                        <ImageUploaderContainer>
+                          <input type="file" onChange={handleChange} />
+                          {file && (
+                            <UploadedImage
+                              src={file}
+                              alt="Selected File"
+                              onClick={openImage}
+                            />
+                          )}
+                        </ImageUploaderContainer>
+                      </FlexContainer>
+                      <label>Color</label>
+                      <FlexContainer>
+                        <ColorPickerContainer>
+                          <ColorPickerInput
+                            readOnly
+                            onClick={toggleColorPicker}
+                            placeholder="Select a color..."
                           />
-                        </StyledFormControl>
-                        <button type="submit">Send request</button>
-                      </form>
-                    )}
-                  </Formik>
-                </Selections>
-              </SelectAndInformation>
-            </InputFlexWrapper>
-          </InputContainer>
-        </ProductLayout>
-        <ShortCutTitle>Want to know more?</ShortCutTitle>
-        <FlexContainer>
-          <ShortCuts>
-            <LinkWrapper to={`/flavors`}>
-              <img src="/assets/flavors.jpg" alt="" />
-              <h3>Flavors</h3>
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
-                quae quasi rerum, nam voluptates{' '}
-              </span>
-            </LinkWrapper>
-            <LinkWrapper to={`/gallery`}>
-              <img src="/assets/aboutus.jpg" alt="" />
-              <h3>Gallery</h3>
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
-                quae quasi rerum, nam voluptates{' '}
-              </span>
-            </LinkWrapper>
-            <LinkWrapper to={`/about`}>
-              <img src="/assets/aboutus2.jpg" alt="" />
-              <h3>About</h3>
-              <span>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
-                quae quasi rerum, nam voluptates{' '}
-              </span>
-            </LinkWrapper>
-          </ShortCuts>
-        </FlexContainer>
-      </PageContentWrapper>
-    </MarginTopContainer>
+                          <ColorPickerPreview
+                            onClick={toggleColorPicker}
+                            style={{ backgroundColor: colorPicker }}
+                          ></ColorPickerPreview>
+                          {isColorPickerVisible && (
+                            <ColorPicker ref={colorPickerRef}>
+                              <SketchPicker
+                                color={colorPicker}
+                                onChange={(newColor: ColorResult) =>
+                                  setColorPicker(newColor.hex)
+                                }
+                              />
+                            </ColorPicker>
+                          )}
+                        </ColorPickerContainer>
+                      </FlexContainer>
+                      <Formik
+                        initialValues={{
+                          email: '',
+                          personalizedRequest: '',
+                        }}
+                        validationSchema={bespokeSchema}
+                        onSubmit={(_values, { resetForm }) => {
+                          setEmailAddress('');
+                          setColorPicker('#ffffff');
+                          setFile(undefined);
+                          resetForm();
+                          toast.success('Request successfully sent');
+                        }}
+                      >
+                        {(formik) => (
+                          <form onSubmit={formik.handleSubmit}>
+                            <StyledFormControl
+                              error={
+                                !!(
+                                  formik.touched.email && formik.errors.email
+                                ) ||
+                                !!(
+                                  formik.touched.personalizedRequest &&
+                                  formik.errors.personalizedRequest
+                                )
+                              }
+                            >
+                              <label htmlFor="email">
+                                Email<Required>*</Required>
+                              </label>
+                              {formik.touched.email && formik.errors.email ? (
+                                <p>{formik.errors.email}</p>
+                              ) : null}
+                              <input
+                                id="email"
+                                placeholder="Your email address..."
+                                name="email"
+                                type="email"
+                                autoComplete="email"
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.email}
+                              />
+                              <label htmlFor="personalizedRequest">
+                                Request<Required>*</Required>
+                              </label>
+
+                              {formik.touched.personalizedRequest &&
+                                formik.errors.personalizedRequest && (
+                                  <p>{formik.errors.personalizedRequest}</p>
+                                )}
+                              <Field
+                                as={RequestInput}
+                                placeholder="Your personalized request..."
+                                id="personalizedRequest"
+                                name="personalizedRequest"
+                                autoComplete="off"
+                              />
+                            </StyledFormControl>
+                            <FilledButton
+                              title="Send Request"
+                              onPress={handleFormSubmit}
+                              fullWidth={true}
+                            />
+                          </form>
+                        )}
+                      </Formik>
+                    </Selections>
+                  </SelectAndInformation>
+                </InputFlexWrapper>
+              </InputContainer>
+            </ProductLayout>
+            <BespokeCard />
+          </LayoutFlex>
+          <ShortCutTitle>Want to know more?</ShortCutTitle>
+          <FlexContainer>
+            <ShortCuts>
+              <LinkWrapper to={`/flavors`}>
+                <img src="/assets/flavors.jpg" alt="" />
+                <h3>Flavors</h3>
+                <span>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
+                  quae quasi rerum, nam voluptates{' '}
+                </span>
+              </LinkWrapper>
+              <LinkWrapper to={`/gallery`}>
+                <img src="/assets/aboutus.jpg" alt="" />
+                <h3>Gallery</h3>
+                <span>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
+                  quae quasi rerum, nam voluptates{' '}
+                </span>
+              </LinkWrapper>
+              <LinkWrapper to={`/about`}>
+                <img src="/assets/aboutus2.jpg" alt="" />
+                <h3>About</h3>
+                <span>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
+                  quae quasi rerum, nam voluptates{' '}
+                </span>
+              </LinkWrapper>
+            </ShortCuts>
+          </FlexContainer>
+        </PageContentWrapper>
+      </MarginTopContainer>
+      <Footer />
+    </div>
   );
 }
+
+const LayoutFlex = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4rem;
+  @media (max-width: 1000px) {
+    gap: 2rem;
+  }
+`;
 
 const StyledFormControl = styled.div<StyledFormControlProps>`
   color: ${(props) => (props.error ? 'red' : 'black')};
