@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import MarginTopContainer from '../components/reusable components/MarginTopContainer';
+
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import PageDescription from '../components/reusable components/PageDescription';
 
@@ -12,7 +12,7 @@ function AboutUsPage() {
   return (
     <>
       <PageContentWrapper>
-        <MarginTopContainer>
+        <MarginTopSmall>
           <PageDescription
             title="About us"
             description="Hej Description Lorem ipsum dolor sit amet consectetur adipisicing
@@ -20,7 +20,7 @@ elit. Amet et neque obcaecati placeat cum ab id quam provident
 maiores quaerat, dicta incidunt recusandae minus quod quae in libero
 quia enim!"
           />
-        </MarginTopContainer>
+        </MarginTopSmall>
       </PageContentWrapper>
       <Hero
         src="/assets/weddingtable.jpeg"
@@ -81,23 +81,29 @@ quia enim!"
               <div>
                 <TeamImageWrapper>
                   <Column>
-                    <img src="/assets/person.jpg" alt="" />
-                    <TeamMemberDesc>
-                      <span>Name</span>
-                      <span>Role name</span>
-                    </TeamMemberDesc>
-                    <img src="/assets/person.jpg" alt="" />
-                    <TeamMemberDesc>
-                      <span>Name</span>
-                      <span>Role name</span>
-                    </TeamMemberDesc>
+                    <ProfileWrapper>
+                      <img src="/assets/person.jpg" alt="" />
+                      <TeamMemberDesc>
+                        <span>Name</span>
+                        <span>Role name</span>
+                      </TeamMemberDesc>
+                    </ProfileWrapper>
+                    <ProfileWrapper>
+                      <img src="/assets/person.jpg" alt="" />
+                      <TeamMemberDesc>
+                        <span>Name</span>
+                        <span>Role name</span>
+                      </TeamMemberDesc>
+                    </ProfileWrapper>
                   </Column>
                   <MarginTop>
-                    <img src="/assets/person.jpg" alt="" />
-                    <TeamMemberDesc>
-                      <span>Name</span>
-                      <span>Role name</span>
-                    </TeamMemberDesc>
+                    <ProfileWrapper>
+                      <img src="/assets/person.jpg" alt="" />
+                      <TeamMemberDesc>
+                        <span>Name</span>
+                        <span>Role name</span>
+                      </TeamMemberDesc>
+                    </ProfileWrapper>
                   </MarginTop>
                 </TeamImageWrapper>
               </div>
@@ -111,6 +117,17 @@ quia enim!"
   );
 }
 
+const MarginTopSmall = styled.div`
+  margin-top: 6rem; /* Center the content */
+
+  @media (max-width: 700px) {
+    margin-top: 6rem;
+  }
+  @media (min-width: 1500px) {
+    margin-top: 8rem;
+  }
+`;
+
 // General
 const FlexContainer = styled.div`
   display: flex;
@@ -121,6 +138,11 @@ const FlexContainer = styled.div`
   h1 {
     padding: 0 0 2rem 0;
     border-bottom: 1px solid ${({ theme }) => theme.text};
+    margin: 0;
+  }
+
+  @media (max-width: 500px) {
+    margin: 0 0 0 0;
   }
 `;
 
@@ -140,6 +162,10 @@ const QuoteContainer = styled.div`
   padding: 1rem;
   border-radius: 50rem;
 
+  @media (max-width: 1000px) {
+    width: 90%;
+  }
+
   h4 {
     font-style: italic;
     font-size: 1.9rem;
@@ -149,6 +175,10 @@ const QuoteContainer = styled.div`
 
     @media (max-width: 1000px) {
       font-size: 1.7rem;
+    }
+
+    @media (max-width: 500px) {
+      font-size: 1.4rem;
     }
   }
 
@@ -163,6 +193,11 @@ const QuoteContainer = styled.div`
       width: 17%;
       left: 8%;
       top: 7%;
+    }
+    @media (max-width: 500px) {
+      width: 17%;
+      left: 1%;
+      top: 0.5%;
     }
   }
 
@@ -226,6 +261,10 @@ const OurVisionContainer = styled.div`
 // Team section //////////////////////////////////////////////////////////
 const PurpleContainer = styled.div`
   background: ${({ theme }) => theme.purple};
+
+  @media (max-width: 1000px) {
+    padding-bottom: 2rem;
+  }
 `;
 
 const Team = styled.div`
@@ -240,14 +279,11 @@ const Team = styled.div`
   }
 
   img {
-    width: 250px;
-    height: 350px;
+    width: 80%;
     object-fit: cover;
     border-radius: 5px;
 
     @media (max-width: 1000px) {
-      width: 150px;
-      height: 250px;
     }
   }
 `;
@@ -255,21 +291,27 @@ const Team = styled.div`
 const TeamWrapper = styled.div`
   position: relative;
   width: 80%;
+
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 const TeamImageWrapper = styled.div`
   display: flex;
-  gap: 1rem;
+  /* gap: 1rem; */
 
   @media (max-width: 1000px) {
     gap: 0.5rem;
+  }
+  @media (max-width: 500px) {
+    gap: 0rem;
   }
 `;
 
 const Column = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
 
   @media (max-width: 1000px) {
     flex-direction: row;
@@ -303,6 +345,12 @@ const TeamDescription = styled.div`
   }
 `;
 
+const ProfileWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
 const BigFlower = styled.img`
   position: absolute;
   right: 20px;
@@ -313,6 +361,11 @@ const BigFlower = styled.img`
     width: 16%;
     top: 1%;
   }
+  @media (max-width: 1000px) {
+    width: 16%;
+    top: -17%;
+    transform: rotate(-80deg);
+  }
 `;
 
 const TeamMemberDesc = styled.div`
@@ -321,7 +374,6 @@ const TeamMemberDesc = styled.div`
   margin-bottom: 1rem;
 
   @media (max-width: 1000px) {
-    flex-direction: column;
   }
 `;
 

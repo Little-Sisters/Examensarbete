@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import * as Yup from 'yup';
-import { AllergyCard } from '../components/Product-allergies';
 import { FilledButton } from '../components/reusable components/Button';
 import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
@@ -193,7 +192,6 @@ function BespokeDetailsPage() {
             </InputFlexWrapper>
           </InputContainer>
         </ProductLayout>
-        <AllergyCard></AllergyCard>
 
         <ShortCutTitle>Want to know more?</ShortCutTitle>
         <FlexContainer>
