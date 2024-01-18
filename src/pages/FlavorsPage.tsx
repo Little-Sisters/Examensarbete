@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 function FlavorsPage() {
   // Sets the page title
   useEffect(() => {
-    document.title = 'Flavors';
+    document.title = 'Our Flavors';
   }, []);
 
   useScrollToTop();

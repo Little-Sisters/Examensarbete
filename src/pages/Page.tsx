@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-// Page content wrapper, with animation .
+// Page content wrapper, with animation. Put this around the page you want the page transition on.
 export const Page = ({
   children,
 }: {
