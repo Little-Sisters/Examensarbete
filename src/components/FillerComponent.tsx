@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 import { TransparentButton } from './reusable components/Button';
 import lovestoryImage from '/lovestory.jpg';
+import { useNavigate } from 'react-router-dom';
 
 function FillerComponent() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/about');
+  };
   return (
     <FlexBox>
       <Layout>
@@ -14,7 +20,7 @@ function FillerComponent() {
             was to empower people to use their creativity to visualize and
             create their dream wedding cake.
           </p>
-          <TransparentButton title="read more" />
+          <TransparentButton title="read more" onPress={handleClick} />
         </StyledText>
         <StyledImage>
           <img src={lovestoryImage} alt="" />
@@ -96,6 +102,10 @@ const StyledImage = styled.div`
 
   @media (max-width: 700px) {
     width: 100%;
+
+    img {
+      width: 100%;
+    }
   }
 `;
 

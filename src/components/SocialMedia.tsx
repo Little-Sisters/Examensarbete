@@ -4,8 +4,8 @@ import blueberrycakeImage from '/social-media/blueberrycake.jpg';
 import engagedcakeImage from '/social-media/engagedcake.jpg';
 import outdoorcakeImage from '/social-media/outdoorcake.jpg';
 import partycakeImage from '/social-media/partycake.jpg';
-import pieceofcakeImage from '/social-media/pieceofcake.jpg';
 import pipingcakeImage from '/social-media/pipingcake.jpg';
+import dripcakeImage from '/social-media/dripcake.jpg';
 
 function SocialMedia() {
   return (
@@ -29,7 +29,7 @@ function SocialMedia() {
             ></div>
             <div
               style={{
-                backgroundImage: `url(${pieceofcakeImage})`,
+                backgroundImage: `url(${dripcakeImage})`,
                 backgroundSize: 'cover',
               }}
             ></div>
