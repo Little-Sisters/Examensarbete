@@ -1,13 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { ReactNode } from 'react';
 
+import styled from 'styled-components';
 
 interface TextImageVideoProps {
   title: string;
   text: string;
   summary: string;
   imageSrc: string;
+  icon: ReactNode;
   videoSrc: string;
+  imageContainerHeight: string;
 }
 
 const TextImageVideo: React.FC<TextImageVideoProps> = ({
@@ -16,15 +18,20 @@ const TextImageVideo: React.FC<TextImageVideoProps> = ({
   summary,
   imageSrc,
   videoSrc,
+  icon,
+  imageContainerHeight,
 }) => {
   return (
     <Container>
       <TextBlock>
         <h2>{title}</h2>
         <span>{text}</span>
-        <p>{summary}</p>
+        <div>
+          {icon}
+          <p>{summary}</p>
+        </div>
       </TextBlock>
-      <ImageContainer>
+      <ImageContainer height={imageContainerHeight}>
         <Relative>
           <Overlay></Overlay>
           <img src={imageSrc} alt="" />
@@ -58,6 +65,7 @@ const Overlay = styled.div`
 
 const VideoContainer = styled.div`
   width: 25%;
+  border-radius: 3px;
   height: 100%;
   @media (max-width: 1000px) {
     width: 30%;
@@ -82,9 +90,14 @@ const VideoContainer = styled.div`
   }
 `;
 
-const ImageContainer = styled.div`
+interface ImageContainerProps {
+  height: string;
+}
+
+const ImageContainer = styled.div<ImageContainerProps>`
   width: 25%;
   height: 100%;
+  border-radius: 3px;
   @media (max-width: 1000px) {
     width: 30%;
   }
@@ -98,11 +111,15 @@ const ImageContainer = styled.div`
     width: 95%;
     height: 100%;
     object-fit: cover;
-    @media (max-width: 700px) {
+    @media (max-width: 500px) {
+      width: 100%;
     }
   }
   @media (max-width: 500px) {
-    display: none;
+    left: 0;
+    top: 0;
+    height: ${({ height }) => height};
+    width: 100%;
   }
 `;
 
@@ -116,6 +133,7 @@ const Container = styled.div`
   }
   @media (max-width: 500px) {
     flex-direction: column;
+    gap: 1rem;
     height: auto;
   }
 `;
@@ -137,14 +155,20 @@ const TextBlock = styled.div`
       font-size: 2.5rem;
     }
   }
-  span {
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    svg {
+      font-size: 2rem;
+    }
   }
   p {
     font-size: 1.1rem;
     font-weight: 600;
   }
   @media (max-width: 500px) {
-    padding: 0rem;
+    padding: 0.5rem;
   }
 `;
 

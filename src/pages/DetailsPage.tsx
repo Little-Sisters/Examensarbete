@@ -9,6 +9,7 @@ import TextImageVideo from '../components/reusable components/TextImageVideo';
 import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import cakeVideo from '../videos/glacing.mp4';
+import { GiWhisk } from 'react-icons/gi';
 import {
   ColourOption,
   DecorationsOption,
@@ -299,6 +300,8 @@ function DetailsPage() {
               summary="Created just for you."
               imageSrc="/egg.jpg"
               videoSrc={cakeVideo}
+              icon={<GiWhisk />}
+              imageContainerHeight="15rem"
             />
             <AllergyCard></AllergyCard>
           </LayoutFlex>
