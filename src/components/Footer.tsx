@@ -3,6 +3,7 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { TransparentButton } from './reusable components/Button';
+import Logo from './reusable components/Logo';
 import PageContentWrapper from './reusable components/PageContentWrapper';
 
 function Footer() {
@@ -13,10 +14,10 @@ function Footer() {
       toast.error('Please enter your email!');
       return;
     }
-
     setEmail('');
     toast.success('Your email has been added to our newsletter!');
   };
+
   return (
     <footer>
       <StyledFooter>
@@ -78,6 +79,7 @@ function Footer() {
   );
 }
 
+// style that wraps entire footer
 const StyledFooter = styled.footer`
   padding: 3rem 0 1rem 0;
   display: flex;
@@ -94,16 +96,19 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const LinksWrapper = styled.div`
-  display: flex;
-  border-top: 1px solid ${({ theme }) => theme.grey};
-`;
-
+// each column in the footer
 const Col = styled.div`
   flex: 1;
   text-align: center;
 `;
 
+// wraps links for more info
+const LinksWrapper = styled.div`
+  display: flex;
+  border-top: 1px solid ${({ theme }) => theme.grey};
+`;
+
+// logo
 const Logo = styled.img`
   display: flex;
   margin: auto;
@@ -111,6 +116,7 @@ const Logo = styled.img`
   margin-bottom: 2rem;
 `;
 
+// wraps the newsletter section
 const Newsletter = styled.div`
   display: flex;
   margin-bottom: 2rem;
@@ -153,9 +159,11 @@ const Newsletter = styled.div`
   }
 `;
 
+// wraps all the socials icons links
 const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
+
   svg {
     margin-right: 0.8rem;
     font-size: 30px;
@@ -172,11 +180,11 @@ const IconWrapper = styled.div`
   }
 `;
 
+// copyright section at the bottom of the page
 const Copyright = styled.div`
   padding: 1rem 0rem;
   background: ${({ theme }) => theme.darkGold};
   text-align: center;
-
   color: ${({ theme }) => theme.paper};
 `;
 
