@@ -1,18 +1,15 @@
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-} from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import React, { useContext } from 'react';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import cake1White from '/scrollcake/base1-white.png';
-import cake2White from '/scrollcake/base2-white.png';
-import cake3White from '/scrollcake/base3-white.png';
+import { TransparentButton } from './reusable components/Button';
 import cake1Pink from '/scrollcake/base1-pink.png';
+import cake1White from '/scrollcake/base1-white.png';
 import cake2Pink from '/scrollcake/base2-pink.png';
+import cake2White from '/scrollcake/base2-white.png';
 import cake3Pink from '/scrollcake/base3-pink.png';
+import cake3White from '/scrollcake/base3-white.png';
 import decorations from '/scrollcake/flowers.png';
 import topper from '/scrollcake/topper.png';
 
@@ -24,6 +21,10 @@ const ScrollSectionComponentMobile = () => {
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
+  const navigate = useNavigate();
+  const handleScrollCake = () => {
+    navigate('/product/1');
+  };
   const themeContext = useContext(ThemeContext);
   const theme = themeContext?.mode;
 
@@ -62,7 +63,7 @@ const ScrollSectionComponentMobile = () => {
     [0, 1],
   );
 
-  const translateYText2 = useTransform(scrollYProgress, [0.35, 0.64], [30, 90]);
+  const translateYText2 = useTransform(scrollYProgress, [0.35, 0.64], [30, 70]);
   const translateOpacityText2 = useTransform(
     scrollYProgress,
     [0.35, 0.64],
@@ -71,7 +72,7 @@ const ScrollSectionComponentMobile = () => {
   const translateYText3 = useTransform(
     scrollYProgress,
     [0.69, 0.84],
-    [90, 150],
+    [70, 110],
   );
   const translateOpacityText3 = useTransform(
     scrollYProgress,
@@ -79,9 +80,13 @@ const ScrollSectionComponentMobile = () => {
     [0, 1],
   );
 
-  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    console.log(latest);
-  });
+  const translateYButton = useTransform(scrollYProgress, [0.8, 1], [110, 155]);
+  const translateOpacityButton = useTransform(
+    scrollYProgress,
+    [0.8, 0.87],
+
+    [0, 1],
+  );
 
   return (
     <ScrollSection ref={targetRef}>
@@ -90,10 +95,8 @@ const ScrollSectionComponentMobile = () => {
           <Title>
             <h2>Create your dream cake</h2>
             <p>
-              <p>
-                In our specialiced customized cake you can build your dream cake
-                and see a 3d vizualisation of your cake in real time!
-              </p>
+              In our specialiced customized cake you can build your dream cake
+              and see a 3d vizualisation of your cake in real time!
             </p>
           </Title>
           <Box>
@@ -140,6 +143,14 @@ const ScrollSectionComponentMobile = () => {
               <IoIosCheckmarkCircleOutline />
               <p> Pick the perfect topper </p>
             </TextBox>
+            <ButtonBox
+              style={{ y: translateYButton, opacity: translateOpacityButton }}
+            >
+              <TransparentButton
+                onPress={handleScrollCake}
+                title="Start building your Wedding cake"
+              ></TransparentButton>
+            </ButtonBox>
           </Box2>
         </FlexBox>
       </MyBox>
@@ -234,7 +245,7 @@ const TextBox = styled(motion.div)`
   top: 0rem;
   width: 90%;
   right: 5%;
-  height: 2.5rem;
+  height: 2rem;
   @media (max-width: 420px) {
     width: 100%;
     right: 0%;
@@ -244,6 +255,26 @@ const TextBox = styled(motion.div)`
   }
   svg {
     font-size: 1rem;
+  }
+`;
+
+const ButtonBox = styled(motion.div)`
+  transition: all 0.3s ease-out;
+  position: absolute;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  top: 0rem;
+  width: 90%;
+  right: 5%;
+  height: 2rem;
+  @media (max-width: 1000px) {
+    right: 3%;
+    padding-left: 0rem;
+  }
+  button {
+    font-size: 12px;
   }
 `;
 
@@ -259,7 +290,7 @@ const FlexBox = styled(motion.div)`
 
 const ScrollSection = styled.div`
   position: relative;
-  height: 250vh;
+  height: 270vh;
 `;
 
 const MyBox = styled.section`
