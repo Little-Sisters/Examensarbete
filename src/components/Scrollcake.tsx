@@ -1,13 +1,15 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
-import cake1White from '/scrollcake/base1-white.png';
-import cake2White from '/scrollcake/base2-white.png';
-import cake3White from '/scrollcake/base3-white.png';
+import { useNavigate } from 'react-router-dom';
+import styled, { ThemeContext } from 'styled-components';
+import { TransparentButton } from './reusable components/Button';
 import cake1Pink from '/scrollcake/base1-pink.png';
+import cake1White from '/scrollcake/base1-white.png';
 import cake2Pink from '/scrollcake/base2-pink.png';
+import cake2White from '/scrollcake/base2-white.png';
 import cake3Pink from '/scrollcake/base3-pink.png';
+import cake3White from '/scrollcake/base3-white.png';
 import decorations from '/scrollcake/flowers.png';
 import topper from '/scrollcake/topper.png';
 
@@ -51,7 +53,7 @@ const ScrollSectionComponent = () => {
   const translateTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 63]);
   const OpacityTopper = useTransform(scrollYProgress, [0.69, 0.84], [0, 1]);
 
-  const translateYText1 = useTransform(scrollYProgress, [0, 0.32], [0, 100]);
+  const translateYText1 = useTransform(scrollYProgress, [0, 0.32], [0, 50]);
   const translateOpacityText1 = useTransform(
     scrollYProgress,
     [0, 0.32],
@@ -61,7 +63,7 @@ const ScrollSectionComponent = () => {
   const translateYText2 = useTransform(
     scrollYProgress,
     [0.35, 0.64],
-    [100, 200],
+    [50, 150],
   );
   const translateOpacityText2 = useTransform(
     scrollYProgress,
@@ -70,15 +72,31 @@ const ScrollSectionComponent = () => {
   );
   const translateYText3 = useTransform(
     scrollYProgress,
-    [0.69, 0.84],
-    [200, 300],
+    [0.69, 0.8],
+    [150, 250],
   );
   const translateOpacityText3 = useTransform(
     scrollYProgress,
-    [0.69, 0.84],
+    [0.69, 0.8],
 
     [0, 1],
   );
+  const translateYButton = useTransform(
+    scrollYProgress,
+    [0.69, 0.8],
+    [150, 330],
+  );
+  const translateOpacityButton = useTransform(
+    scrollYProgress,
+    [0.69, 0.8],
+
+    [0, 1],
+  );
+
+  const navigate = useNavigate();
+  const handleScrollCake = () => {
+    navigate('/product/1');
+  };
 
   return (
     <ScrollSection ref={targetRef}>
@@ -137,6 +155,14 @@ const ScrollSectionComponent = () => {
               <IoIosCheckmarkCircleOutline />
               <p>Pick the perfect topper</p>
             </TextBox>
+            <ButtonBox
+              style={{ y: translateYButton, opacity: translateOpacityButton }}
+            >
+              <TransparentButton
+                onPress={handleScrollCake}
+                title="Start building your Wedding cake"
+              ></TransparentButton>
+            </ButtonBox>
           </Box>
         </FlexBox>
       </MyBox>
@@ -230,6 +256,23 @@ const TextBox = styled(motion.div)`
   }
   svg {
     font-size: 1.5rem;
+  }
+`;
+
+const ButtonBox = styled(motion.div)`
+  transition: all 0.3s ease-out;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: absolute;
+  top: 10rem;
+  width: 95%;
+  right: 2.5%;
+  height: 5rem;
+  padding-left: 5px;
+  @media (max-width: 1000px) {
+    right: 1%;
+    padding-left: 1rem;
   }
 `;
 

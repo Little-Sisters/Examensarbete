@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
+import Footer from '../components/Footer';
+import HeroVideo from '../components/HeroVideo';
 import ScrollSectionComponent from '../components/Scrollcake';
 import ScrollSectionComponentMobile from '../components/ScrollcakeMobile';
 import useMobile from '../hooks/UseMobile';
-import { useEffect } from 'react';
 import { useScrollToTop } from '../hooks/useScrollToTop';
-import Footer from '../components/Footer';
-import HeroVideo from '../components/HeroVideo';
+
 
 function HomePage() {
   // Checks if the screen is mobile and sets the state and breakpoint
