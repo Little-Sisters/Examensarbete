@@ -262,12 +262,14 @@ const DesktopNavLink = styled(NavLink)`
   padding: 0.5rem 1rem;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  transition: all 0.3s ease-in; /* Apply the transition specifically to the transform property */
+  background: transparent;
+  transition: all 0.3s ease-in;
   @media (max-width: 800px) {
     font-size: 0.8rem;
   }
   &:hover {
-    background: rgba(0, 0, 0, 0.1);
+    background: ${({ theme }) => theme.menuHover};
+    color: ${({ theme }) => theme.black};
   }
 `;
 

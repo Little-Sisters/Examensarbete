@@ -30,6 +30,7 @@ const Color = styled(Button)<ButtonProps>`
   background-color: ${({ theme }) => theme.button};
   border: none;
   color: ${({ theme }) => theme.text};
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   &:hover {
     background-color: ${({ theme }) => theme.buttonHover};
     color: ${({ theme }) => theme.text};

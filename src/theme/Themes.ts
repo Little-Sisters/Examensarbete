@@ -13,9 +13,10 @@ export const lightMode = {
   input: '#706F6F',
   card: '#E7E2DF',
   background: '#F9F5F3',
-  button: '#BFAF82',
+  button: '#C9B479',
+  tab: 'rgba(231, 226, 223, 0.8)',
   buttonHover: '#AB9E74',
-  menuHover: '#E3D9B3',
+  menuHover: 'rgba(73, 72, 71, 0.3)',
   paper: '#F9F5F3',
   footerBackground: '#E7E2DF',
   black: '#FFFFFF',
@@ -37,14 +38,15 @@ export const darkMode = {
   card: '#494847',
   background: '#262524',
   button: '#857452',
+  tab: 'rgba(73, 72, 71, 0.7)',
   buttonHover: '#8F7E69',
-  menuHover: '#D8C39A',
+  menuHover: 'rgba(249, 245, 243, 0.3)',
   paper: '#4E4A48',
   footerBackground: '#211E1E',
   grey: '#E7E2DF',
   productOne: '#383432', // Product card background color
   productTwo: '#574840', // Product card background color
   gradient: '#262524', // Gradient color for the background
-  black: '#FFFFFF',
+  black: '#262524',
   overlay: 'rgb(38,37,36, 0.2)',
 };

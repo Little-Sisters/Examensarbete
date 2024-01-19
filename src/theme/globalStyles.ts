@@ -36,14 +36,17 @@ a {
     text-decoration: none;
 
     &:hover {
-      /* Hover styling */
-      color: ${({ theme }) => theme.textHover};
       cursor: pointer;
     }
     }
 #desktop-nav a.active {
 
-    background: ${({ theme }) => theme.card}
+    background: ${({ theme }) => theme.tab};
+    &:hover {
+      /* Hover styling */
+      background: ${({ theme }) => theme.buttonHover};
+      cursor: pointer;
+    }
 }
 footer {
     background: ${({ theme }) => theme.footer};
