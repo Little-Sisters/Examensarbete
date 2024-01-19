@@ -42,6 +42,7 @@ const ShortcutWrapper = styled(Link)`
     max-height: 25rem;
     object-fit: cover;
     margin-bottom: 1rem;
+    border-radius: 3px;
   }
 
   h3 {
