@@ -61,4 +61,4 @@ const FilledButton: React.FC<TransparentButtonProps> = ({
   );
 };
 
-export { TransparentButton, FilledButton };
+export { FilledButton, TransparentButton };
