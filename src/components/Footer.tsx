@@ -1,9 +1,22 @@
+import { useState } from 'react';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { TransparentButton } from './reusable components/Button';
 import PageContentWrapper from './reusable components/PageContentWrapper';
 
 function Footer() {
+  const [email, setEmail] = useState<string>('');
+
+  const onSubmit = () => {
+    if (!email) {
+      toast.error('Please enter your email!');
+      return;
+    }
+
+    setEmail('');
+    toast.success('Your email has been added to our newsletter!');
+  };
   return (
     <footer>
       <StyledFooter>
@@ -16,8 +29,13 @@ function Footer() {
             <span>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui
             </span>
-            <input type="text" placeholder="Enter your email" />
-            <TransparentButton fullWidth title="Subscribe" />
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              type="text"
+              placeholder="Enter your email"
+            />
+            <TransparentButton fullWidth title="Subscribe" onPress={onSubmit} />
           </Newsletter>
           <LinksWrapper>
             {/* INFO */}
@@ -98,6 +116,10 @@ const Newsletter = styled.div`
   margin-bottom: 2rem;
   flex-direction: column;
   align-items: center;
+
+  form {
+    width: 100%;
+  }
 
   span {
     margin-bottom: 0.5rem;
