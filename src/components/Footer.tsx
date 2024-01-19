@@ -3,7 +3,6 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { TransparentButton } from './reusable components/Button';
-import Logo from './reusable components/Logo';
 import PageContentWrapper from './reusable components/PageContentWrapper';
 
 function Footer() {
