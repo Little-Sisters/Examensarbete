@@ -31,18 +31,18 @@ function SocialMedia() {
                 backgroundSize: 'cover',
               }}
             ></div>
-            <div
+            <InvisibleImage
               style={{
                 backgroundImage: 'url(/herocake.jpg)',
                 backgroundSize: 'cover',
               }}
-            ></div>
-            <div
+            ></InvisibleImage>
+            <InvisibleImage
               style={{
                 backgroundImage: 'url(/herocake.jpg)',
                 backgroundSize: 'cover',
               }}
-            ></div>
+            ></InvisibleImage>
           </Grid>
           <StyledText>
             <h2>Follow us on social media</h2>
@@ -127,6 +127,12 @@ const StyledText = styled.div`
   }
 `;
 
+const InvisibleImage = styled.div`
+@media (max-width: 700px) {
+  display: none;
+}
+`
+
 const Grid = styled.div`
   flex: 0.6;
   display: grid;
@@ -134,19 +140,13 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-auto-rows: 200px;
 
-  div {
-    grid-row: span 1;
-    grid-column: span 1;
-    width: 100%;
-  }
-
   @media (max-width: 700px) {
     width: 100%;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: calc(50vw - 2rem);
   }
 
-  @media (min-width: 701px) and (max-width: 1024px) {
+  @media (min-width: 701px) and (max-width: 1126px) {
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: calc(33.33vw - ((12rem / 3) * 2));
   }
