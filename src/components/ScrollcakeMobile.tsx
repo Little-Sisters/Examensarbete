@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import { FilledButton, TransparentButton } from './reusable components/Button';
+import { TransparentButton } from './reusable components/Button';
 import cake1Pink from '/scrollcake/base1-pink.png';
 import cake1White from '/scrollcake/base1-white.png';
 import cake2Pink from '/scrollcake/base2-pink.png';
@@ -95,10 +95,8 @@ const ScrollSectionComponentMobile = () => {
           <Title>
             <h2>Create your dream cake</h2>
             <p>
-              <p>
-                In our specialiced customized cake you can build your dream cake
-                and see a 3d vizualisation of your cake in real time!
-              </p>
+              In our specialiced customized cake you can build your dream cake
+              and see a 3d vizualisation of your cake in real time!
             </p>
           </Title>
           <Box>
@@ -276,7 +274,7 @@ const ButtonBox = styled(motion.div)`
     padding-left: 0rem;
   }
   button {
-    font-size:12px;
+    font-size: 12px;
   }
 `;
 

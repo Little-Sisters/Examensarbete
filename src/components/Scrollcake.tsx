@@ -105,10 +105,8 @@ const ScrollSectionComponent = () => {
           <Title>
             <h2>Create your dream wedding cake</h2>
             <p>
-              <p>
-                In our specialiced customized cake you can build your dream cake
-                and see a 3d vizualisation of your cake in real time!
-              </p>
+              In our specialized customized cake service, you can build your
+              dream cake and see a 3D visualization of your cake in real time!
             </p>
           </Title>
           <Box>
@@ -272,7 +270,7 @@ const ButtonBox = styled(motion.div)`
   padding-left: 5px;
   @media (max-width: 1000px) {
     right: 1%;
-    padding-left: 1rem;
+    padding-left: 5px;
   }
 `;
 
