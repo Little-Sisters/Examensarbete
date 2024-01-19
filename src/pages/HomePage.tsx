@@ -5,6 +5,9 @@ import ScrollSectionComponent from '../components/Scrollcake';
 import ScrollSectionComponentMobile from '../components/ScrollcakeMobile';
 import useMobile from '../hooks/UseMobile';
 import { useScrollToTop } from '../hooks/useScrollToTop';
+import styled from 'styled-components';
+import FillerComponent from '../components/FillerComponent';
+import SocialMedia from '../components/SocialMedia';
 
 function HomePage() {
   // Checks if the screen is mobile and sets the state and breakpoint
@@ -19,9 +22,24 @@ function HomePage() {
     <>
       <HeroVideo />
       {isMobile ? <ScrollSectionComponentMobile /> : <ScrollSectionComponent />}
+      <Wrapper>
+        <FillerComponent />
+        <SocialMedia />
+      </Wrapper>
       <Footer />
     </>
   );
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-bottom: 6rem;
+
+  @media (max-width: 700px) {
+    gap: 1rem;
+  }
+`;
 
 export default HomePage;
