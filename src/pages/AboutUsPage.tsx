@@ -127,7 +127,7 @@ const StyledText = styled.div`
 `;
 
 const MarginTopSmall = styled.div`
-  margin-top: 6rem; /* Center the content */
+  margin-top: 6rem; // Center the content
 
   @media (max-width: 700px) {
     margin-top: 6rem;
@@ -172,7 +172,7 @@ const QuoteContainer = styled.div`
   border-radius: 50rem;
 
   @media (max-width: 1000px) {
-    width: 90%;
+    width: 60%;
   }
 
   h4 {
@@ -187,7 +187,7 @@ const QuoteContainer = styled.div`
     }
 
     @media (max-width: 500px) {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
     }
   }
 
@@ -200,13 +200,8 @@ const QuoteContainer = styled.div`
 
     @media (max-width: 1000px) {
       width: 17%;
-      left: 8%;
-      top: 7%;
-    }
-    @media (max-width: 500px) {
-      width: 17%;
-      left: 1%;
-      top: 0.5%;
+      left: 5%;
+      top: 5%;
     }
   }
 
@@ -220,7 +215,7 @@ const QuoteContainer = styled.div`
 const Gradient = styled.div`
   background: radial-gradient(
     ellipse at center,
-    ${({ theme }) => theme.purple},
+    ${({ theme }) => theme.strongPurple},
     rgba(0, 0, 0, 0) 60%
   );
   border-radius: 50rem;
@@ -317,8 +312,8 @@ const TeamWrapper = styled.div`
 
 const TeamImageWrapper = styled.div`
   display: flex;
-  width:30%;
-   gap: 1rem;
+  width: 30%;
+  gap: 1rem;
 
   @media (max-width: 1000px) {
     gap: 0rem;
@@ -342,7 +337,7 @@ const MarginTop = styled.div`
   margin-top: 9rem;
   display: flex;
   flex-direction: column;
-  
+
   gap: 0.3rem;
 
   @media (max-width: 1000px) {
@@ -378,8 +373,8 @@ const ProfileWrapper = styled.div`
 const BigFlower = styled.img`
   position: absolute;
   right: 20px;
-  width: 13%;
-  top: 10%;
+  width: 10%;
+  top: 2%;
 
   @media (max-width: 1000px) {
     display: none;

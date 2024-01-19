@@ -1,8 +1,6 @@
 import { Field, Formik } from 'formik';
-import { motion } from 'framer-motion';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import * as Yup from 'yup';
@@ -11,6 +9,7 @@ import Footer from '../components/Footer';
 import { FilledButton } from '../components/reusable components/Button';
 import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
+import ShortcutCard from '../components/reusable components/ShortcutCard';
 import { useScrollToTop } from '../hooks/useScrollToTop';
 
 interface StyledFormControlProps {
@@ -84,6 +83,12 @@ function BespokeDetailsPage() {
     <div>
       <MarginTopContainer>
         <PageContentWrapper>
+          <ShortcutCard
+            imageSrc="/assets/aboutus.jpg"
+            title="About us"
+            route="/about"
+            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+          />
           <LayoutFlex>
             <ProductLayout>
               <Cake>
@@ -212,49 +217,24 @@ function BespokeDetailsPage() {
           <ShortCutTitle>Want to know more?</ShortCutTitle>
           <FlexContainer>
             <ShortCuts>
-              <motion.div
-                className="box"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-              >
-                <LinkWrapper to={`/flavors`}>
-                  <img src="/assets/flavors.jpg" alt="" />
-                  <h3>Flavors</h3>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Odio quae quasi rerum, nam voluptates{' '}
-                  </span>
-                </LinkWrapper>
-              </motion.div>
-
-              <motion.div
-                className="box"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-              >
-                <LinkWrapper to={`/gallery`}>
-                  <img src="/assets/aboutus.jpg" alt="" />
-                  <h3>Gallery</h3>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Odio quae quasi rerum, nam voluptates{' '}
-                  </span>
-                </LinkWrapper>
-              </motion.div>
-              <motion.div
-                className="box"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 15 }}
-              >
-                <LinkWrapper to={`/about`}>
-                  <img src="/assets/aboutus2.jpg" alt="" />
-                  <h3>About</h3>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Odio quae quasi rerum, nam voluptates{' '}
-                  </span>
-                </LinkWrapper>
-              </motion.div>
+              <ShortcutCard
+                imageSrc="/assets/flavors.jpg"
+                title="Flavors"
+                route="/flavors"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+              />
+              <ShortcutCard
+                imageSrc="/assets/aboutus2.jpg"
+                title="Gallery"
+                route="/gallery"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+              />
+              <ShortcutCard
+                imageSrc="/assets/aboutus.jpg"
+                title="About us"
+                route="/about"
+                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+              />
             </ShortCuts>
           </FlexContainer>
         </PageContentWrapper>
@@ -354,48 +334,6 @@ const ShortCuts = styled.div`
   @media (max-width: 900px) {
     flex-direction: column;
     padding: 0rem 5rem 5rem 5rem;
-  }
-`;
-
-const LinkWrapper = styled(Link)`
-  position: relative;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-
-  @media (max-width: 900px) {
-    margin-bottom: 2rem;
-  }
-
-  img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 3px;
-
-    @media (max-width: 900px) {
-      height: 400px;
-    }
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0);
-    z-index: 1;
-    transition: background-color 0.3s ease;
-  }
-
-  &:hover {
-    cursor: pointer;
-
-    &::after {
-      background-color: ${({ theme }) => theme.overlay};
-    }
   }
 `;
 
