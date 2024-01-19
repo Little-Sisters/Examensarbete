@@ -7,7 +7,7 @@ interface ButtonProps {
 
 interface TransparentButtonProps extends ButtonProps {
   title: string;
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 const Button = styled.button<ButtonProps>`

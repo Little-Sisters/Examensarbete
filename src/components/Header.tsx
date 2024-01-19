@@ -21,6 +21,7 @@ interface HeaderProps {
   isOn: boolean;
 }
 
+//Values for the "turn" effect animation on links in header drawer on mobile.
 const perspective = {
   initial: {
     opacity: 0,
@@ -36,6 +37,7 @@ const perspective = {
   },
 };
 
+//Values for the open and close effect animation on header drawer on mobile.
 const variants = {
   open: {
     width: '100%',
@@ -94,15 +96,14 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
     }
   });
 
+  // Closes the drawer when you click outside of if.
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener('click', handleOutsideClick);
-
     return () => {
       document.removeEventListener('click', handleOutsideClick);
     };
@@ -130,6 +131,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
               <Logo width="5rem" mobileWidth="4rem" />
               <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </MobileMenuWrapper>
+            {/* Animated drawer content */}
             <LinkBox
               variants={variants}
               animate={isOpen ? 'open' : 'closed'}
@@ -165,6 +167,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
         ) : (
           <>
             {/* Content for desktop */}
+            {/*Absolutley positions the darkmode toggle in desktop */}
             <AbsoluteBox>
               <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </AbsoluteBox>
@@ -260,11 +263,9 @@ const DesktopNavLink = styled(NavLink)`
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   transition: all 0.3s ease-in; /* Apply the transition specifically to the transform property */
-
   @media (max-width: 800px) {
     font-size: 0.8rem;
   }
-
   &:hover {
     background: rgba(0, 0, 0, 0.1);
   }
@@ -272,7 +273,6 @@ const DesktopNavLink = styled(NavLink)`
 
 const MobileMenuWrapper = styled.div`
   display: flex;
-
   align-items: center;
   justify-content: space-between;
 `;

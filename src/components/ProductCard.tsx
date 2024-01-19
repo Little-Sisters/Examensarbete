@@ -64,7 +64,8 @@ const Overlay = styled.div<{ theme: string | undefined }>`
   background-size: cover;
   mask: linear-gradient(to top, transparent, black);
   background-repeat: no-repeat;
-  // Flower overlay for darkmode and lightmode
+  // Flower overlay for darkmode and lightmode. Lint somehom want this on 2 lines, but it needs to be 1, therefore the exception.
+  // eslint-disable-next-line expectedts-styled-plugin(9999)
   background-image: url(${({ theme }) =>
     theme === 'dark' ? flowerOverlayDarkmode : flowerOverlay});
 `;

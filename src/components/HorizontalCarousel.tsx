@@ -7,6 +7,8 @@ import Tabs from './Tabs';
 
 const HorizontalCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
+
+  //keept check on how much of this element we have scrolled through, to move the sticky child horizontally..
   const { scrollYProgress } = useScroll({
     target: targetRef,
   });
