@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import Flavour3dModel from './Chocolate';
+import Flavour3dModel from './Flavour3dModel';
 import { FilledButton, TransparentButton } from './reusable components/Button';
 
 type FlavourSlideProps = {
