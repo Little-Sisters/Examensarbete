@@ -37,6 +37,7 @@ const FlexBox = styled.div`
   justify-content: center;
   align-items: center;
   gap: 4rem;
+  background: ${({ theme }) => theme.card};
 
   @media (max-width: 700px) {
     flex-direction: column;
@@ -50,10 +51,12 @@ const Layout = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1200px;
+  padding: 2rem;
 
   @media (max-width: 700px) {
     flex-direction: column;
     width: 100%;
+    padding: 0rem;
   }
 `;
 
@@ -69,7 +72,7 @@ const StyledText = styled.div`
     font-size: 1.5rem;
     margin: 0;
     padding: 1rem;
-    text-align: center;
+    text-align: left;
   }
 
   p {
@@ -91,8 +94,8 @@ const StyledText = styled.div`
 const StyledImage = styled.div`
   flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
 
   img {
     max-width: 100%;

@@ -38,7 +38,7 @@ const Wrapper = styled.div`
   padding-bottom: 6rem;
 
   @media (max-width: 700px) {
-    gap: 1rem;
+    gap: 0rem;
   }
 `;
 
