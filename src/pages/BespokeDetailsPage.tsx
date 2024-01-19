@@ -83,12 +83,6 @@ function BespokeDetailsPage() {
     <div>
       <MarginTopContainer>
         <PageContentWrapper>
-          <ShortcutCard
-            imageSrc="/assets/aboutus.jpg"
-            title="About us"
-            route="/about"
-            description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
-          />
           <LayoutFlex>
             <ProductLayout>
               <Cake>
@@ -215,28 +209,26 @@ function BespokeDetailsPage() {
             <BespokeCard />
           </LayoutFlex>
           <ShortCutTitle>Want to know more?</ShortCutTitle>
-          <FlexContainer>
-            <ShortCuts>
-              <ShortcutCard
-                imageSrc="/assets/flavors.jpg"
-                title="Flavors"
-                route="/flavors"
-                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
-              />
-              <ShortcutCard
-                imageSrc="/assets/aboutus2.jpg"
-                title="Gallery"
-                route="/gallery"
-                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
-              />
-              <ShortcutCard
-                imageSrc="/assets/aboutus.jpg"
-                title="About us"
-                route="/about"
-                description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
-              />
-            </ShortCuts>
-          </FlexContainer>
+          <ShortCuts>
+            <ShortcutCard
+              imageSrc="/assets/flavors.jpg"
+              title="Flavors"
+              route="/flavors"
+              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+            />
+            <ShortcutCard
+              imageSrc="/assets/person.jpg"
+              title="Gallery"
+              route="/gallery"
+              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+            />
+            <ShortcutCard
+              imageSrc="/assets/aboutus.jpg"
+              title="About us"
+              route="/about"
+              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+            />
+          </ShortCuts>
         </PageContentWrapper>
       </MarginTopContainer>
       <Footer />
@@ -328,12 +320,13 @@ const ColorPickerPreview = styled.div`
 
 const ShortCuts = styled.div`
   display: flex;
-  width: 100%;
-  gap: 2rem;
+  justify-content: space-between;
+  gap: 1rem;
 
-  @media (max-width: 900px) {
-    flex-direction: column;
-    padding: 0rem 5rem 5rem 5rem;
+  @media (max-width: 1270px) {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
   }
 `;
 

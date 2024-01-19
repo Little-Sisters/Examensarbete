@@ -32,26 +32,18 @@ const Shortcut: React.FC<ShortcutCardProps> = ({
 };
 
 const ShortcutStyle = styled(Link)`
-  position: relative;
   display: flex;
-  width: 100%;
   flex-direction: column;
-
-  @media (max-width: 900px) {
-    margin-bottom: 2rem;
-  }
+  position: relative;
+  width: 25rem;
 
   img {
-    width: 100%;
-    height: 500px;
     object-fit: cover;
     border-radius: 3px;
-
-    @media (max-width: 900px) {
-      height: 400px;
-    }
+    height: 30rem;
   }
 
+  // overlay
   &::after {
     content: '';
     position: absolute;
