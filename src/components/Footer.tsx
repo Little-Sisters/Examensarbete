@@ -135,7 +135,7 @@ const Newsletter = styled.div`
   }
 
   input {
-    background: ${({ theme }) => theme.paper};
+    background: ${({ theme }) => theme.background};
     padding: 0.8rem;
     border: 1px solid;
     border-color: ${({ theme }) => theme.grey};
