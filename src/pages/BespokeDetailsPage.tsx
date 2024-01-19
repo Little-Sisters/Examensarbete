@@ -1,16 +1,16 @@
 import { Field, Formik } from 'formik';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import * as Yup from 'yup';
-import MarginTopContainer from '../components/reusable components/MarginTopContainer';
-import PageContentWrapper from '../components/reusable components/PageContentWrapper';
-import { toast } from 'react-toastify';
-import { useScrollToTop } from '../hooks/useScrollToTop';
+import { BespokeCard } from '../components/Bespoke-allergies';
 import Footer from '../components/Footer';
 import { FilledButton } from '../components/reusable components/Button';
-import { BespokeCard } from '../components/Bespoke-allergies';
+import MarginTopContainer from '../components/reusable components/MarginTopContainer';
+import PageContentWrapper from '../components/reusable components/PageContentWrapper';
+import ShortcutCard from '../components/reusable components/ShortcutCard';
+import { useScrollToTop } from '../hooks/useScrollToTop';
 
 interface StyledFormControlProps {
   error?: boolean | string;
@@ -209,34 +209,26 @@ function BespokeDetailsPage() {
             <BespokeCard />
           </LayoutFlex>
           <ShortCutTitle>Want to know more?</ShortCutTitle>
-          <FlexContainer>
-            <ShortCuts>
-              <LinkWrapper to={`/flavors`}>
-                <img src="/assets/flavors.jpg" alt="" />
-                <h3>Flavors</h3>
-                <span>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
-                  quae quasi rerum, nam voluptates{' '}
-                </span>
-              </LinkWrapper>
-              <LinkWrapper to={`/gallery`}>
-                <img src="/assets/aboutus.jpg" alt="" />
-                <h3>Gallery</h3>
-                <span>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
-                  quae quasi rerum, nam voluptates{' '}
-                </span>
-              </LinkWrapper>
-              <LinkWrapper to={`/about`}>
-                <img src="/assets/aboutus2.jpg" alt="" />
-                <h3>About</h3>
-                <span>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio
-                  quae quasi rerum, nam voluptates{' '}
-                </span>
-              </LinkWrapper>
-            </ShortCuts>
-          </FlexContainer>
+          <ShortcutWrapper>
+            <ShortcutCard
+              imageSrc="/assets/flavors.jpg"
+              title="Flavors"
+              route="/flavors"
+              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+            />
+            <ShortcutCard
+              imageSrc="/assets/flavors.jpg"
+              title="Flavors"
+              route="/flavors"
+              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+            />
+            <ShortcutCard
+              imageSrc="/assets/flavors.jpg"
+              title="Flavors"
+              route="/flavors"
+              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+            />
+          </ShortcutWrapper>
         </PageContentWrapper>
       </MarginTopContainer>
       <Footer />
@@ -326,57 +318,11 @@ const ColorPickerPreview = styled.div`
   cursor: pointer;
 `;
 
-const ShortCuts = styled.div`
+const ShortcutWrapper = styled.div`
   display: flex;
-  width: 100%;
-  gap: 2rem;
-
-  @media (max-width: 900px) {
-    flex-direction: column;
-    padding: 0rem 5rem 5rem 5rem;
-  }
-`;
-
-const LinkWrapper = styled(Link)`
-  position: relative;
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-
-  @media (max-width: 900px) {
-    margin-bottom: 2rem;
-  }
-
-  img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    border-radius: 3px;
-
-    @media (max-width: 900px) {
-      height: 400px;
-    }
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0);
-    z-index: 1;
-    transition: background-color 0.3s ease;
-  }
-
-  &:hover {
-    cursor: pointer;
-
-    &::after {
-      background-color: ${({ theme }) => theme.overlay};
-    }
-  }
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 `;
 
 const RequestInput = styled.textarea`
@@ -484,7 +430,7 @@ const InputFlexWrapper = styled.div`
 
 const ShortCutTitle = styled.h2`
   text-align: center;
-  margin: 4rem 0rem 3rem 0rem;
+  margin: 3rem 0rem 3rem 0rem;
 `;
 
 const ProductLayout = styled.div`
