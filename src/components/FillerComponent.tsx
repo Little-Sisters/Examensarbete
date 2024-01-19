@@ -6,11 +6,10 @@ function FillerComponent() {
     <FlexBox>
       <Layout>
         <StyledText>
-          <h3>about love story cakes</h3>
+          <h3>About Love Story Cakes</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-            fugiat non minima hic natus blanditiis animi quam recusandae, sequi
-            velit!
+            Love Story Cakes was founded in 2024 by a group of friends who wanted to share their love of baking with the world.
+            Their mission was to empower people to use their creativity to visualize and create their dream wedding cake.
           </p>
           <TransparentButton
           title='read more'
@@ -66,12 +65,17 @@ const StyledText = styled.div`
   }
 
   p {
-    text-align: center;
+    text-align: left;
     padding-bottom: 1rem;
+    width: 80%;
   }
 
   @media (max-width: 700px) {
     width: 100%;
+
+    p {
+        width: 100%;
+    }
   }
 `;
 
