@@ -209,7 +209,7 @@ function BespokeDetailsPage() {
             <BespokeCard />
           </LayoutFlex>
           <ShortCutTitle>Want to know more?</ShortCutTitle>
-          <ShortCuts>
+          <ShortcutWrapper>
             <ShortcutCard
               imageSrc="/assets/flavors.jpg"
               title="Flavors"
@@ -217,18 +217,18 @@ function BespokeDetailsPage() {
               description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
             />
             <ShortcutCard
-              imageSrc="/assets/person.jpg"
-              title="Gallery"
-              route="/gallery"
+              imageSrc="/assets/flavors.jpg"
+              title="Flavors"
+              route="/flavors"
               description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
             />
             <ShortcutCard
-              imageSrc="/assets/aboutus.jpg"
-              title="About us"
-              route="/about"
+              imageSrc="/assets/flavors.jpg"
+              title="Flavors"
+              route="/flavors"
               description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
             />
-          </ShortCuts>
+          </ShortcutWrapper>
         </PageContentWrapper>
       </MarginTopContainer>
       <Footer />
@@ -318,16 +318,11 @@ const ColorPickerPreview = styled.div`
   cursor: pointer;
 `;
 
-const ShortCuts = styled.div`
+const ShortcutWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
-
-  @media (max-width: 1270px) {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-  }
 `;
 
 const RequestInput = styled.textarea`
