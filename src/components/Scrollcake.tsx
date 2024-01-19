@@ -11,6 +11,9 @@ import cake3Pink from '/scrollcake/base3-pink.png';
 import decorations from '/scrollcake/flowers.png';
 import topper from '/scrollcake/topper.png';
 
+// This scroll animation renders on big devices.
+//The values of "translate y controls where the animation will end up and how quickly compared to the scroll position."
+
 const ScrollSectionComponent = () => {
   const targetRef = React.useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({

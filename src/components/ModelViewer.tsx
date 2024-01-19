@@ -15,6 +15,8 @@ interface MovelView3dProps {
   selectedTopper: TopperOption | null;
 }
 
+// This model viever displays the cuztomized cake model, and updates it when edit values change.
+
 function MovelView3d({
   selectedTier,
   selectedColor,
@@ -50,7 +52,7 @@ function MovelView3d({
         )}
         shadow-intensity="1"
         shadow-softness="1"
-        alt="cake"
+        alt="cake-3d-model"
         auto-rotate
         camera-controls
         touch-action="pan-y"

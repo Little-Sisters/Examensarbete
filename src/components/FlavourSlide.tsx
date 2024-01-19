@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
-import Chocolate from './Chocolate';
-import { FilledButton, TransparentButton } from './reusable components/Button';
 import { Link, useNavigate } from 'react-router-dom';
+import styled, { ThemeContext } from 'styled-components';
+import Flavour3dModel from './Chocolate';
+import { FilledButton, TransparentButton } from './reusable components/Button';
 
 type FlavourSlideProps = {
   flavourTitle: string;
@@ -37,9 +37,12 @@ const FlavourSlide: React.FC<FlavourSlideProps> = ({
     navigate('/gallery');
   };
 
+  // Gives the model an angle to display the model if no other is specified in the data.
   if (!angle) {
     angle = '100deg 90deg 10m';
   }
+
+  // Get the thememode here to change background color between the two varibles.
   const themeContext = useContext(ThemeContext);
   const theme = themeContext?.mode;
 
@@ -74,7 +77,7 @@ const FlavourSlide: React.FC<FlavourSlideProps> = ({
           </TextFlex>
         </TextBox>
         <ModelBox>
-          <Chocolate model={model} angle={angle}></Chocolate>
+          <Flavour3dModel model={model} angle={angle}></Flavour3dModel>
         </ModelBox>
       </FlexBox>
     </Container>

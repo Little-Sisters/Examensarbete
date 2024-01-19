@@ -1,9 +1,9 @@
-type ChocolateProps = {
+type Flavour3dModelProps = {
   model: string;
   angle: string;
 };
 
-const Chocolate: React.FC<ChocolateProps> = ({ model, angle }) => {
+const Flavour3dModel: React.FC<Flavour3dModelProps> = ({ model, angle }) => {
   return (
     <model-viewer
       src={model}
@@ -19,4 +19,4 @@ const Chocolate: React.FC<ChocolateProps> = ({ model, angle }) => {
   );
 };
 
-export default Chocolate;
+export default Flavour3dModel;

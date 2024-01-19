@@ -9,8 +9,7 @@ import {
 it is important when adding och changing model files that they keep the exact
 same structure, otherwise it wont fint the correct path. In cartModel, 
 its when cart is not in edir mode, it needs another way to find the src. */
- 
- 
+
 export function getModelSrc(
   selectedTier: TierOption | null,
   selectedColor: ColourOption | null,
