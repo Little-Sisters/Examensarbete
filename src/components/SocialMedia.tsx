@@ -45,7 +45,7 @@ function SocialMedia() {
             ></div>
           </Grid>
           <StyledText>
-            <h3>Follow us on social media</h3>
+            <h2>Follow us on social media</h2>
             <p>
               Follow us on Facebook or Instagram to see our latest creations and
               news.
@@ -91,17 +91,18 @@ const Layout = styled.div`
 `;
 
 const StyledText = styled.div`
-  flex: 1;
+  flex: 0.4;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  h3 {
+  h2 {
     font-size: 1.5rem;
     margin: 0;
     padding: 1rem;
+    text-align: center;
   }
 
   p {
@@ -118,6 +119,7 @@ const StyledText = styled.div`
 
   @media (max-width: 700px) {
     width: 100%;
+    min-height: 40vh;
 
     p {
         width: 100%;
@@ -126,14 +128,27 @@ const StyledText = styled.div`
 `;
 
 const Grid = styled.div`
-  flex: 1;
+  flex: 0.6;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-auto-rows: 200px;
 
+  div {
+    grid-row: span 1;
+    grid-column: span 1;
+    width: 100%;
+  }
+
   @media (max-width: 700px) {
     width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: calc(50vw - 2rem);
+  }
+
+  @media (min-width: 701px) and (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: calc(33.33vw - ((12rem / 3) * 2));
   }
 `;
 
