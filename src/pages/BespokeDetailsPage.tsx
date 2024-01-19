@@ -1,6 +1,7 @@
 import { Field, Formik } from 'formik';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
+import { LuCakeSlice } from 'react-icons/lu';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import * as Yup from 'yup';
@@ -10,7 +11,9 @@ import { FilledButton } from '../components/reusable components/Button';
 import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import ShortcutCard from '../components/reusable components/ShortcutCard';
+import TextImageVideo from '../components/reusable components/TextImageVideo';
 import { useScrollToTop } from '../hooks/useScrollToTop';
+import cakeVideo from '../videos/bespoke.mp4';
 
 interface StyledFormControlProps {
   error?: boolean | string;
@@ -206,29 +209,40 @@ function BespokeDetailsPage() {
                 </InputFlexWrapper>
               </InputContainer>
             </ProductLayout>
+            <TextImageVideo
+              title="Created for you"
+              text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum non sequi ut neque unde suscipit repudiandae nemo."
+              summary="Created just for you."
+              imageSrc="/bespoke3.jpg"
+              videoSrc={cakeVideo}
+              icon={<LuCakeSlice />}
+              imageContainerHeight="15rem"
+            />
             <BespokeCard />
+            <div>
+              <ShortCutTitle>Want to know more?</ShortCutTitle>
+              <ShortcutWrapper>
+                <ShortcutCard
+                  imageSrc="/assets/flavors.jpg"
+                  title="Flavors"
+                  route="/flavors"
+                  description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+                />
+                <ShortcutCard
+                  imageSrc="/assets/flavors.jpg"
+                  title="Flavors"
+                  route="/flavors"
+                  description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+                />
+                <ShortcutCard
+                  imageSrc="/assets/flavors.jpg"
+                  title="Flavors"
+                  route="/flavors"
+                  description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+                />
+              </ShortcutWrapper>
+            </div>
           </LayoutFlex>
-          <ShortCutTitle>Want to know more?</ShortCutTitle>
-          <ShortcutWrapper>
-            <ShortcutCard
-              imageSrc="/assets/flavors.jpg"
-              title="Flavors"
-              route="/flavors"
-              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
-            />
-            <ShortcutCard
-              imageSrc="/assets/flavors.jpg"
-              title="Flavors"
-              route="/flavors"
-              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
-            />
-            <ShortcutCard
-              imageSrc="/assets/flavors.jpg"
-              title="Flavors"
-              route="/flavors"
-              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
-            />
-          </ShortcutWrapper>
         </PageContentWrapper>
       </MarginTopContainer>
       <Footer />
@@ -379,6 +393,9 @@ const Information = styled.div`
 const Selections = styled.div`
   display: flex;
   flex-direction: column;
+  label {
+    color: ${({ theme }) => theme.text};
+  }
 `;
 
 const Cake = styled.div`
@@ -402,6 +419,7 @@ const Cake = styled.div`
 `;
 const InputContainer = styled.div`
   width: 50%;
+  height: 100%;
   @media (max-width: 700px) {
     width: 100%;
   }
