@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 
 import styled from 'styled-components';
 
-
 //The imagecontainerheignt is for the height on the image on devices smaller than 500px, to make sure the text fits.
 
 interface TextImageVideoProps {
