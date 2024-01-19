@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import blueberrycakeImage from '/social-media/blueberrycake.jpg';
+import engagedcakeImage from '/social-media/engagedcake.jpg';
+import outdoorcakeImage from '/social-media/outdoorcake.jpg';
+import partycakeImage from '/social-media/partycake.jpg';
+import pieceofcakeImage from '/social-media/pieceofcake.jpg';
+import pipingcakeImage from '/social-media/pipingcake.jpg';
 
 function SocialMedia() {
   return (
@@ -9,38 +15,43 @@ function SocialMedia() {
           <Grid>
             <div
               style={{
-                backgroundImage: 'url(/herocake.jpg)',
+                backgroundImage: `url(${blueberrycakeImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'bottom',
+              }}
+            ></div>
+            <div
+              style={{
+                backgroundImage: `url(${pipingcakeImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            ></div>
+            <div
+              style={{
+                backgroundImage: `url(${pieceofcakeImage})`,
                 backgroundSize: 'cover',
               }}
             ></div>
             <div
               style={{
-                backgroundImage: 'url(/herocake.jpg)',
+                backgroundImage: `url(${engagedcakeImage})`,
                 backgroundSize: 'cover',
-              }}
-            ></div>
-            <div
-              style={{
-                backgroundImage: 'url(/herocake.jpg)',
-                backgroundSize: 'cover',
-              }}
-            ></div>
-            <div
-              style={{
-                backgroundImage: 'url(/herocake.jpg)',
-                backgroundSize: 'cover',
+                backgroundPosition: 'top',
               }}
             ></div>
             <InvisibleImage
               style={{
-                backgroundImage: 'url(/herocake.jpg)',
+                backgroundImage: `url(${outdoorcakeImage})`,
                 backgroundSize: 'cover',
+                backgroundPosition: 'center',
               }}
             ></InvisibleImage>
             <InvisibleImage
               style={{
-                backgroundImage: 'url(/herocake.jpg)',
+                backgroundImage: `url(${partycakeImage})`,
                 backgroundSize: 'cover',
+                backgroundPosition: 'bottom',
               }}
             ></InvisibleImage>
           </Grid>
@@ -51,10 +62,10 @@ function SocialMedia() {
               news.
             </p>
             <div>
-            <FaTwitter />
-            <FaYoutube />
-            <FaInstagram />
-            <FaFacebook />
+              <FaTwitter />
+              <FaYoutube />
+              <FaInstagram />
+              <FaFacebook />
             </div>
           </StyledText>
         </Layout>
@@ -122,16 +133,16 @@ const StyledText = styled.div`
     min-height: 40vh;
 
     p {
-        width: 100%;
+      width: 100%;
     }
   }
 `;
 
 const InvisibleImage = styled.div`
-@media (max-width: 700px) {
-  display: none;
-}
-`
+  @media (max-width: 700px) {
+    display: none;
+  }
+`;
 
 const Grid = styled.div`
   flex: 0.6;

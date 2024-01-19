@@ -19,7 +19,7 @@ function HomePage() {
     <>
       <HeroVideo />
       {isMobile ? <ScrollSectionComponentMobile /> : <ScrollSectionComponent />}
-      
+
       <Footer />
     </>
   );

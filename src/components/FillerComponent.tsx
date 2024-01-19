@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { TransparentButton } from './reusable components/Button';
+import lovestoryImage from '/lovestory.jpg';
 
 function FillerComponent() {
   return (
@@ -8,15 +9,15 @@ function FillerComponent() {
         <StyledText>
           <h2>About Love Story Cakes</h2>
           <p>
-            Love Story Cakes was founded in 2024 by a group of friends who wanted to share their love of baking with the world.
-            Their mission was to empower people to use their creativity to visualize and create their dream wedding cake.
+            Love Story Cakes was founded in 2024 by a group of friends who
+            wanted to share their love of baking with the world. Their mission
+            was to empower people to use their creativity to visualize and
+            create their dream wedding cake.
           </p>
-          <TransparentButton
-          title='read more'
-          />
+          <TransparentButton title="read more" />
         </StyledText>
         <StyledImage>
-          <img src="lovestory.jpg" alt="" />
+          <img src={lovestoryImage} alt="" />
         </StyledImage>
       </Layout>
     </FlexBox>
@@ -76,7 +77,7 @@ const StyledText = styled.div`
     min-height: 50vh;
 
     p {
-        width: 100%;
+      width: 100%;
     }
   }
 `;
@@ -97,6 +98,5 @@ const StyledImage = styled.div`
     width: 100%;
   }
 `;
-
 
 export default FillerComponent;
