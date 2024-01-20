@@ -94,8 +94,15 @@ const StyledText = styled.div`
     width: 100%;
     min-height: 50vh;
 
-    p {
+    p,
+    h2 {
       width: 100%;
+      text-align: center;
+    }
+
+    div {
+      align-items: center;
+      padding-left: 0rem;
     }
   }
 `;

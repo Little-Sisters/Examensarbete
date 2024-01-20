@@ -32,7 +32,7 @@ const FlavourSlide: React.FC<FlavourSlideProps> = ({
   const navigate = useNavigate();
 
   const handleProducts = () => {
-    navigate('/product/1');
+    navigate('/cake/1');
   };
 
   const handleGallery = () => {
@@ -62,7 +62,7 @@ const FlavourSlide: React.FC<FlavourSlideProps> = ({
               <p>{subtitle}</p>
               <span>{spanDescription}</span>
               <ButtonBox>
-                <Link to="/product/1">
+                <Link to="/cake/1">
                   <FilledButton
                     title={filledButtonTitle}
                     onPress={handleProducts}

@@ -23,7 +23,7 @@ const ScrollSectionComponentMobile = () => {
   });
   const navigate = useNavigate();
   const handleScrollCake = () => {
-    navigate('/product/1');
+    navigate('/cake/1');
   };
   const themeContext = useContext(ThemeContext);
   const theme = themeContext?.mode;

@@ -3,9 +3,16 @@ import useMobile from '../hooks/UseMobile';
 import heroVideoDesktop from '../videos/hero-desktop.mp4';
 import heroVideoMobile from '../videos/hero-mobile.mp4';
 import { FilledButton } from './reusable components/Button';
+import { useNavigate } from 'react-router-dom';
 
 const HeroVideo: React.FC = () => {
   const isMobile = useMobile(480);
+  const navigate = useNavigate();
+
+  const handleHeroClick = () => {
+    navigate('cakes');
+  };
+
   return (
     <VideoContainer>
       <Overlay></Overlay>
@@ -24,7 +31,10 @@ const HeroVideo: React.FC = () => {
               minus molestias velit! amet consectetur adipisicing elit.
               Accusamus minus molestias velit!
             </p>
-            <FilledButton title="Experience our cakes"></FilledButton>
+            <FilledButton
+              title="Experience our cakes"
+              onPress={handleHeroClick}
+            ></FilledButton>
           </div>
         </RelativeBox>
       </VideoTextContainer>
