@@ -105,8 +105,8 @@ const ScrollSectionComponent = () => {
           <Title>
             <h2>Build Your Dream Wedding Cake</h2>
             <p>
-              Our customized cake builder lets you build your
-              dream wedding cake and see a 3D visualization of it in real-time!
+              Our customized cake builder lets you build your dream wedding cake
+              and see a 3D visualization of it in real-time!
             </p>
           </Title>
           <Box>

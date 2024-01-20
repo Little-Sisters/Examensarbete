@@ -59,7 +59,9 @@ function SocialMedia() {
             <div>
               <h2>Follow Us on Social Media</h2>
               <p>
-                On social media we share our latest creations, news and photos of our cakes out in the wild. Find us on the following platforms:
+                On social media we share our latest creations, news and photos
+                of our cakes out in the wild. Find us on the following
+                platforms:
               </p>
               <Icons>
                 <FaTwitter />

@@ -6,7 +6,7 @@ import PageDescription from '../components/reusable components/PageDescription';
 import { useScrollToTop } from '../hooks/useScrollToTop';
 
 function AboutUsPage() {
-  // useScrollToTop();
+  useScrollToTop();
   useEffect(() => {
     document.title = 'About Us';
   }, []);
@@ -17,10 +17,7 @@ function AboutUsPage() {
         <MarginTopSmall>
           <PageDescription
             title="About Love Story Cakes"
-            description="Love Story Cakes was founded in 2024 by a group of friends who
-            wanted to share their love of baking with the world. Their mission
-            was to empower people to use their creativity to visualize and
-            create their dream wedding cake."
+            description="Read more about the people behind Love Story Cakes and our vision, values and inspiration."
           />
         </MarginTopSmall>
       </PageContentWrapper>
@@ -48,9 +45,17 @@ function AboutUsPage() {
             <div>
               <h2>Our Vision</h2>
               <p>
-              A wedding is special. For many, it is the most significant day of our lives. The wedding is a celebration of love and dreams. Dreams are unique, and we all have our own dreams and visions. 
+                A wedding is special. For many, it is the most significant day
+                of our lives. The wedding is a celebration of love and dreams.
+                Dreams are unique, and we all have our own dreams and visions.
               </p>
-              <p>This is what we want to convey with our wedding cakes. They are more than just pastries; they are a symbol of your love and your new future. We understand that a wedding cake is so personal that it cannot be purchased off the shelf. We are here to give you the wedding cake of your dreams.</p>
+              <p>
+                This is what we want to convey with our wedding cakes. They are
+                more than just pastries; they are a symbol of your love and your
+                new future. We understand that a wedding cake is so personal
+                that it cannot be purchased off the shelf. We are here to give
+                you the wedding cake of your dreams.
+              </p>
             </div>
           </OurVisionContainer>
         </FlexContainer>
@@ -64,10 +69,21 @@ function AboutUsPage() {
                   <h2>Our Team</h2>
                 </TeamDescription>
                 <p>
-                  Our team is a vibrant collective of passionate pastry chefs and cake decorators who have studied at some of the most prestigious culinary schools in the world. We are united by our love of baking and our desire to create beautiful and delicious cakes for our customers. 
+                  Our team is a vibrant collective of passionate pastry chefs
+                  and cake decorators who have studied at some of the most
+                  prestigious culinary schools in the world. We are united by
+                  our love of baking and our desire to create beautiful and
+                  delicious cakes for our customers.
                 </p>
                 <p>
-                We believe that a cake is more than just a dessert; it's a centerpiece that captures the essence of celebration and joy. Our team works closely with customers to transform their visions into reality, ensuring that each cake is a bespoke masterpiece that perfectly suits their special occasion. From the delicate balance of flavors to the intricate details in design, every cake we create is a testament to our expertise and creativity.
+                  We believe that a cake is more than just a dessert; it's a
+                  centerpiece that captures the essence of celebration and joy.
+                  Our team works closely with customers to transform their
+                  visions into reality, ensuring that each cake is a bespoke
+                  masterpiece that perfectly suits their special occasion. From
+                  the delicate balance of flavors to the intricate details in
+                  design, every cake we create is a testament to our expertise
+                  and creativity.
                 </p>
               </StyledText>
               <TeamImageWrapper>
@@ -80,7 +96,10 @@ function AboutUsPage() {
                     </TeamMemberDesc>
                   </ProfileWrapper>
                   <ProfileWrapper>
-                    <img src="/assets/person.jpg" alt="" />
+                    <img
+                      src="/kaysa.jpg"
+                      alt="woman in t shirt smiling outside"
+                    />
                     <TeamMemberDesc>
                       <span>Kaysa S.</span>
                       <span>Founder - Head Pastry Chef</span>
@@ -232,6 +251,7 @@ const OurVisionContainer = styled.div`
   gap: 1rem;
   @media (max-width: 1000px) {
     flex-direction: column;
+    font-size: 16px;
   }
   h2 {
     margin-top: 0;

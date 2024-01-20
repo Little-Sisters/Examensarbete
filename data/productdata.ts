@@ -27,7 +27,8 @@ export const products: Product[] = [
     image: '/transparent-cake.png',
     imageAlt: 'cake',
     title: 'Customized Cake',
-    description: 'Build your customized cake and choose your desired tiers, flavor, color, frosting, decoration and topper.',
+    description:
+      'Build your customized cake and choose your desired tiers, flavor, color, frosting, decoration and topper.',
     price: 150,
     flavour: '',
     tiers: null,
@@ -41,7 +42,8 @@ export const products: Product[] = [
     image: '/transparent-cake.png',
     imageAlt: 'cake',
     title: 'Bespoke Cake',
-    description: 'Send us a request for a completely unique cake. Send a picture of your desired cake, choose a color and tell us what you want. We can accomodate allergies.',
+    description:
+      'Send us a request for a completely unique cake. Send a picture of your desired cake, choose a color and tell us what you want. We can accomodate allergies.',
     price: 200,
     flavour: '',
     tiers: null,
