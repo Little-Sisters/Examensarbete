@@ -8,6 +8,7 @@ type Flavour = {
   filledButtonTitle: string;
   transparentButtonTitle: string;
   model: string;
+  mobileModel?: string;
   angle?: string;
   lightmodeBackgroundColor: string;
   darkmodeBackgroundColor: string;
@@ -22,7 +23,7 @@ const flavoursData: Flavour[] = [
       'Our Chocolate cake flavour is rich and deep, using kakao from the best parts of the world. Our Chocolate cake flavour is rich and deep, using kakao from the best parts of the world.',
     filledButtonTitle: 'Create your chocolate cake',
     transparentButtonTitle: 'Check our Gallery',
-    model: '/flavour-model/chocolate-bar.glb',
+    model: '/flavour-models/chocolate-bar.glb',
     //angle: '90deg 90deg 12m',
     lightmodeBackgroundColor: '#815C54',
     darkmodeBackgroundColor: '#30211E',
@@ -35,7 +36,8 @@ const flavoursData: Flavour[] = [
       'Indulge in the sweetness of our Strawberry cake, made with the finest and juiciest strawberries. Perfect for those who love a fruity delight.',
     filledButtonTitle: 'Create your strawberry cake',
     transparentButtonTitle: 'Explore strawberry delights',
-    model: '/flavour-model//strawberry.glb',
+    model: '/flavour-models/strawberry.glb',
+    mobileModel: '/flavour-models/strawberry-mobile.glb',
     lightmodeBackgroundColor: '#BC373F',
     darkmodeBackgroundColor: '#932D33',
   },
@@ -47,7 +49,7 @@ const flavoursData: Flavour[] = [
       'Indulge in the sweetness of our vanilla cake, made with the finest and juiciest strawberries. Perfect for those who love a fruity delight.',
     filledButtonTitle: 'Create your vanilla cake',
     transparentButtonTitle: 'Explore vanilla delights',
-    model: '/flavour-model/vanilla.glb',
+    model: '/flavour-models/vanilla.glb',
     angle: '90deg 60deg 10m',
     lightmodeBackgroundColor: '#D9D0B0',
     darkmodeBackgroundColor: '#88816A',
@@ -60,7 +62,8 @@ const flavoursData: Flavour[] = [
       'Indulge in the sweetness of our vanilla cake, made with the finest and juiciest strawberries. Perfect for those who love a fruity delight.',
     filledButtonTitle: 'Create your citrus cake',
     transparentButtonTitle: 'Explore Lemon delights',
-    model: '/flavour-model/lemon.glb',
+    model: '/flavour-models/lemon.glb',
+    mobileModel: '/flavour-models/lemon-mobile.glb',
     angle: '90deg 60deg 10m',
     lightmodeBackgroundColor: '#E7E277',
     darkmodeBackgroundColor: '#A39942',

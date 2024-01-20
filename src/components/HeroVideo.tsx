@@ -1,12 +1,20 @@
 import styled from 'styled-components';
-import heroVideo from '../videos/230512_04_Wedding Still Life_4k_003.mp4';
+import useMobile from '../hooks/UseMobile';
+import heroVideoDesktop from '../videos/hero-desktop.mp4';
+import heroVideoMobile from '../videos/hero-mobile.mp4';
 import { FilledButton } from './reusable components/Button';
 
 const HeroVideo: React.FC = () => {
+  const isMobile = useMobile(480);
   return (
     <VideoContainer>
       <Overlay></Overlay>
-      <video src={heroVideo} autoPlay loop muted></video>
+      <video
+        src={isMobile ? heroVideoMobile : heroVideoDesktop}
+        autoPlay
+        loop
+        muted
+      ></video>
       <VideoTextContainer>
         <RelativeBox>
           <div>
