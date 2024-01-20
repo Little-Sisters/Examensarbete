@@ -14,7 +14,7 @@ function HomePage() {
   const isMobile = useMobile(730);
   // Sets the page title
   useEffect(() => {
-    document.title = 'Home';
+    document.title = 'Love Story Cakes';
   }, []);
 
   useScrollToTop();

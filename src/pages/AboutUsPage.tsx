@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-
 import Footer from '../components/Footer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
 import PageDescription from '../components/reusable components/PageDescription';
+import { useScrollToTop } from '../hooks/useScrollToTop';
 
 function AboutUsPage() {
+  useScrollToTop();
   useEffect(() => {
     document.title = 'About Us';
   }, []);

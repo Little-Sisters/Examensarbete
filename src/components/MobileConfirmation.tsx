@@ -75,7 +75,7 @@ const StyledText = styled.p`
   padding: 0;
 `;
 
-const StyledTitle = styled.p`
+const StyledTitle = styled.h1`
   font-size: 36px;
   font-family: 'Monsieur La Doulaise', cursive;
 `;

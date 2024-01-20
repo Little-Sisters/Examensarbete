@@ -95,7 +95,7 @@ const ScrollSectionComponent = () => {
 
   const navigate = useNavigate();
   const handleScrollCake = () => {
-    navigate('/product/1');
+    navigate('/cake/1');
   };
 
   return (

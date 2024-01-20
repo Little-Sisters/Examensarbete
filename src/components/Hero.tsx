@@ -10,7 +10,7 @@ function Hero() {
         <HeroText>Beautiful Cakes</HeroText>
         <BottomRightContainer>
           <SubText>Customize your cake</SubText>
-          <Button href="/products">Go to Products</Button>
+          <Button href="/cakes">Go to Products</Button>
         </BottomRightContainer>
       </HeroContainer>
     </>

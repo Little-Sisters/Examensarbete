@@ -94,7 +94,7 @@ export function App() {
                           }
                         />
                         <Route
-                          path="/products/"
+                          path="/cakes/"
                           element={
                             <Page>
                               <ProductPage />
@@ -102,7 +102,7 @@ export function App() {
                           }
                         />
                         <Route
-                          path="/product/:id"
+                          path="/cake/:id"
                           element={
                             <Page>
                               <DetailsPage />
@@ -110,7 +110,7 @@ export function App() {
                           }
                         />
                         <Route
-                          path="/product/2"
+                          path="/cake/2"
                           element={
                             <Page>
                               <BespokeDetailsPage />

@@ -23,8 +23,8 @@ const headerLinks: HeaderLink[] = [
     to: '/about',
   },
   {
-    title: 'Products',
-    to: '/products',
+    title: 'Cakes',
+    to: '/cakes',
   },
   {
     title: 'Cart',
