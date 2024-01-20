@@ -7,7 +7,7 @@ const HeroVideo: React.FC = () => {
   const navigate = useNavigate();
 
   const handleHeroClick = () => {
-    navigate('products');
+    navigate('cakes');
   };
   return (
     <VideoContainer>

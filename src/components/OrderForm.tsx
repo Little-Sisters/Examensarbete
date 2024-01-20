@@ -227,7 +227,7 @@ export function OrderForm() {
               ) : null}
 
               <FlexRow>
-                <StyledLink to="/products">
+                <StyledLink to="/cakes">
                   <StyledButton>Shop more</StyledButton>
                 </StyledLink>
                 <StyledButton

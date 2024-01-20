@@ -18,14 +18,14 @@ function ProductCard({ product, background }: ProductProps) {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/product/${product.id}`);
+    navigate(`/cake/${product.id}`);
   };
 
   return (
     <Card background={background} theme={theme}>
       <Overlay theme={theme} />
       <ProductWrapper>
-        <Link to={`/product/${product.id}`}>
+        <Link to={`/cake/${product.id}`}>
           <StyledImg src={product.image} alt={product.imageAlt} />
           <h3>{product.title}</h3>
           <p>From ${product.price}</p>
@@ -66,8 +66,7 @@ const Overlay = styled.div<{ theme: string | undefined }>`
   background-repeat: no-repeat;
   // Flower overlay for darkmode and lightmode. Lint somehom want this on 2 lines, but it needs to be 1, therefore the exception.
   // eslint-disable-next-line expectedts-styled-plugin(9999)
-  background-image: url(${({ theme }) =>
-    theme === 'dark' ? flowerOverlayDarkmode : flowerOverlay});
+  background-image: url(${({ theme }) => theme === 'dark' ? flowerOverlayDarkmode : flowerOverlay});
 `;
 
 const ProductWrapper = styled.div`
