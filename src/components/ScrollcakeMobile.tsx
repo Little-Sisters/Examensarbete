@@ -93,10 +93,10 @@ const ScrollSectionComponentMobile = () => {
       <MyBox>
         <FlexBox>
           <Title>
-            <h2>Create your dream cake</h2>
+            <h2>Build Your Dream Wedding Cake</h2>
             <p>
-              In our specialiced customized cake you can build your dream cake
-              and see a 3d vizualisation of your cake in real time!
+            Our customized cake builder lets you build your
+             dream wedding cake and see a 3D visualization of it in real-time!
             </p>
           </Title>
           <Box>
@@ -126,7 +126,7 @@ const ScrollSectionComponentMobile = () => {
               style={{ y: translateYText1, opacity: translateOpacityText1 }}
             >
               <IoIosCheckmarkCircleOutline />
-              <p> Add your wished tiers</p>
+              <p>Add your desired number of tiers</p>
             </TextBox>
             <TextBox
               style={{ y: translateYText2, opacity: translateOpacityText2 }}

@@ -25,12 +25,14 @@ const HeroVideo: React.FC = () => {
       <VideoTextContainer>
         <RelativeBox>
           <div>
-            <h1>Beautiful Cakes</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-              minus molestias velit! amet consectetur adipisicing elit.
-              Accusamus minus molestias velit!
-            </p>
+            <h1>Love Story Cakes</h1>
+            <article>
+              <p>
+                Bring your dream wedding one step closer with tailored wedding
+                cakes just for you.
+              </p>
+              <p>We bring the expertise, you bring the inspiration.</p>
+            </article>
             <FilledButton
               title="Experience our cakes"
               onPress={handleHeroClick}
@@ -104,6 +106,9 @@ const RelativeBox = styled.div`
       @media (max-width: 730px) {
         font-size: 3.5rem;
       }
+    }
+    p {
+      font-size: 1.1rem;
     }
     @media (max-width: 730px) {
       width: 100%;

@@ -57,12 +57,10 @@ function SocialMedia() {
           </Grid>
           <StyledText>
             <div>
-              <h2>Follow us on social media</h2>
+              <h2>Follow Us on Social Media</h2>
               <p>
-                Follow us on Facebook or Instagram to see our latest creations
-                and news.
+                On social media we share our latest creations, news and photos of our cakes out in the wild. Find us on the following platforms:
               </p>
-
               <Icons>
                 <FaTwitter />
                 <FaYoutube />

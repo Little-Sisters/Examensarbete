@@ -21,7 +21,7 @@ function FillerComponent() {
               was to empower people to use their creativity to visualize and
               create their dream wedding cake.
             </p>
-            <TransparentButton title="read more" onPress={handleClick} />
+            <TransparentButton title="Read More" onPress={handleClick} />
           </div>
         </StyledText>
         <StyledImage>
