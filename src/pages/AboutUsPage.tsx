@@ -89,7 +89,10 @@ function AboutUsPage() {
               <TeamImageWrapper>
                 <Column>
                   <ProfileWrapper>
-                    <img src="/assets/person.jpg" alt="" />
+                    <img
+                      src="/mimie.jpg"
+                      alt="woman in a hat and glasses smiling"
+                    />
                     <TeamMemberDesc>
                       <span>Mimie F.</span>
                       <span>Founder - CEO</span>
@@ -108,7 +111,10 @@ function AboutUsPage() {
                 </Column>
                 <MarginTop>
                   <ProfileWrapper>
-                    <img src="/assets/person.jpg" alt="" />
+                    <img
+                      src="/felicity.jpg"
+                      alt="Woman holding a coffee cup smiling"
+                    />
                     <TeamMemberDesc>
                       <span>Felicity L.</span>
                       <span>Founder - CFO</span>
@@ -342,6 +348,8 @@ const Column = styled.div`
 
   @media (max-width: 1000px) {
     flex-direction: row;
+    width: 70%;
+    justify-content: space-evenly;
   }
 `;
 
@@ -380,6 +388,19 @@ const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 9rem;
+
+  img {
+    height: 12rem;
+    width: 100%;
+  }
+
+  @media (max-width: 1000px) {
+    img {
+      height: 10rem;
+      width: 8rem;
+    }
+  }
 `;
 
 const BigFlower = styled.img`
