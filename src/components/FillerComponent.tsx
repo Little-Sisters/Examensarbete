@@ -13,14 +13,16 @@ function FillerComponent() {
     <FlexBox>
       <Layout>
         <StyledText>
-          <h2>About Love Story Cakes</h2>
-          <p>
-            Love Story Cakes was founded in 2024 by a group of friends who
-            wanted to share their love of baking with the world. Their mission
-            was to empower people to use their creativity to visualize and
-            create their dream wedding cake.
-          </p>
-          <TransparentButton title="read more" onPress={handleClick} />
+          <div>
+            <h2>About Love Story Cakes</h2>
+            <p>
+              Love Story Cakes was founded in 2024 by a group of friends who
+              wanted to share their love of baking with the world. Their mission
+              was to empower people to use their creativity to visualize and
+              create their dream wedding cake.
+            </p>
+            <TransparentButton title="read more" onPress={handleClick} />
+          </div>
         </StyledText>
         <StyledImage>
           <img src={lovestoryImage} alt="" />
@@ -37,6 +39,7 @@ const FlexBox = styled.div`
   justify-content: center;
   align-items: center;
   gap: 4rem;
+  background: ${({ theme }) => theme.card};
 
   @media (max-width: 700px) {
     flex-direction: column;
@@ -50,10 +53,12 @@ const Layout = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1200px;
+  padding: 2rem;
 
   @media (max-width: 700px) {
     flex-direction: column;
     width: 100%;
+    padding: 0rem;
   }
 `;
 
@@ -68,14 +73,21 @@ const StyledText = styled.div`
   h2 {
     font-size: 1.5rem;
     margin: 0;
-    padding: 1rem;
-    text-align: center;
+    text-align: left;
   }
 
   p {
     text-align: left;
     padding-bottom: 1rem;
     width: 80%;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-left: 1rem;
   }
 
   @media (max-width: 700px) {
@@ -91,8 +103,8 @@ const StyledText = styled.div`
 const StyledImage = styled.div`
   flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
 
   img {
     max-width: 100%;
