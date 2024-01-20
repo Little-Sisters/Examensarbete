@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 import heroVideo from '../videos/230512_04_Wedding Still Life_4k_003.mp4';
 import { FilledButton } from './reusable components/Button';
+import { useNavigate } from 'react-router-dom';
 
 const HeroVideo: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleHeroClick = () => {
+    navigate('products');
+  };
   return (
     <VideoContainer>
       <Overlay></Overlay>
@@ -16,7 +22,10 @@ const HeroVideo: React.FC = () => {
               minus molestias velit! amet consectetur adipisicing elit.
               Accusamus minus molestias velit!
             </p>
-            <FilledButton title="Experience our cakes"></FilledButton>
+            <FilledButton
+              title="Experience our cakes"
+              onPress={handleHeroClick}
+            ></FilledButton>
           </div>
         </RelativeBox>
       </VideoTextContainer>
