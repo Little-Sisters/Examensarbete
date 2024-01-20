@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import HorizontalCarousel from '../components/HorizontalCarousel';
-import { useScrollToTop } from '../hooks/useScrollToTop';
 import Footer from '../components/Footer';
+import HorizontalCarousel from '../components/flavour-page/HorizontalCarousel';
+import { useScrollToTop } from '../hooks/useScrollToTop';
 
 function FlavorsPage() {
   // Sets the page title
