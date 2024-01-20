@@ -8,7 +8,7 @@ const MarginTopContainer = styled.div`
     margin-top: 6rem;
   }
   @media (min-width: 1500px) {
-    margin-top: 7rem;
+    margin-top: 6rem;
   }
 `;
 

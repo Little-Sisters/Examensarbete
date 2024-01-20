@@ -19,7 +19,7 @@ function GalleryPage() {
         <PageContentWrapper>
           <PageDescription
             title="Gallery"
-            description="Welcome to our gallery, where you'll find a showcase of both customized and bespoke cakes, accompanied by a curated selection of choices for each cake. Find your dream cake or draw inspiration to create your own!"
+            description="Our cakes are more than just cakes, they are pices of art that tell a story. Hover over an image to see the selections of each cake. Become inspired by our collection."
           />
           <BentoGrid />
         </PageContentWrapper>

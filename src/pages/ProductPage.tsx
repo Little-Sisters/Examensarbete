@@ -29,10 +29,7 @@ function ProductPage() {
         <MarginTop>
           <PageDescription
             title="Our Cakes"
-            description="Hej Description Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Amet et neque obcaecati placeat cum ab id quam provident
-            maiores quaerat, dicta incidunt recusandae minus quod quae in libero
-            quia enim!"
+            description="Find your perfect match. The Customized Cake can be ordered right away, or send a request for a Bespoke Cake."
           />
           <FlexContainer>
             <StyledProduct>
