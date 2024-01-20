@@ -1,9 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useMobile from '../hooks/UseMobile';
 import heroVideoDesktop from '../videos/hero-desktop.mp4';
 import heroVideoMobile from '../videos/hero-mobile.mp4';
 import { FilledButton } from './reusable components/Button';
-import { useNavigate } from 'react-router-dom';
 
 const HeroVideo: React.FC = () => {
   const isMobile = useMobile(480);

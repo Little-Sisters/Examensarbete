@@ -11,7 +11,7 @@ type FlavourSlideProps = {
   filledButtonTitle: string;
   transparentButtonTitle: string;
   model: string;
-  mobileModel: string;
+  mobileModel?: string;
   angle?: string;
   lightmodeBackgroundColor: string;
   darkmodeBackgroundColor: string;

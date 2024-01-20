@@ -1,9 +1,9 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import styled from 'styled-components';
-import flavoursData from '../../data/flavoursData';
-import FlavourSlide from './flavour-page/FlavourSlide';
-import Tabs from './flavour-page/Tabs';
+import flavoursData from '../../../data/flavoursData';
+import FlavourSlide from './FlavourSlide';
+import Tabs from './Tabs';
 
 const HorizontalCarousel = () => {
   const targetRef = useRef<HTMLDivElement | null>(null);
