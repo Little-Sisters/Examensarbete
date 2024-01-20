@@ -56,16 +56,19 @@ function SocialMedia() {
             ></InvisibleImage>
           </Grid>
           <StyledText>
-            <h2>Follow us on social media</h2>
-            <p>
-              Follow us on Facebook or Instagram to see our latest creations and
-              news.
-            </p>
             <div>
-              <FaTwitter />
-              <FaYoutube />
-              <FaInstagram />
-              <FaFacebook />
+              <h2>Follow us on social media</h2>
+              <p>
+                Follow us on Facebook or Instagram to see our latest creations
+                and news.
+              </p>
+
+              <Icons>
+                <FaTwitter />
+                <FaYoutube />
+                <FaInstagram />
+                <FaFacebook />
+              </Icons>
             </div>
           </StyledText>
         </Layout>
@@ -94,10 +97,12 @@ const Layout = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1200px;
+  padding: 2rem;
 
   @media (max-width: 700px) {
     flex-direction: column-reverse;
     width: 100%;
+    padding: 0rem;
   }
 `;
 
@@ -109,23 +114,25 @@ const StyledText = styled.div`
   align-items: center;
   justify-content: center;
 
+  div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-left: 2rem;
+  }
+
   h2 {
     font-size: 1.5rem;
     margin: 0;
-    padding: 1rem;
-    text-align: center;
+    text-align: left;
+    padding: 0;
   }
 
   p {
     text-align: left;
     padding-bottom: 1rem;
     width: 80%;
-  }
-
-  div {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
   }
 
   @media (max-width: 700px) {
@@ -136,6 +143,12 @@ const StyledText = styled.div`
       width: 100%;
     }
   }
+`;
+
+const Icons = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 `;
 
 const InvisibleImage = styled.div`

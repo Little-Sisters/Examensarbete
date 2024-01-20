@@ -34,8 +34,8 @@ function HomePage() {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4rem;
-  padding-bottom: 6rem;
+  gap: 2rem;
+  padding-bottom: 2rem;
 
   @media (max-width: 700px) {
     gap: 0rem;
