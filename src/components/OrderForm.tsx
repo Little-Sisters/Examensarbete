@@ -93,8 +93,8 @@ export function OrderForm() {
       {(formik) => (
         <StyledForm onSubmit={formik.handleSubmit}>
           <p>
-            Hello! We will create your cake and deliver on your prefered date.
-            Please tell us more below.
+            Please fill out all the fields in the form below. Remember that our
+            cakes take a few days to create and deliver.
           </p>
           <div>
             <FlexContainer>

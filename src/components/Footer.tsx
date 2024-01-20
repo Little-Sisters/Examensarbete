@@ -27,7 +27,7 @@ function Footer() {
           <h2>NEWSLETTER</h2>
           <Newsletter>
             <span>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui
+              Sign up for your newsletter to get the latest news and updates
             </span>
             <input
               onChange={(e) => setEmail(e.target.value)}
