@@ -18,7 +18,7 @@ function ProductPage() {
   const gradient2 = themeContext?.gradient;
   //Sets the page title
   useEffect(() => {
-    document.title = 'Products';
+    document.title = 'Cakes';
   }, []);
 
   useScrollToTop();
