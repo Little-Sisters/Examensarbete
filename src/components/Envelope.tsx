@@ -69,7 +69,7 @@ const StyledImage = styled.img`
   height: 3rem;
 `;
 // Styled components
-const StyledTitle = styled.p`
+const StyledTitle = styled.h1`
   font-size: 40px;
   font-family: 'Monsieur La Doulaise', cursive;
   margin: 1rem;
