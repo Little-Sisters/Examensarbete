@@ -29,7 +29,7 @@ function AboutUsPage() {
       <PageContentWrapper>
         <FlexContainer>
           <QuoteContainer>
-            <img src="/assets/smallflowers.png" alt="" />
+            <img src="/assets/smallflowers.png" alt="Small dried flowers" />
             <Gradient></Gradient>
             <h4>
               "Every cake we create is a labor of love because we understand
@@ -41,7 +41,10 @@ function AboutUsPage() {
         </FlexContainer>
         <FlexContainer>
           <OurVisionContainer>
-            <img src="/assets/weddingcake2.jpg" alt="" />
+            <img
+              src="/assets/weddingcake2.jpg"
+              alt="A stunning wedding cake displayed on a table, surrounded by roses"
+            />
             <div>
               <h2>Our Vision</h2>
               <p>
@@ -91,7 +94,7 @@ function AboutUsPage() {
                   <ProfileWrapper>
                     <img
                       src="/mimie.jpg"
-                      alt="woman in a hat and glasses smiling"
+                      alt="Woman in a hat and glasses smiling"
                     />
                     <TeamMemberDesc>
                       <span>Mimie F.</span>
@@ -101,7 +104,7 @@ function AboutUsPage() {
                   <ProfileWrapper>
                     <img
                       src="/kaysa.jpg"
-                      alt="woman in t shirt smiling outside"
+                      alt="Woman in t shirt smiling outside"
                     />
                     <TeamMemberDesc>
                       <span>Kaysa S.</span>
@@ -124,8 +127,7 @@ function AboutUsPage() {
               </TeamImageWrapper>
             </Team>
           </TeamWrapper>
-
-          <BigFlower src="/assets/bigflower.png" alt="" />
+          <BigFlower src="/assets/bigflower.png" alt="Big purple flower" />
         </PageContentWrapper>
       </PurpleContainer>
       <Footer />

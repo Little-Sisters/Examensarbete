@@ -8,6 +8,7 @@ interface ShortcutCardProps {
   title: string | React.ReactNode;
   route: string;
   description: string;
+  alt?: string;
 }
 
 const Shortcut: React.FC<ShortcutCardProps> = ({
@@ -15,6 +16,7 @@ const Shortcut: React.FC<ShortcutCardProps> = ({
   title,
   route,
   description,
+  alt,
 }) => {
   return (
     <motion.div
@@ -23,7 +25,7 @@ const Shortcut: React.FC<ShortcutCardProps> = ({
       transition={{ type: 'spring', stiffness: 300, damping: 15 }}
     >
       <ShortcutWrapper to={route}>
-        <img src={imageSrc} alt="" />
+        <img alt={alt} src={imageSrc} />
         <h3>{title}</h3>
         <span>{description}</span>
       </ShortcutWrapper>

@@ -1,7 +1,7 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { TransparentButton } from './reusable components/Button';
 import lovestoryImage from '/lovestory.jpg';
-import { useNavigate } from 'react-router-dom';
 
 function FillerComponent() {
   const navigate = useNavigate();
@@ -25,7 +25,10 @@ function FillerComponent() {
           </div>
         </StyledText>
         <StyledImage>
-          <img src={lovestoryImage} alt="" />
+          <img
+            src={lovestoryImage}
+            alt="A couple joyfully cutting their wedding cake together"
+          />
         </StyledImage>
       </Layout>
     </FlexBox>

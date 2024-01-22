@@ -217,6 +217,7 @@ function BespokeDetailsPage() {
               text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum non sequi ut neque unde suscipit repudiandae nemo."
               summary="Created just for you."
               imageSrc="/bespoke3.jpg"
+              alt="An aesthetically pleasing arrangement of various baking ingredients and utensils"
               videoSrc={cakeVideo}
               icon={<LuCakeSlice />}
               imageContainerHeight="15rem"
@@ -226,6 +227,7 @@ function BespokeDetailsPage() {
               <ShortCutTitle>Want to know more?</ShortCutTitle>
               <ShortcutWrapper>
                 <ShortcutCard
+                  alt="A cake slice garnieshed with strawberries and blackberries"
                   imageSrc="/gallery.jpg"
                   title={
                     <>
@@ -236,6 +238,7 @@ function BespokeDetailsPage() {
                   description="Feast your eyes on elegance! Explore our gallery to see the artistry and craftsmanship that goes into every wedding cake we create."
                 />
                 <ShortcutCard
+                  alt="Three happy women posing for a photo wearing aprons"
                   imageSrc="/aboutus.jpg"
                   title={
                     <>
@@ -249,6 +252,7 @@ function BespokeDetailsPage() {
                 />
                 <ShortcutCard
                   imageSrc="/flavors.jpg"
+                  alt="Different baking ingredients such as flour, eggs, sugar, and butter"
                   title={
                     <>
                       <GiStrawberry /> Flavours
