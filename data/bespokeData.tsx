@@ -62,19 +62,19 @@ export const bespokeItemsData = [
     ),
     content: (
       <>
-        <ContentP>Our Cakes</ContentP>
+        <ContentP>
+          Immerse yourself in the world of bespoke craftsmanship with our
+          bespoke wedding cakes.
+        </ContentP>
         <ContentSpan>
-          Celebrate your special day with a luxurious, customized wedding cake.
-          Our skilled bakers and decorators will craft a masterpiece that
-          reflects your unique style and taste. Our skilled bakers and
-          decorators will craft a masterpiece that reflects your unique style
-          and taste.
+          Every layer is a symphony of flavors, ensuring your special day is
+          unforgettable. Let us create a wedding cake that reflects the essence
+          of your celebration, making it truly extraordinary.
         </ContentSpan>
         <ContentSpan>
-          Celebrate your special day with a luxurious, customized wedding cake.
-          Our skilled bakers and decorators will craft a masterpiece that
-          reflects your unique style and taste. Our skilled bakers and
-          decorators.
+          Our skilled bakers and decorators craft each masterpiece to tell your
+          unique love story. From classic elegance to avant-garde designs, our
+          cakes are a delicious expression of your individual style and taste.
         </ContentSpan>
       </>
     ),
@@ -88,12 +88,31 @@ export const bespokeItemsData = [
     ),
     content: (
       <>
-        <ContentP>Our ingredients are carefully selected for quality:</ContentP>
+        <ContentP>
+          Indulge in the finest ingredients meticulously selected for quality:
+        </ContentP>
         <StyledList>
-          <li>High-quality flour</li>
-          <li>Fresh eggs</li>
-          <li>Pure vanilla extract</li>
-          {/* Add more ingredients as needed */}
+          <li>
+            Base: Choose from a variety of high-quality flours including
+            traditional, gluten-free, or almond flour.
+          </li>
+          <li>
+            Eggs: Opt for farm-fresh eggs to enhance the richness and texture of
+            your cake.
+          </li>
+          <li>
+            Flavorings: Personalize your cake with a selection of pure vanilla,
+            rich chocolate, or exotic fruit extracts.
+          </li>
+          <li>
+            Sweeteners: Tailor the sweetness level with options like organic
+            cane sugar, honey, or maple syrup.
+          </li>
+          <li>
+            Fillings: Select from an array of delectable fillings such as
+            luscious fruit compotes, velvety chocolate ganache, or creamy
+            custards.
+          </li>
         </StyledList>
       </>
     ),
@@ -107,13 +126,21 @@ export const bespokeItemsData = [
     ),
     content: (
       <>
-        <ContentP>Our ingredients are carefully selected for quality</ContentP>
+        <ContentP>
+          We can make your cake for everyone.
+        </ContentP>
+        <ContentSpan>
+          While our bespoke wedding cakes are crafted with love and care, they
+          may contain allergens such as gluten, dairy, and eggs. Please inform
+          us of any specific dietary requirements, and we'll tailor our
+          creations to accommodate your needs.
+        </ContentSpan>
         <StyledList>
-          <li>If you are allergic we can customize the recipes</li>
-          <li>Egg free cakes</li>
-          <li>Dairy free cakes</li>
-          <li>Gluten free cakes</li>
-          {/* Add more ingredients as needed */}
+          <li>Gluten</li>
+          <li>Dairy</li>
+          <li>Eggs</li>
+          <li>Vegan</li>
+          <li>Nuts</li>
         </StyledList>
       </>
     ),
