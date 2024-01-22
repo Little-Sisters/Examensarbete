@@ -5,12 +5,11 @@ import long from '/bespoke-slide/long.jpg';
 import onetiercake from '/bespoke-slide/onetiercake.jpg';
 import purple from '/bespoke-slide/purple.jpg';
 
-
 export const bespokeSlide = [
-    caramelCake,
-    blackCake,
-    purple,
-    greenImage,
-    long,
-    onetiercake,
+  caramelCake,
+  blackCake,
+  purple,
+  greenImage,
+  long,
+  onetiercake,
 ];

@@ -126,9 +126,7 @@ export const bespokeItemsData = [
     ),
     content: (
       <>
-        <ContentP>
-          We can make your cake for everyone.
-        </ContentP>
+        <ContentP>We can make your cake for everyone.</ContentP>
         <ContentSpan>
           While our bespoke wedding cakes are crafted with love and care, they
           may contain allergens such as gluten, dairy, and eggs. Please inform
