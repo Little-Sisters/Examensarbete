@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
+import BigLogo from './reusable components/BigLogo';
 import { TransparentButton } from './reusable components/Button';
 import PageContentWrapper from './reusable components/PageContentWrapper';
 
@@ -22,7 +23,7 @@ function Footer() {
       <StyledFooter>
         <PageContentWrapper>
           {/* LOGO */}
-          <Logo src="/logo.png" alt="logo" />
+          <BigLogo width="22rem" mobileWidth="22rem" />
           {/* NEWSLETTER */}
           <h2>NEWSLETTER</h2>
           <Newsletter>

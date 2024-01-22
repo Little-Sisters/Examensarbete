@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import headerLogoDark from '/logo-dark.png';
-import headerLogo from '/biglogo.svg';
+import headerLogoDark from '/bigwhite.png';
+import headerLogo from '/bigblack.png';
 
 interface LogoProps {
-  width: string;
+  width: string; 
   mobileWidth: string;
 }
 
