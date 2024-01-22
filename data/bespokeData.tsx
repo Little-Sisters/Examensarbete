@@ -11,7 +11,7 @@ const StyledParagraph = styled.p`
   }
 `;
 const ContentP = styled.p`
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.1rem;
   @media (max-width: 1000px) {
     font-size: 1rem;

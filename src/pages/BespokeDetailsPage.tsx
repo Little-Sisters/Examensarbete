@@ -8,6 +8,7 @@ import { LuCakeSlice } from 'react-icons/lu';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import * as Yup from 'yup';
+import { bespokeSlide } from '../../data/bespokeSlide';
 import { BespokeCard } from '../components/Bespoke-allergies';
 import Footer from '../components/Footer';
 import ImageSlide from '../components/ImageSlide';
@@ -93,7 +94,7 @@ function BespokeDetailsPage() {
           <LayoutFlex>
             <ProductLayout>
               <Cake>
-                <ImageSlide></ImageSlide>
+                <ImageSlide imageArray={bespokeSlide}></ImageSlide>
               </Cake>
               <InputContainer>
                 <InputFlexWrapper>
