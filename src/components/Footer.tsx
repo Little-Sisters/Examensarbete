@@ -105,6 +105,10 @@ const Col = styled.div`
 const LinksWrapper = styled.div`
   display: flex;
   border-top: 1px solid ${({ theme }) => theme.grey};
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 // logo
@@ -128,6 +132,9 @@ const Newsletter = styled.div`
 
   span {
     margin-bottom: 0.5rem;
+    @media (max-width: 400px) {
+      text-align: center;
+    }
   }
 
   button {
@@ -137,6 +144,10 @@ const Newsletter = styled.div`
     border-radius: 3px;
     border-color: ${({ theme }) => theme.grey};
     padding: 0.8rem;
+
+    @media (max-width: 400px) {
+      width: 100%;
+    }
   }
 
   input {
@@ -147,6 +158,10 @@ const Newsletter = styled.div`
     width: 60%;
     border-radius: 3px 0px 0px 3px;
     margin-bottom: 0.5rem;
+
+    @media (max-width: 400px) {
+      width: 100%;
+    }
 
     &:focus {
       outline: none;
@@ -162,6 +177,9 @@ const Newsletter = styled.div`
 const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
+
+  @media (max-width: 700px) {
+  }
 
   svg {
     margin-right: 0.8rem;

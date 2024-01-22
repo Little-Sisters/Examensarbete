@@ -1,6 +1,9 @@
 import { Field, Formik } from 'formik';
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { ColorResult, SketchPicker } from 'react-color';
+import { FaCameraRetro } from 'react-icons/fa';
+import { GiStrawberry } from 'react-icons/gi';
+import { HiMiniQuestionMarkCircle } from 'react-icons/hi2';
 import { LuCakeSlice } from 'react-icons/lu';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
@@ -223,22 +226,36 @@ function BespokeDetailsPage() {
               <ShortCutTitle>Want to know more?</ShortCutTitle>
               <ShortcutWrapper>
                 <ShortcutCard
-                  imageSrc="/assets/flavors.jpg"
-                  title="Flavors"
-                  route="/flavors"
-                  description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+                  imageSrc="/aboutus.jpg"
+                  title={
+                    <>
+                      <HiMiniQuestionMarkCircle /> About us
+                    </>
+                  }
+                  route="/about"
+                  description="Discover the heart and soul behind our
+                      creations. Dive into our story, passion, and commitment to
+                      making your wedding day truly special."
                 />
                 <ShortcutCard
-                  imageSrc="/assets/flavors.jpg"
-                  title="Flavors"
-                  route="/flavors"
-                  description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+                  imageSrc="/gallery.jpg"
+                  title={
+                    <>
+                      <FaCameraRetro /> Gallery
+                    </>
+                  }
+                  route="/gallery"
+                  description="Feast your eyes on elegance! Explore our gallery to see the artistry and craftsmanship that goes into every wedding cake we create."
                 />
                 <ShortcutCard
-                  imageSrc="/assets/flavors.jpg"
-                  title="Flavors"
+                  imageSrc="/flavors.jpg"
+                  title={
+                    <>
+                      <GiStrawberry /> Flavours
+                    </>
+                  }
                   route="/flavors"
-                  description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio quae quasi rerum, nam voluptates"
+                  description="Explore a symphony of flavours! Learn about each exquisite taste to create the perfect harmony for your wedding cake."
                 />
               </ShortcutWrapper>
             </div>
@@ -335,8 +352,12 @@ const ColorPickerPreview = styled.div`
 const ShortcutWrapper = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 1rem;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
 `;
 
 const RequestInput = styled.textarea`
@@ -448,6 +469,7 @@ const InputFlexWrapper = styled.div`
 
 const ShortCutTitle = styled.h2`
   text-align: center;
+  font-size: 2rem;
   margin: 3rem 0rem 3rem 0rem;
 `;
 

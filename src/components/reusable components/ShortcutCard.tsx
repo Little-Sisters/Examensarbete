@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 interface ShortcutCardProps {
   imageSrc: string;
-  title: string;
+  title: string | React.ReactNode;
   route: string;
   description: string;
 }
@@ -39,14 +39,18 @@ const ShortcutWrapper = styled(Link)`
 
   img {
     width: 100%;
-    max-height: 25rem;
+    height: 100%;
     object-fit: cover;
     margin-bottom: 1rem;
     border-radius: 3px;
   }
 
   h3 {
-    margin-bottom: 0.5rem;
+    margin: 0.2rem 0 1rem 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
   }
 
   span {
