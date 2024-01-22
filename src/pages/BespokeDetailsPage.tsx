@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import * as Yup from 'yup';
 import { BespokeCard } from '../components/Bespoke-allergies';
 import Footer from '../components/Footer';
+import ImageSlide from '../components/ImageSlide';
 import { FilledButton } from '../components/reusable components/Button';
 import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
@@ -92,7 +93,7 @@ function BespokeDetailsPage() {
           <LayoutFlex>
             <ProductLayout>
               <Cake>
-                <img src="/transparent-cake.png" alt="" />
+                <ImageSlide></ImageSlide>
               </Cake>
               <InputContainer>
                 <InputFlexWrapper>
@@ -424,18 +425,11 @@ const Cake = styled.div`
   width: 50%;
   display: flex;
   justify-content: center;
+  position: relative;
   align-items: center;
   @media (max-width: 700px) {
     width: 100%;
     height: 35rem;
-  }
-
-  img {
-    height: 80%;
-    @media (max-width: 700px) {
-      width: auto;
-      height: 30rem;
-    }
   }
 `;
 const InputContainer = styled.div`
