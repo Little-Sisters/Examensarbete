@@ -82,7 +82,7 @@ function Footer() {
 const StyledFooter = styled.footer`
   padding: 3rem 0 1rem 0;
   display: flex;
-  background: ${({ theme }) => theme.gold};
+  background: ${({ theme }) => theme.footerBackground};
 
   p {
     font-size: 15px;
@@ -132,6 +132,7 @@ const Newsletter = styled.div`
 
   span {
     margin-bottom: 0.5rem;
+
     @media (max-width: 400px) {
       text-align: center;
     }
@@ -145,7 +146,7 @@ const Newsletter = styled.div`
     border-color: ${({ theme }) => theme.grey};
     padding: 0.8rem;
 
-    @media (max-width: 400px) {
+    @media (max-width: 800px) {
       width: 100%;
     }
   }
@@ -159,7 +160,7 @@ const Newsletter = styled.div`
     border-radius: 3px 0px 0px 3px;
     margin-bottom: 0.5rem;
 
-    @media (max-width: 400px) {
+    @media (max-width: 800px) {
       width: 100%;
     }
 
@@ -178,15 +179,12 @@ const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
 
-  @media (max-width: 700px) {
-  }
-
   svg {
-    margin-right: 0.8rem;
-    font-size: 30px;
+    font-size: 27px;
     transition: transform 0.3s ease-in-out;
+    margin: 0 0.4rem 0 0.4rem;
 
-    @media (max-width: 700px) {
+    @media (max-width: 800px) {
       font-size: 20px;
     }
 
@@ -202,7 +200,7 @@ const Copyright = styled.div`
   padding: 1rem 0rem;
   background: ${({ theme }) => theme.darkGold};
   text-align: center;
-  color: ${({ theme }) => theme.paper};
+  color: ${({ theme }) => theme.footerBackground};
 `;
 
 export default Footer;

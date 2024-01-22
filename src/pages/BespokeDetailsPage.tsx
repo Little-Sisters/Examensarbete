@@ -226,6 +226,16 @@ function BespokeDetailsPage() {
               <ShortCutTitle>Want to know more?</ShortCutTitle>
               <ShortcutWrapper>
                 <ShortcutCard
+                  imageSrc="/gallery.jpg"
+                  title={
+                    <>
+                      <FaCameraRetro /> Gallery
+                    </>
+                  }
+                  route="/gallery"
+                  description="Feast your eyes on elegance! Explore our gallery to see the artistry and craftsmanship that goes into every wedding cake we create."
+                />
+                <ShortcutCard
                   imageSrc="/aboutus.jpg"
                   title={
                     <>
@@ -236,16 +246,6 @@ function BespokeDetailsPage() {
                   description="Discover the heart and soul behind our
                       creations. Dive into our story, passion, and commitment to
                       making your wedding day truly special."
-                />
-                <ShortcutCard
-                  imageSrc="/gallery.jpg"
-                  title={
-                    <>
-                      <FaCameraRetro /> Gallery
-                    </>
-                  }
-                  route="/gallery"
-                  description="Feast your eyes on elegance! Explore our gallery to see the artistry and craftsmanship that goes into every wedding cake we create."
                 />
                 <ShortcutCard
                   imageSrc="/flavors.jpg"

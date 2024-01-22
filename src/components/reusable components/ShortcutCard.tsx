@@ -34,12 +34,11 @@ const Shortcut: React.FC<ShortcutCardProps> = ({
 const ShortcutWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
-  padding: 0.3rem;
   position: relative;
+  padding: 0.3rem;
 
   img {
     width: 100%;
-    height: 100%;
     object-fit: cover;
     margin-bottom: 1rem;
     border-radius: 3px;
@@ -55,26 +54,26 @@ const ShortcutWrapper = styled(Link)`
 
   span {
     font-size: 0.9rem;
+  }
 
-    // overlay
+  // overlay
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    z-index: 1;
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover {
+    cursor: pointer;
+
     &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(255, 255, 255, 0);
-      z-index: 1;
-      transition: background-color 0.3s ease;
-    }
-
-    &:hover {
-      cursor: pointer;
-
-      &::after {
-        background-color: ${({ theme }) => theme.overlay};
-      }
+      background-color: ${({ theme }) => theme.overlay};
     }
   }
 `;

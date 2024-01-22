@@ -18,7 +18,6 @@ export const lightMode = {
   buttonHover: '#AB9E74',
   menuHover: 'rgba(73, 72, 71, 0.3)',
   paper: '#F9F5F3',
-  footerBackground: '#E7E2DF',
   black: '#FFFFFF',
   grey: '#211E1E',
   productOne: '#E7E2DF', // Product card background color
@@ -27,8 +26,7 @@ export const lightMode = {
   overlay: 'rgba(255, 255, 255, 0.2)',
   purple: '#f2e7f5;',
   strongPurple: '#e5bff7',
-  gold: '#BEAF81',
-  darkGold: '#52504B',
+  footerBackground: '#E9E2CE',
 };
 
 export const darkMode = {
@@ -46,7 +44,6 @@ export const darkMode = {
   buttonHover: '#8F7E69',
   menuHover: 'rgba(249, 245, 243, 0.3)',
   paper: '#4E4A48',
-  footerBackground: '#211E1E',
   grey: '#E7E2DF',
   productOne: '#383432', // Product card background color
   productTwo: '#574840', // Product card background color
@@ -54,6 +51,6 @@ export const darkMode = {
   black: '#262524',
   overlay: 'rgb(38,37,36, 0.2)',
   purple: '#2c242e',
-  gold: '#847452',
   strongPurple: '#54324d',
+  footerBackground: '#484239',
 };
