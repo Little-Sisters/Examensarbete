@@ -23,7 +23,9 @@ function Footer() {
       <StyledFooter>
         <PageContentWrapper>
           {/* LOGO */}
-          <BigLogo width="22rem" mobileWidth="22rem" />
+          <LogoWrapper>
+            <BigLogo width="22rem" mobileWidth="20rem" />
+          </LogoWrapper>
           {/* NEWSLETTER */}
           <h2>NEWSLETTER</h2>
           <Newsletter>
@@ -102,6 +104,13 @@ const Col = styled.div`
   text-align: center;
 `;
 
+const LogoWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+`;
+
 // wraps links for more info
 const LinksWrapper = styled.div`
   display: flex;
@@ -110,14 +119,6 @@ const LinksWrapper = styled.div`
   @media (max-width: 600px) {
     flex-direction: column;
   }
-`;
-
-// logo
-const Logo = styled.img`
-  display: flex;
-  margin: auto;
-  width: 10rem;
-  margin-bottom: 2rem;
 `;
 
 // wraps the newsletter section
