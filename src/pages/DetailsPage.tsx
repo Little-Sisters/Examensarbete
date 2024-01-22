@@ -296,7 +296,7 @@ function DetailsPage() {
             </ProductLayout>
             <TextImageVideo
               title="Made with Love"
-              text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum non sequi ut neque unde suscipit repudiandae nemo."
+              text="Our cakes are created with you in mind, And made by the best of cake artists."
               summary="Created just for you."
               imageSrc="/egg.jpg"
               videoSrc={cakeVideo}

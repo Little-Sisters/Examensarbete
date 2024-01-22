@@ -4,7 +4,7 @@ import headerLogoDark from '/bigwhite.png';
 import headerLogo from '/bigblack.png';
 
 interface LogoProps {
-  width: string; 
+  width: string;
   mobileWidth: string;
 }
 

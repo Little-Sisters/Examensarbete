@@ -29,7 +29,7 @@ function ProductCard({ product, background }: ProductProps) {
           <StyledImg src={product.image} alt={product.imageAlt} />
           <h3>{product.title}</h3>
           <p>From ${product.price}</p>
-          <h5>{product.description}</h5>
+          <p>{product.description}</p>
         </Link>
         <TransparentButton fullWidth title="Create" onPress={handleNavigate} />
       </ProductWrapper>
