@@ -27,6 +27,7 @@ export const lightMode = {
   purple: '#f2e7f5;',
   strongPurple: '#e5bff7',
   footerBackground: '#E9E2CE',
+  footerSecondaryBackground: '#52504c',
 };
 
 export const darkMode = {
@@ -53,4 +54,5 @@ export const darkMode = {
   purple: '#2c242e',
   strongPurple: '#54324d',
   footerBackground: '#484239',
+  footerSecondaryBackground: '#262524',
 };

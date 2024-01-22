@@ -198,7 +198,7 @@ const IconWrapper = styled.div`
 // copyright section at the bottom of the page
 const Copyright = styled.div`
   padding: 1rem 0rem;
-  background: ${({ theme }) => theme.darkGold};
+  background: ${({ theme }) => theme.footerSecondaryBackground};
   text-align: center;
   color: ${({ theme }) => theme.footerBackground};
 `;
