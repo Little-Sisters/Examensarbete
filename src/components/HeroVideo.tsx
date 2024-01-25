@@ -34,7 +34,7 @@ const HeroVideo: React.FC = () => {
               <p>We bring the expertise, you bring the inspiration.</p>
             </article>
             <FilledButton
-              title="Experience our cakes"
+              title="Experience Our Cakes"
               onPress={handleHeroClick}
             ></FilledButton>
           </div>

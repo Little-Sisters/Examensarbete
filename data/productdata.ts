@@ -24,7 +24,7 @@ export interface CartItem extends Product {
 export const products: Product[] = [
   {
     id: '1',
-    image: '/transparent-cake.png',
+    image: '/customizedcake.png',
     imageAlt: 'cake',
     title: 'Customized Cake',
     description:

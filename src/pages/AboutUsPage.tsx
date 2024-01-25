@@ -41,7 +41,7 @@ function AboutUsPage() {
         <FlexContainer>
           <OurVisionContainer>
             <img
-              src="/assets/weddingcake2.jpg"
+              src="/assets/aboutweddingcake.jpg"
               alt="A stunning wedding cake displayed on a table, surrounded by roses"
             />
             <div>
