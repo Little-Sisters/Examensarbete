@@ -12,7 +12,7 @@ const ImageSlide: React.FC<ImageSlideProps> = ({ imageArray }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setSeconds((seconds) => seconds + 1);
-    }, 6000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 

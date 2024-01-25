@@ -75,7 +75,7 @@ function Footer() {
         </PageContentWrapper>
       </StyledFooter>
       <Copyright>
-        <span>2024 || copyright</span>
+        <span>Copyright © 2024 Love Story Cakes ®</span>
       </Copyright>
     </footer>
   );

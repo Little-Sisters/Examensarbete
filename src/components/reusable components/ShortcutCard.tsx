@@ -8,6 +8,7 @@ interface ShortcutCardProps {
   title: string | React.ReactNode;
   route: string;
   description: string;
+  alt?: string;
 }
 
 const Shortcut: React.FC<ShortcutCardProps> = ({
@@ -15,6 +16,7 @@ const Shortcut: React.FC<ShortcutCardProps> = ({
   title,
   route,
   description,
+  alt,
 }) => {
   return (
     <MyMotionDiv
@@ -23,7 +25,7 @@ const Shortcut: React.FC<ShortcutCardProps> = ({
     >
       <ShortcutWrapper to={route}>
         <ImageWrapper>
-          <img src={imageSrc} alt={imageSrc} />
+          <img alt={alt} src={imageSrc} />
         </ImageWrapper>
 
         <h3>{title}</h3>
@@ -63,7 +65,7 @@ const ShortcutWrapper = styled(Link)`
   flex: 1; /* Take up one-third of the row */
 
   h3 {
-    margin: 0.2rem 0 1rem 0;
+    margin: 0.5rem 0 1rem 0;
     font-size: 1.5rem;
     display: flex;
     align-items: center;

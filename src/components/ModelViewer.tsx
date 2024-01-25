@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import { getModelSrc } from '../functions/getModelSrc';
 import {
   ColourOption,
   DecorationsOption,
   TierOption,
   TopperOption,
 } from './select/data';
-import { getModelSrc } from '../functions/getModelSrc';
 
 interface MovelView3dProps {
   selectedTier: TierOption | null;
@@ -53,7 +53,6 @@ function MovelView3d({
         shadow-intensity="1"
         shadow-softness="1"
         alt="cake-3d-model"
-        auto-rotate
         camera-controls
         touch-action="pan-y"
         style={{ width: '100%', height: '100%' }}

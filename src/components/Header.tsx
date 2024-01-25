@@ -7,13 +7,13 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled, { useTheme } from 'styled-components';
+import headerLinks from '../../data/headerData';
 import { useCart } from '../contexts/CartContext';
 import useMobile from '../hooks/UseMobile';
-import Logo from './reusable components/Logo';
-import PageContentWrapper from './reusable components/PageContentWrapper';
 import Toggle from './Toggle';
 import Burger from './burger-menu/Burger';
-import headerLinks from '../../data/headerData';
+import Logo from './reusable components/Logo';
+import PageContentWrapper from './reusable components/PageContentWrapper';
 
 interface HeaderProps {
   themeToggler: () => void;
@@ -128,7 +128,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
             {/* Content for mobile */}
             <MobileMenuWrapper>
               <Burger isOpen={isOpen} handleToggle={handleToggle}></Burger>
-              <Logo width="5.7rem" mobileWidth="4.6rem" />
+              <Logo width="5.7rem" mobileWidth="4.4rem" />
               <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </MobileMenuWrapper>
             {/* Animated drawer content */}
@@ -185,7 +185,9 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                   <DesktopNavLink to="../flavors">Flavors</DesktopNavLink>
                   <DesktopNavLink to="/gallery">Gallery</DesktopNavLink>
                 </DesktopLinkWrapper>
-                <Logo width="5.7rem" mobileWidth="4.7rem" />
+                <Link to="/">
+                  <Logo width="5.7rem" mobileWidth="4.7rem" />
+                </Link>
                 <RightDesktopLinkWrapper>
                   <DesktopNavLink to="/about">About</DesktopNavLink>
                   <DesktopNavLink to="/cakes">Cakes</DesktopNavLink>

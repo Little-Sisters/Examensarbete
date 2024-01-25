@@ -14,8 +14,9 @@ const StyledLogo = styled.img<LogoProps>`
   padding-top: 4px;
   width: ${(props) => props.width || '5rem'};
 
-  @media (max-width: 700px) {
+  @media (max-width: 730px) {
     width: ${(props) => props.mobileWidth || '4rem'};
+    padding-top: 0px;
   }
 `;
 

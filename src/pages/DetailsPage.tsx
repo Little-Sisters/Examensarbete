@@ -1,15 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
+import { GiWhisk } from 'react-icons/gi';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from '../components/Footer';
 import MovelView3d from '../components/ModelViewer';
 import { AllergyCard } from '../components/Product-allergies';
 import { FilledButton } from '../components/reusable components/Button';
-import TextImageVideo from '../components/reusable components/TextImageVideo';
 import MarginTopContainer from '../components/reusable components/MarginTopContainer';
 import PageContentWrapper from '../components/reusable components/PageContentWrapper';
-import cakeVideo from '../videos/glacing.mp4';
-import { GiWhisk } from 'react-icons/gi';
+import TextImageVideo from '../components/reusable components/TextImageVideo';
 import {
   ColourOption,
   DecorationsOption,
@@ -28,6 +27,7 @@ import NewSelect from '../components/select/newSelect';
 import { useCart } from '../contexts/CartContext';
 import { useProduct } from '../contexts/ProductContext';
 import { useScrollToTop } from '../hooks/useScrollToTop';
+import cakeVideo from '../videos/glacing.mp4';
 
 function DetailsPage() {
   const { productList } = useProduct();
@@ -298,6 +298,7 @@ function DetailsPage() {
               title="Made with Love"
               text="Our cakes are created with you in mind, And made by the best of cake artists."
               summary="Created just for you."
+              alt="An assortment of honey, flour, and eggs is strewn across a table, accompanied by various baking utensils"
               imageSrc="/egg.jpg"
               videoSrc={cakeVideo}
               icon={<GiWhisk />}

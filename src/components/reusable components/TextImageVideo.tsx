@@ -12,6 +12,7 @@ interface TextImageVideoProps {
   icon: ReactNode;
   videoSrc: string;
   imageContainerHeight: string;
+  alt?: string;
 }
 
 const TextImageVideo: React.FC<TextImageVideoProps> = ({
@@ -22,6 +23,7 @@ const TextImageVideo: React.FC<TextImageVideoProps> = ({
   videoSrc,
   icon,
   imageContainerHeight,
+  alt,
 }) => {
   return (
     <Container>
@@ -36,11 +38,19 @@ const TextImageVideo: React.FC<TextImageVideoProps> = ({
       <ImageContainer height={imageContainerHeight}>
         <Relative>
           <Overlay></Overlay>
-          <img src={imageSrc} alt="" />
+          <img alt={alt} src={imageSrc} />
         </Relative>
       </ImageContainer>
       <VideoContainer>
-        <video src={videoSrc} autoPlay loop muted></video>
+        <video src={videoSrc} autoPlay loop muted>
+          <track
+            kind="captions"
+            srcLang="en"
+            label="English"
+            src="captions.vtt"
+          />
+          Your browser does not support the video tag.
+        </video>
       </VideoContainer>
     </Container>
   );
