@@ -1,11 +1,11 @@
 import { Formik, FormikHelpers } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import * as Yup from 'yup';
+import { useCart } from '../contexts/CartContext';
 import { useOrder } from '../contexts/OrderContext';
 import RadioButton from './RadioButton';
-import { useCart } from '../contexts/CartContext';
-import { toast } from 'react-toastify';
 
 // Interface for props
 // error is used to display error messages
@@ -228,7 +228,7 @@ export function OrderForm() {
 
               <FlexRow>
                 <StyledLink to="/cakes">
-                  <StyledButton>Shop more</StyledButton>
+                  <StyledButton>Shop More</StyledButton>
                 </StyledLink>
                 <StyledButton
                   type="submit"

@@ -39,11 +39,11 @@ export const products: Product[] = [
   },
   {
     id: '2',
-    image: '/transparent-cake.png',
+    image: '/bespokecake.png',
     imageAlt: 'cake',
     title: 'Bespoke Cake',
     description:
-      'Send us a request for a completely unique cake. Send a picture of your desired cake, choose a color and tell us what you want. We can accomodate allergies.',
+      'Request a unique cake by sending a picture, choosing color, and specifying preferences. We can accomodate allergies.',
     price: 200,
     flavour: '',
     tiers: null,
