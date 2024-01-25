@@ -71,10 +71,12 @@ export const accordionItemsData = [
           and taste.
         </ContentSpan>
         <ContentSpan>
-          Celebrate your special day with a luxurious, customized wedding cake.
-          Our skilled bakers and decorators will craft a masterpiece that
-          reflects your unique style and taste. Our skilled bakers and
-          decorators.
+          Our cakes are baked with love and with the best, organic ingredients.
+          Make your special day even more memorable with our personalized
+          wedding cakes. Our skilled team of bakers and decorators is committed
+          to creating a stunning masterpiece that resonates with your distinct
+          style. Let your love story shine through every layer, as we carefully
+          craft a unique cake that becomes a symbol of your joyous celebration.
         </ContentSpan>
       </>
     ),
@@ -93,6 +95,21 @@ export const accordionItemsData = [
           <li>High-quality flour</li>
           <li>Fresh eggs</li>
           <li>Pure vanilla extract</li>
+          <li>
+            Rich Chocolate: Luxurious cocoa blended to perfection for a decadent
+            chocolate experience.
+          </li>
+          <li>
+            Delicate Strawberry: Fresh strawberries infused to add a burst of
+            fruity sweetness.
+          </li>
+          <li>
+            Zesty Lemon: Lemon zest and juice for a tangy and refreshing flavor.
+          </li>
+          <li>
+            Vanilla Sponge: A classic and timeless choice, with the pure essence
+            of vanilla.
+          </li>
           {/* Add more ingredients as needed */}
         </StyledList>
       </>
@@ -107,14 +124,19 @@ export const accordionItemsData = [
     ),
     content: (
       <>
-        <ContentP>
-          Our wedding cake may contain the following allergens:
-        </ContentP>
+        <ContentP>We can make your cake for everyone.</ContentP>
+        <ContentSpan>
+          While our bespoke wedding cakes are crafted with love and care, they
+          may contain allergens such as gluten, dairy, and eggs. Please inform
+          us of any specific dietary requirements, and we'll tailor our
+          creations to accommodate your needs.
+        </ContentSpan>
         <StyledList>
           <li>Gluten</li>
           <li>Dairy</li>
           <li>Eggs</li>
-          {/* Add more allergens as needed */}
+          <li>Vegan</li>
+          <li>Nuts</li>
         </StyledList>
       </>
     ),

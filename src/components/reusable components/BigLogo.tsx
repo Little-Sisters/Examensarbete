@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled, { ThemeContext } from 'styled-components';
-import headerLogoDark from '/dark-small-logo.png';
-import headerLogo from '/light-small-logo.png';
+import headerLogoDark from '/bigwhite.png';
+import headerLogo from '/bigblack.png';
 
 interface LogoProps {
   width: string;
@@ -11,7 +11,6 @@ interface LogoProps {
 // Logo has 2  breakpoints atm, that you can send as props.
 const StyledLogo = styled.img<LogoProps>`
   transition: all 0.3s linear;
-  padding-top: 4px;
   width: ${(props) => props.width || '5rem'};
 
   @media (max-width: 700px) {
@@ -19,7 +18,7 @@ const StyledLogo = styled.img<LogoProps>`
   }
 `;
 
-const Logo: React.FC<LogoProps> = ({ width, mobileWidth }) => {
+const BigLogo: React.FC<LogoProps> = ({ width, mobileWidth }) => {
   // Access to current theme, "light" or "dark"
   const themeContext = useContext(ThemeContext);
   const theme = themeContext?.mode;
@@ -34,4 +33,4 @@ const Logo: React.FC<LogoProps> = ({ width, mobileWidth }) => {
   );
 };
 
-export default Logo;
+export default BigLogo;

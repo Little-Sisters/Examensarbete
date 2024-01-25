@@ -42,7 +42,15 @@ const TextImageVideo: React.FC<TextImageVideoProps> = ({
         </Relative>
       </ImageContainer>
       <VideoContainer>
-        <video src={videoSrc} autoPlay loop muted></video>
+        <video src={videoSrc} autoPlay loop muted>
+          <track
+            kind="captions"
+            srcLang="en"
+            label="English"
+            src="captions.vtt"
+          />
+          Your browser does not support the video tag.
+        </video>
       </VideoContainer>
     </Container>
   );

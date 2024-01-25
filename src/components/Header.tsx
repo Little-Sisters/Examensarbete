@@ -111,7 +111,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
 
   const headerAnimation = isMobile
     ? { height: 'auto' }
-    : { height: isScrolling ? '4rem' : '6rem' };
+    : { height: isScrolling ? '4.4rem' : '6rem' };
 
   return (
     <MyHeader
@@ -128,7 +128,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
             {/* Content for mobile */}
             <MobileMenuWrapper>
               <Burger isOpen={isOpen} handleToggle={handleToggle}></Burger>
-              <Logo width="5rem" mobileWidth="4rem" />
+              <Logo width="5.7rem" mobileWidth="4.6rem" />
               <Toggle isOn={isOn} toggleTheme={themeToggler} />
             </MobileMenuWrapper>
             {/* Animated drawer content */}
@@ -185,7 +185,7 @@ function Header({ themeToggler, theme, isOn }: HeaderProps) {
                   <DesktopNavLink to="../flavors">Flavors</DesktopNavLink>
                   <DesktopNavLink to="/gallery">Gallery</DesktopNavLink>
                 </DesktopLinkWrapper>
-                <Logo width="4rem" mobileWidth="4rem" />
+                <Logo width="5.7rem" mobileWidth="4.7rem" />
                 <RightDesktopLinkWrapper>
                   <DesktopNavLink to="/about">About</DesktopNavLink>
                   <DesktopNavLink to="/cakes">Cakes</DesktopNavLink>

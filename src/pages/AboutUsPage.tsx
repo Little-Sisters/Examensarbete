@@ -25,7 +25,6 @@ function AboutUsPage() {
         src="/assets/weddingtable.jpeg"
         alt="Decorated wedding table from bird's eye view"
       />
-
       <PageContentWrapper>
         <FlexContainer>
           <QuoteContainer>

@@ -19,35 +19,53 @@ const Shortcut: React.FC<ShortcutCardProps> = ({
   alt,
 }) => {
   return (
-    <motion.div
-      className="box"
+    <MyMotionDiv
       whileHover={{ scale: 1.05 }}
       transition={{ type: 'spring', stiffness: 300, damping: 15 }}
     >
       <ShortcutWrapper to={route}>
-        <img alt={alt} src={imageSrc} />
+        <ImageWrapper>
+          <img alt={alt} src={imageSrc} />
+        </ImageWrapper>
+
         <h3>{title}</h3>
         <span>{description}</span>
       </ShortcutWrapper>
-    </motion.div>
+    </MyMotionDiv>
   );
 };
 
+const MyMotionDiv = styled(motion.div)`
+  width: calc(100% / 3);
+  @media (max-width: 400px) {
+    width: 100%;
+  }
+`;
+
+const ImageWrapper = styled.div`
+  height: 0;
+  padding-bottom: 100%; /* Maintain a square aspect ratio */
+  position: relative;
+  width: 100%;
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+  }
+`;
+
 const ShortcutWrapper = styled(Link)`
+  width: 100%;
   display: flex;
   flex-direction: column;
   position: relative;
   padding: 0.3rem;
-
-  img {
-    width: 100%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    border-radius: 3px;
-  }
+  flex: 1; /* Take up one-third of the row */
 
   h3 {
-    margin: 0.2rem 0 1rem 0;
+    margin: 0.5rem 0 1rem 0;
     font-size: 1.5rem;
     display: flex;
     align-items: center;
