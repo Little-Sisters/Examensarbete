@@ -1,0 +1,11 @@
+# Redirects from what the browser requests to what we serve
+
+/home /
+/flavors /flavors
+/gallery /gallery
+/about /about
+/cakes /cakes
+/cake/:id /cake/:id
+/cake/2 /cake/2
+/cart /cart
+/confirmation /confirmation
